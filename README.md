@@ -26,6 +26,12 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 ## 1. インストール
 
+以下のページより最新のSDKをダウンロードしてください。
+
+[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)
+
+既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](https://github.com/cyber-z/public_fox_ios_sdk/tree/master/doc/update/ja)をご参照ください。
+
 ダウンロードしたSDK「FOX_iOS_SDK_<version>.zip」を展開し、以下ファイルをXcodeの任意の場所にコピーを行い、アプリケーションのプロジェクトに組み込んでください。
 
 各ファイルの説明は以下の通りです。
@@ -39,7 +45,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 <tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
-[インストールの詳細](http://xxx)
+[インストール手順の詳細](http://xxx)
 
 ## 2. 設定
 
@@ -158,9 +164,9 @@ LTV計測を行うためには、各成果地点を識別する成果地点IDが
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
-[ltv sendLtv:{成果地点ID}];
 [ltv addParameter:LTV_PARAM_PRICE:@"9.99"];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"USD"];
+[ltv sendLtv:{成果地点ID}];
 ```
 
 [タグを利用したLTV計測について](http://xxx)
@@ -218,8 +224,6 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 > テスト用URLは必ず標準のSafari上でリクエストされるようにしてください。Chromeなどの3rd partyブラウザ、メールアプリやQRコードアプリを利用されそのアプリ内WebViewで遷移した場合には計測できません。
 
 > テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
-
-## SDKの最新バージョンへのアップデートについて
 
 ## 最後に必ずご確認ください（これまで発生したトラブル集）
 
