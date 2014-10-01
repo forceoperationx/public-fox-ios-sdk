@@ -112,22 +112,118 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 ```objectivec
 #import "AdManager.h"
 
-// - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+// - (BOOL)application:(UIApplication *)application
+//   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 [[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
+
+// }
 ```
 
-sendConversionWithStartPage:の引数には通常は上記の通り@"default"という文字列を入力していただければ問題はありません。
+sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。
+
 [sendConversionWithStartPage:の詳細について](http://xxx)
 
 また、URLスキーム経由の起動を計測するために、application:openURL:にsetUrlScheme:メソッドを実装します。
 
 ```objectivec
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+// - (BOOL)application:(UIApplication *)application
+//   openURL:(NSURL *)url
+//   sourceApplication:(NSString *)sourceApplication
+//   annotation:(id)annotation {
 
 [[AppAdForceManager sharedManager] setUrlScheme:url];
+
+// }
 ```
 
+## 4. LTV計測の実装
 
+会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
 
+```objectivec
+#import "Ltv.h"
+// ...
+AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
+[ltv sendLtv:{成果地点ID}];
+```
+
+LTV計測を行うためには、各成果地点を識別する成果地点IDが発行されている必要があります。{成果地点ID}に発行されたIDをintで指定してください。
+
+課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
+
+```objectivec
+#import "Ltv.h"
+// ...
+AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
+[ltv sendLtv:{成果地点ID}];
+[ltv addParameter:LTV_PARAM_PRICE:@"9.99"];
+[ltv addParameter:LTV_PARAM_CURRENCY:@"USD"];
+```
+
+[タグを利用したLTV計測について](http://xxx)
+
+## 5. アクセス解析の実装
+
+自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。
+
+アプリケーションの起動、及びバックグラウンドからの復帰を計測するために、application:didFinishLaunchingWithOptions:およびapplicationWillEnterForegroundにコードを追加します。
+
+```objectivec
+#import "AnalyticsManager.h"
+
+// - (BOOL)application:(UIApplication *)application
+//   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+[ForceAnalyticsManager sendStartSession];
+
+//}
+
+// - (void)applicationWillEnterForeground:(UIApplication *)application {
+
+[ForceAnalyticsManager sendStartSession];
+
+//}
+```
+
+sendStartSessionは必ず上記二カ所に実装を行ってください。
+
+[アクセス解析によるカスタムイベント計測](http://xxx)
+[アクセス解析による課金計測](http://xxx)
+
+## 疎通テストの実施
+
+マーケットへの申請までに、SDKを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
+
+インストール計測の通信は、起動後に一度のみ行わるため、続けて効果測定テストを行いたい場合には、アプリケーションをアンインストールし、再度インストールから行ってください。
+
+* **テスト手順**
+
+1. テスト用端末にテストアプリがインストールされている場合には、アンインストール
+1. テスト用端末の「設定」→「Safari」→「Cookieとデータを消去」によりCookieを削除
+1. 弊社より発行したテスト用URLをクリック
+1. マーケットへリダイレクト
+1. テスト用端末にテストアプリをインストール<br />
+1. アプリを起動、ブラウザが起動<br />
+ここでブラウザが起動しない場合には、正常に設定が行われていません。設定を見直していただき、問題が見当たらない場合には弊社へご連絡ください。
+1. LTV地点まで画面遷移<br />
+1. アプリを終了し、バックグラウンドからも削除<br />
+1. 再度アプリを起動<br />
+
+弊社へ3、6、7、9の時間をお伝えください。正常に計測が行われているか確認いたします。弊社側の確認にて問題がなければテスト完了となります。
+
+> テスト用URLは必ず標準のSafari上でリクエストされるようにしてください。Chromeなどの3rd partyブラウザ、メールアプリやQRコードアプリを利用されそのアプリ内WebViewで遷移した場合には計測できません。
+
+> テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
+
+## SDKの最新バージョンへのアップデートについて
+
+## 最後に必ずご確認ください（これまで発生したトラブル集）
+
+## その他機能の実装
+
+[プッシュ通知の実装](http://xxx)
+[オプトアウトの実装](http://xxx)
+[管理画面上に登録したバンドルバージョンに応じた処理の振り分け](http://xxx)
 
