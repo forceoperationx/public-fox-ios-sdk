@@ -39,7 +39,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 <tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
-[TODO: インストールの詳細](http://xxx)
+[インストールの詳細](http://xxx)
 
 ## 2. 設定
 
@@ -58,7 +58,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 > AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
 
-[TODO: フレームワーク設定の詳細](http://xxx)
+[フレームワーク設定の詳細](http://xxx)
 
 * **SDK設定**
 
@@ -102,8 +102,9 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 </tr>
 </table>
 
-[TODO: SDK設定の詳細](http://xxx)
-[TODO: AppAdForce.plistサンプル](http://xxx)
+[SDK設定の詳細](http://xxx)
+
+[AppAdForce.plistサンプル](http://xxx)
 
 ## 3. インストール計測の実装
 
@@ -123,7 +124,7 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 
 sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。
 
-[sendConversionWithStartPage:の詳細について](http://xxx)
+[sendConversionWithStartPage:の詳細](http://xxx)
 
 また、URLスキーム経由の起動を計測するために、application:openURL:にsetUrlScheme:メソッドを実装します。
 
@@ -189,8 +190,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 sendStartSessionは必ず上記二カ所に実装を行ってください。
 
-[アクセス解析によるカスタムイベント計測](http://xxx)
 [アクセス解析による課金計測](http://xxx)
+
+[アクセス解析によるカスタムイベント計測](http://xxx)
 
 ## 疎通テストの実施
 
@@ -224,6 +226,8 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 ## その他機能の実装
 
 [プッシュ通知の実装](http://xxx)
+
 [オプトアウトの実装](http://xxx)
+
 [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](http://xxx)
 
