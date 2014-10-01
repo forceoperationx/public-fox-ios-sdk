@@ -39,7 +39,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 <tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
-[TODO: インストールの詳細]("http://xxx" フレームワーク設定の詳細)
+[TODO: インストールの詳細](http://xxx)
 
 ## 2. 設定
 
@@ -58,7 +58,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 > AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
 
-[TODO: フレームワーク設定の詳細]("http://xxx" フレームワーク設定の詳細)
+[TODO: フレームワーク設定の詳細](http://xxx)
 
 * **SDK設定**
 
@@ -102,10 +102,32 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 </tr>
 </table>
 
-[TODO: SDK設定の詳細]("http://xxx" フレームワーク設定の詳細)
-[TODO: AppAdForce.plistサンプル]("http://xxx" フレームワーク設定の詳細)
+[TODO: SDK設定の詳細](http://xxx)
+[TODO: AppAdForce.plistサンプル](http://xxx)
 
 ## 3. インストール計測の実装
+
+初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
+
+```objectivec
+#import "AdManager.h"
+
+// - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+[[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
+[[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
+```
+
+sendConversionWithStartPage:の引数には通常は上記の通り@"default"という文字列を入力していただければ問題はありません。
+[sendConversionWithStartPage:の詳細について](http://xxx)
+
+また、URLスキーム経由の起動を計測するために、application:openURL:にsetUrlScheme:メソッドを実装します。
+
+```objectivec
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+
+[[AppAdForceManager sharedManager] setUrlScheme:url];
+```
+
 
 
 
