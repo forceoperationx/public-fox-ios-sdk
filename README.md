@@ -122,6 +122,10 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
 
+> 【ご注意】
+sendConversionWithStartPage:は、特に理由がない限りはapplication:didFinishLaunchingWithOptions:内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+application:didFinishLaunchingWithOptions:に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+
 ```objectivec
 #import "AdManager.h"
 
@@ -150,6 +154,8 @@ sendConversionWithStartPage:の引数には、通常は上記の通り@"default"
 
 // }
 ```
+
+![sendConversion01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/send_conversion/ja/img01.png)
 
 ## 4. LTV計測の実装
 
