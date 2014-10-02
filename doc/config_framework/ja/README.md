@@ -1,6 +1,6 @@
 ## フレームワーク設定の詳細
 
-ビルド対象のターゲットをクリックし、「Build Phases」→「Link Binary With Libraries」を選択。「+」ボタンを教えて、各フレームワークを選択してください。
+ビルド対象のターゲットをクリックし、「Build Phases」→「Link Binary With Libraries」を選択。「+」ボタンを押し、各フレームワークを選択してください。
 
 ![フレームワーク設定01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_framework/ja/img01.png)
 
