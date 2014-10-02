@@ -1,4 +1,4 @@
-## インストール
+## インストール手順の詳細
 
 ダウンロードしたSDK「FOX_iOS_SDK_.zip」を展開し、以下ファイルをXcodeの任意の場所にコピーを行い、アプリケーションのプロジェクトに組み込んでください。
 
@@ -18,4 +18,6 @@
 <tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
 <tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
+
+[TOP](https://github.com/cyber-z/public_fox_ios_sdk)
 
