@@ -122,10 +122,6 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
 
-> 【ご注意】
-sendConversionWithStartPage:は、特に理由がない限りはapplication:didFinishLaunchingWithOptions:内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
-application:didFinishLaunchingWithOptions:に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
-
 ```objectivec
 #import "AdManager.h"
 
@@ -140,7 +136,7 @@ application:didFinishLaunchingWithOptions:に実装していない状態でイ�
 
 sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。
 
-[sendConversionWithStartPage:の詳細](http://xxx)
+[sendConversionWithStartPage:の詳細](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/send_conversion/ja/README.md)
 
 また、URLスキーム経由の起動を計測するために、application:openURL:にsetUrlScheme:メソッドを実装します。
 
@@ -181,7 +177,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv sendLtv:{成果地点ID}];
 ```
 
-[タグを利用したLTV計測について](http://xxx)
+[タグを利用したLTV計測について](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/ltv_browser/ja/README.md)
 
 ## 5. アクセス解析の実装
 
@@ -237,8 +233,6 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 > テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
 
-## 最後に必ずご確認ください（これまで発生したトラブル集）
-
 ## その他機能の実装
 
 [プッシュ通知の実装](http://xxx)
@@ -246,5 +240,39 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 [オプトアウトの実装](http://xxx)
 
 [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](http://xxx)
+
+## 最後に必ずご確認ください（これまで発生したトラブル集）
+
+### 期待した広告経由のインストール数よりもレポートの数字が低い
+
+インストール計測のsendConversionWithStartPage:が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
+
+sendConversionWithStartPage:は、特に理由がない限りはapplication:didFinishLaunchingWithOptions:内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+
+application:didFinishLaunchingWithOptions:に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+
+### URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+
+Cookie計測を行うために外部ブラウザを起動した後に、元の画面に戻すためにはURLスキームを利用してアプリケーションに遷移させる必要があります。この際、独自のURLスキームが設定されている必要があり、URLスキームを設定せずにリリースした場合にはこのような遷移を行うことができなくなります。
+
+### URLスキームに大文字が含まれ、正常にアプリに遷移されない
+
+環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。URLスキームは全て小文字で設定を行ってください。
+
+### URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
+
+iOSにおいて、複数のアプリに同一のURLスキームが設定されていた場合の起動するアプリは不定です。その場合に、確実に特定のアプリを起動することができなくなるため、URLスキームは他社製アプリとはユニークになるようにある程度の複雑性のあるものを設定してください。
+
+### 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
+
+iOSには、アプリ起動時に一定時間以上メインスレッドがブロックされるとアプリケーションを強制終了する仕様があります。起動時の初期化処理など、メインスレッド上でサーバーへの同期通信を行わないようにご注意ください。リワード広告などの大量のユーザーを短時間で獲得した結果、サーバーへのアクセスが集中し、通信のレスポンスが非常に悪くなることでアプリケーションの起動に時間がかかり、起動時に強制終了され正常に広告成果が計測できなくなった事例がございます。
+
+以下の手順で、こうした状況をテストすることができますので、以下の設定でアプリケーションが正常に起動するかをご確認ください。
+
+iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」
+
+* 「Enable」をオン
+* 「Very Bad Network」をチェック
+
 
 
