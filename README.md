@@ -45,7 +45,7 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 <tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
-[インストール手順の詳細](http://xxx)
+[インストール手順の詳細](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/integration/ja/README.md)
 
 ## 2. 設定
 
@@ -234,4 +234,5 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 [オプトアウトの実装](http://xxx)
 
 [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](http://xxx)
+
 
