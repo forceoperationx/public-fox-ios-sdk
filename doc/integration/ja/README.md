@@ -19,5 +19,5 @@
 <tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
-[TOP](https://github.com/cyber-z/public_fox_ios_sdk)
+[TOP](https://github.com/cyber-z/public_fox_ios_sdk#1-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 

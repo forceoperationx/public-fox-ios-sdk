@@ -47,6 +47,9 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 [インストール手順の詳細](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/integration/ja/README.md)
 
+![インストール手順](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/integration/ja/img01.png)
+
+
 ## 2. 設定
 
 * **フレームワーク設定**
@@ -57,14 +60,16 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 <tr><th>フレームワーク名</th><th>Status</th></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 <tr><td>iAd.framework </td><td>Required</td></tr>
-<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
+<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
 > AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
 
 [フレームワーク設定の詳細](http://xxx)
+
+![フレームワーク設定01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_framework/ja/img01.png)
 
 * **SDK設定**
 
@@ -111,6 +116,8 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 [SDK設定の詳細](http://xxx)
 
 [AppAdForce.plistサンプル](http://xxx)
+
+![フレームワーク設定01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_plist/ja/img05.png)
 
 ## 3. インストール計測の実装
 
