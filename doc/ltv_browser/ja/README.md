@@ -30,12 +30,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 LTVの成果地点となるページに計測タグを実装してください。計測タグはForce Operation X管理者から連絡いたします。
 
-```html
-<img src="http://app-adforce.jp/ad/p/cv?_buyer=1&_cvpoint=3&_price=0.99&_currency=USD&_buid=taro" width="1" height="1">
-
-```
-
-パラメータ仕様は以下の通りです。
+タグに利用するパラメータ仕様は以下の通りです。
 
 <table>
 <tr>
