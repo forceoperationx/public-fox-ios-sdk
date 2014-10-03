@@ -164,7 +164,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv sendLtv:{成果地点ID}];
 ```
 
-LTV計測を行うためには、各成果地点を識別する成果地点IDが発行されている必要があります。{成果地点ID}に発行されたIDをintで指定してください。
+LTV計測を行うためには、各成果地点を識別する成果地点IDを指定する必要があります。sendLtvの引数に発行されたIDを指定してください。
 
 課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
 
@@ -176,6 +176,8 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"USD"];
 [ltv sendLtv:{成果地点ID}];
 ```
+
+_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
 
 [タグを利用したLTV計測について](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/ltv_browser/ja/README.md)
 
@@ -204,9 +206,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 sendStartSessionは必ず上記二カ所に実装を行ってください。
 
-[アクセス解析による課金計測](http://xxx)
-
-[アクセス解析によるカスタムイベント計測](http://xxx)
+[アクセス解析による課金計測](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/analytics_purchase/ja/README.md)
 
 ## 疎通テストの実施
 
@@ -240,6 +240,18 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 [オプトアウトの実装](http://xxx)
 
 [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](http://xxx)
+
+## FAQ（よくある質問集）
+
+### F.O.Xで利用するバンドルバージョンとは？
+
+iOSでは、バンドルバージョンと呼ばれるものには具体的に以下の二つがあります。
+
+* CFBundleVersion
+* CFBundleShortVersionString
+
+F.O.Xでは、上記のうちCFBundleVersionの値を管理の目的で利用します。この値はマーケットで表示されるバージョンとは異なる値が設定できますので、内部管理用と表記用で値を分けて管理される場合はご注意ください。
+
 
 ## 最後に必ずご確認ください（これまで発生したトラブル集）
 
