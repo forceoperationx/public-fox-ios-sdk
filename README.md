@@ -116,7 +116,7 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 
 [SDK設定の詳細](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/config_plist/ja/README.md)
 
-[AppAdForce.plistサンプル](http://xxx)
+[AppAdForce.plistサンプル](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/config_plist/AppAdForce.plist)
 
 ## 3. インストール計測の実装
 
