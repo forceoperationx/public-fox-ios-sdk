@@ -235,7 +235,7 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 ## その他機能の実装
 
-[プッシュ通知の実装](http://xxx)
+[プッシュ通知の実装](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/notify/ja/README.md)
 
 [オプトアウトの実装](http://xxx)
 
