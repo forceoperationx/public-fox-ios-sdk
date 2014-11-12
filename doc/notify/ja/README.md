@@ -28,8 +28,6 @@ if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {	// iOS8対�
 											UIRemoteNotificationTypeSound |
 											UIRemoteNotificationTypeAlert)];}
 
-[[Notify sharedManager] sendOpenedStatus: launchOptions];
-
 // }
 ```
 > デバイストークンの取得は、必ず成果通知を行う F.O.X のメソッド sendConversionWithStartPage の後に実装してください。 (もし既に記述済の場合は、F.O.X のメソッド sendConversionWithStartPage の後に実装するように記述位置を移 動してください)
