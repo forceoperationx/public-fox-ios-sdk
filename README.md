@@ -235,11 +235,11 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 ## その他機能の実装
 
-[プッシュ通知の実装](http://xxx)
+[プッシュ通知の実装](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/notify/ja/README.md)
 
-[オプトアウトの実装](http://xxx)
+[オプトアウトの実装](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/optout/ja/README.md)
 
-[管理画面上に登録したバンドルバージョンに応じた処理の振り分け](http://xxx)
+[管理画面上に登録したバンドルバージョンに応じた処理の振り分け](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/check_version/ja/README.md)
 
 ## FAQ（よくある質問集）
 
