@@ -233,6 +233,10 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 > テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
 
+
+[リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/ja/)
+
+
 ## その他機能の実装
 
 [プッシュ通知の実装](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/notify/ja/README.md)
