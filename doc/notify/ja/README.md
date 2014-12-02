@@ -11,22 +11,28 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 // - (BOOL)application:(UIApplication *)application
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-[[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
-[[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
+	[[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
+	[[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
 
-// …
+	// …
 
-// デバイストークンの取得
-if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {	// iOS8対応	[[UIApplication sharedApplication]
-		registerUserNotificationSettings: [UIUserNotificationSettings
-						settingsForTypes: (UIUserNotificationTypeSound |
-											UIUserNotificationTypeAlert |
-											UIUserNotificationTypeBadge)
-											categories:nil]];
-	[[UIApplication sharedApplication] registerForRemoteNotifications];} else {	// iOS7以前に対応	[[UIApplication sharedApplication] 
-		registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-											UIRemoteNotificationTypeSound |
-											UIRemoteNotificationTypeAlert)];}
+	// デバイストークンの取得
+	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+	// iOS8対応
+		[[UIApplication sharedApplication]
+			registerUserNotificationSettings: [UIUserNotificationSettings
+							settingsForTypes: (UIUserNotificationTypeSound |
+												UIUserNotificationTypeAlert |
+												UIUserNotificationTypeBadge)
+												categories:nil]];
+		[[UIApplication sharedApplication] registerForRemoteNotifications];
+	} else {
+		// iOS7以前に対応
+		[[UIApplication sharedApplication] 
+			registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+												UIRemoteNotificationTypeSound |
+												UIRemoteNotificationTypeAlert)];
+	}
 
 // }
 ```
@@ -42,7 +48,9 @@ if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {	// iOS8対�
 
 // - (void)application:(UIApplication *)application
 //	didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)devToken{
+
 	[[Notify sharedManager] manageDevToken:devToken];
+
 // }
 ```
 devTokenには、Appleから送られてきたデバイストークンが入っています。
@@ -57,7 +65,7 @@ devTokenには、Appleから送られてきたデバイストークンが入っ�
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 #if !TARGET_IPHONE_SIMULATOR
-[[Notify sharedManager] sendOpenedStatus: launchOptions];
+	[[Notify sharedManager] sendOpenedStatus: launchOptions];
 #endif
 
 // }
@@ -66,10 +74,13 @@ devTokenには、Appleから送られてきたデバイストークンが入っ�
 ```objectivec
 // - (void)application:(UIApplication *)application
 //	 didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
 #if !TARGET_IPHONE_SIMULATOR
-	if ( [[Notify sharedManager] sendOpenedStatus:userInfo application:application] ) {		return;
+	if ( [[Notify sharedManager] sendOpenedStatus:userInfo application:application] ) {
+		return;
 	}
 #endif
+
 //}
 ```
 
@@ -90,7 +101,15 @@ URLスキームでアプリを起動した際に、Application Delegateのapplic
 //   openURL:(NSURL *)url
 //   sourceApplication:(NSString *)sourceApplication
 //   annotation:(id)annotation{
-	if ([@"myhost" compare:[url host]] == NSOrderedSame) {		UIViewController *viewController =			[[DownloadViewController alloc] initWithNibName:nil bundle:nil];		self.window.rootViewController = viewController;		[self.window makeKeyAndVisible];	}	return YES;}```
+	if ([@"myhost" compare:[url host]] == NSOrderedSame) {
+		UIViewController *viewController =
+			[[DownloadViewController alloc] initWithNibName:nil bundle:nil];
+		self.window.rootViewController = viewController;
+		[self.window makeKeyAndVisible];
+	}
+	return YES;
+//   }
+```
 
 [TOP](https://github.com/cyber-z/public_fox_ios_sdk#%E3%81%9D%E3%81%AE%E4%BB%96%E6%A9%9F%E8%83%BD%E3%81%AE%E5%AE%9F%E8%A3%85)
 
