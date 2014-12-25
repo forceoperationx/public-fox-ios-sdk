@@ -62,5 +62,7 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 </tr>
 </table>
 
+[AppAdForce.plistサンプル](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/config_plist/AppAdForce.plist)
+
 [TOP](https://github.com/cyber-z/public_fox_ios_sdk#2-%E8%A8%AD%E5%AE%9A)
 
