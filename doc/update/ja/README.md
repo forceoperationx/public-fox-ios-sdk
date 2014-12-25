@@ -18,11 +18,17 @@ F.O.X iOS SDK v2.12以降では、ライブラリファイルはlibAppAdForce.a�
 以下の出力にバージョン番号がありますので、最新のものと一致しているかを確認してください。
 
 ```
- [5160:c07] ===== FORCE OPERATION X DEBUG DESCRIPTION ===== [5160:c07] Force Operation X SDK v2.13.4g
+ [5160:c07] ===== FORCE OPERATION X DEBUG DESCRIPTION ===== 
+ [5160:c07] Force Operation X SDK v2.13.4g
 ```
 setDebugModeメソッドは、リリース時には削除してください。
 
 SDKのアップデート後は、必ず疎通テストを実施し、計測及びアプリケーションの動作に問題ないことを確認してください。
+
+## v2.12.1以前からのアップデート
+
+v2.13gより、リエンゲージメント計測機能が追加されています。URLスキーム経由のアプリケーションの起動を計測するために、「[3. インストール計測の実装](https://github.com/cyber-z/public_fox_ios_sdk#3-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E8%A8%88%E6%B8%AC%E3%81%AE%E5%AE%9F%E8%A3%85)」の手順に沿って、setUrlSchemeWithOptions:及びsetUrlSchem:を追加実装してください。
+
 
 ## v2.11.1以前からのアップデート
 
