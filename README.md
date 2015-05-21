@@ -25,6 +25,20 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通知を行うことができます。例えば、特定の広告から流入したユーザーに対してメッセージを送ることができます。
 
 ## 1. インストール
+* **CocoaPodsによって導入する場合**
+
+Podfileファイルに下記の設定を追加してください。
+```ruby
+foxVersion = "2.15.1g"
+pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/v#{foxVersion}/cocoapods/foxSdk.podspec"
+```
+> foxVersion : 指定するSDKバージョン
+
+導入完了の後、[2. 設定](#2-)へ進めてください。
+
+<br />
+
+* **マニュアル導入する場合**
 
 以下のページより最新のSDKをダウンロードしてください。
 
@@ -289,6 +303,3 @@ iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」
 
 * 「Enable」をオン
 * 「Very Bad Network」をチェック
-
-
-
