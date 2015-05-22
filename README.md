@@ -187,24 +187,32 @@ _currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義され�
 
 アプリケーションの起動、及びバックグラウンドからの復帰を計測するために、application:didFinishLaunchingWithOptions:およびapplicationWillEnterForegroundにコードを追加します。
 
+※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
+
 ```objectivec
 #import "AnalyticsManager.h"
 
 // - (BOOL)application:(UIApplication *)application
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-[ForceAnalyticsManager sendStartSession];
+    If ([application applicationState] == UIApplicationStateBackground) {
+        //バックグラウンド時の処理
+    } else {
+        //バックグラウンド時は起動計測が呼ばれないようにする
+        [ForceAnalyticsManager sendStartSession];
+    }
 
 //}
 
 // - (void)applicationWillEnterForeground:(UIApplication *)application {
 
-[ForceAnalyticsManager sendStartSession];
+    [ForceAnalyticsManager sendStartSession];
 
 //}
 ```
 
 sendStartSessionは必ず上記二カ所に実装を行ってください。
+
 
 [アクセス解析による課金計測](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/analytics_purchase/ja/README.md)
 
@@ -289,6 +297,3 @@ iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」
 
 * 「Enable」をオン
 * 「Very Bad Network」をチェック
-
-
-
