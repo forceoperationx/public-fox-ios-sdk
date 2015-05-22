@@ -34,7 +34,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/v#{
 ```
 > foxVersion : 指定するSDKバージョン
 
-導入完了の後、[2. 設定](#2-)へ進めてください。
+導入完了の後、[2. 設定](#user-content-2-設定)へ進めてください。
 
 <br />
 
