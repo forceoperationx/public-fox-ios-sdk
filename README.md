@@ -29,8 +29,8 @@ F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通
 
 Podfileファイルに下記の設定を追加してください。
 ```ruby
-foxVersion = "2.15.2g"
-pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/v#{foxVersion}/cocoapods/foxSdk.podspec"
+foxVersion = "master"
+pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
 <br />
 
