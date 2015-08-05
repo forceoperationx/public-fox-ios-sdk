@@ -165,8 +165,8 @@ sendConversionWithStartPage:の引数には、通常は上記の通り@"default"
 
 * **Fingerprinting計測時の注意事項**
 
-Fingerprinting 計測は WebView を使⽤しており、UserAgent を独⾃自のカスタマイズを⾏行行っている場合 正常に計測することが出来なくなります。
-WebView の UserAgent を独⾃自の⽂文字列列にカスタマイズを⾏行行う前に次のメソッドを必ず実装してください。
+Fingerprinting計測はWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
+WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次のメソッドを必ず実装してください。
 ```objc
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
