@@ -163,6 +163,14 @@ sendConversionWithStartPage:の引数には、通常は上記の通り@"default"
 
 ![sendConversion01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/send_conversion/ja/img01.png)
 
+* **Fingerprinting計測時の注意事項**
+
+Fingerprinting 計測は WebView を使⽤しており、UserAgent を独⾃自のカスタマイズを⾏行行っている場合 正常に計測することが出来なくなります。
+WebView の UserAgent を独⾃自の⽂文字列列にカスタマイズを⾏行行う前に次のメソッドを必ず実装してください。
+```objc
+[[AppAdForceManager sharedManager] cacheDefaultUserAgent];
+```
+
 ## 4. LTV計測の実装
 
 会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
