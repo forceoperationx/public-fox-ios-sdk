@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "foxSdk"
-  s.version          = "2.15.1g"
+  s.version          = "2.15.2g"
   s.summary          = "FOX SDK for global use."
   s.description      = <<-DESC
                        Pod integration for F.O.X SDK
