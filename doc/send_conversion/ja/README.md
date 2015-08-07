@@ -37,6 +37,8 @@ sendConversionWithStartPage:の代わりにsendConversionWithStartPage:buid:メ�
 ```
 > sendConversionWithStartPage:buid:は起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
 
-[TOP](https://github.com/cyber-z/public_fox_ios_sdk#3-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E8%A8%88%E6%B8%AC%E3%81%AE%E5%AE%9F%E8%A3%85)
 
+## Fingerprint計測時の注意事項
 
+Fingerprint計測はWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次のメソッドを必ず実装してください。```objectivec
+[[AppAdForceManager sharedManager] cacheDefaultUserAgent];```
