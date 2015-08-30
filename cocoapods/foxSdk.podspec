@@ -30,8 +30,8 @@ Pod::Spec.new do |s|
 
   s.public_header_files = "**/*.h"
 
-  s.frameworks = "Foundation", "Security", "StoreKit"
-  s.weak_framework = "iAd", "SafariServices", "AdSupport"
+  s.frameworks = "Foundation", "Security", "StoreKit", "iAd"
+  s.weak_framework = "SafariServices", "AdSupport"
   s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "$(PODS_ROOT)/#{s.name}" }
 
 end
