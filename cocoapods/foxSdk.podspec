@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "foxSdk"
-  s.version          = "2.16g"
+  s.version          = "2.16.1g"
   s.summary          = "FOX SDK for global use."
   s.description      = <<-DESC
                        Pod integration for F.O.X SDK
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     :text => "Copyright © CyberZ, inc. All Rights Reserved."
   }
   s.author           = "CyberZ inc."
-  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/v#{s.version}/FOX_iOS_SDK_v#{s.version}.zip"}
+  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/v#{s.version}/FOX_SDK_iOS_v#{s.version}.zip"}
 
   s.platform     = :ios, "4.3"
   s.requires_arc = false
