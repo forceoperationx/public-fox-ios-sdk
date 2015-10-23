@@ -47,7 +47,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 各ファイルの説明は以下の通りです。
 
 <table>
-<tr><th>機能名</th><th>必須?</th><th>ファイル名</th></tr>
+<tr><th>機能名</th><th>必須</th><th>ファイル名</th></tr>
 <tr><td>ライブラリ本体</td><td>必須</td><td>libAppAdForce.a</td></tr>
 <tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
@@ -67,14 +67,16 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>フレームワーク名</th><th>Status</th></tr>
+<tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 <tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
-<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
-> AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+
+> ※SafariServices.frameworkはiOS 9以降で追加されたフレームワークのため、アプリケーションをiOS 8以前でも動作させる(iOS Deployment Targetを8.4以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
 
 ![フレームワーク設定01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_framework/ja/img01.png)
 
@@ -122,7 +124,20 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 </tr>
 </table>
 
-![フレームワーク設定01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/config_plist/ja/img05.png)
+![plist設定](./doc/config_plist/ja/img05.png)
+
+* **App Transport Securityについて**
+
+iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
+
+キー | タイプ | 概要
+:---: | :---: | :---
+NSExceptionDomains|Dictionary|ATSの例外を指定するディクショナリー
+指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・app-adforce.jp<br>・forceoperationx.com
+NSExceptionAllowsInsecureHTTPLoads|Boolean|YES を指定してくださいATSの例外とします。
+NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
+
+![ATS設定](./doc/config_plist/ja/img06.png)
 
 [SDK設定の詳細](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/config_plist/ja/README.md)
 
@@ -130,38 +145,53 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 
 ## 3. インストール計測の実装
 
-初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
+初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
+また、iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。
+F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測することで、ダイアログ表示によるユーザービリティの低下を防止することが出来ます。
 
-```objectivec
+インストール計測を行うために、以下の２つのメソッドを実装します。
+
+メソッド | 実装箇所 | 概要
+:---: | :---: | :---
+sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初回起動時のインストール計測
+setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制御及び、URLスキーム経由の計測処理
+
+プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
+
+sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。
+```objective-c
 #import "AdManager.h"
 
 // - (BOOL)application:(UIApplication *)application
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-[[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
-[[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
+  [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 
+  return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 // }
 ```
 
-sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。
+```objective-c
+// - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+//                sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 
-[sendConversionWithStartPage:の詳細](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/send_conversion/ja/README.md)
+          [[AppAdForceManager sharedManager] setUrlScheme:url];
 
-また、URLスキーム経由の起動を計測するために、application:openURL:にsetUrlScheme:メソッドを実装します。
-
-```objectivec
-// - (BOOL)application:(UIApplication *)application
-//   openURL:(NSURL *)url
-//   sourceApplication:(NSString *)sourceApplication
-//   annotation:(id)annotation {
-
-[[AppAdForceManager sharedManager] setUrlScheme:url];
-
+          return YES;
 // }
 ```
 
-![sendConversion01](https://github.com/cyber-z/public_fox_ios_sdk/raw/master/doc/send_conversion/ja/img01.png)
+> sendConversionWithStartPage:メソッドは、端末がiOS9の場合、且つCookie計測実施の場合はSFSafariViewControllerを起動し計測を行います。
+
+> setUrlScheme:メソッドは、URLスキームへ遷移する広告経由のアプリケーションの起動計測及び、
+SFSafariViewControllerが起動された際の制御処理も行っておりますので、必ずopenURL:メソッドが呼ばれるように実装してください。
+
+> ※ ”openURL:(NSURL \*)url options:(NSDictionary<NSString*, id> \*)options”をお使いの場合にもsetUrlScheme:メソッドは実装してください。
+
+![sendConversion01](./doc/send_conversion/ja/img01.png)
+
+[sendConversionWithStartPage:の詳細](./doc/send_conversion/ja/README.md)
+
 
 * **Fingerprinting計測時の注意事項**
 
@@ -175,7 +205,7 @@ WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次�
 
 会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
 
-```objectivec
+```objective-c
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
@@ -186,7 +216,7 @@ LTV計測を行うためには、各成果地点を識別する成果地点IDを
 
 課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
 
-```objectivec
+```objective-c
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
@@ -195,7 +225,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv sendLtv:{成果地点ID}];
 ```
 
-_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+\_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
 
 [タグを利用したLTV計測について](https://github.com/cyber-z/public_fox_ios_sdk/blob/master/doc/ltv_browser/ja/README.md)
 
@@ -207,7 +237,7 @@ _currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義され�
 
 ※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
 
-```objectivec
+```objective-c
 #import "AnalyticsManager.h"
 
 // - (BOOL)application:(UIApplication *)application

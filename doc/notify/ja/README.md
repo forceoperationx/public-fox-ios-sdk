@@ -7,7 +7,7 @@ Appleのサーバからデバイストークンを取得し、F.O.Xのサーバ�
 Appleのサーバに対してデバイストークンを取得要求を行うために、プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
 
 
-```objectivec
+```objective-c
 // - (BOOL)application:(UIApplication *)application
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -28,7 +28,7 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 		[[UIApplication sharedApplication] registerForRemoteNotifications];
 	} else {
 		// iOS7以前に対応
-		[[UIApplication sharedApplication] 
+		[[UIApplication sharedApplication]
 			registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 												UIRemoteNotificationTypeSound |
 												UIRemoteNotificationTypeAlert)];
@@ -43,7 +43,7 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 デバイストークンの取得に成功した場合、Application DelegateのdidRegisterForRemoteNotificationsWithDeviceToken:が呼び出されますので、
 取得したデバイストークンをF.O.Xへ送信するために、次の通り実装を行ってください。
 
-```objectivec
+```objective-c
 #import "Notify.h"
 
 // - (void)application:(UIApplication *)application
@@ -60,7 +60,7 @@ devTokenには、Appleから送られてきたデバイストークンが入っ�
 プッシュ通知を受信した際に、F.O.Xへ開封通知を送信するために、Application Delegateのapplication:didFinishLaunchingWithOptions:とapplication:didReceiveRemoteNotificationに下記の実装を行ってください。
 
 
-```objectivec
+```objective-c
 // - (BOOL)application:(UIApplication *)application
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -71,7 +71,7 @@ devTokenには、Appleから送られてきたデバイストークンが入っ�
 // }
 ```
 
-```objectivec
+```objective-c
 // - (void)application:(UIApplication *)application
 //	 didReceiveRemoteNotification:(NSDictionary *)userInfo {
 
@@ -96,7 +96,7 @@ URLスキームでアプリを起動した際に、Application Delegateのapplic
 
 例として、"myscheme://myhost"というURLスキームでDownloadViewControllerを開くサンプルコードを記します。
 
-```objectivec
+```objective-c
 // - (BOOL)application:(UIApplication *)application
 //   openURL:(NSURL *)url
 //   sourceApplication:(NSString *)sourceApplication
@@ -112,5 +112,3 @@ URLスキームでアプリを起動した際に、Application Delegateのapplic
 ```
 
 [TOP](https://github.com/cyber-z/public_fox_ios_sdk#%E3%81%9D%E3%81%AE%E4%BB%96%E6%A9%9F%E8%83%BD%E3%81%AE%E5%AE%9F%E8%A3%85)
-
-

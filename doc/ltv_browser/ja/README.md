@@ -8,7 +8,7 @@ F.O.XのLTV計測は、外部ブラウザ、アプリ内WebViewの両方に対�
 
 アプリケーションから外部ブラウザを起動し、外部ブラウザで表示したWebページでタグ計測を行う場合は、ltvOpenBrowser:メソッドを利用して外部ブラウザを起動してください。引数には、外部ブラウザで表示するURLを文字列で指定します。
 
-```objectivec
+```objective-c
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
@@ -19,7 +19,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 ユーザーの遷移がWebView内で行われる場合には、setLtvCookieを利用することができます。WebViewが生成される箇所で下記コードを実行してください。WebViewが複数回生成・破棄される場合には、生成される度にsetLtvCookieが実行されるようにしてください。内部的にNSHTTPCookieStorageを利用してCookieをセットします。
 
-```objectivec
+```objective-c
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
@@ -68,5 +68,3 @@ LTVの成果地点となるページに計測タグを実装してください�
 _currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
 
 [TOP](https://github.com/cyber-z/public_fox_ios_sdk#4-ltv%E8%A8%88%E6%B8%AC%E3%81%AE%E5%AE%9F%E8%A3%85)
-
-

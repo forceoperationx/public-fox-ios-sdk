@@ -42,4 +42,14 @@ sendConversionWithStartPage:の代わりにsendConversionWithStartPage:buid:メ�
 
 Fingerprint計測はWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次のメソッドを必ず実装してください。```objectivec
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];```
--[TOP](https://github.com/cyber-z/public_fox_ios_sdk#3-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E8%A8%88%E6%B8%AC%E3%81%AE%E5%AE%9F%E8%A3%85)
+
+## 3.2.	v2.16g未満からご利用頂いている場合
+
+これまでリエンゲージメント計測を実施する際、didFinishLaunchingWithOptions:内に
+setUrlSchemeWithOptions:メソッドを実装する仕様となっておりましたが、setUrlScheme:メソッドに仕様を統合したため、本ドキュメントからは実装の記載を削除しております。
+
+[削除]
+```objective-c
+  [[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
+```
+尚、下位互換性を保つため、これまで通り呼び出すことが可能です。-[TOP](https://github.com/cyber-z/public_fox_ios_sdk#3-%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E8%A8%88%E6%B8%AC%E3%81%AE%E5%AE%9F%E8%A3%85)

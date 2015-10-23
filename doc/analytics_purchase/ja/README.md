@@ -4,7 +4,7 @@
 
 アクセス解析による課金計測を行うために、次のsendEventメソッドを実装します。
 
-```objectivec
+```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label orderID:(NSString*)orderID sku:(NSString*)sku itemName:(NSString*)itemName price:(double)price quantity:(NSUInteger)quantity currency:(NSString*)currency;
 ```
 
@@ -26,7 +26,7 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 
 サンプルとして、以下にアメリカドルで300円の課金を行った場合の実装例を記載致します。
 
-```objectivec
+```objective-c
 #import "Ltv.h"
 
 // LTV計測による課金計測
