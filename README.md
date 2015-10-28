@@ -341,7 +341,7 @@ iOSには、アプリ起動時に一定時間以上メインスレッドがブ�
 
 以下の手順で、こうした状況をテストすることができますので、以下の設定でアプリケーションが正常に起動するかをご確認ください。
 
-iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」
+`iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」``
 
 * 「Enable」をオン
 * 「Very Bad Network」をチェック
