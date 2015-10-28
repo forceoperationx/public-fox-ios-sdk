@@ -39,4 +39,5 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ForceAnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:@"Item A" price:300 quantity:1 currency:@"JPY"];
 ```
 
-[TOP](https://github.com/cyber-z/public-fox-ios-sdk#5-%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E8%A7%A3%E6%9E%90%E3%81%AE%E5%AE%9F%E8%A3%85)
+---
+[TOPへ](/lang/ja/)

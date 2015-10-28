@@ -27,3 +27,6 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
     [ForceAnalyticsManager sendEvent:@“チュートリアル突破" action:nil label:nil value:1];
 //}
 ```
+
+---
+[TOPへ](/lang/ja/)
