@@ -40,7 +40,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 [SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
-既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update)をご参照ください。
+既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
 ダウンロードしたSDK「FOX_iOS_SDK_<version>.zip」を展開し、以下ファイルをXcodeの任意の場所にコピーを行い、アプリケーションのプロジェクトに組み込んでください。
 
@@ -57,7 +57,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 ![インストール手順](./doc/integration/img01.png)
 
-[インストール手順の詳細](./doc/integration/)
+[インストール手順の詳細](./doc/integration/README.md)
 
 ## 2. 設定
 
@@ -80,7 +80,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 ![フレームワーク設定01](./doc/config_framework/img01.png)
 
-[フレームワーク設定の詳細](./doc/config_framework/)
+[フレームワーク設定の詳細](./doc/config_framework/README.md)
 
 * **SDK設定**
 
@@ -111,7 +111,7 @@ NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメ�
 
 ![ATS設定](./doc/config_plist/img06.png)
 
-[SDK設定の詳細](./doc/config_plist/)
+[SDK設定の詳細](./doc/config_plist/README.md)
 
 [AppAdForce.plistサンプル](./doc/config_plist/AppAdForce.plist)
 
@@ -162,7 +162,7 @@ SFSafariViewControllerが起動された際の制御処理も行っておりま�
 
 ![sendConversion01](./doc/send_conversion/img01.png)
 
-[sendConversionWithStartPage:の詳細](./doc/send_conversion/)
+[sendConversionWithStartPage:の詳細](./doc/send_conversion/README.md)
 
 
 * **Fingerprinting計測時の注意事項**
@@ -199,7 +199,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 \_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
 
-[タグを利用したLTV計測について](./doc/ltv_browser/)
+[タグを利用したLTV計測について](./doc/ltv_browser/README.md)
 
 ## 5. アクセス解析の実装
 
@@ -262,16 +262,16 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 > テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
 
 
-[リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/)
+[リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
 
 
 ## その他機能の実装
 
-[プッシュ通知の実装](./doc/notify/)
+* [プッシュ通知の実装](./doc/notify/README.md)
 
-[オプトアウトの実装](./doc/optout/)
+* [オプトアウトの実装](./doc/optout/README.md)
 
-[管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/)
+* [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
 
 ## FAQ（よくある質問集）
 
@@ -317,3 +317,6 @@ iOSには、アプリ起動時に一定時間以上メインスレッドがブ�
 
 * 「Enable」をオン
 * 「Very Bad Network」をチェック
+
+---
+[メインメニュー](/lang/README.md)

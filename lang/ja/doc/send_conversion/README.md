@@ -52,4 +52,4 @@ Fingerprint計測はWebViewを使用しており、UserAgentを独自のカス�
 ```objective-c
   [[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
 ```
-尚、下位互換性を保つため、これまで通り呼び出すことが可能です。---[TOPへ](/lang/ja/)
+尚、下位互換性を保つため、これまで通り呼び出すことが可能です。---[TOPへ](/lang/ja/README.md)

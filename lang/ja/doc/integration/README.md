@@ -20,4 +20,4 @@
 </table>
 
 ---
-[TOPへ](/lang/ja/)
+[TOPへ](/lang/ja/README.md)

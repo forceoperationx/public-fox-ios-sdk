@@ -29,4 +29,4 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 ```
 
 ---
-[TOPへ](/lang/ja/)
+[TOPへ](/lang/ja/README.md)

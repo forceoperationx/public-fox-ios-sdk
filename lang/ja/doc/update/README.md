@@ -31,7 +31,7 @@ F.O.Xではアプリのバージョンごとに動作の制御を行うために
 
 ## v2.12.1以前からのアップデート
 
-v2.13gより、リエンゲージメント計測機能が追加されています。URLスキーム経由のアプリケーションの起動を計測するために、「[3. インストール計測の実装](/lang/ja/doc/send_conversion/)」の手順に沿って、`setUrlSchemeWithOptions:及びsetUrlSchem:`を追加実装してください。
+v2.13gより、リエンゲージメント計測機能が追加されています。URLスキーム経由のアプリケーションの起動を計測するために、「[3. インストール計測の実装](/lang/ja/doc/send_conversion/README.md)」の手順に沿って、`setUrlSchemeWithOptions:及びsetUrlSchem:`を追加実装してください。
 
 
 ## v2.11.1以前からのアップデート
@@ -42,4 +42,4 @@ v2.11.1以前のSDKからのアップデートでは、iAd.frameworkを追加で
 v2.8.1以前のSDKからのアップデートにおいては、AdSupport.frameworkを追加で組み込む必要があります。
 
 ---
-[TOPへ](/lang/ja/)
+[TOPへ](/lang/ja/README.md)

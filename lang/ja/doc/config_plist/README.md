@@ -36,4 +36,4 @@ ANALYTICS_APP_KEY | String | Force Operation X管理者より連絡しますの�
 [AppAdForce.plistサンプル](./AppAdForce.plist)
 
 ---
-[TOPへ](/lang/ja/)
+[TOPへ](/lang/ja/README.md)

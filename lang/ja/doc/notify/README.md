@@ -112,4 +112,4 @@ URLスキームでアプリを起動した際に、Application Delegateの`appli
 ```
 
 ---
-[TOPへ](/lang/ja/)
+[TOPへ](/lang/ja/README.md)
