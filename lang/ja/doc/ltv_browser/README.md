@@ -39,27 +39,27 @@ LTVの成果地点となるページに計測タグを実装してください�
   <th>備考</th>
 </tr>
 <tr>
-  <td>\_buyer</td>
+  <td>_buyer</td>
   <td>必須</td>
   <td>広告主を識別するID。<br />管理者より連絡しますので、その値を入力してください。</td>
 </tr>
 <tr>
-  <td>\_cvpoint</td>
+  <td>_cvpoint</td>
   <td>必須</td>
   <td>成果地点を識別するID。<br />管理者より連絡しますので、その値を入力してください。</td>
 </tr>
 <tr>
-  <td>\_price</td>
+  <td>_price</td>
   <td>オプション</td>
   <td>課金額。課金計測時に設定してください。<br /></td>
 </tr>
 <tr>
-  <td>\_currency</td>
+  <td>_currency</td>
   <td>オプション</td>
   <td>半角英字3文字の通貨コード。<br />課金計測時に設定してください。<br />通貨が設定されていない場合、\_priceをJPY(日本円)として扱います。</td>
 </tr>
 <tr>
-  <td>\_buid</td>
+  <td>_buid</td>
   <td>オプション</td>
   <td>半角英数字64文字まで。<br />会員IDなどユーザー毎にユニークな値を保持する場合にご使用ください。</td>
 </tr>

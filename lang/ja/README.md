@@ -128,9 +128,9 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である �
 sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初回起動時のインストール計測
 setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制御及び、URLスキーム経由の計測処理
 
-プロジェクトのソースコードを編集し、Application Delegateのapplication:didFinishLaunchingWithOptions:に次の通り実装を行ってください。
+プロジェクトのソースコードを編集し、Application Delegateの`application:didFinishLaunchingWithOptions:`に次の通り実装を行ってください。
 
-sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。
+`sendConversionWithStartPage:`の引数には、通常は上記の通り@"default"という文字列を入力してください。
 ```objective-c
 #import "AdManager.h"
 
@@ -153,12 +153,12 @@ sendConversionWithStartPage:の引数には、通常は上記の通り@"default"
 // }
 ```
 
-> sendConversionWithStartPage:メソッドは、端末がiOS9の場合、且つCookie計測実施の場合はSFSafariViewControllerを起動し計測を行います。
+> `sendConversionWithStartPage:`メソッドは、端末がiOS9の場合、且つCookie計測実施の場合はSFSafariViewControllerを起動し計測を行います。
 
-> setUrlScheme:メソッドは、URLスキームへ遷移する広告経由のアプリケーションの起動計測及び、
-SFSafariViewControllerが起動された際の制御処理も行っておりますので、必ずopenURL:メソッドが呼ばれるように実装してください。
+> `setUrlScheme:`メソッドは、URLスキームへ遷移する広告経由のアプリケーションの起動計測及び、
+SFSafariViewControllerが起動された際の制御処理も行っておりますので、必ず`openURL:`メソッドが呼ばれるように実装してください。
 
-> ※ ”openURL:(NSURL \*)url options:(NSDictionary<NSString*, id> \*)options”をお使いの場合にもsetUrlScheme:メソッドは実装してください。
+> ※ ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”をお使いの場合にもsetUrlScheme:メソッドは実装してください。
 
 ![sendConversion01](./doc/send_conversion/img01.png)
 
@@ -236,7 +236,7 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 [アクセス解析による課金計測](./doc/analytics_purchase/README.md)
 
-## 疎通テストの実施
+## 6. 疎通テストの実施
 
 マーケットへの申請までに、SDKを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
 
@@ -264,8 +264,7 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
 
-
-## その他機能の実装
+## 7. その他機能の実装
 
 * [プッシュ通知の実装](./doc/notify/README.md)
 
@@ -285,9 +284,9 @@ iOSでは、バンドルバージョンと呼ばれるものには具体的に�
 F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的で利用します。
 
 
-## 最後に必ずご確認ください（これまで発生したトラブル集）
+## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
 
-### 期待した広告経由のインストール数よりもレポートの数字が低い
+### 8.1. 期待した広告経由のインストール数よりもレポートの数字が低い
 
 インストール計測の`sendConversionWithStartPage:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
 
@@ -295,19 +294,19 @@ F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的�
 
 `application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
 
-### URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### 8.2. URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
 Cookie計測を行うために外部ブラウザを起動した後に、元の画面に戻すためにはURLスキームを利用してアプリケーションに遷移させる必要があります。この際、独自のURLスキームが設定されている必要があり、URLスキームを設定せずにリリースした場合にはこのような遷移を行うことができなくなります。
 
-### URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### 8.3. URLスキームに大文字が含まれ、正常にアプリに遷移されない
 
 環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。URLスキームは全て小文字で設定を行ってください。
 
-### URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
+### 8.4. URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
 
 iOSにおいて、複数のアプリに同一のURLスキームが設定されていた場合に、どのアプリが起動するかは不定です。確実に特定のアプリを起動することができなくなるため、URLスキームは他社製アプリとはユニークになるようある程度の複雑性のあるものを設定してください。
 
-### 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
+### 8.5. 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
 
 iOSには、アプリ起動時に一定時間以上メインスレッドがブロックされるとアプリケーションを強制終了する仕様があります。起動時の初期化処理など、メインスレッド上でサーバーへの同期通信を行わないようにご注意ください。リワード広告などの大量のユーザーを短時間で獲得した結果、サーバーへのアクセスが集中し、通信のレスポンスが非常に悪くなることでアプリケーションの起動に時間がかかり、起動時に強制終了され正常に広告成果が計測できなくなった事例がございます。
 
