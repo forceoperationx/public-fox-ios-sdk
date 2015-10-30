@@ -4,7 +4,7 @@
 
 アクセス解析による課金計測を行うために、次のsendEventメソッドを実装します。
 
-```objectivec
+```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label orderID:(NSString*)orderID sku:(NSString*)sku itemName:(NSString*)itemName price:(double)price quantity:(NSUInteger)quantity currency:(NSString*)currency;
 ```
 
@@ -26,7 +26,7 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 
 サンプルとして、以下にアメリカドルで300円の課金を行った場合の実装例を記載致します。
 
-```objectivec
+```objective-c
 #import "Ltv.h"
 
 // LTV計測による課金計測
@@ -39,4 +39,5 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ForceAnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:@"Item A" price:300 quantity:1 currency:@"JPY"];
 ```
 
-[TOP](https://github.com/cyber-z/public-fox-ios-sdk#5-%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E8%A7%A3%E6%9E%90%E3%81%AE%E5%AE%9F%E8%A3%85)
+---
+[TOPへ](/lang/ja/README.md)
