@@ -2,5 +2,4 @@
 
 ### LANGUAGE
 * [Japanese](./lang/ja/README.md)
-* [English](./lang/en/README.md)
 * [Korean](./lang/ko/README.md)

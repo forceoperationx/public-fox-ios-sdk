@@ -1,7 +1,6 @@
-## （オプション）オプトアウトの実装
+## （옵션）OPT-OUT의 구현
 
-広告会社によってターゲティング広告に利用されないことをユーザーに選択させることが可能です。アプリケーションの起動時において、プライバシーポリシーや利用規約を表示するダイアログでユーザーがオプトアウトを選択した場合、効果測定の結果の通知と共に、F.O.Xが広告会社に対してそのユーザーがオプトアウトを選択したことを通知します。
-オプトアウトに対応する場合は、以下の通り「3. インストール計測の実装」で実装した`sendConversionWithStartPage:`より前に設定を行ってください。
+광고 회사에 따라서는 타케팅 광고에 이용되지 않는 것을 유저가 선택하는 것이 가능합니다. 앱의 기동시의개인 정보 보호 정책, 이용 규약을 표시하는 다이얼로그에서 유저가 OPT-OUT를 선택한 경우, 효과 계측의 결과의 통지와 함께 F.O.X가 광고회사에게 그 유저가 OPT-OUT를 선택한 것을 통지합니다.OPT-OUT에 대응할 경우에는, 밑과 같이 「3. 인스톨 계측의 구현」에서 구현한 `sendConversionWithStartPage:`보다 전에 구현해 주십시오.
 
 ```objective-c
 if(user.optout) {	[[AppAdForceManager sharedManager] setOptout:YES];}
@@ -9,4 +8,4 @@ if(user.optout) {	[[AppAdForceManager sharedManager] setOptout:YES];}
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 ```
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP으로](/lang/ko/README.md)

@@ -1,31 +1,31 @@
-# Force Opetaion Xとは
+# Force Opetaion X 란?
 
-Force Operation X (以下F.O.X)は、スマートフォンにおける広告効果最適化のためのトータルソリューションプラットフォームです。アプリケーションのダウンロード、ウェブ上でのユーザーアクションの計測はもちろん、スマートフォンユーザーの行動特性に基づいた独自の効果計測基準の元、企業のプロモーションにおける費用対効果を最大化することができます。
+Force Operation X (이하 F.O.X)는 스마트폰의 광고 효과 최적화를 위한 토탈 솔루션 플랫폼 입니다. 앱의 다운로드, 웹상에서의 사용자 액션의 측정은 물론, 스마트폰 사용자의 행동 특성에 근거한 독자적인 효과측정기준을 바탕으로 기업의 프로모션의 비용효과를 극대화 할 수 있습니다.
 
-本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
+본 문서에서는 스마트폰 앱의 광고 효과 극대화를 위한 F.O.X SDK 설치 단계에 대해 설명합니다.
 
-## F.O.X SDKとは
+## F.O.X SDK 란?
 
-F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
+F.O.X SDK를 앱에 설치함으로써 아래와 같은 기능을 제공합니다.
 
-* **インストール計測**
+* **설치 계측**
 
-広告流入別にインストール数を計測することができます。
+광고 유입별 설치 횟수를 측정 할 수 있습니다.
 
-* **LTV計測**
+* **LTV 측정**
 
-流入元広告別にLife Time Valueを計測します。主な成果地点としては、会員登録、チュートリアル突破、課金などがあります。各広告別に登録率、課金率や課金額などを計測することができます。
+유입원 광고별로 Life Time Value를 측정합니다. 주요 성과 지점으로는 회원 가입, 튜토리얼 돌파, 결제 등이 있습니다. 각 광고별 등록률, 과금률, 과금액 등을 측정 할 수 있습니다.
 
-* **アクセス解析**
+* **액세스 해석**
 
-自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
+자연 유입과 광고 유입의 설치 비교, 앱의 기동수, 유니크 사용자수(DAU/MAU), 지속률 등을 측정 할 수 있습니다.
 
-* **プッシュ通知**
+* **푸시 알림**
 
-F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通知を行うことができます。例えば、特定の広告から流入したユーザーに対してメッセージを送ることができます。
+F.O.X에서 측정된 정보를 사용하여 사용자에게 푸시 알림을 할 수 있습니다. 예를 들어 특정 광고에서 유입된 사용자에게 메시지를 보낼 수 있습니다.
 
-## 1. インストール
-* **CocoaPodsによって導入する場合**
+## 1. 설치
+* **CocoaPods 이용**
 
 Podfileファイルに下記の設定を追加してください。
 ```ruby
@@ -34,39 +34,39 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 ```
 <br />
 
-* **マニュアル導入する場合**
+* **직접 설치**
 
-以下のページより最新のSDKをダウンロードしてください。
+아래의 페이지에서 최신의 SDK를 다운로드 하십시오.
 
-[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)
+[SDK 릴리스 페이지](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
-既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
+이미 앱에 SDK가 설치되어있는 경우에는,[최신 버전에 대한 업데이트에 대해](./doc/update/README.md)를 참조하십시오.
 
-ダウンロードしたSDK「FOX_iOS_SDK_<version>.zip」を展開し、以下ファイルをXcodeの任意の場所にコピーを行い、アプリケーションのプロジェクトに組み込んでください。
+다운로드한 SDK　「FOX_iOS_SDK_<version>.zip」의 압축을 풀고, 앱의 프로젝트에 추가합니다.
 
-各ファイルの説明は以下の通りです。
+각 파일의 설명은 하기와 같습니다.
 
 <table>
-<tr><th>機能名</th><th>必須</th><th>ファイル名</th></tr>
-<tr><td>ライブラリ本体</td><td>必須</td><td>libAppAdForce.a</td></tr>
-<tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
-<tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
-<tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
-<tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
+<tr><th>기능명</th><th>필수</th><th>파일명</th></tr>
+<tr><td>라이브러리 본체</td><td>필수</td><td>libAppAdForce.a</td></tr>
+<tr><td>인스톨 계측</td><td>필수</td><td>AdManager.h</td></tr>
+<tr><td>LTV 계측</td><td>옵션</td><td>Ltv.h</td></tr>
+<tr><td>액세스 계측</td><td>옵션</td><td>AnalyticsManager.h</td></tr>
+<tr><td>Push 알림</td><td>옵션</td><td>Notify.h</td></tr>
 </table>
 
-![インストール手順](./doc/integration/img01.png)
+![인스톨 절차](./doc/integration/img01.png)
 
-[インストール手順の詳細](./doc/integration/README.md)
+[SDK 설치 상세 설명](./doc/integration/README.md)
 
-## 2. 設定
+## 2. 설정
 
-* **フレームワーク設定**
+* **프레임워크 설정**
 
-次のフレームワークをプロジェクトにリンクしてください。
+하기의 프레임워크를 프로젝트에 추가해 주십시오.
 
 <table>
-<tr><th>フレームワーク名</th><th>Status</th></tr>
+<tr><th>프레임워크명</th><th>Status</th></tr>
 <tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 <tr><td>iAd.framework </td><td>Required</td></tr>
@@ -74,63 +74,67 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
 </table>
 
-> ※AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※AdSupport.framework는 iOS 6 이후에 추가된 프레임워크이기 때문에, 앱을 iOS 5 이전의 버전에서도 동작
+하기 (iOS Deployment Target을 5.1 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
 
-> ※SafariServices.frameworkはiOS 9以降で追加されたフレームワークのため、アプリケーションをiOS 8以前でも動作させる(iOS Deployment Targetを8.4以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※SafariServices.framework는 iOS 9 이후에 추가된 프레임워크이기 때문에, 앱을 iOS 8 이전의 버전에서도 동작
+하기 (iOS Deployment Target을 8.4 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
 
 ![フレームワーク設定01](./doc/config_framework/img01.png)
 
-[フレームワーク設定の詳細](./doc/config_framework/README.md)
+[프페임워크 설정 상세](./doc/config_framework/README.md)
 
-* **SDK設定**
+* **SDK 설정**
 
-SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist」というファイルをプロジェクトの任意の場所に作成し、次のキーと値を入力してください。
+SDK의 동작에 필요한 설정을 plist에 추가합니다. 「AppAdForce.plist」이라는 파일을 프로젝트의 임의의 장소에 작성하고, 다음의 키와 키값을 입력합니다.
 
 Key | Type | Value
 :---: | :---: | :---
-APP_ID | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-SERVER_URL | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-APP_SALT | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-APP_OPTIONS | String | 何も入力せず、空文字の状態にしてください。
+APP_ID | String | Force Operation X 관리자가 연락합니다. 그 값을 입력하십시오.
+SERVER_URL | String | Force Operation X 관리자가 연락합니다. 그 값을 입력하십시오.
+APP_SALT | String | Force Operation X 관리자가 연락합니다. 그 값을 입력하십시오.
+APP_OPTIONS | String | 아무것도 입력하지 마시고 빈문자의 상태로 해 주십시오.
 CONVERSION_MODE | String | 1
-ANALYTICS_APP_KEY | String | Force Operation X管理者より連絡しますので、その値を入力してください。<br />アクセス解析を利用しない場合は設定の必要はありません。
+ANALYTICS_APP_KEY | String | Force Operation 관리자가 연락합니다. 그 값을 입력하십시오.<br />액세스 해석을 이용하지 않으면 설정은 필요 없습니다.
 
 ![plist設定](./doc/config_plist/img05.png)
 
 
-* **App Transport Securityについて**
+* **App Transport Security에 대해서**
 
-iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
+iOS9 부터 제공된 AppTransportSecurity(이하, ATS)를 유효로 한 경우, Info.plist에 이하와 같이 설정 하여 F.O.X SDK와 통신하는 곳의 도메인을 ATS의 예외에
+추가하여 주십시오.
 
-キー | タイプ | 概要
+키 | 타입 | 개요
 :---: | :---: | :---
-NSExceptionDomains|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|YES を指定してくださいATSの例外とします。
-NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
+NSExceptionDomains|Dictionary|ATS의 예외를 지정하는 딕셔너리
+지정 도메인 문자열|Dictionary|이하 두개의 도메인을 키로 작성해 주십시오. <br>・app-adforce.jp<br>・forceoperationx.com
+NSExceptionAllowsInsecureHTTPLoads|Boolean|YES로 지정하여 ATS의 에외로 지정합니다.
+NSIncludesSubdomains|Boolean|YES로 지정하여 ATS의 예외설정을 서브 도메인도 적용합니다.
 
-![ATS設定](./doc/config_plist/img06.png)
+![ATS설정](./doc/config_plist/img06.png)
 
-[SDK設定の詳細](./doc/config_plist/README.md)
+[SDK설정의 상세](./doc/config_plist/README.md)
 
-[AppAdForce.plistサンプル](./doc/config_plist/AppAdForce.plist)
+[AppAdForce.plist샘플](./doc/config_plist/AppAdForce.plist)
 
-## 3. インストール計測の実装
+## 3. 인스톨 계측의 구현
 
-初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
-また、iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。
-F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測することで、ダイアログ表示によるユーザービリティの低下を防止することが出来ます。
+초기 기동의 인스톨 계측을 구현하는 것으로, 광고의 효과 계측이 가능해집니다.
+또, iOS9 부터 초기 기동시의 브라우저가 기동한 후 앱 화면으로 복귀시, 다이얼로그가 표시됩니다.
+F.O.X SDK에서는 iOS9에서 릴리스 된 새로운 WebView 형식인 “SFSafariViewController”을 초기 기동 시에 기동시켜 측정하는것으로, 다이얼로그 표시에 따른 유저빌리티의 저하를 방지할 수 있습니다.
 
-インストール計測を行うために、以下の２つのメソッドを実装します。
+인스톨 계측을 하기 위해서는, 하기의 2개의 메소드를 구현합니다.
 
-メソッド | 実装箇所 | 概要
+메소드 | 구현장소 | 개요
 :---: | :---: | :---
-sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初回起動時のインストール計測
-setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制御及び、URLスキーム経由の計測処理
+sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(필수) 초기 기동 시의 인스톨 계측
+setUrlScheme:|openURL:|(필수) 초기 기동 시의 인스톨 계측의 제어 및, URL 스키마 경유의 계측 처리
 
-プロジェクトのソースコードを編集し、Application Delegateの`application:didFinishLaunchingWithOptions:`に次の通り実装を行ってください。
+프로젝트에서 Application Delegate의 `application:didFinishLaunchingWithOptions:`를 다음과 같이 구현해 주십시오.
 
-`sendConversionWithStartPage:`の引数には、通常は上記の通り@"default"という文字列を入力してください。
+`sendConversionWithStartPage:`의 매개변수에는, 특별한 이유가 없을 때에는 @"default"를 넣어 주십시오.
+
 ```objective-c
 #import "AdManager.h"
 
@@ -139,7 +143,7 @@ setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制
 
   [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 
-  return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+  return YES; // openURL:메소드를 호출하기 위해서는 YES를 리턴해 주십시오.
 // }
 ```
 
@@ -153,40 +157,42 @@ setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制
 // }
 ```
 
-> `sendConversionWithStartPage:`メソッドは、端末がiOS9の場合、且つCookie計測実施の場合はSFSafariViewControllerを起動し計測を行います。
+> `sendConversionWithStartPage:`메소드는, iOS9의 경우, 또는 Cookie 계측을 실시 할 경우는 SFSafariViewController를 기동하여 계측합니다.
 
-> `setUrlScheme:`メソッドは、URLスキームへ遷移する広告経由のアプリケーションの起動計測及び、
-SFSafariViewControllerが起動された際の制御処理も行っておりますので、必ず`openURL:`メソッドが呼ばれるように実装してください。
+> `setUrlScheme:`메소드는, URL 스키마에 이동하는 광고경유의 앱의 기동 계측 및,
+SFSafariViewController가 기동될때의 제어 처리를 하고 있으므로, 반드시 `openURL:`메소드를 호출하도록 구현해 주십시오.
 
-> ※ ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”をお使いの場合にもsetUrlScheme:メソッドは実装してください。
+> ※ ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”를 사용하는 경우도 setUrlScheme: 메소드를 구현해 주십시오.
+
 
 ![sendConversion01](./doc/send_conversion/img01.png)
 
-[sendConversionWithStartPage:の詳細](./doc/send_conversion/README.md)
+[sendConversionWithStartPage:의 상세](./doc/send_conversion/README.md)
 
 
-* **Fingerprinting計測時の注意事項**
+* **Fingerprinting 계측 시의 주의사항**
 
-Fingerprinting計測はWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
-WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次のメソッドを必ず実装してください。
+Fingerprinting 계측은 WebView를 사용하고 있어, UserAgent를 독자적으로 커스터마이즈한 경우에는 정상적으로 계측 할 수 없습니다.
+WebView의 UserAgent를 커스터마이즈 하기 전에 다음의 메소드를 반드시 구현해 주십시오.
+
 ```objc
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
 
-## 4. LTV計測の実装
+## 4. LTV 계측의 구현
 
-会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
+회원등록, 튜토리얼 돌파, 과금 등의 임의의 성과 지점에 LTV 계측을 구현하는 것으로, 유입원 광고의 LTV를 계측할 수 있습니다.
+LTV 계측이 불필요한 경우에는, 본 구현을 생략해 주십시오.
 
 ```objective-c
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
-[ltv sendLtv:{成果地点ID}];
+[ltv sendLtv:{성과지점ID}];
 ```
+LTV 계측을 하기 위해서는, 각 성과 지점을 식별하는 성과지점 ID를 지정할 필요가 있습니다. sendLtv의 매개변수에 발행된 ID를 지정해 주십시오.
 
-LTV計測を行うためには、各成果地点を識別する成果地点IDを指定する必要があります。sendLtvの引数に発行されたIDを指定してください。
-
-課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
+과금 계측을 하는 경우에는, 과금이 완료된 장소에 하기와 같이 과금액과 통화코드를 지정해 주십시오.
 
 ```objective-c
 #import "Ltv.h"
@@ -194,20 +200,21 @@ LTV計測を行うためには、各成果地点を識別する成果地点IDを
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv addParameter:LTV_PARAM_PRICE:@"9.99"];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"USD"];
-[ltv sendLtv:{成果地点ID}];
+[ltv sendLtv:{성과지점ID}];
 ```
 
-\_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+\_currency에는[ISO 4217](https://ko.wikipedia.org/wiki/ISO_4217)에 정의된 통화 코드를 지정해 주십시오.
 
-[タグを利用したLTV計測について](./doc/ltv_browser/README.md)
+[태그를 이용한 LTV 계측에 대해서](./doc/ltv_browser/README.md)
 
-## 5. アクセス解析の実装
+## 5. 액세스 해석의 구현
 
-自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。
+자연 유입과 광고 유입의 인스톨 수 비교, 앱의 기동 수, 유니크 유저수(DAU/MAU), 유지율 등을 계측하는 것이 가능합니다. 액세스 해석이 불필요한 경우에는, 본 구현을 생략해도 됩니다.
 
-アプリケーションの起動、及びバックグラウンドからの復帰を計測するために、application:didFinishLaunchingWithOptions:およびapplicationWillEnterForegroundにコードを追加します。
+앱의 기동,및 백그라운드로부터의 복귀를 계측하기 위해서, application:didFinishLaunchingWithOptions: 및 applicationWillEnterForeground에 코드를 추가합니다.
 
-※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
+※백그라운드 패치를 이용하고 있는 경우, 백그라운드 기동 시에 OS 측이 application:didFinishLaunchingWithOptions:를 호출하고 있습니다.
+백그라운드일때는 기동 계측 F.O.X메소드가 호출되지 않도록 applicationState에서 상태판정을 해 주세요.
 
 ```objective-c
 #import "AnalyticsManager.h"
@@ -216,9 +223,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     If ([application applicationState] == UIApplicationStateBackground) {
-        //バックグラウンド時の処理
+        //백그라운드시의 처리
     } else {
-        //バックグラウンド時は起動計測が呼ばれないようにする
+        //백그라운드시에는 기동 계측 처리가 호출되지 않도록 합니다.
         [ForceAnalyticsManager sendStartSession];
     }
 
@@ -231,91 +238,95 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 //}
 ```
 
-sendStartSessionは必ず上記二カ所に実装を行ってください。
+sendStartSession는 반드시 상기의 2개소에 구현해 주십시오.
+
+[액세스 해석에 의한 과금 계측](./doc/analytics_purchase/README.md)
+
+## 6. 소통 테스트 실시
+
+마켓에 신청하기 전까지 SDK를 설치한 상태에서 충분히 테스트하여 앱의 동작에 문제가 없는지 확인하십시오.
+
+인스톨 계측의 통신은 앱 기동후에 한 번만 실행합니다. 계속해서 효과 계측 테스트를 실시하고 싶은 경우에는 앱을 제거하고 다시 설치 후 사용하십시오.
+
+* **테스트 방법**
+
+1. 테스트용 단말기에 테스트 앱이 설치되어있는 경우에는 제거
+1. 테스트용 단말기의 「설정」→「Safari」→「방문 기록 및 웹 사이트 데이터 지우기」를 탭하여 Cookie를 삭제
+1. 폐사에서 발행한 테스트 용 URL을 클릭
+1. 마켓에 리다이렉션
+1. 테스트용 단말기에 테스트 앱을 설치 <br />
+1. 앱을 기동, 브라우저가 기동<br />
+여기에서 브라우저가 시작되지 않는 경우에는 정상적으로 설정이 이루어지고 있지 않습니다. 설정을 검토하여 주셔서 문제가 없을 경우에는 폐사에 문의하십시오.
+1. LTV 지점까지 화면 전환<br />
+1. 앱을 종료하고 백그라운드에서도 삭제<br />
+1. 다시 앱을 시작<br />
+
+폐사에 3,6,7,9 시간을 알려 주십시오. 제대로 측정이 이루어지고 있는지 확인합니다. 폐사 측의 확인에서 문제가 없다면 테스트 완료됩니다.
+
+> 테스트용 URL은 반드시 단말기의 기본 브라우저에서 실행하여 주십시오. Chrome등의 3rd party 브라우저, 메일 앱, QR 코드 앱을 이용하여 WebView로 전환된 경우에는 계측되지 않습니다.
+
+> 테스트 URL을 클릭했을 때 전환 대상이 없어 오류 메시지가 표시되는 경우가 있습니다만 소통 테스트에서는 문제 없습니다.
+
+[재반응 유도(Re-engagement)계측을 하기 위한 테스트 순서](./doc/reengagement_test/README.md)
+
+## 7. 기타 기능의 구현
+
+* [푸시 알림 구현](./doc/notify/README.md)
+
+* [OPT-OUT 구현](./doc/optout/README.md)
+
+* [관리 화면상에 등록한 번들 버전에 따른 처리의 배분 ](./doc/check_version/README.md)
 
 
-[アクセス解析による課金計測](./doc/analytics_purchase/README.md)
+## FAQ（자주하는 질문）
 
-## 6. 疎通テストの実施
+### F.O.X에서 사용하는 번들 버전은?
 
-マーケットへの申請までに、SDKを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
-
-インストール計測の通信は、起動後に一度のみ行わるため、続けて効果測定テストを行いたい場合には、アプリケーションをアンインストールし、再度インストールから行ってください。
-
-* **テスト手順**
-
-1. テスト用端末にテストアプリがインストールされている場合には、アンインストール
-1. テスト用端末の「設定」→「Safari」→「Cookieとデータを消去」によりCookieを削除
-1. 弊社より発行したテスト用URLをクリック
-1. マーケットへリダイレクト
-1. テスト用端末にテストアプリをインストール<br />
-1. アプリを起動、ブラウザが起動<br />
-ここでブラウザが起動しない場合には、正常に設定が行われていません。設定を見直していただき、問題が見当たらない場合には弊社へご連絡ください。
-1. LTV地点まで画面遷移<br />
-1. アプリを終了し、バックグラウンドからも削除<br />
-1. 再度アプリを起動<br />
-
-弊社へ3、6、7、9の時間をお伝えください。正常に計測が行われているか確認いたします。弊社側の確認にて問題がなければテスト完了となります。
-
-> テスト用URLは必ず標準のSafari上でリクエストされるようにしてください。Chromeなどの3rd partyブラウザ、メールアプリやQRコードアプリを利用されそのアプリ内WebViewで遷移した場合には計測できません。
-
-> テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
-
-
-[リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
-
-## 7. その他機能の実装
-
-* [プッシュ通知の実装](./doc/notify/README.md)
-
-* [オプトアウトの実装](./doc/optout/README.md)
-
-* [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
-
-## FAQ（よくある質問集）
-
-### F.O.Xで利用するバンドルバージョンとは？
-
-iOSでは、バンドルバージョンと呼ばれるものには具体的に以下の二つがあります。
+iOS에서는 번들 버전이라는 것에는 구체적으로 다음의 두 가지가 있습니다.
 
 * CFBundleVersion
 * CFBundleShortVersionString
 
-F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的で利用します。
+F.O.X에서는 상기 중 CFBundleShortVersionString 값을 관리의 목적으로 이용합니다.
 
 
-## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
+## 8. 마지막으로 반드시 확인하시기 바랍니다 (지금까지 발생한 문제 모음)
 
-### 8.1. 期待した広告経由のインストール数よりもレポートの数字が低い
+### 8.1. 광고를 경유하여 인스톨한 수보다 리포트의 수치가 낮음
 
-インストール計測の`sendConversionWithStartPage:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
+인스톨 계측의`sendConversionWithStartPage:`가 기동 직후가 아닌 장소에 구현되어있는 경우, 그 지점에 도달하기 전에 이탈 한 유저는 계측되지 안습니다.
 
-`sendConversionWithStartPage:`は、特に理由がない限りは`application:didFinishLaunchingWithOptions:`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+`sendConversionWithStartPage:`는 특별한 이유가없는 한`application:didFinishLaunchingWithOptions:`내에 구현하십시오.
+ 그이외의 부분에 구현 된 경우에는 설치 횟수가 정확하게 측정되지 않을 수 있습니다.
 
-`application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+`application:didFinishLaunchingWithOptions:`에 구현하지 않은 상태에서 인스톨 성과 형의 광고를
+실시하는 경우에는 반드시 광고 대행사 또는 매체사의 담당자에게 그 사실을 알려주십시오. 정확하게 측정 할 수없는 상태에서 인스톨 성과 형의 광고를 실시 된 경우에는 측정 된 인스톨 횟수 이상의 광고비 지불을 요구하는 우려가 있습니다.
 
-### 8.2. URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### 8.2. URL 스키마의 설정되지 않고 릴리스 되었기 때문에 브라우저에서 응용 프로그램으로 전환이 되지 않음
 
-Cookie計測を行うために外部ブラウザを起動した後に、元の画面に戻すためにはURLスキームを利用してアプリケーションに遷移させる必要があります。この際、独自のURLスキームが設定されている必要があり、URLスキームを設定せずにリリースした場合にはこのような遷移を行うことができなくなります。
+Cookie 측정을 위해 외부 브라우저를 실행한 후 원래 화면으로 돌아가기 위해서 URL 스키마를 이용하여 앱으로 전환시킬 필요가 있습니다.
+이때 URL 스키마가 설정되어 있어야 함, URL 스키마를 설정하지 않고 릴리스한 경우에는 앱으로 전환되지 않는다.
 
-### 8.3. URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### 8.3. URL 스키마에 대문자가 포함되어 정상적으로 앱으로 전환되지 않음
 
-環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。URLスキームは全て小文字で設定を行ってください。
+환경에 따라 URL 스키마의 대소 문자가 판별되지 않음으로써 URL 스키마의 전환이 일어나지 않는 경우가 있습니다. URL 스키마는 모두 소문자로 설정해야 합니다.
 
-### 8.4. URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
+### 8.4. URL 스키마의 설정이 타사 앱과 동일하여 브라우저에서 타사의 앱이 기동 되어 버림
 
-iOSにおいて、複数のアプリに同一のURLスキームが設定されていた場合に、どのアプリが起動するかは不定です。確実に特定のアプリを起動することができなくなるため、URLスキームは他社製アプリとはユニークになるようある程度の複雑性のあるものを設定してください。
+URL 스키마는 타사 앱과 와는 고유성을 유지하도록 복잡한 스키마를 설정하여 주십시오.
 
-### 8.5. 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
+### 8.5. 단시간에 대량의 유저 획득하는 프로모션을 실시하면 정상적으로 계측되지 않았다
 
-iOSには、アプリ起動時に一定時間以上メインスレッドがブロックされるとアプリケーションを強制終了する仕様があります。起動時の初期化処理など、メインスレッド上でサーバーへの同期通信を行わないようにご注意ください。リワード広告などの大量のユーザーを短時間で獲得した結果、サーバーへのアクセスが集中し、通信のレスポンスが非常に悪くなることでアプリケーションの起動に時間がかかり、起動時に強制終了され正常に広告成果が計測できなくなった事例がございます。
+iOS는 앱 기동 시 일정 시간 이상 메인 스레드가 블록되면 앱을 강제 종료하는 사양이 있습니다.
+ 기동 시 초기화 처리 등 메인 스레드에서 서버에 동기화 통신을 하지 않도록 주의하시기 바랍니다.
+ 리워드 광고 등의 대량의 사용자를 단시간에 획득한 결과 서버에 대한 액세스가 집중하고 통신의 응답이 매우 나빠져서 앱의 기동에 시간이 걸려, 기동시에 강제 종료되어 정상적으로 광고 성과가 측정할 수 없게 된 사례가 있습니다.
 
-以下の手順で、こうした状況をテストすることができますので、以下の設定でアプリケーションが正常に起動するかをご確認ください。
+이하의 방법으로 이러한 상황을 테스트할 수 있으므로, 이하의 설정으로 앱이 정상적으로 기동하는지를 확인해 주십시오.
 
-`iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」``
+`iOS「설정」→「디벨로퍼」→「NETWORK LINK CONDITIONER」``
 
-* 「Enable」をオン
-* 「Very Bad Network」をチェック
+* 「Enable」을 On
+* 「Very Bad Network」를 체크
 
 ---
-[メインメニュー](/lang/README.md)
+[메인 메뉴](/lang/README.md)

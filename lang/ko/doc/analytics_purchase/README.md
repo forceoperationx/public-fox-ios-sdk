@@ -1,30 +1,31 @@
-## アクセス解析による課金計測
+## 액세스 해석에 의한 과금 계측
 
-アクセス解析機能を利用し、自然流入経由を含めた広告別の課金計測を行うことができます。LTV計測においても課金を成果地点としている場合には、同一の箇所にLTVとアクセス解析のそれぞれの計測処理を実装してください。
+액세스 해석 기능을 이용하여 자연 유입 경유를 포함한 광고별 이벤트와 매출을 각각 측정 할 수 있습니다.
+LTV계측에 있어서도 과금을 성과지점으로 지정한 경우에는, 동일한 장소에 LTV와 액세스 해석의, 각각의 계측 처리를 구현해 주십시오.
 
-アクセス解析による課金計測を行うために、次のsendEventメソッドを実装します。
+액세스 해석에 의한 과금계측을 하기 위해서, 하기와 같이 sendEvent메소드를 구현해 주십시오.
 
 ```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label orderID:(NSString*)orderID sku:(NSString*)sku itemName:(NSString*)itemName price:(double)price quantity:(NSUInteger)quantity currency:(NSString*)currency;
 ```
 
-sendEventメソッドのパラメータの仕様は下記の通りです。
+sendEvent 메소드의 파라미터 사양은 하기와 같습니다.
 
-|パラメータ|型|最大長|概要|
+|파라미터|형|최대 길이|개요|
 |:------|:------:|:------:|:------|
-|eventName|NSString*|255|トラッキングを行うイベントを識別できる任意の名前を設定します。イベント名は自由に設定可能です。|
-|action|NSString*|255|イベントに属するアクション名を設定します。アクション名は自由に設定可能です。特に指定がない場合はnilでも構いません。|
-|label|NSString*|255|アクションに属するラベル名を設定します。ラベル名は自由に設定可能です。特に指定がない場合はnullでも構いません。|
-|orderId|NSString|255|注文番号等を指定します。特に指定がない場合はnilでも構いません。|
-|sku|String|255|商品コード等を指定します。特に指定がない場合はnilでも構いません。|
-|itemName|String|255|商品名を指定します。指定しない場合には空文字@""を設定してください。|
-|price|double||商品単価を指定します。|
-|quantity|NSUInteger||数量を指定します。price * quantityが売上金額として計上されます。|
-|currency|String||通貨コードを指定します。nilの場合は"JPY"が指定されます。|
+|eventName|NSString*|255|트래킹을 하는 이벤트를 식별 할 수있는 임의의 이름을 설정합니다. 이벤트명은 자유롭게 설정 가능합니다.|
+|action|NSString*|255|이벤트에 속하는 액션명을 설정합니다. 액션명은 자유롭게 설정 가능합니다. 특히 지정이없는 경우에는 null도 관계 없습니다.|
+|label|NSString*|255|액션에 속한 라벨명을 설정합니다. 라벨명은 자유롭게 설정 가능합니다. 특히 지정이없는 경우에는 null도 관계 없습니다.|
+|orderId|NSString|255|주문 번호 등을 지정합니다. 특히 지정이없는 경우에는 null도 관계 없습니다.|
+|sku|String|255|상품 코드 등을 지정합니다. 특히 지정이없는 경우는 null에서도 상관하지 않습니다.|
+|itemName|String|255|상품명을 지정합니다. 지정이없는 경우는 비어 두십시오.("")|
+|price|double||상품 단가를 지정합니다.|
+|quantity|NSUInteger||수량을 지정합니다. price * quantity가 매출액으로 계상됩니다.|
+|currency|String||통화 코드를 지정합니다. null의 경우 "JPY"가 지정됩니다.|
 
-> currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+> currency에는[ISO 4217](https://ko.wikipedia.org/wiki/ISO_4217)에 정의된 통화 코드를 지정해 주십시오.
 
-サンプルとして、以下にアメリカドルで300円の課金を行った場合の実装例を記載致します。
+아래의 샘플은 일본에서 300엔을 과금한 경우의 예입니다.
 
 ```objective-c
 #import "Ltv.h"
@@ -33,11 +34,11 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv addParameter:LTV_PARAM_PRICE:@"300"];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"JPY"];
-[ltv sendLtv:成果地点ID];
+[ltv sendLtv:성과지점ID];
 
-// アクセス解析による課金計測
+// 액세스 해석에 의한 과금 계측
 [ForceAnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:@"Item A" price:300 quantity:1 currency:@"JPY"];
 ```
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP으로](/lang/ko/README.md)

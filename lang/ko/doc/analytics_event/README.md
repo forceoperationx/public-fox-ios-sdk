@@ -1,21 +1,21 @@
-## アクセス解析によるインベント計測
+## 액세스 해석에 의한 이벤트 계측
 
-自然流入経由を含めた広告別にユーザーがアプリ内で起こすイベントを計測することが出来ます。イベントを計測したいすべての地点にコードを追加します。
+자연 유입 경유를 포함한 광고 별로 사용자가 앱 내에서 일으키는 이벤트를 측정 할 수 있습니다. 이벤트를 측정하고자하는 모든 지점에 코드를 추가합니다.
 
-アクセス解析によるイベント計測を行うために、次のsendEventメソッドを実装します。
+액세스 해석에 의한 이벤트 측정을 위해 다음 sendEvent 메소드를 구현합니다.
 
 ```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label value:(NSUInteger)value;
 ```
 
-sendEventメソッドのパラメータの仕様は下記の通りです。
+sendEvent 메소드의 파라미터의 사양은 아래와 같습니다.
 
-|パラメータ|型|最大長|概要|
+|파라미터|형|최대 길이|개요|
 |:------|:------:|:------:|:------|
-|eventName|NSString*|255|計測を行うイベントを識別できる任意の名前を設定します。イベント名は自由に設定可能です。|
-|action|NSString*|255|イベントに属するアクション名を設定します。アクション名は⾃由に設定可能です。nilでも構いません。|
-|label|NSString*|255|イベントに属するラベル名を設定します。ラベル名は⾃自由に設定可能です。nilでも構いません。|
-|value|NSUInteger|255|イベント回数を指定します。1でも構いません。|
+|eventName|NSString*|255|측정하는 이벤트를 식별 할 수있는 모든 이름을 설정합니다. 이벤트 이름은 자유롭게 설정 가능합니다.|
+|action|NSString*|255|이벤트에 속하는 작업 이름을 설정합니다. 액션 이름은 자유롭게 설정 가능합니다. nil도 가능합니다.|
+|label|NSString*|255|이벤트에 속하는 레이블 이름을 설정합니다. 레이블 이름은 자유롭게 설정 가능합니다. nil도 가능합니다.|
+|value|NSUInteger|255|이벤트 횟수를 지정합니다. 1이라도 상관 없습니다.|
 
 
 
@@ -23,10 +23,10 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 #import "AnalyticsManager.h"
 
 //- (void) didTutorial {
-    // イベントの送信
-    [ForceAnalyticsManager sendEvent:@“チュートリアル突破" action:nil label:nil value:1];
+    // 이벤트 보내기
+    [ForceAnalyticsManager sendEvent:@“튜토리얼 돌파" action:nil label:nil value:1];
 //}
 ```
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP으로](/lang/ko/README.md)
