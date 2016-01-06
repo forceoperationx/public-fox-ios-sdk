@@ -237,7 +237,7 @@ application:didFinishLaunchingWithOptions:方法，為了確保不會執行Insta
 對於sendStartSession，請一定在上面兩個地方做安裝。
 
 
-[依據流量分析的消費計測](./doc/analytics_purchase/README.md)
+[依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
 
 ## 6. 進行疏通測試
 

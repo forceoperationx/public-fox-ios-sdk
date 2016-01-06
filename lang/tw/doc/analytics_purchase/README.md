@@ -1,8 +1,8 @@
-## 依據流量分析的消費計測
+## 依靠流量分析進行消費計測
 
 利用流量分析機能，能夠計測不同廣告流入和自然流入的用戶消費狀況。在LTV計測地點也做消費計測的場合，請在同一個地點安裝LTV和流量分析的各自的計測處理代碼。
 
-為了進行依據流量分析的消費計測，請安裝下面的sendEvent方法。
+為了依靠流量分析進行消費計測，請安裝下面的sendEvent方法。
 
 ```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label orderID:(NSString*)orderID sku:(NSString*)sku itemName:(NSString*)itemName price:(double)price quantity:(NSUInteger)quantity currency:(NSString*)currency;
