@@ -8,7 +8,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 用導入F.O.X SDK到APP裡的方法來實現下面的功能。
 
-* **安装計測**
+* **啟動計測**
 
 能够按不同的广告流入来計測统计安装数。
 
@@ -115,20 +115,20 @@ NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到�
 
 [AppAdForce.plist例子](./doc/config_plist/AppAdForce.plist)
 
-## 3. 安裝計測的導入
+## 3. 啟動計測的安裝
 
-導入了初次啟動時的安裝計測，就能夠測定廣告效果。
+安裝了初次啟動時的啟動計測，就能夠測定廣告效果。
 另外，在iOS9環境初回啟動時，從瀏覽器啟動到返回APP的時候，會跳出對話框。
 在F.O.X SDK裡，提供有iOS9開始發布的新WebView形式，在初回啟動時使用這個新形式的“SFSafariViewController”來計測的話，可以禁止彈出對話框來提高用戶體驗。
 
-為了進行安裝計測，請實際安裝下面兩個方法。
+為了進行啟動計測，請安裝下面兩個方法。
 
-方法 | 實際安裝地點 | 概要
+方法 | 安裝地點 | 概要
 :---: | :---: | :---
 sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初次啟動時的Install計測
 setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（background）時的參數處理
 
-請編輯開發項目的源代碼，按下面那樣來實際安裝到Application Delegateの`application:didFinishLaunchingWithOptions:`
+請編輯開發項目的源代碼，按下面那樣來安裝到Application Delegateの`application:didFinishLaunchingWithOptions:`
 
 在`sendConversionWithStartPage:`的參數裡，通常請按上面的樣子輸入@"default"這樣的文字列。
 ```objective-c
@@ -155,9 +155,9 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（background）時�
 
 > `sendConversionWithStartPage:`這個方法在iOS9環境且用Cookie計測的時候請啟動SFSafariViewController來做計測。
 
-> `setUrlScheme:`這個方法、在經由跳轉URL Scheme廣告的APP啟動計測和啟動SFSafariViewController的時候要進行控制處理，請在實際安裝代碼裡一定調用`openURL:`方法。
+> `setUrlScheme:`這個方法、在經由跳轉URL Scheme廣告的APP啟動計測和啟動SFSafariViewController的時候要進行控制處理，請在安裝代碼裡一定調用`openURL:`方法。
 
-> ※使用 ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”的時候，也請實際安裝setUrlScheme:這個方法。
+> ※使用 ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”的時候，也請安裝setUrlScheme:這個方法。
 
 
 ![sendConversion01](./doc/send_conversion/img01.png)
@@ -168,14 +168,14 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（background）時�
 * **Fingerprinting計測時的注意事項**
 
 Fingerprinting計測使用WebView，在獨自定制化UserAgent的時候，會變得無法正常計測。
-在把WebView的UserAgent定制化成獨自的字符串之前，請一定實際安裝下面的方法。
+在把WebView的UserAgent定制化成獨自的字符串之前，請一定安裝下面的方法。
 ```objc
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
 
-## 4. LTV計測的導入
+## 4. LTV計測的安裝
 
-通過在會員登錄，教程突破，消費等任意的成果地點實際安裝LTV計測，能夠測定流入源廣告的LTV。不需要LTV計測的時候，可以省略本項目的實際安裝。
+通過在會員登錄，教程突破，消費等任意的成果地點安裝LTV計測，能夠測定流入源廣告的LTV。不需要LTV計測的時候，可以省略本項目的安裝。
 
 ```objective-c
 #import "Ltv.h"
@@ -201,9 +201,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
-## 5. 流量分析的導入
+## 5. 流量分析的安裝
 
-自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。不需要流量分析的話，可以省略次項目的實際安裝。
+自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。不需要流量分析的話，可以省略次項目的安裝。
 
 為了計測APP的啟動以及來自Background的恢復，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
 
@@ -234,7 +234,7 @@ application:didFinishLaunchingWithOptions:方法，為了確保不會執行啟�
 //}
 ```
 
-對於sendStartSession，請一定在上面兩個地方做實際安裝。
+對於sendStartSession，請一定在上面兩個地方做安裝。
 
 
 [依據流量分析的消費計測](./doc/analytics_purchase/README.md)
@@ -291,11 +291,11 @@ application:didFinishLaunchingWithOptions:方法，為了確保不會執行啟�
 
 ### 8.1. 查看經由廣告進來的安裝數字，期待的數字比報告裡的統計數字要低。
 
-Install計測的`sendConversionWithStartPage:`沒有被實際安裝到啟動即執行的地點的場合，在到達那個地點前脫離的用戶將不會被統計。
+Install計測的`sendConversionWithStartPage:`沒有被安裝到啟動即執行的地點的場合，在到達那個地點前脫離的用戶將不會被統計。
 
-沒有特別的理由請將`sendConversionWithStartPage:`實際安裝在`application:didFinishLaunchingWithOptions:`裡面。實際安裝在別的地點的場合可能無法正確計測安裝數值。
+沒有特別的理由請將`sendConversionWithStartPage:`安裝在`application:didFinishLaunchingWithOptions:`裡面。安裝在別的地點的場合可能無法正確計測安裝數值。
 
-在沒有實際安裝`application:didFinishLaunchingWithOptions:`的狀態下投放安裝成果型廣告的時候，請一定通知廣告代理店或者媒體負責人。在不能正常計測的狀態下投放安裝成果型廣告的時候，有可能被要求支付超過計測安裝數的廣告費用。
+在沒有安裝`application:didFinishLaunchingWithOptions:`的狀態下投放安裝成果型廣告的時候，請一定通知廣告代理店或者媒體負責人。在不能正常計測的狀態下投放安裝成果型廣告的時候，有可能被要求支付超過計測安裝數的廣告費用。
 
 
 ### 8.2. 未設定URL Scheme的發布引起的無法從瀏覽器跳轉到APP
