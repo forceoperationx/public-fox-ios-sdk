@@ -1,13 +1,14 @@
-## フレームワーク設定の詳細
+## Framework設定的詳細
 
 ビルド対象のターゲットをクリックし、「Build Phases」→「Link Binary With Libraries」を選択。「+」ボタンを押し、各フレームワークを選択してください。
+點擊編譯對象，「Build Phases」→選擇「Link Binary With Libraries」。點擊「＋」按鈕，請選擇各Framework。
 
-![フレームワーク設定01](./img01.png)
+![Framework設定01](./img01.png)
 
-次のフレームワークをプロジェクトにリンクしてください。
+請把下面的Framework追加到開發項目裡。
 
 <table>
-<tr><th>フレームワーク名</th><th>Status</th></tr>
+<tr><th>Framework名</th><th>Status</th></tr>
 <tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 <tr><td>iAd.framework </td><td>Required</td></tr>
@@ -15,11 +16,11 @@
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
 </table>
 
-> ※ AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※ AdSupport.framework是在iOS 6以後追加的Framework，所以如果要讓APP在iOS 5及以前版本也能正常動作(設定iOS Deployment Target到5.1或以下)，為了進行weak link請設定成”Optional”。
 
-> ※ SafariServices.frameworkはiOS 9以降で追加されたフレームワークのため、アプリケーションをiOS 8以前でも動作させる(iOS Deployment Targetを8.4以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※ SafariServices.framework是在iOS 9以後追加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，為了進行weak link請設定成”Optional”。
 
-![フレームワーク設定02](./img02.png)
+![Framework設定02](./img02.png)
 
 ---
 [TOPへ](/lang/ja/README.md)
