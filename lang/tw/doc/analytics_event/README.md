@@ -1,21 +1,21 @@
-## アクセス解析によるインベント計測
+## 依據流量分析的Event計測
 
-自然流入経由を含めた広告別にユーザーがアプリ内で起こすイベントを計測することが出来ます。イベントを計測したいすべての地点にコードを追加します。
+能夠計測按不同廣告流入和自然流入的用戶在APP裡面引發的Event。請在想要做Event計測的全部地點追加代碼。
 
-アクセス解析によるイベント計測を行うために、次のsendEventメソッドを実装します。
+為了進行依據流量分析的Event計測，請安裝下面的sendEvent方法。
 
 ```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label value:(NSUInteger)value;
 ```
 
-sendEventメソッドのパラメータの仕様は下記の通りです。
+sendEvent方法的參數說明如下。
 
-|パラメータ|型|最大長|概要|
+|參數|型|最大長度|概要|
 |:------|:------:|:------:|:------|
-|eventName|NSString*|255|計測を行うイベントを識別できる任意の名前を設定します。イベント名は自由に設定可能です。|
-|action|NSString*|255|イベントに属するアクション名を設定します。アクション名は⾃由に設定可能です。nilでも構いません。|
-|label|NSString*|255|イベントに属するラベル名を設定します。ラベル名は⾃自由に設定可能です。nilでも構いません。|
-|value|NSUInteger|255|イベント回数を指定します。1でも構いません。|
+|eventName|NSString*|255|設定能夠識別計測Event的任意名稱。|
+|action|NSString*|255|設定屬於Event的Action名。可以自由設定。可以為nil。|
+|label|NSString*|255|設定屬於Event的Label名。可以自由設定。可以為nil。|
+|value|NSUInteger|255|指定Event次數。可以為1。|
 
 
 
@@ -23,8 +23,8 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 #import "AnalyticsManager.h"
 
 //- (void) didTutorial {
-    // イベントの送信
-    [ForceAnalyticsManager sendEvent:@“チュートリアル突破" action:nil label:nil value:1];
+    // Event的發送
+    [ForceAnalyticsManager sendEvent:@“教程突破" action:nil label:nil value:1];
 //}
 ```
 
