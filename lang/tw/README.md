@@ -8,7 +8,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 用導入F.O.X SDK到APP裡的方法來實現下面的功能。
 
-* **啟動計測**
+* **Install計測**
 
 能够按不同的广告流入来計測统计安装数。
 
@@ -49,7 +49,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <table>
 <tr><th>功能名</th><th>必須</th><th>ファイル名</th></tr>
 <tr><td>類庫本身</td><td>必須</td><td>libAppAdForce.a</td></tr>
-<tr><td>安裝計測</td><td>必須</td><td>AdManager.h</td></tr>
+<tr><td>Install計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>任意</td><td>Ltv.h</td></tr>
 <tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
 <tr><td>PUSH通知</td><td>任意</td><td>Notify.h</td></tr>
@@ -115,13 +115,13 @@ NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到�
 
 [AppAdForce.plist例子](./doc/config_plist/AppAdForce.plist)
 
-## 3. 啟動計測的安裝
+## 3. Install計測的安裝
 
-安裝了初次啟動時的啟動計測，就能夠測定廣告效果。
+安裝了初次啟動時的Install計測，就能夠測定廣告效果。
 另外，在iOS9環境初回啟動時，從瀏覽器啟動到返回APP的時候，會跳出對話框。
 在F.O.X SDK裡，提供有iOS9開始發布的新WebView形式，在初回啟動時使用這個新形式的“SFSafariViewController”來計測的話，可以禁止彈出對話框來提高用戶體驗。
 
-為了進行啟動計測，請安裝下面兩個方法。
+為了進行Install計測，請安裝下面兩個方法。
 
 方法 | 安裝地點 | 概要
 :---: | :---: | :---
@@ -155,7 +155,7 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（background）時�
 
 > `sendConversionWithStartPage:`這個方法在iOS9環境且用Cookie計測的時候請啟動SFSafariViewController來做計測。
 
-> `setUrlScheme:`這個方法、在經由跳轉URL Scheme廣告的APP啟動計測和啟動SFSafariViewController的時候要進行控制處理，請在安裝代碼裡一定調用`openURL:`方法。
+> `setUrlScheme:`這個方法、在經由跳轉URL Scheme廣告的APP的Install計測和啟動SFSafariViewController的時候要進行控制處理，請在安裝代碼裡一定調用`openURL:`方法。
 
 > ※使用 ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”的時候，也請安裝setUrlScheme:這個方法。
 
@@ -209,7 +209,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 
 ※使用background fetch技術的場合，background啟動狀態下也會調用
-application:didFinishLaunchingWithOptions:方法，為了確保不會執行啟動計測通知的方法，請用applicationState做狀態判定。
+application:didFinishLaunchingWithOptions:方法，為了確保不會執行Install計測通知的方法，請用applicationState做狀態判定。
 
 
 ```objective-c
@@ -243,7 +243,7 @@ application:didFinishLaunchingWithOptions:方法，為了確保不會執行啟�
 
 在向Market申請以前，在導入SDK以後請做充分的測試，確認APP的動作沒有問題。
 
-因為在啟動後只發生一次安裝計測的通信，如果想要再次進行安裝計測的話，請卸載APP再次安裝
+因為在啟動後只發生一次Install計測的通信，如果想要再次進行Install計測的話，請卸載APP再次安裝
 
 **測試步驟**
 
