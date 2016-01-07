@@ -29,7 +29,6 @@
 ```objective-c
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"http://yourhost.com/yourpage.html"];
 ```
-
 代替`sendConversionWithStartPage:`使用`sendConversionWithStartPage:buid:`方法、能夠輸出廣告主終端設備ID到成果LOG裡。比如，在APP起動時生成的UUID和初次啟動的成果綁定到一起做管理的場合可以利用這個方法。
 
 ```objective-c
@@ -37,10 +36,9 @@
 ```
 > `sendConversionWithStartPage:buid:`作為剛啟動後的處理有必要實際安裝，像登錄ID這樣的用戶行動相伴的值無法通過參數傳遞。
 
-
 ## Fingerprint計測時的注意事項
 
-Fingerprint計測使用WebView，獨自定制化的UserAgent將無法正常計測。把WebView的UserAgent定制化成獨自的字符串以前請一定安裝下面的方法。```objective-c
+Fingerprint計測使用WebView，獨自定制化的UserAgent將無法正常計測。把WebView的UserAgent定制化成獨自的字符串以前請一定安裝下面的方法。```objective-c
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];```
 
 ## 3.2.	v2.16g以前的舊版本的場合
