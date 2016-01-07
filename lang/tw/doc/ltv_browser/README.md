@@ -1,9 +1,8 @@
 # 有關利用Tag的LTV計測
 
-会員登録や商品購入等がWebページで行われる場合に、imgタグを利用してLTV計測を利用することができます。
-在WEB頁面上進行會員登錄或商品購入的場合，可以利用img tag進行LTV計測。
+在WEB頁面上進行會員登錄或商品購入的場合，可以利用img Tag進行LTV計測。
 
-F.O.X的LTV計測對應外部瀏覽器和APP內WebView。外部瀏覽器利用ltvOpenBrowser:而APP内WebView利用setLtvCookie來把LTV計測需要的信息記錄到瀏覽器的Cookie裡。
+F.O.X的LTV計測適用於外部瀏覽器和APP內WebView。外部瀏覽器利用ltvOpenBrowser:而APP内WebView利用setLtvCookie來把LTV計測需要的信息記錄到瀏覽器的Cookie裡。
 
 ## 使用外部瀏覽器的LTV計測
 
@@ -18,7 +17,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 ## 使用APP內WebView的LTV計測
 
-畫面跳轉在APP內WebView裡進行的場合，可以利用setLtvCookie。請在生成WebView的地方安裝下面的代碼。多次生成和破壞WebView的場合，請在生成之際執行setLtvCookie。在內部利用NSHTTPCookieStorage來設定Cookie。
+畫面遷移在APP內WebView裡進行的場合，可以利用setLtvCookie。請在生成WebView的地方安裝下面的代碼。多次生成和廢棄WebView的場合，請在生成之際執行setLtvCookie。在內部利用NSHTTPCookieStorage來設定Cookie。
 
 ```objective-c
 #import "Ltv.h"
@@ -29,9 +28,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 ## Tag的安裝
 
-請在LTV成果地點頁面安裝F.O.X管理員提供的計測Tag。
+請在LTV成果地點頁面裡安裝F.O.X管理員提供的計測Tag。
 
-利用Tag的參數式樣如下。
+Tag的參數式樣如下。
 
 <table>
 <tr>
