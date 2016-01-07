@@ -1,12 +1,13 @@
-# タグを利用したLTV計測について
+# 有關利用Tag的LTV計測
 
 会員登録や商品購入等がWebページで行われる場合に、imgタグを利用してLTV計測を利用することができます。
+在WEB頁面上進行會員登錄或商品購入的場合，可以利用img tag進行LTV計測。
 
-F.O.XのLTV計測は、外部ブラウザ、アプリ内WebViewの両方に対応しています。外部ブラウザの場合にはltvOpenBrowser:、アプリ内WebViewの場合にはsetLtvCookieメソッドを利用することで、F.O.XがLTV計測に必要な情報をブラウザのCookieに記録します。
+F.O.X的LTV計測對應外部瀏覽器和APP內WebView。外部瀏覽器利用ltvOpenBrowser:而APP内WebView利用setLtvCookie來把LTV計測需要的信息記錄到瀏覽器的Cookie裡。
 
-## 外部ブラウザでのLTV計測
+## 使用外部瀏覽器的LTV計測
 
-アプリケーションから外部ブラウザを起動し、外部ブラウザで表示したWebページでタグ計測を行う場合は、ltvOpenBrowser:メソッドを利用して外部ブラウザを起動してください。引数には、外部ブラウザで表示するURLを文字列で指定します。
+從APP啟動外部瀏覽器，使用外部瀏覽器表示WEB頁面進行Tag計測的場合，請利用ltvOpenBrowser:方法來啟動外部瀏覽器。用字符串形式設定外部瀏覽器使用的URL給參數。
 
 ```objective-c
 #import "Ltv.h"
@@ -15,9 +16,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv ltvOpenBrowser:@"http://yourhost.com/"];
 ```
 
-## アプリ内WebViewでのLTV計測
+## 使用APP內WebView的LTV計測
 
-ユーザーの遷移がWebView内で行われる場合には、setLtvCookieを利用することができます。WebViewが生成される箇所で下記コードを実行してください。WebViewが複数回生成・破棄される場合には、生成される度にsetLtvCookieが実行されるようにしてください。内部的にNSHTTPCookieStorageを利用してCookieをセットします。
+畫面跳轉在APP內WebView裡進行的場合，可以利用setLtvCookie。請在生成WebView的地方安裝下面的代碼。多次生成和破壞WebView的場合，請在生成之際執行setLtvCookie。在內部利用NSHTTPCookieStorage來設定Cookie。
 
 ```objective-c
 #import "Ltv.h"
@@ -26,46 +27,46 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv setLtvCookie];
 ```
 
-## タグの実装
+## Tag的安裝
 
-LTVの成果地点となるページに計測タグを実装してください。計測タグはForce Operation X管理者から連絡いたします。
+請在LTV成果地點頁面安裝F.O.X管理員提供的計測Tag。
 
-タグに利用するパラメータ仕様は以下の通りです。
+利用Tag的參數式樣如下。
 
 <table>
 <tr>
-  <th>パラメータ名</th>
+  <th>參數名</th>
   <th>必須?</th>
   <th>備考</th>
 </tr>
 <tr>
   <td>_buyer</td>
   <td>必須</td>
-  <td>広告主を識別するID。<br />管理者より連絡しますので、その値を入力してください。</td>
+  <td>識別廣告主的ID。<br />請輸入管理員提供的值。</td>
 </tr>
 <tr>
   <td>_cvpoint</td>
   <td>必須</td>
-  <td>成果地点を識別するID。<br />管理者より連絡しますので、その値を入力してください。</td>
+  <td>識別成果地點的ID。<br />請輸入管理員提供的值。</td>
 </tr>
 <tr>
   <td>_price</td>
-  <td>オプション</td>
-  <td>課金額。課金計測時に設定してください。<br /></td>
+  <td>任意</td>
+  <td>消費額。消費計測時請設定。<br /></td>
 </tr>
 <tr>
   <td>_currency</td>
-  <td>オプション</td>
-  <td>半角英字3文字の通貨コード。<br />課金計測時に設定してください。<br />通貨が設定されていない場合、\_priceをJPY(日本円)として扱います。</td>
+  <td>任意</td>
+  <td>半角字母數字3位長度的貨幣代碼。<br />消費計測時請設定。<br />未設定的場合、\會默認把_price設定為JPY(日圓)。</td>
 </tr>
 <tr>
   <td>_buid</td>
-  <td>オプション</td>
-  <td>半角英数字64文字まで。<br />会員IDなどユーザー毎にユニークな値を保持する場合にご使用ください。</td>
+  <td>任意</td>
+  <td>半角字母數字最大64位長度。<br />像會員ID這樣為每個用戶保持唯一值的時候請使用。</td>
 </tr>
 </table>
 
-\_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+\在_currency裡請指定用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼。
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP](/lang/ja/README.md)
