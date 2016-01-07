@@ -253,7 +253,7 @@ application:didFinishLaunchingWithOptions:方法，為了確保不會執行Insta
 1. 再移轉到Market
 1. 在測試用端末上安裝測試APP<br />
 1. 啟動APP，瀏覽器啟動<br />
-若流覽器無法啟動，將代表沒有正常設定。請重新設定，若仍無發現問題，請與弊司聯繫。
+若流覽器無法啟動，說明沒有正常設定。請重新設定，若仍無發現問題，請與弊司聯繫。
 1. 畫面移轉到LTV地點<br />
 1. 結束APP，也從Background刪除<br />
 1. 再次啟動APP<br />

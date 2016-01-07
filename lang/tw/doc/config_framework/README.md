@@ -1,6 +1,5 @@
 ## Framework設定的詳細
 
-ビルド対象のターゲットをクリックし、「Build Phases」→「Link Binary With Libraries」を選択。「+」ボタンを押し、各フレームワークを選択してください。
 點擊編譯對象，「Build Phases」→選擇「Link Binary With Libraries」。點擊「＋」按鈕，請選擇各Framework。
 
 ![Framework設定01](./img01.png)
@@ -23,4 +22,4 @@
 ![Framework設定02](./img02.png)
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP](/lang/ja/README.md)
