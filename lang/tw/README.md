@@ -141,7 +141,7 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（Background）時�
   return YES; // openURL:為了調用方法請一定返回YES
 // }
 ```
-在`sendConversionWithStartPage:`的參數裡，通常請按上面的樣子輸入@"default"這樣的文字列。
+在`sendConversionWithStartPage:`的參數裡，通常請按上面那樣輸入@"default"這樣的文字列。
 
 ```objective-c
 // - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -175,7 +175,7 @@ Fingerprinting計測使用WebView，使用獨自的定制化UserAgent的時候�
 
 ## 4. LTV計測的安裝
 
-通過在會員登錄，教程突破，消費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。不需要LTV計測的時候，可以省略本項目的安裝。
+通過在會員登錄，教程突破，消費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。如果不做LTV計測，可以省略本項目的安裝。
 
 ```objective-c
 #import "Ltv.h"
@@ -203,7 +203,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 ## 5. 流量分析的安裝
 
-自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。不做流量分析的話，可以省略本項目的安裝。
+自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
 
 為了監測APP的啟動以及從後台恢復到前台，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
 
@@ -251,7 +251,7 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行Install計�
 1. 透過測試用端末的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
 1. 點擊弊司發行的測試用URL
 1. 再移轉到Market
-1. 在測試用端末上安裝測試APP<br />
+1. 在測試用移動終端上安裝測試APP<br />
 1. 啟動APP，瀏覽器啟動<br />
 若流覽器無法啟動，說明沒有正常設定。請重新設定，若仍無法發現問題，請與弊司聯繫。
 1. 把畫面移轉到LTV地點<br />
