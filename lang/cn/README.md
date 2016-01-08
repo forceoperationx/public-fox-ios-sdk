@@ -1,136 +1,135 @@
 # Force Operation X是什麼
 
-Force Operation X (下面簡稱F.O.X)是スマートフォンにおける広告効果最適化のためのトータルソリューションプラットフォームです。アプリケーションのダウンロード、ウェブ上でのユーザーアクションの計測はもちろん、スマートフォンユーザーの行動特性に基づいた独自の効果計測基準の元、企業のプロモーションにおける費用対効果を最大化することができます。
+Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改善廣告效果的綜合解決方案平台。除了對APP下載量和網絡用戶操作的基本計測外，還能基於手機用戶行为特性採用獨自效果計測基準，實現了企業宣傳推廣时費用与效果比的最大改善。
 
-本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
+在這個文檔裡，詳細講解了基於智慧手機平台優化廣告效果的F.O.X SDK的導入步驟。
 
-## F.O.X SDKとは
+## F.O.X SDK是什麼
 
-F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
+在APP裡導入F.O.X SDK的方法來實現如下功能。
 
-* **インストール計測**
+* **Install計測**
 
-広告流入別にインストール数を計測することができます。
+能够按不同的广告流入来計測安装数。
 
 * **LTV計測**
 
-流入元広告別にLife Time Valueを計測します。主な成果地点としては、会員登録、チュートリアル突破、課金などがあります。各広告別に登録率、課金率や課金額などを計測することができます。
+按不同的廣告流入来計測Life Time Value。作為主要的成果地點，有會員登錄，教程突破，消费等。能夠按照不同廣告来監測登錄率，消費率和消費額等。
 
-* **アクセス解析**
+* **流量分析**
 
-自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
+自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
-* **プッシュ通知**
+* **PUSH通知**
 
-F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通知を行うことができます。例えば、特定の広告から流入したユーザーに対してメッセージを送ることができます。
+使用F.O.X監測的信息，能夠針對用戶來做PUSH通知。比如，能夠針對特定廣告流入用戶來發送消息。
 
-## 1. インストール
-* **CocoaPodsによって導入する場合**
+## 1. 安裝
+* **按CocoaPods來導入的場合**
 
-Podfileファイルに下記の設定を追加してください。
+請在Podfile文件裡追加下面的設定。
 ```ruby
 foxVersion = "master"
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
 <br />
 
-* **マニュアル導入する場合**
+* **按手冊來導入的場合**
 
-以下のページより最新のSDKをダウンロードしてください。
+請從下面的頁面來下載最新的SDK。
 
-[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)
+[SDK發布頁面](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
-既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
+已經在APP裡導入了SDK的話，請參考[有關更新到最新版本](./doc/update/README.md)
 
-ダウンロードしたSDK「FOX_iOS_SDK_<version>.zip」を展開し、以下ファイルをXcodeの任意の場所にコピーを行い、アプリケーションのプロジェクトに組み込んでください。
+請解壓下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
 
-各ファイルの説明は以下の通りです。
+各文件的說明如下。
 
 <table>
-<tr><th>機能名</th><th>必須</th><th>ファイル名</th></tr>
-<tr><td>ライブラリ本体</td><td>必須</td><td>libAppAdForce.a</td></tr>
-<tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
-<tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
-<tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
-<tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
+<tr><th>功能名</th><th>必須</th><th>ファイル名</th></tr>
+<tr><td>類庫本身</td><td>必須</td><td>libAppAdForce.a</td></tr>
+<tr><td>Install計測</td><td>必須</td><td>AdManager.h</td></tr>
+<tr><td>LTV計測</td><td>任意</td><td>Ltv.h</td></tr>
+<tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
+<tr><td>PUSH通知</td><td>任意</td><td>Notify.h</td></tr>
 </table>
 
-![インストール手順](./doc/integration/img01.png)
+![安裝步驟](./doc/integration/img01.png)
 
-[インストール手順の詳細](./doc/integration/README.md)
+[安裝步驟的詳細](./doc/integration/README.md)
 
 ## 2. 設定
 
-* **フレームワーク設定**
+* **Framework設定**
 
-次のフレームワークをプロジェクトにリンクしてください。
+請在項目裡追加下面的Framework。
 
 <table>
-<tr><th>フレームワーク名</th><th>Status</th></tr>
-<tr><td>SafariServices.framework</td><td>Optional</td></tr>
-<tr><td>AdSupport.framework</td><td>Optional</td></tr>
-<tr><td>iAd.framework </td><td>Required</td></tr>
-<tr><td>Security.framework </td><td>Required </td></tr>
-<tr><td>StoreKit.framework </td><td>Required </td></tr>
+<tr><th>Framework名</th><th>Status</th></tr>
+<tr><td>SafariServices.framework</td><td>任意</td></tr>
+<tr><td>AdSupport.framework</td><td>任意</td></tr>
+<tr><td>iAd.framework </td><td>必須</td></tr>
+<tr><td>Security.framework </td><td>必須</td></tr>
+<tr><td>StoreKit.framework </td><td>必須</td></tr>
 </table>
 
-> ※AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※AdSupport.framework是在iOS 6以後追加的Framework，所以如果要讓APP在iOS 5及以前版本也能正常動作(設定iOS Deployment Target到5.1或以下)，為了進行weak link請設定成”任意”。
 
-> ※SafariServices.frameworkはiOS 9以降で追加されたフレームワークのため、アプリケーションをiOS 8以前でも動作させる(iOS Deployment Targetを8.4以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
+> ※SafariServices.framework是在iOS 9以後追加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，為了進行weak link請設定成”任意”。
 
-![フレームワーク設定01](./doc/config_framework/img01.png)
+![Framework設定01](./doc/config_framework/img01.png)
 
-[フレームワーク設定の詳細](./doc/config_framework/README.md)
+[Framework設定的詳細](./doc/config_framework/README.md)
 
 * **SDK設定**
 
-SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist」というファイルをプロジェクトの任意の場所に作成し、次のキーと値を入力してください。
+為使SDK起作用，需要追加必要的設定到plist裡。請在項目的任意地方建立「AppAdForce.plist」文件，並追加下面的Key和Value。
 
 Key | Type | Value
 :---: | :---: | :---
-APP_ID | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-SERVER_URL | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-APP_SALT | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-APP_OPTIONS | String | 何も入力せず、空文字の状態にしてください。
+APP_ID | String | 請輸入Force Operation X管理員告知的值。
+SERVER_URL | String | 請輸入Force Operation X管理員告知的值。
+APP_SALT | String | 請輸入Force Operation X管理員告知的值。
+APP_OPTIONS | String | 空白。
 CONVERSION_MODE | String | 1
-ANALYTICS_APP_KEY | String | Force Operation X管理者より連絡しますので、その値を入力してください。<br />アクセス解析を利用しない場合は設定の必要はありません。
+ANALYTICS_APP_KEY | String | 請輸入Force Operation X管理員告知的值。<br />不利用流量分析則不需要設定。
 
 ![plist設定](./doc/config_plist/img05.png)
 
 
-* **App Transport Securityについて**
+* **關於App Transport Security**
 
-iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
+由iOS9提供的AppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，並把使用F.O.X SDK進行通信的域名設置成ATS的例外。
 
-キー | タイプ | 概要
+Key | Type | 概要
 :---: | :---: | :---
-NSExceptionDomains|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|YES を指定してくださいATSの例外とします。
-NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
+NSExceptionDomains|Dictionary|指定ATS例外的dictionary
+指定域名文字列|Dictionary|請把下面兩個域名做成Key。<br>・app-adforce.jp<br>・forceoperationx.com
+NSExceptionAllowsInsecureHTTPLoads|Boolean|請指定成YES，設置成ATS的例外。
+NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到子域名。
 
 ![ATS設定](./doc/config_plist/img06.png)
 
-[SDK設定の詳細](./doc/config_plist/README.md)
+[SDK設定的詳細](./doc/config_plist/README.md)
 
-[AppAdForce.plistサンプル](./doc/config_plist/AppAdForce.plist)
+[AppAdForce.plist例子](./doc/config_plist/AppAdForce.plist)
 
-## 3. インストール計測の実装
+## 3. Install計測的安裝
 
-初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
-また、iOS9より初回起動時のブラウザ起動からアプリに戻る際に、ダイアログが出力されます。
-F.O.X SDKではiOS9からリリースされた新しいWebView形式である “SFSafariViewController”を初回起動時に起動させ計測することで、ダイアログ表示によるユーザービリティの低下を防止することが出来ます。
+安裝了初次啟動時的Install計測處理，就能夠測定廣告效果了。
+另外，在iOS9環境初回啟動時，從瀏覽器啟動到返回APP的時候，會跳出對話框。
+在F.O.X SDK裡，從iOS9開始提供新WebView形式，在初回啟動時使用這個新形式的“SFSafariViewController”來計測的話，可以禁止彈出對話框來提高用戶體驗。
 
-インストール計測を行うために、以下の２つのメソッドを実装します。
+為了進行Install計測，請安裝下面兩個方法。
 
-メソッド | 実装箇所 | 概要
+方法 | 安裝地點 | 概要
 :---: | :---: | :---
-sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初回起動時のインストール計測
-setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制御及び、URLスキーム経由の計測処理
+sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初次啟動時的Install計測
+setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（Background）時的參數處理
 
-プロジェクトのソースコードを編集し、Application Delegateの`application:didFinishLaunchingWithOptions:`に次の通り実装を行ってください。
+請編輯項目的源代碼，按下面那樣來安裝到Application Delegate的`application:didFinishLaunchingWithOptions:`
 
-`sendConversionWithStartPage:`の引数には、通常は上記の通り@"default"という文字列を入力してください。
 ```objective-c
 #import "AdManager.h"
 
@@ -139,9 +138,10 @@ setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制
 
   [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 
-  return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+  return YES; // openURL:為了調用方法請一定返回YES
 // }
 ```
+在`sendConversionWithStartPage:`的參數裡，通常請按上面那樣輸入@"default"這樣的文字列。
 
 ```objective-c
 // - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -153,29 +153,29 @@ setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制
 // }
 ```
 
-> `sendConversionWithStartPage:`メソッドは、端末がiOS9の場合、且つCookie計測実施の場合はSFSafariViewControllerを起動し計測を行います。
+> `sendConversionWithStartPage:`這個方法在iOS9環境且用Cookie計測的時候，請啟動SFSafariViewController來做計測。
 
-> `setUrlScheme:`メソッドは、URLスキームへ遷移する広告経由のアプリケーションの起動計測及び、
-SFSafariViewControllerが起動された際の制御処理も行っておりますので、必ず`openURL:`メソッドが呼ばれるように実装してください。
+> `setUrlScheme:`這個方法在廣告經由URL Scheme跳轉到APP的Install計測和啟動SFSafariViewController的時候要進行控制處理，請一定在安裝代碼裡調用`openURL:`方法。
 
-> ※ ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”をお使いの場合にもsetUrlScheme:メソッドは実装してください。
+> ※使用 ”`openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options`”的時候，也請安裝setUrlScheme:這個方法。
+
 
 ![sendConversion01](./doc/send_conversion/img01.png)
 
-[sendConversionWithStartPage:の詳細](./doc/send_conversion/README.md)
+[sendConversionWithStartPage:的詳細](./doc/send_conversion/README.md)
 
 
-* **Fingerprinting計測時の注意事項**
+* **Fingerprint計測的注意事項**
 
-Fingerprinting計測はWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
-WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次のメソッドを必ず実装してください。
+Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，將無法正常計測。
+把WebView的UserAgent定制化成特定字符串之前，請一定安裝下面的方法。
 ```objc
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
 
-## 4. LTV計測の実装
+## 4. LTV計測的安裝
 
-会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
+通過在會員登錄，教程突破，消費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。如果不做LTV計測，可以省略本項目的安裝。
 
 ```objective-c
 #import "Ltv.h"
@@ -184,9 +184,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv sendLtv:{成果地点ID}];
 ```
 
-LTV計測を行うためには、各成果地点を識別する成果地点IDを指定する必要があります。sendLtvの引数に発行されたIDを指定してください。
+為了進行LTV計測，必須指定識別各成果地點的成果地點ID。請指定到sendLtv的參數發行的ID。
 
-課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
+進行消費計測的時候，請按照下面那樣在完成消費處理的地方指定消費額和貨幣代碼。
 
 ```objective-c
 #import "Ltv.h"
@@ -197,17 +197,20 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv sendLtv:{成果地点ID}];
 ```
 
-\_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+在currency這個地方，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
-[タグを利用したLTV計測について](./doc/ltv_browser/README.md)
+[有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
-## 5. アクセス解析の実装
+## 5. 流量分析的安裝
 
-自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。
+自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
 
-アプリケーションの起動、及びバックグラウンドからの復帰を計測するために、application:didFinishLaunchingWithOptions:およびapplicationWillEnterForegroundにコードを追加します。
+為了監測APP的啟動以及從後台恢復到前台，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
 
-※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
+
+※使用background fetch技術的場合，後台啟動狀態下也會調用
+application:didFinishLaunchingWithOptions:方法，為確保不執行Install計測方法，請用applicationState做狀態判定。
+
 
 ```objective-c
 #import "AnalyticsManager.h"
@@ -216,9 +219,9 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     If ([application applicationState] == UIApplicationStateBackground) {
-        //バックグラウンド時の処理
+        //Background時的處理
     } else {
-        //バックグラウンド時は起動計測が呼ばれないようにする
+        //Background狀態下不會被執行
         [ForceAnalyticsManager sendStartSession];
     }
 
@@ -231,91 +234,92 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 //}
 ```
 
-sendStartSessionは必ず上記二カ所に実装を行ってください。
+請一定在上面兩個地方實際安裝sendStartSession。
 
 
-[アクセス解析による課金計測](./doc/analytics_purchase/README.md)
+[依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
 
-## 6. 疎通テストの実施
+## 6. 進行疏通測試
 
-マーケットへの申請までに、SDKを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
+在APP上架申請以前，在導入SDK的狀態請做充分的測試，以確保APP的動作沒有問題。
 
-インストール計測の通信は、起動後に一度のみ行わるため、続けて効果測定テストを行いたい場合には、アプリケーションをアンインストールし、再度インストールから行ってください。
+由於在啟動後只發生一次Install計測的通信，如果想要再次進行Install計測的話，請卸載APP再次安裝
 
-* **テスト手順**
+**測試步驟**
 
-1. テスト用端末にテストアプリがインストールされている場合には、アンインストール
-1. テスト用端末の「設定」→「Safari」→「Cookieとデータを消去」によりCookieを削除
-1. 弊社より発行したテスト用URLをクリック
-1. マーケットへリダイレクト
-1. テスト用端末にテストアプリをインストール<br />
-1. アプリを起動、ブラウザが起動<br />
-ここでブラウザが起動しない場合には、正常に設定が行われていません。設定を見直していただき、問題が見当たらない場合には弊社へご連絡ください。
-1. LTV地点まで画面遷移<br />
-1. アプリを終了し、バックグラウンドからも削除<br />
-1. 再度アプリを起動<br />
+1. 如果測試用的設備已安裝APP，請先卸載掉APP
+1. 透過測試用端末的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
+1. 點擊弊司發行的測試用URL
+1. 再移轉到Market
+1. 在測試用移動終端上安裝測試APP<br />
+1. 啟動APP，瀏覽器啟動<br />
+若流覽器無法啟動，說明沒有正常設定。請重新設定，若仍無法發現問題，請與弊司聯繫。
+1. 把畫面移轉到LTV地點<br />
+1. 結束並從後台關閉APP<br />
+1. 再次啟動APP<br />
 
-弊社へ3、6、7、9の時間をお伝えください。正常に計測が行われているか確認いたします。弊社側の確認にて問題がなければテスト完了となります。
+請告訴鄙司3，6，7，9的時間。在鄙司這邊會確認是否正常被計測。待確認沒有問題的時候，測試算正式完成。
 
-> テスト用URLは必ず標準のSafari上でリクエストされるようにしてください。Chromeなどの3rd partyブラウザ、メールアプリやQRコードアプリを利用されそのアプリ内WebViewで遷移した場合には計測できません。
+> 測試用的URL請務必在標準的Safari裡使用。由於Chrome這樣的第三方瀏覽器，郵件APP，QR碼讀取APP等這些APP內部會用WebView發生跳轉，因此無法進行計測。
 
-> テストURLをクリックした際に、遷移先がなくエラーダイアログが表示される場合がありますが、疎通テストにおいては問題ありません。
+> 點擊測試URL的時候，有時候因沒有跳轉目的地而彈出錯誤對話框，這個不影響疏通測試。
 
 
-[リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
+[Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
-## 7. その他機能の実装
+## 7. 其他機能的安裝
 
-* [プッシュ通知の実装](./doc/notify/README.md)
+* [PUSH通知的安裝](./doc/notify/README.md)
 
-* [オプトアウトの実装](./doc/optout/README.md)
+* [Opt-Out的安裝](./doc/optout/README.md)
 
-* [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
+* [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
 
-## FAQ（よくある質問集）
+## FAQ（常見問題解答）
 
-### F.O.Xで利用するバンドルバージョンとは？
+### F.O.X裡使用的BundleVersion是什麼？
 
-iOSでは、バンドルバージョンと呼ばれるものには具体的に以下の二つがあります。
+在iOS裡BundleVersion具體是指下面兩個值。
 
 * CFBundleVersion
 * CFBundleShortVersionString
 
-F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的で利用します。
+在F.O.X裡，使用上面的CFBundleShortVersionString值來做管理。
 
 
-## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
+## 8. 最後請務必確認（到現在發生過的問題集）
 
-### 8.1. 期待した広告経由のインストール数よりもレポートの数字が低い
+### 8.1. 查看經由廣告進來的安裝數，期待的數字比報告裡的統計數字要低。
 
-インストール計測の`sendConversionWithStartPage:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
+Install計測的`sendConversionWithStartPage:`沒有被安裝到一啟動即執行的地點，在到達那個地點前脫離的用戶將不會被統計。
 
-`sendConversionWithStartPage:`は、特に理由がない限りは`application:didFinishLaunchingWithOptions:`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+沒有特別的理由請將`sendConversionWithStartPage:`安裝在`application:didFinishLaunchingWithOptions:`裡面。安裝在別的地點可能無法正確計測安裝數。
 
-`application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+在沒有安裝`application:didFinishLaunchingWithOptions:`的狀態下投放安裝成果型廣告的時候，請一定事先通知廣告代理店或者媒體負責人。不能正常計測的狀態下投放安裝成果型廣告，可能被要求支付超過計測安裝數的廣告費用。
 
-### 8.2. URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
-Cookie計測を行うために外部ブラウザを起動した後に、元の画面に戻すためにはURLスキームを利用してアプリケーションに遷移させる必要があります。この際、独自のURLスキームが設定されている必要があり、URLスキームを設定せずにリリースした場合にはこのような遷移を行うことができなくなります。
+### 8.2. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
 
-### 8.3. URLスキームに大文字が含まれ、正常にアプリに遷移されない
+為了進行Cookie計測，在啟動外部瀏覽器以後，需要利用URL Scheme跳轉到APP來返回到原來的畫面。這個時候有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
 
-環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。URLスキームは全て小文字で設定を行ってください。
+### 8.3. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
 
-### 8.4. URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
+由於環境的不同，可能無法判別URL Scheme裡的大小寫字母，進而引起不能正常跳轉。因此URL Scheme請全部使用小寫字母來設定。
 
-iOSにおいて、複数のアプリに同一のURLスキームが設定されていた場合に、どのアプリが起動するかは不定です。確実に特定のアプリを起動することができなくなるため、URLスキームは他社製アプリとはユニークになるようある程度の複雑性のあるものを設定してください。
+### 8.4. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
 
-### 8.5. 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
+在iOS裡，如果設定同一個URL Scheme到多個APP，啟動哪個APP是不確定的。因此設定URL Scheme的時候，請使用唯一的有一定複雜度的字符串。
 
-iOSには、アプリ起動時に一定時間以上メインスレッドがブロックされるとアプリケーションを強制終了する仕様があります。起動時の初期化処理など、メインスレッド上でサーバーへの同期通信を行わないようにご注意ください。リワード広告などの大量のユーザーを短時間で獲得した結果、サーバーへのアクセスが集中し、通信のレスポンスが非常に悪くなることでアプリケーションの起動に時間がかかり、起動時に強制終了され正常に広告成果が計測できなくなった事例がございます。
+### 8.5. 進行了在短時間獲得大量用戶的宣傳推廣但無法正常計測
 
-以下の手順で、こうした状況をテストすることができますので、以下の設定でアプリケーションが正常に起動するかをご確認ください。
+在iOS裡，啟動APP時一旦主線程被阻擋超過一定時間，APP獎被強制關閉。啓動時的初期化處理請不要在主線程裡向服務器進行同期通信。像成果報酬型廣告這類的在短時間獲取大量用戶的方式，會產生向服務器的集中訪問，通信響應變得非常差，APP的啟動會花費更長時間，這種狀況下啟動APP會發生強制關閉而無法計測成果的問題。
 
-`iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」``
+這種狀況下請按下面的步驟來測試，按照下面的設定確認APP可否正常啟動。
 
-* 「Enable」をオン
-* 「Very Bad Network」をチェック
+`iOS「設定」→「DEVELOPE」→「NETWORK LINK CONDITIONER」``
+
+* 開啟「Enable」
+* 勾選「Very Bad Network」
 
 ---
-[メインメニュー](/lang/README.md)
+[主菜單](/lang/README.md)

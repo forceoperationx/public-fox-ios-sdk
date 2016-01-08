@@ -1,23 +1,23 @@
-## インストール手順の詳細
+## 安裝步驟的詳細
 
-ダウンロードしたSDK「FOX_iOS_SDK_.zip」を展開し、以下ファイルをXcodeの任意の場所にコピーを行い、アプリケーションのプロジェクトに組み込んでください。
+請解壓下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的開發項目裡。
 
-![インストール01](./img01.png)
+![安裝01](./img01.png)
 
-![インストール02](./img02.png)
+![安裝02](./img02.png)
 
-![インストール03](./img03.png)
+![安裝03](./img03.png)
 
-各ファイルの説明は以下の通りです。
+各文件的說明如下。
 
 <table>
-<tr><th>機能名</th><th>必須?</th><th>ファイル名</th></tr>
-<tr><td>ライブラリ本体</td><td>必須</td><td>libAppAdForce.a</td></tr>
-<tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
-<tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
-<tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
-<tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
+<tr><th>功能名</th><th>必須</th><th>ファイル名</th></tr>
+<tr><td>類庫本身</td><td>必須</td><td>libAppAdForce.a</td></tr>
+<tr><td>Install計測</td><td>必須</td><td>AdManager.h</td></tr>
+<tr><td>LTV計測</td><td>任意</td><td>Ltv.h</td></tr>
+<tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
+<tr><td>PUSH通知</td><td>任意</td><td>Notify.h</td></tr>
 </table>
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)

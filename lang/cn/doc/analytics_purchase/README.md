@@ -1,43 +1,43 @@
-## アクセス解析による課金計測
+## 依靠流量分析進行消費計測
 
-アクセス解析機能を利用し、自然流入経由を含めた広告別の課金計測を行うことができます。LTV計測においても課金を成果地点としている場合には、同一の箇所にLTVとアクセス解析のそれぞれの計測処理を実装してください。
+利用流量分析機能，能夠計測不同廣告流入和自然流入的用戶消費狀況。如果希望在LTV計測地點也做消費計測，請在同一個地點安裝LTV和流量分析的各自的計測處理代碼。
 
-アクセス解析による課金計測を行うために、次のsendEventメソッドを実装します。
+為了依靠流量分析進行消費計測，請安裝下面的sendEvent方法。
 
 ```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label orderID:(NSString*)orderID sku:(NSString*)sku itemName:(NSString*)itemName price:(double)price quantity:(NSUInteger)quantity currency:(NSString*)currency;
 ```
 
-sendEventメソッドのパラメータの仕様は下記の通りです。
+sendEvent方法的參數說明如下。
 
-|パラメータ|型|最大長|概要|
+|參數|型|最大長度|概要|
 |:------|:------:|:------:|:------|
-|eventName|NSString*|255|トラッキングを行うイベントを識別できる任意の名前を設定します。イベント名は自由に設定可能です。|
-|action|NSString*|255|イベントに属するアクション名を設定します。アクション名は自由に設定可能です。特に指定がない場合はnilでも構いません。|
-|label|NSString*|255|アクションに属するラベル名を設定します。ラベル名は自由に設定可能です。特に指定がない場合はnullでも構いません。|
-|orderId|NSString|255|注文番号等を指定します。特に指定がない場合はnilでも構いません。|
-|sku|String|255|商品コード等を指定します。特に指定がない場合はnilでも構いません。|
-|itemName|String|255|商品名を指定します。指定しない場合には空文字@""を設定してください。|
-|price|double||商品単価を指定します。|
-|quantity|NSUInteger||数量を指定します。price * quantityが売上金額として計上されます。|
-|currency|String||通貨コードを指定します。nilの場合は"JPY"が指定されます。|
+|eventName|NSString*|255|設定能夠識別監測Event的任意名稱。可以自由設定。|
+|action|NSString*|255|設定屬於Event的Action名。可以自由設定。不做特別指定的場合可以為nil。|
+|label|NSString*|255|屬於Action的Label名。可以自由設定。不做特別指定的場合可以為nil。|
+|orderId|NSString|255|指定訂單號。不做特別指定的場合可以為nil。|
+|sku|String|255|指定商品代號sku。不做特別指定的場合可以為nil。|
+|itemName|String|255|指定商品名。不指定的場合請設定空文字串@""|
+|price|double||指定商品單價。|
+|quantity|NSUInteger||指定數量。按price * quantity的銷售金額來計算在內。|
+|currency|String||指定貨幣代碼。nil的場合默認指定為"JPY"。|
 
-> currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+> currency請用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
-サンプルとして、以下にアメリカドルで300円の課金を行った場合の実装例を記載致します。
+下面是一個按日幣300日圓消費的安裝實例。
 
 ```objective-c
 #import "Ltv.h"
 
-// LTV計測による課金計測
+// LTV計測形式的消費計測
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv addParameter:LTV_PARAM_PRICE:@"300"];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"JPY"];
 [ltv sendLtv:成果地点ID];
 
-// アクセス解析による課金計測
+// 流量分析形式的消費計測
 [ForceAnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:@"Item A" price:300 quantity:1 currency:@"JPY"];
 ```
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)

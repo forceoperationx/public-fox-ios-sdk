@@ -1,12 +1,12 @@
-## sendConversionWithStartPage:の詳細
+## sendConversionWithStartPage:的詳細
 
-`sendConversionWithStartPage:`メソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザが起動されます。この際、外部ブラウザの遷移先を`sendConversionWithStartPage:`の引数にURL文字列を指定することができます。
+利用`sendConversionWithStartPage:`方法能夠進行Install計測。如果使用Cookie計測手法，外部瀏覽器將被啟動。這個時候，可以把外部瀏覽器的遷移目的地用字符串形式指定到`sendConversionWithStartPage:`的參數裡。
 
-プロジェクトのソースコードを編集し、Application Delegateの`application:didFinishLaunchingWithOptions:`に次の通り実装を行ってください。
+編輯項目的源代碼，請按下面那样来安装到Application Delegate的`application:didFinishLaunchingWithOptions:`里。
 
-> 【ご注意】
-sendConversionWithStartPage:は、特に理由がない限りは`application:didFinishLaunchingWithOptions:`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
-`application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+> 【注意事项】
+沒有特別的理由請將`sendConversionWithStartPage:`安裝在`application:didFinishLaunchingWithOptions:`裡面。安裝在別的地點可能無法正確計測安裝數。
+在沒有安裝`application:didFinishLaunchingWithOptions:`的狀態下投放安裝成果型廣告的時候，請一定事先通知廣告代理店或者媒體負責人。不能正常計測的狀態下投放安裝成果型廣告，可能被要求支付超過計測安裝數的廣告費用。
 
 ```objective-c
 #import "AdManager.h"
@@ -20,36 +20,34 @@ sendConversionWithStartPage:は、特に理由がない限りは`application:did
 // }
 ```
 
-sendConversionWithStartPage:の引数には、通常は上記の通り@"default"という文字列を入力してください。デフォルトでは標準で用意されたページが表示されますが、遷移先のURLをF.O.X管理画面上で任意に設定することが可能です。
+通常在sendConversionWithStartPage:的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在FOX管理畫面裡任意設定遷移目標頁面的URL。
 
 ![sendConversion01](./img01.png)
 
-特定のURLヘ遷移させたい場合や、アプリケーションで動的にURLを生成したい場合には、URLの文字列を設定してください。
+想要遷移至特定URL的場合，或者用APP動態生成URL的場合，請設定URL字符串。
 
 ```objective-c
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"http://yourhost.com/yourpage.html"];
 ```
-
-`sendConversionWithStartPage:`の代わりに`sendConversionWithStartPage:buid:`メソッドを利用し、成果ログに広告主端末IDを付与することができます。例えば、アプリ起動時にUUIDを生成し、初回起動の成果と紐付けて管理したい場合等に、利用できます。
+代替`sendConversionWithStartPage:`使用`sendConversionWithStartPage:buid:`方法、能夠輸出廣告主終端設備ID到成果LOG裡。比如，如果想用APP起動時生成的UUID和初次啟動的成果綁定到一起做管理，可以利用這個方法。
 
 ```objective-c
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"http://yourhost.com/yourpage.html" buid:@"{your uniq id}"];
 ```
-> `sendConversionWithStartPage:buid:`は起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
+> 作為剛啟動後的處理需要實際安裝`sendConversionWithStartPage:buid:`，但像登錄ID這樣的用戶行為相伴的值無法通過參數傳遞。
 
+## Fingerprint計測的注意事項
 
-## Fingerprint計測時の注意事項
-
-Fingerprint計測はWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次のメソッドを必ず実装してください。```objective-c
+Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，將無法正常計測。把WebView的UserAgent定制化成特定字符串之前，請一定安裝下面的方法。```objective-c
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];```
 
-## 3.2.	v2.16g未満からご利用頂いている場合
+## 3.2.	v2.16g以前舊版本的場合
 
-これまでリエンゲージメント計測を実施する際、`didFinishLaunchingWithOptions:`内に
-`setUrlSchemeWithOptions:`メソッドを実装する仕様となっておりましたが、`setUrlScheme:`メソッドに仕様を統合したため、本ドキュメントからは実装の記載を削除しております。
+到現在，進行Reengagement計測的時候，需要在`didFinishLaunchingWithOptions:`裡安裝`setUrlSchemeWithOptions:`方法。由於已經統合到`setUrlScheme:`方法裡了，從本文檔開始不再需要安裝。
 
 [削除]
 ```objective-c
   [[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
 ```
-尚、下位互換性を保つため、これまで通り呼び出すことが可能です。---[TOPへ](/lang/ja/README.md)
+
+此外，為了保持向下兼容性，可以按過去的那種方式來調用。---[TOP](/lang/tw/README.md)

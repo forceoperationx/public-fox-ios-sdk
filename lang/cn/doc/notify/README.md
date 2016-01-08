@@ -1,11 +1,9 @@
-# プッシュ通知機能の実装
-Appleのサーバからデバイストークンを取得し、F.O.Xのサーバへ送信します。取得したデバイストークンを使用して、F.O.Xから端末にプッシュ通知を送信します。
+# PUSH通知的安裝
+從Apple的服務器取得Device Token，發送到F.O.X服務器。使用Device Token從F.O.X向移動設備發送PUSH通知。
 
+## Device Token的取得
 
-## デバイストークンの取得
-
-Appleのサーバに対してデバイストークンを取得要求を行うために、プロジェクトのソースコードを編集し、Application Delegateの`application:didFinishLaunchingWithOptions:`に次の通り実装を行ってください。
-
+為了向Apple服務器要求取得Device Token，編輯項目的源代碼，請按下面那樣來安裝Application Delegate的`application:didFinishLaunchingWithOptions:`。
 
 ```objective-c
 // - (BOOL)application:(UIApplication *)application
@@ -16,7 +14,7 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 
 	// …
 
-	// デバイストークンの取得
+	// 取得Device Token
 	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
 	// iOS8対応
 		[[UIApplication sharedApplication]
@@ -27,7 +25,7 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 												categories:nil]];
 		[[UIApplication sharedApplication] registerForRemoteNotifications];
 	} else {
-		// iOS7以前に対応
+		// iOS7以前版本的對應
 		[[UIApplication sharedApplication]
 			registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 												UIRemoteNotificationTypeSound |
@@ -36,12 +34,14 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 
 // }
 ```
-> デバイストークンの取得は、必ず成果通知を行う F.O.X のメソッド sendConversionWithStartPage の後に実装してください。 (もし既に記述済の場合は、F.O.X のメソッド sendConversionWithStartPage の後に実装するように記述位置を移 動してください)
 
-## Appleから取得したデバイストークンをF.O.Xへ送信
+> Device Token的取得請一定安裝在進行成果通知方法sendConversionWithStartPage的後面。
+（如果已經有了提示說明文，請將安裝到F.O.X方法sendConversionWithStartPage後面的提示說明文移動到合適位置）
 
-デバイストークンの取得に成功した場合、Application Delegateの`didRegisterForRemoteNotificationsWithDeviceToken:`が呼び出されますので、
-取得したデバイストークンをF.O.Xへ送信するために、次の通り実装を行ってください。
+## 發送從Apple取得的Device Token給F.O.X
+
+取得Device Token成功以後，回調用Application Delegate的`didRegisterForRemoteNotificationsWithDeviceToken:`，為了向F.O.X發送取得的Device Token，請按下面那樣編寫代碼。
+
 
 ```objective-c
 #import "Notify.h"
@@ -53,11 +53,11 @@ Appleのサーバに対してデバイストークンを取得要求を行うた
 
 // }
 ```
-devTokenには、Appleから送られてきたデバイストークンが入っています。
+devToken裡存放有從Apple取得的Device Token。
 
-## F.O.Xへの開封通知の送信
+## 發送給F.O.X開封通知
 
-プッシュ通知を受信した際に、F.O.Xへ開封通知を送信するために、Application Delegateの`application:didFinishLaunchingWithOptions:`と`application:didReceiveRemoteNotification:`に下記の実装を行ってください。
+收到PUSH通知的時候，為了向F.O.X發送開封通知，請按下面那樣安裝到Application Delegate的`application:didFinishLaunchingWithOptions:`和`application:didReceiveRemoteNotification:`裡。
 
 
 ```objective-c
@@ -84,17 +84,17 @@ devTokenには、Appleから送られてきたデバイストークンが入っ�
 //}
 ```
 
-> 開封率は、現在は管理画面で確認することは出来ませんが、今後表示を予定しています。
+> 開封比率現在還無法在管理畫面裡確認，將來會提供此機能。
 
 
-## 遷移先指定機能
+## 指定遷移目的地機能
 
-Push通知からアプリを起動した際の遷移先をURLスキーム形式で指定することが可能です。
-遷移先のURLスキームは、FOXの管理画面で設定することができます。
+從PUSH通知來啟動APP的時候，可以通過URL Scheme的形式來指定遷移目的地。
+可以在F.O.X的管理畫面裡設定URL Scheme。
 
-URLスキームでアプリを起動した際に、Application Delegateの`application:openURL:sourceApplication:annotation`が呼び出され、URLスキームを取得出来ます。取得したURLスキームを利用して、アプリ内の任意の場所に遷移させます。
+希望用URL Scheme啟動APP的時候，調用Application Delegate的`application:openURL:sourceApplication:annotation`能夠取得URL Scheme。利用取得的URL Scheme可以遷移到APP內的任意地點。
 
-例として、"myscheme://myhost"というURLスキームでDownloadViewControllerを開くサンプルコードを記します。
+例如，下面是利用"myscheme://myhost"這樣的URL Scheme來打開DownloadViewController的事例代碼。
 
 ```objective-c
 // - (BOOL)application:(UIApplication *)application
@@ -112,4 +112,4 @@ URLスキームでアプリを起動した際に、Application Delegateの`appli
 ```
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)
