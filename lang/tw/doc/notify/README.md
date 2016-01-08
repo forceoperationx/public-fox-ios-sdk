@@ -1,4 +1,4 @@
-# PUSH通知機能的安裝
+# PUSH通知的安裝
 從Apple的服務器取得Device Token，發送到F.O.X服務器。使用Device Token從F.O.X向移動設備發送PUSH通知。
 
 ## Device Token的取得
