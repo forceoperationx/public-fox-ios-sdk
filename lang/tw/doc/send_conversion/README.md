@@ -41,7 +41,7 @@
 Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，將無法正常計測。把WebView的UserAgent定制化成特定字符串之前，請一定安裝下面的方法。```objective-c
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];```
 
-## 3.2.	v2.16g及以前舊版本的場合
+## 3.2.	v2.16g以前舊版本的場合
 
 到現在，進行Reengagement計測的時候，需要在`didFinishLaunchingWithOptions:`裡安裝`setUrlSchemeWithOptions:`方法。由於已經統合到`setUrlScheme:`方法裡了，從本文檔開始不再需要安裝。
 
