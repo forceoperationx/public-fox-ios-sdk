@@ -168,7 +168,7 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（Background）時�
 * **Fingerprint計測的注意事項**
 
 Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，將無法正常計測。
-把WebView的UserAgent定制化成特定字符串之前，請一定安裝下面的方法。
+在定制化WebView的UserAgent處理之前，請務必安裝下面的方法。
 ```objc
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
