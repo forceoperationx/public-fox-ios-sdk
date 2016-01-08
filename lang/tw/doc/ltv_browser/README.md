@@ -56,7 +56,7 @@ Tag的參數式樣如下。
 <tr>
   <td>_currency</td>
   <td>任意</td>
-  <td>半角字母數字3位長度的貨幣代碼。<br />消費計測時請設定。<br />未設定的場合、\會默認把_price設定為JPY(日圓)。</td>
+  <td>半角字母數字3位長度的貨幣代碼。<br />消費計測時請設定。<br />如果未設定、_price默認設定為JPY(日圓)。</td>
 </tr>
 <tr>
   <td>_buid</td>
@@ -65,7 +65,7 @@ Tag的參數式樣如下。
 </tr>
 </table>
 
-\在_currency裡請指定用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼。
+在_currency裡用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
 ---
 [TOP](/lang/tw/README.md)

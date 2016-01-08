@@ -1,6 +1,6 @@
 ## SDK設定的詳細
 
-追加必要的設定讓SDK發揮作用。新建「AppAdForce.plist」這樣一個Property List文件放到項目的任意一個地方，並輸入下面的鍵和值。
+追加必要的設定讓SDK發揮作用。新建「AppAdForce.plist」這樣一個Property List文件放到項目的任意一個地方，並輸入下面的Key和Value。
 
 在任意地點點擊右鍵→選擇「New File...」
 
