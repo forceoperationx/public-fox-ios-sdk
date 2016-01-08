@@ -31,4 +31,4 @@
 > 請注意在步驟3使用的測試URL和步驟9、12使用的Reengagement計測測試用URL是不一樣的。
 
 ---
-[TOP](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)

@@ -40,4 +40,4 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 ```
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOPへ](/lang/tw/README.md)

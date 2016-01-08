@@ -43,4 +43,4 @@
 更新v2.8.1以前的舊版本的SDK的場合，必須追加和嵌入AdSupport.framework。
 
 ---
-[TOP](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)

@@ -68,4 +68,4 @@ Tag的參數式樣如下。
 \在_currency裡請指定用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼。
 
 ---
-[TOP](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)

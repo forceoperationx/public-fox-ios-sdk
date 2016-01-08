@@ -33,4 +33,4 @@
 >用這個方法在F.O.X服務器做查詢，為了減輕負荷，一個用戶每個版本最大5回。超過5回將不能在服務器做查詢，即didLoadVersion:不被調用。如果更新了BundleVersion可以在服務器再做5回查詢。
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOPへ](/lang/tw/README.md)

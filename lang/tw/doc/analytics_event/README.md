@@ -29,4 +29,4 @@ sendEvent方法的參數說明如下。
 ```
 
 ---
-[TOPへ](/lang/ja/README.md)
+[TOPへ](/lang/tw/README.md)

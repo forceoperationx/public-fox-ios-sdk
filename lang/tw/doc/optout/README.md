@@ -10,4 +10,4 @@ if(user.optout) {	[[AppAdForceManager sharedManager] setOptout:YES];}
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 ```
 ---
-[TOPへ](/lang/ja/README.md)
+[TOP](/lang/tw/README.md)
