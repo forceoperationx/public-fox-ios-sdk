@@ -42,7 +42,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 已經在APP裡導入了SDK的話，請參考[有關更新到最新版本](./doc/update/README.md)
 
-請解壓下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
+請展開下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
 
 各文件的說明如下。
 
@@ -205,7 +205,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
 
-為了監測APP的啟動以及從後台恢復到前台，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
+為了計測APP的啟動和計測從後台恢復到前台的活動狀態，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
 
 
 ※使用background fetch技術的場合，後台啟動狀態下也會調用
@@ -300,7 +300,7 @@ Install計測的`sendConversionWithStartPage:`沒有被安裝到一啟動即執�
 
 ### 8.2. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
 
-為了進行Cookie計測，在啟動外部瀏覽器以後，需要利用URL Scheme跳轉到APP來返回到原來的畫面。這個時候有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
+為了進行Cookie計測，在啟動外部瀏覽器以後，要利用URL Scheme跳轉到APP來返回到原來的畫面。這時有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
 
 ### 8.3. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
 
