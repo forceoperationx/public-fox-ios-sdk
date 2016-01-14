@@ -17,7 +17,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 ## 使用APP內WebView的LTV計測
 
-畫面遷移在APP內WebView裡進行的場合，可以利用setLtvCookie。請在生成WebView的地方安裝下面的代碼。多次生成和廢棄WebView的場合，請在生成之際執行setLtvCookie。在內部利用NSHTTPCookieStorage來設定Cookie。
+如果畫面遷移在APP內WebView裡進行，可以利用setLtvCookie。請在生成WebView的地方安裝下面的代碼。多次生成和廢棄WebView的場合，請在生成之際執行setLtvCookie。在內部利用NSHTTPCookieStorage來設定Cookie。
 
 ```objective-c
 #import "Ltv.h"
