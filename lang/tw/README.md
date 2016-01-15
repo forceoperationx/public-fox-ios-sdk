@@ -205,7 +205,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
 
-為了計測APP的啟動和計測從後台恢復到前台的活動狀態，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
+為了計測APP的啟動和計測從後台到前台的恢復，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
 
 
 ※使用background fetch技術的場合，後台啟動狀態下也會調用
