@@ -1,16 +1,16 @@
 # Force Operation X是什麼
 
-Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改善廣告效果的綜合解決方案平台。除了對APP下載量和網絡用戶操作的基本計測外，還能基於手機用戶行为特性採用獨自效果計測基準，實現了企業宣傳推廣时費用与效果比的最大改善。
+Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改善廣告效果的綜合解決方案平台。除了對APP下載量和網絡用戶操作的基本計測外，還能基於手機用戶行為特性採用獨自效果計測基準，實現了企業宣傳推廣时費用与效果比的最大改善。
 
 在這個文檔裡，詳細講解了基於智慧手機平台優化廣告效果的F.O.X SDK的導入步驟。
 
 ## F.O.X SDK是什麼
 
-在APP裡導入F.O.X SDK的方法來實現如下功能。
+在APP中導入F.O.X，可以實現如下功能
 
 * **Install計測**
 
-能够按不同的广告流入来計測安装数。
+能夠按不同的廣告流入來計測安裝數。
 
 * **LTV計測**
 
@@ -20,12 +20,8 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
-* **PUSH通知**
-
-使用F.O.X監測的信息，能夠針對用戶來做PUSH通知。比如，能夠針對特定廣告流入用戶來發送消息。
-
 ## 1. 安裝
-* **按CocoaPods來導入的場合**
+* **使用CocoaPods導入的場合**
 
 請在Podfile文件裡追加下面的設定。
 ```ruby
@@ -34,7 +30,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 ```
 <br />
 
-* **按手冊來導入的場合**
+* **手動導入的場合**
 
 請從下面的頁面來下載最新的SDK。
 
@@ -52,7 +48,6 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>Install計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>任意</td><td>Ltv.h</td></tr>
 <tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
-<tr><td>PUSH通知</td><td>任意</td><td>Notify.h</td></tr>
 </table>
 
 ![安裝步驟](./doc/integration/img01.png)
@@ -67,18 +62,14 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>Framework名</th><th>Status</th></tr>
-<tr><td>SafariServices.framework</td><td>任意</td></tr>
-<tr><td>AdSupport.framework</td><td>任意</td></tr>
-<tr><td>iAd.framework </td><td>必須</td></tr>
-<tr><td>Security.framework </td><td>必須</td></tr>
-<tr><td>StoreKit.framework </td><td>必須</td></tr>
+<tr><td>SafariServices.framework</td><td>Optional</td></tr>
+<tr><td>AdSupport.framework</td><td>Optional</td></tr>
+<tr><td>iAd.framework </td><td>Required</td></tr>
+<tr><td>Security.framework </td><td>Required</td></tr>
+<tr><td>StoreKit.framework </td><td>Required</td></tr>
 </table>
 
-> ※AdSupport.framework是在iOS 6以後追加的Framework，所以如果要讓APP在iOS 5及以前版本也能正常動作(設定iOS Deployment Target到5.1或以下)，為了進行weak link請設定成”任意”。
-
-> ※SafariServices.framework是在iOS 9以後追加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，為了進行weak link請設定成”任意”。
-
-![Framework設定01](./doc/config_framework/img01.png)
+> ※SafariServices.framework是在iOS 9以後追加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，設定成“Optional”進行weak link。
 
 [Framework設定的詳細](./doc/config_framework/README.md)
 
@@ -100,12 +91,12 @@ ANALYTICS_APP_KEY | String | 請輸入Force Operation X管理員告知的值。<
 
 * **關於App Transport Security**
 
-由iOS9提供的AppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，並把使用F.O.X SDK進行通信的域名設置成ATS的例外。
+由iOS9提供的AppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
 
 Key | Type | 概要
 :---: | :---: | :---
 NSExceptionDomains|Dictionary|指定ATS例外的dictionary
-指定域名文字列|Dictionary|請把下面兩個域名做成Key。<br>・app-adforce.jp<br>・forceoperationx.com
+指定的域名字符串|Dictionary|請把下面兩個域名做成Key。<br>・app-adforce.jp<br>・forceoperationx.com
 NSExceptionAllowsInsecureHTTPLoads|Boolean|請指定成YES，設置成ATS的例外。
 NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到子域名。
 
@@ -126,9 +117,9 @@ NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到�
 方法 | 安裝地點 | 概要
 :---: | :---: | :---
 sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初次啟動時的Install計測
-setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（Background）時的參數處理
+setUrlScheme:|openURL:|(必須) 初次啟動的Install計測控制以及URL Scheme的響應處理
 
-請編輯項目的源代碼，按下面那樣來安裝到Application Delegate的`application:didFinishLaunchingWithOptions:`
+請編輯項目的源代碼，仿照下面來安裝到Application Delegate的`application:didFinishLaunchingWithOptions:`
 
 ```objective-c
 #import "AdManager.h"
@@ -138,10 +129,10 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（Background）時�
 
   [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
 
-  return YES; // openURL:為了調用方法請一定返回YES
+  return YES; // 為了調用openURL:請確保返回YES
 // }
 ```
-在`sendConversionWithStartPage:`的參數裡，通常請按上面那樣輸入@"default"這樣的文字列。
+在`sendConversionWithStartPage:`的參數裡，通常請按上面那樣輸入@"default"這樣的字符串。
 
 ```objective-c
 // - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -153,7 +144,7 @@ setUrlScheme:|openURL:|(必須) 透過URLscheme的APP啟動（Background）時�
 // }
 ```
 
-> `sendConversionWithStartPage:`這個方法在iOS9環境且用Cookie計測的時候，請啟動SFSafariViewController來做計測。
+> `sendConversionWithStartPage:`這個方法在iOS9環境且用Cookie計測的時候，啟動SFSafariViewController來做計測。
 
 > `setUrlScheme:`這個方法在廣告經由URL Scheme跳轉到APP的Install計測和啟動SFSafariViewController的時候要進行控制處理，請一定在安裝代碼裡調用`openURL:`方法。
 
@@ -186,7 +177,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 為了進行LTV計測，必須指定識別各成果地點的成果地點ID。請指定到sendLtv的參數發行的ID。
 
-進行消費計測的時候，請按照下面那樣在完成消費處理的地方指定消費額和貨幣代碼。
+進行消費計測的時候，請仿照下面的例子在完成消費處理的地方指定消費額和貨幣代碼。
 
 ```objective-c
 #import "Ltv.h"
@@ -197,7 +188,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv sendLtv:{成果地点ID}];
 ```
 
-在currency這個地方，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
+LTV_PARAM_CURRENCY的值，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
 [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
@@ -205,11 +196,11 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
 
-為了計測APP的啟動和計測從後台到前台的恢復，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡追加代碼。
+為了計測APP的啟動和計測從後台到前台的恢復，請在application:didFinishLaunchingWithOptions:以及applicationWillEnterForeground裡添加代碼。
 
 
 ※使用background fetch技術的場合，後台啟動狀態下也會調用
-application:didFinishLaunchingWithOptions:方法，為確保不執行Install計測方法，請用applicationState做狀態判定。
+application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計測，請用applicationState做狀態判定。
 
 
 ```objective-c
@@ -236,8 +227,9 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行Install計�
 
 請一定在上面兩個地方實際安裝sendStartSession。
 
-
 [依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
+
+[依靠流量分析進行活動計測](./doc/analytics_event/README.md)
 
 ## 6. 進行疏通測試
 
@@ -248,12 +240,12 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行Install計�
 **測試步驟**
 
 1. 如果測試用的設備已安裝APP，請先卸載掉APP
-1. 透過測試用端末的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
+1. 透過測試用設備的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
 1. 點擊弊司發行的測試用URL
 1. 再移轉到Market
-1. 在測試用移動終端上安裝測試APP<br />
+1. 在測試用終端上安裝測試APP<br />
 1. 啟動APP，瀏覽器啟動<br />
-若流覽器無法啟動，說明沒有正常設定。請重新設定，若仍無法發現問題，請與弊司聯繫。
+若流覽器無法啟動，說明沒有正常設定。重新設定後，若仍無法發現問題，請與弊司聯繫。
 1. 把畫面移轉到LTV地點<br />
 1. 結束並從後台關閉APP<br />
 1. 再次啟動APP<br />
@@ -268,8 +260,6 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行Install計�
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
 ## 7. 其他機能的安裝
-
-* [PUSH通知的安裝](./doc/notify/README.md)
 
 * [Opt-Out的安裝](./doc/optout/README.md)
 
@@ -322,4 +312,4 @@ Install計測的`sendConversionWithStartPage:`沒有被安裝到一啟動即執�
 * 勾選「Very Bad Network」
 
 ---
-[主菜單](/lang/README.md)
+[主菜單](../../README.md)
