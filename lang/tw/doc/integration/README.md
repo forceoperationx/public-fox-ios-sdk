@@ -16,7 +16,6 @@
 <tr><td>Install計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>任意</td><td>Ltv.h</td></tr>
 <tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
-<tr><td>PUSH通知</td><td>任意</td><td>Notify.h</td></tr>
 </table>
 
 ---

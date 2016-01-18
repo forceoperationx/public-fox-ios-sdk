@@ -23,7 +23,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 ## 1. 安裝
 * **使用CocoaPods導入的場合**
 
-請在Podfile文件裡追加下面的設定。
+請在Podfile文件裡添加下面的設定。
 ```ruby
 foxVersion = "master"
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
@@ -36,7 +36,9 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 [SDK發布頁面](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
+<!--
 已經在APP裡導入了SDK的話，請參考[有關更新到最新版本](./doc/update/README.md)
+-->
 
 請展開下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
 
@@ -58,7 +60,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 * **Framework設定**
 
-請在項目裡追加下面的Framework。
+請在項目裡添加下面的Framework。
 
 <table>
 <tr><th>Framework名</th><th>Status</th></tr>
@@ -69,13 +71,13 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>StoreKit.framework </td><td>Required</td></tr>
 </table>
 
-> ※SafariServices.framework是在iOS 9以後追加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，設定成“Optional”進行weak link。
+> ※SafariServices.framework是在iOS 9以後添加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，設定成“Optional”進行weak link。
 
 [Framework設定的詳細](./doc/config_framework/README.md)
 
 * **SDK設定**
 
-為使SDK起作用，需要追加必要的設定到plist裡。請在項目的任意地方建立「AppAdForce.plist」文件，並追加下面的Key和Value。
+為使SDK起作用，需要添加必要的設定到plist裡。請在項目的任意地方建立「AppAdForce.plist」文件，並添加下面的Key和Value。
 
 Key | Type | Value
 :---: | :---: | :---

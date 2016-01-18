@@ -1,6 +1,6 @@
 ## sendConversionWithStartPage:的詳細
 
-利用`sendConversionWithStartPage:`方法能夠進行Install計測。如果使用Cookie計測手法，外部瀏覽器將被啟動。這個時候，可以把外部瀏覽器的遷移目的地用字符串形式指定到`sendConversionWithStartPage:`的參數裡。
+利用`sendConversionWithStartPage:`方法能夠進行Install計測。如果使用Cookie計測手法，外部瀏覽器將被啟動。這個時候，可以把外部瀏覽器的跳轉目的地用字符串形式指定到`sendConversionWithStartPage:`的參數裡。
 
 編輯項目的源代碼，請按下面那样来安装到Application Delegate的`application:didFinishLaunchingWithOptions:`里。
 
@@ -15,16 +15,15 @@
 //   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
-[[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
 
 // }
 ```
 
-通常在sendConversionWithStartPage:的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在FOX管理畫面裡任意設定遷移目標頁面的URL。
+通常在sendConversionWithStartPage:的參數裡像上面那樣輸入@"default"。默認是顯示準備好的標準頁面，可以在FOX管理畫面裡任意設定跳轉目標頁面的URL。
 
 ![sendConversion01](./img01.png)
 
-想要遷移至特定URL的場合，或者用APP動態生成URL的場合，請設定URL字符串。
+想要跳轉至特定URL的場合，或者用APP動態生成URL的場合，請設定URL字符串。
 
 ```objective-c
 [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"http://yourhost.com/yourpage.html"];
