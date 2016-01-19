@@ -227,7 +227,7 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 [依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
 
-[依靠流量分析進行活動計測](./doc/analytics_event/README.md)
+[依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
 ## 6. 進行疏通測試
 
