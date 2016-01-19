@@ -239,11 +239,11 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 1. 如果測試用的設備已安裝APP，請先卸載掉APP
 1. 透過測試用設備的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
-1. 點擊弊司發行的測試用URL，複製粘貼到Safari的URL欄裡進行訪問<br />
+1. 複製鄙司發行的測試用URL，粘貼到Safari的URL欄裡進行訪問<br />
 ＊測試用的URL請務必在標準的Safari裡使用。由於Chrome這樣的第三方瀏覽器，郵件APP，QR碼讀取APP等這些APP內部會用WebView發生跳轉，因此無法進行計測。
 1. 畫面移轉到Market<br />
 ＊使用測試URL，可能會因為沒有設定跳轉目的地而彈出錯誤對話框，這個不影響測試。
-1. 在測試用的終端上安裝測試APP<br />
+1. 在測試終端上安裝測試APP<br />
 1. 啟動APP，瀏覽器啟動<br />
 ＊若流覽器無法啟動，說明沒有正常設定。重新設定後，若仍無法發現問題，請與弊司聯繫。
 1. 把畫面移轉到LTV地點<br />
