@@ -3,4 +3,4 @@
 ### LANGUAGE
 * [Japanese](./lang/ja/README.md)
 * [Korean](./lang/ko/README.md)
-* [Chines（Traditional）](./lang/zh-tw/README.md)
+* [Chinese（Traditional）](./lang/zh-tw/README.md)
