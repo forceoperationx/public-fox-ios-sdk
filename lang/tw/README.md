@@ -36,10 +36,6 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 [SDK發布頁面](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
-<!--
-已經在APP裡導入了SDK的話，請參考[有關更新到最新版本](./doc/update/README.md)
--->
-
 請展開下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
 
 各文件的說明如下。
