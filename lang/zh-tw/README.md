@@ -239,22 +239,19 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 1. 如果測試用的設備已安裝APP，請先卸載掉APP
 1. 透過測試用設備的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
-1. 點擊弊司發行的測試用URL，複製粘貼到Safari的URL欄裡進行訪問
-1. 畫面移轉到Market<br>
-※如果沒有告知鄙公司App Store URL信息的情況，或者發布前的APP，
-獎不會跳轉到Market並有可能發生錯誤，這個沒有什麼影響。
+1. 點擊弊司發行的測試用URL，複製粘貼到Safari的URL欄裡進行訪問<br />
+＊測試用的URL請務必在標準的Safari裡使用。由於Chrome這樣的第三方瀏覽器，郵件APP，QR碼讀取APP等這些APP內部會用WebView發生跳轉，因此無法進行計測。
+1. 畫面移轉到Market<br />
+＊使用測試URL，可能會因為沒有設定跳轉目的地而彈出錯誤對話框，這個不影響測試。
 1. 在測試用的終端上安裝測試APP<br />
 1. 啟動APP，瀏覽器啟動<br />
 ＊若流覽器無法啟動，說明沒有正常設定。重新設定後，若仍無法發現問題，請與弊司聯繫。
-1. 把畫面移轉到LTV地點（※如果登錄了LTV地點執行此步驟）<br />
+1. 把畫面移轉到LTV地點<br />
+＊如果登錄了LTV地點執行此步驟
 1. 結束並從後台關閉APP<br />
 1. 再次啟動APP<br />
 
 請告訴鄙司3，6，7，9的時間。在鄙司這邊會確認是否正常被計測。待確認沒有問題的時候，測試算正式完成。
-
-> 測試用的URL請務必在標準的Safari裡使用。由於Chrome這樣的第三方瀏覽器，郵件APP，QR碼讀取APP等這些APP內部會用WebView發生跳轉，因此無法進行計測。
-
-> 點擊測試URL的時候，有時候因沒有跳轉目的地而彈出錯誤對話框，這個不影響疏通測試。
 
 
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
