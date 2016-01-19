@@ -20,7 +20,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
-## 1. 安裝
+## 1. 導入
 * **使用CocoaPods導入的場合**
 
 請在Podfile文件裡添加下面的設定。
@@ -52,9 +52,9 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
 </table>
 
-![安裝步驟](./doc/integration/img01.png)
+![導入步驟](./doc/integration/img01.png)
 
-[安裝步驟的詳細](./doc/integration/README.md)
+[導入步驟的詳細](./doc/integration/README.md)
 
 ## 2. 設定
 
