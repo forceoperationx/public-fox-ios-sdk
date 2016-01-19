@@ -36,4 +36,4 @@ ANALYTICS_APP_KEY | String | 請將由Force Operation X管理者通知的數值�
 [AppAdForce.plist例子](./AppAdForce.plist)
 
 ---
-[TOP](/lang/tw/README.md)
+[TOP](/lang/zh-tw/README.md)

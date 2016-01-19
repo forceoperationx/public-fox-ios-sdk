@@ -112,4 +112,4 @@ devToken裡存放有從Apple取得的Device Token。
 ```
 
 ---
-[TOP](/lang/tw/README.md)
+[TOP](/lang/zh-tw/README.md)

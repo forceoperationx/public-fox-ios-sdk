@@ -49,4 +49,4 @@ Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，�
   [[AppAdForceManager sharedManager] setUrlSchemeWithOptions:launchOptions];
 ```
 
-此外，為了保持向下兼容性，可以按過去的那種方式來調用。---[TOP](/lang/tw/README.md)
+此外，為了保持向下兼容性，可以按過去的那種方式來調用。---[TOP](/lang/zh-tw/README.md)

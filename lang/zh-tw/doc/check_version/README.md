@@ -32,4 +32,4 @@ F.O.X可以利用這個機能來實現控制發布版本和測試版本做不同
 >用這個方法在F.O.X服務器做查詢，為了減輕負荷，一個用戶每個版本最大5回。超過5回將不能在服務器做查詢，或者說didLoadVersion:不被調用。如果更新了BundleVersion可以在服務器再做5回查詢。
 
 ---
-[TOP](/lang/tw/README.md)
+[TOP](/lang/zh-tw/README.md)

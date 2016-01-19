@@ -20,4 +20,4 @@
 ![Framework設定02](./img02.png)
 
 ---
-[TOP](/lang/tw/README.md)
+[TOP](/lang/zh-tw/README.md)
