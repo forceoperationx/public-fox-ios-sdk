@@ -8,7 +8,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "foxSdk"
+  s.name             = "foxSdk.tvos"
   s.version          = "3.0.0"
   s.summary          = "FOX tvOS SDK for global use."
   s.description      = <<-DESC
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   s.author           = "CyberZ inc."
   s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/FOX_iOS_SDK_#{s.version}.zip"}
 
-  s.platform     = :tvOS, "9.0"
+  s.platform     = :tvos, "9.0"
   s.requires_arc = false
 
   s.source_files = "**/*.{h,m}"
