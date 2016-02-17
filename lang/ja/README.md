@@ -233,6 +233,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 sendStartSessionは必ず上記二カ所に実装を行ってください。
 
+[アクセス解析によるイベント計測](./doc/analytics_event/README.md)
 
 [アクセス解析による課金計測](./doc/analytics_purchase/README.md)
 
