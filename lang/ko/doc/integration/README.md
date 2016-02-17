@@ -15,7 +15,6 @@
 <tr><td>인스톨 계측</td><td>필수</td><td>AdManager.h</td></tr>
 <tr><td>LTV 계측</td><td>옵션</td><td>Ltv.h</td></tr>
 <tr><td>액세스 계측</td><td>옵션</td><td>AnalyticsManager.h</td></tr>
-<tr><td>Push 알림</td><td>옵션</td><td>Notify.h</td></tr>
 </table>
 
 ---

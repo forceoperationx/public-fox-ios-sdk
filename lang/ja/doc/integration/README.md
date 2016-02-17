@@ -16,7 +16,6 @@
 <tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
 <tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
-<tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
 ---

@@ -20,10 +20,6 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
 
-* **プッシュ通知**
-
-F.O.Xで計測された情報を使い、ユーザーに対してプッシュ通知を行うことができます。例えば、特定の広告から流入したユーザーに対してメッセージを送ることができます。
-
 ## 1. インストール
 * **CocoaPodsによって導入する場合**
 
@@ -52,7 +48,6 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
 <tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
-<tr><td>プッシュ通知</td><td>オプション</td><td>Notify.h</td></tr>
 </table>
 
 ![インストール手順](./doc/integration/img01.png)
@@ -266,8 +261,6 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
 
 ## 7. その他機能の実装
-
-* [プッシュ通知の実装](./doc/notify/README.md)
 
 * [オプトアウトの実装](./doc/optout/README.md)
 
