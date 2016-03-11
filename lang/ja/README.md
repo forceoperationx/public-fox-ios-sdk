@@ -4,6 +4,27 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
 
+## 目次
+
+* **[1. インストール](#install_sdk)**
+	* [SDKダウンロード](https://github.com/cyber-z/public-fox-ios-sdk/releases)
+  * [インストール手順の詳細](./doc/integration/README.md)
+* **[2. 設定](#setting_sdk)**
+  * [SDK設定の詳細](./doc/config_plist/README.md)
+* **[3. インストール計測の実装](#tracking_install)**
+	* [sendConversionWithStartPage:の詳細](./doc/send_conversion/README.md)
+* **[4. LTV計測の実装](#tracking_ltv)**
+	* [タグを利用したLTV計測について](./doc/ltv_browser/README.md)
+* **[5. アクセス解析の実装](#tracking_analytics)**
+  * [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
+  * [アクセス解析による課金計測](./doc/analytics_purchase/README.md)
+* **[6. 疎通テストの実施](#integration_test)**
+	* [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
+* **[7. その他機能の実装](#other_function)**
+  * [オプトアウトの実装](./doc/optout/README.md)
+  * [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
+* **[8. 最後に必ずご確認ください](#trouble_shooting)**
+
 ## F.O.X SDKとは
 
 F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
@@ -20,6 +41,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
 
+<div id="install_sdk"></div>
 ## 1. インストール
 * **CocoaPodsによって導入する場合**
 
@@ -54,6 +76,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 [インストール手順の詳細](./doc/integration/README.md)
 
+<div id="setting_sdk"></div>
 ## 2. 設定
 
 * **フレームワーク設定**
@@ -110,6 +133,7 @@ NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメ�
 
 [AppAdForce.plistサンプル](./doc/config_plist/AppAdForce.plist)
 
+<div id="tracking_install"></div>
 ## 3. インストール計測の実装
 
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
@@ -168,6 +192,7 @@ WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次�
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
 
+<div id="tracking_ltv"></div>
 ## 4. LTV計測の実装
 
 会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
@@ -196,6 +221,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 [タグを利用したLTV計測について](./doc/ltv_browser/README.md)
 
+<div id="tracking_analytics"></div>
 ## 5. アクセス解析の実装
 
 自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。
@@ -232,6 +258,7 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 [アクセス解析による課金計測](./doc/analytics_purchase/README.md)
 
+<div id="integration_test"></div>
 ## 6. 疎通テストの実施
 
 マーケットへの申請までに、SDKを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
@@ -260,15 +287,18 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
 
+<div id="other_function"></div>
 ## 7. その他機能の実装
 
 * [オプトアウトの実装](./doc/optout/README.md)
 
 * [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
 
-## FAQ（よくある質問集）
 
-### F.O.Xで利用するバンドルバージョンとは？
+<div id="trouble_shooting"></div>
+## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
+
+### 8.1. F.O.Xで利用するバンドルバージョンとは？
 
 iOSでは、バンドルバージョンと呼ばれるものには具体的に以下の二つがあります。
 
@@ -277,10 +307,7 @@ iOSでは、バンドルバージョンと呼ばれるものには具体的に�
 
 F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的で利用します。
 
-
-## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
-
-### 8.1. 期待した広告経由のインストール数よりもレポートの数字が低い
+### 8.2. 期待した広告経由のインストール数よりもレポートの数字が低い
 
 インストール計測の`sendConversionWithStartPage:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
 
@@ -288,19 +315,19 @@ F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的�
 
 `application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
 
-### 8.2. URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### 8.3. URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
 
 Cookie計測を行うために外部ブラウザを起動した後に、元の画面に戻すためにはURLスキームを利用してアプリケーションに遷移させる必要があります。この際、独自のURLスキームが設定されている必要があり、URLスキームを設定せずにリリースした場合にはこのような遷移を行うことができなくなります。
 
-### 8.3. URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### 8.4. URLスキームに大文字が含まれ、正常にアプリに遷移されない
 
 環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。URLスキームは全て小文字で設定を行ってください。
 
-### 8.4. URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
+### 8.5. URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
 
 iOSにおいて、複数のアプリに同一のURLスキームが設定されていた場合に、どのアプリが起動するかは不定です。確実に特定のアプリを起動することができなくなるため、URLスキームは他社製アプリとはユニークになるようある程度の複雑性のあるものを設定してください。
 
-### 8.5. 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
+### 8.6. 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
 
 iOSには、アプリ起動時に一定時間以上メインスレッドがブロックされるとアプリケーションを強制終了する仕様があります。起動時の初期化処理など、メインスレッド上でサーバーへの同期通信を行わないようにご注意ください。リワード広告などの大量のユーザーを短時間で獲得した結果、サーバーへのアクセスが集中し、通信のレスポンスが非常に悪くなることでアプリケーションの起動に時間がかかり、起動時に強制終了され正常に広告成果が計測できなくなった事例がございます。
 
@@ -312,4 +339,4 @@ iOSには、アプリ起動時に一定時間以上メインスレッドがブ�
 * 「Very Bad Network」をチェック
 
 ---
-[メインメニュー](/lang/README.md)
+[メインメニュー](/README.md)
