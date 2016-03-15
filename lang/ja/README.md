@@ -135,7 +135,7 @@ NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメ�
 
 * **Swift Bridging Headerの編集**
 
-Swiftで開発する場合下記の記載をBridging Headerファイルに追加してください。
+Swiftで開発する場合下記の記述をBridging Headerファイルに追加してください。
 ```objc
 #import "AdManager.h"
 #import "Ltv.h"
