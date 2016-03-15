@@ -104,7 +104,7 @@ NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到�
 
 [AppAdForce.plist例子](./doc/config_plist/AppAdForce.plist)
 
-* **Swift Bridging Headerの編集**
+* **關於Swift Bridging Header的編輯**
 
 如果是使用Swift來開發，請把下列代碼添加到Bridging Header文件中。
 ```objc
