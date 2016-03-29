@@ -104,6 +104,15 @@ NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到�
 
 [AppAdForce.plist例子](./doc/config_plist/AppAdForce.plist)
 
+* **關於Swift Bridging Header的編輯**
+
+如果是使用Swift來開發，請把下列代碼添加到Bridging Header文件中。
+```objc
+#import "AdManager.h"
+#import "Ltv.h"
+#import "AnalyticsManager.h"
+```
+
 ## 3. Install計測的安裝
 
 安裝了初次啟動時的Install計測處理，就能夠測定廣告效果了。
