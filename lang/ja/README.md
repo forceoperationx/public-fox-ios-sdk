@@ -134,6 +134,15 @@ NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメ�
 
 [AppAdForce.plistサンプル](./doc/config_plist/AppAdForce.plist)
 
+* **Swift Bridging Headerの編集**
+
+Swiftで開発する場合下記の記述をBridging Headerファイルに追加してください。
+```objc
+#import "AdManager.h"
+#import "Ltv.h"
+#import "AnalyticsManager.h"
+```
+
 <div id="tracking_install"></div>
 ## 3. インストール計測の実装
 
