@@ -1,6 +1,6 @@
 # Force Operation X 란?
 
-Force Operation X (이하 F.O.X)는 스마트폰의 광고 효과 최적화를 위한 토탈 솔루션 플랫폼 입니다. 앱의 다운로드, 웹상에서의 사용자 액션의 측정은 물론, 스마트폰 사용자의 행동 특성에 근거한 독자적인 효과측정기준을 바탕으로 기업의 프로모션의 비용효과를 극대화 할 수 있습니다.
+Force Operation X (이하 F.O.X)는 스마트폰의 광고 효과 최적화를 위한 토탈 솔루션 플랫폼 입니다. 앱의 다운로드, 웹상에서의 사용자 액션의 측정은 물론, 스마트폰 사용자의 행동 특성에 근거한 독자적인 효과 측정기준을 바탕으로 기업의 프로모션의 비용효과를 극대화 할 수 있습니다.
 
 본 문서에서는 스마트폰 앱의 광고 효과 극대화를 위한 F.O.X SDK 설치 단계에 대해 설명합니다.
 
@@ -23,7 +23,8 @@ F.O.X SDK를 앱에 설치함으로써 아래와 같은 기능을 제공합니�
 ## 1. 설치
 * **CocoaPods 이용**
 
-Podfileファイルに下記の設定を追加してください。
+Podfile 파일에 다음의 설정을 추가합니다.
+
 ```ruby
 foxVersion = "master"
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
@@ -40,7 +41,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 다운로드한 SDK　「FOX_iOS_SDK_<version>.zip」의 압축을 풀고, 앱의 프로젝트에 추가합니다.
 
-각 파일의 설명은 하기와 같습니다.
+각 파일의 설명은 다음과 같습니다.
 
 <table>
 <tr><th>기능명</th><th>필수</th><th>파일명</th></tr>
@@ -58,7 +59,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 * **프레임워크 설정**
 
-하기의 프레임워크를 프로젝트에 추가해 주십시오.
+다음의 프레임워크를 프로젝트에 추가해 주십시오.
 
 <table>
 <tr><th>프레임워크명</th><th>Status</th></tr>
@@ -70,10 +71,10 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 </table>
 
 > ※AdSupport.framework는 iOS 6 이후에 추가된 프레임워크이기 때문에, 앱을 iOS 5 이전의 버전에서도 동작
-하기 (iOS Deployment Target을 5.1 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
+하도록 하기 (iOS Deployment Target을 5.1 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
 
 > ※SafariServices.framework는 iOS 9 이후에 추가된 프레임워크이기 때문에, 앱을 iOS 8 이전의 버전에서도 동작
-하기 (iOS Deployment Target을 8.4 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
+하도록 하기 (iOS Deployment Target을 8.4 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
 
 ![フレームワーク設定01](./doc/config_framework/img01.png)
 
@@ -103,7 +104,7 @@ iOS9 부터 제공된 AppTransportSecurity(이하, ATS)를 유효로 한 경우,
 키 | 타입 | 개요
 :---: | :---: | :---
 NSExceptionDomains|Dictionary|ATS의 예외를 지정하는 딕셔너리
-지정 도메인 문자열|Dictionary|이하 두개의 도메인을 키로 작성해 주십시오. <br>・app-adforce.jp<br>・forceoperationx.com
+지정 도메인 문자열|Dictionary|다음의 두개의 도메인을 키로 작성해 주십시오. <br>・app-adforce.jp<br>・forceoperationx.com
 NSExceptionAllowsInsecureHTTPLoads|Boolean|YES로 지정하여 ATS의 에외로 지정합니다.
 NSIncludesSubdomains|Boolean|YES로 지정하여 ATS의 예외설정을 서브 도메인도 적용합니다.
 
@@ -119,7 +120,7 @@ NSIncludesSubdomains|Boolean|YES로 지정하여 ATS의 예외설정을 서브 �
 또, iOS9 부터 초기 기동시의 브라우저가 기동한 후 앱 화면으로 복귀시, 다이얼로그가 표시됩니다.
 F.O.X SDK에서는 iOS9에서 릴리스 된 새로운 WebView 형식인 “SFSafariViewController”을 초기 기동 시에 기동시켜 측정하는것으로, 다이얼로그 표시에 따른 유저빌리티의 저하를 방지할 수 있습니다.
 
-인스톨 계측을 하기 위해서는, 하기의 2개의 메소드를 구현합니다.
+인스톨 계측을 하기 위해서는, 다음의 2개의 메소드를 구현합니다.
 
 메소드 | 구현장소 | 개요
 :---: | :---: | :---
@@ -187,7 +188,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 ```
 LTV 계측을 하기 위해서는, 각 성과 지점을 식별하는 성과지점 ID를 지정할 필요가 있습니다. sendLtv의 매개변수에 발행된 ID를 지정해 주십시오.
 
-과금 계측을 하는 경우에는, 과금이 완료된 장소에 하기와 같이 과금액과 통화코드를 지정해 주십시오.
+과금 계측을 하는 경우에는, 과금이 완료된 장소에 다음과 같이 과금액과 통화코드를 지정해 주십시오.
 
 ```objective-c
 #import "Ltv.h"
