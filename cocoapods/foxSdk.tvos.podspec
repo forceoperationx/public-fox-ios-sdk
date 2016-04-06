@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     :text => "Copyright © CyberZ, inc. All Rights Reserved."
   }
   s.author           = "CyberZ inc."
-  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/FOX_iOS_SDK_#{s.version}.zip"}
+  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/FOX_tvOS_SDK_#{s.version}.zip"}
 
   s.platform     = :tvos, "9.0"
   s.requires_arc = false
