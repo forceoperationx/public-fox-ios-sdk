@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "foxSdk.tvos"
-  s.version          = "3.0.0"
+  s.version          = "3.1.0"
   s.summary          = "FOX tvOS SDK for global use."
   s.description      = <<-DESC
                        Pod integration for F.O.X SDK
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
     :text => "Copyright © CyberZ, inc. All Rights Reserved."
   }
   s.author           = "CyberZ inc."
-  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/FOX_iOS_SDK_#{s.version}.zip"}
+  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/FOX_tvOS_SDK_#{s.version}.zip"}
 
   s.platform     = :tvos, "9.0"
   s.requires_arc = false
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.public_header_files = "**/*.h"
 
-  s.frameworks = "Foundation", "Security", "StoreKit", "AdSupport"
+  s.frameworks = "Foundation", "Security", "StoreKit", "AdSupport", "SystemConfiguration"
 
   s.xcconfig = { "LIBRARY_SEARCH_PATHS" => "$(PODS_ROOT)/#{s.name}" }
 
