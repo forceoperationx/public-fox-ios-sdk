@@ -4,29 +4,29 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 在這個文檔裡，詳細講解了基於智慧手機平台優化廣告效果的F.O.X SDK的導入步驟。
 
-## 目次
+## 目錄
 
-* **[1. インストール](#install_sdk)**
-	* [SDKダウンロード](https://github.com/cyber-z/public-fox-ios-sdk/releases)
-  * [インストール手順の詳細](./doc/integration/README.md)
+* **[1. 導入](#install_sdk)**
+	* [SDK下載](https://github.com/cyber-z/public-fox-ios-sdk/releases)
+  * [導入步驟的詳細](./doc/integration/README.md)
 * **[2. 設定](#setting_sdk)**
-  * [SDK設定の詳細](./doc/config_plist/README.md)
-* **[3. インストール計測の実装](#tracking_install)**
-	* [sendConversionWithStartPage:の詳細](./doc/send_conversion/README.md)
-* **[4. LTV計測の実装](#tracking_ltv)**
-	* [タグを利用したLTV計測について](./doc/ltv_browser/README.md)
-* **[5. アクセス解析の実装](#tracking_analytics)**
-  * [アクセス解析によるイベント計測](./doc/analytics_event/README.md)
-  * [アクセス解析による課金計測](./doc/analytics_purchase/README.md)
-  * [エンゲージメント配信について](./doc/fox_engagement/README.md)
-* **[6. 広告配信機能](#fox_trade)**
-	* [広告配信機能の詳細](./doc/fox_trade/README.md)
-* **[7. 疎通テストの実施](#integration_test)**
-	* [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
-* **[8. その他機能の実装](#other_function)**
-  * [オプトアウトの実装](./doc/optout/README.md)
-  * [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
-* **[9. 最後に必ずご確認ください](#trouble_shooting)**
+  * [SDK設定的詳細](./doc/config_plist/README.md)
+* **[3. Install計測的安裝](#tracking_install)**
+	* [sendConversionWithStartPage:的詳細](./doc/send_conversion/README.md)
+* **[4. LTV計測的安裝](#tracking_ltv)**
+	* [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
+* **[5. 流量分析的安裝](#tracking_analytics)**
+  * [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
+  * [依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
+  * [關於Engagement廣告投放](./doc/fox_engagement/README.md)
+* **[6. 廣告投放機能](#fox_trade)**
+	* [廣告投放機能的詳細](./doc/fox_trade/README.md)
+* **[7. 進行疏通測試](#integration_test)**
+	* [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
+* **[8. 其他機能的安裝](#other_function)**
+  * [Opt-Out的安裝](./doc/optout/README.md)
+  * [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
+* **[9. 最後請務必確認](#trouble_shooting)**
 ## F.O.X SDK是什麼
 
 在APP中導入F.O.X，可以實現如下功能
@@ -43,9 +43,9 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
-* **広告配信**
+* **廣告投放**
 
-アプリ内に相互集客広告を表示させることができます。尚、広告表示が不要の場合には、本項目の実装を省略できます。
+能夠在APP內部表示互動推廣廣告。如果不需要顯示該廣告，可以省略本章節的安裝。
 
 <div id="install_sdk"></div>
 ## 1. 導入
@@ -62,7 +62,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 請從下面的頁面來下載最新的SDK。
 
-[SDK發布頁面](https://github.com/cyber-z/public_fox_ios_sdk/releases)
+[SDK下載](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
 請展開下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
 
@@ -270,42 +270,42 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 [依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
 
-[エンゲージメント配信について](./doc/fox_engagement/README.md)
+[關於Engagement廣告投放](./doc/fox_engagement/README.md)
 
 <div id="fox_trade"></div>
-## 6. 広告配信機能
+## 6. 廣告投放機能
 
-本機能を利用することで相互集客広告を表示させることができます。
-尚、広告表示が不要の場合には、本項目の実装を省略できます。
-表示する広告の種類は以下の２つとなります。
+能夠在APP內部表示相互推廣獲得客源的廣告。
+如果不需要顯示該廣告，可以省略本章節的安裝。
+可以顯示的廣告種類有以下兩種。
 
-* バナー広告
-* インタースティシャル広告
+* 橫幅廣告（Banner Ad）
+* 插播廣告（Interstitial Ad）
 
-### 6.1 バナー広告表示の実装
+### 6.1 橫幅廣告表示的安裝
 
-`placementId`には管理者より発行される`広告表示ID`を指定してください。
+請在`placementId`裡指定管理員發行的`広告表示ID`。
 
 ```objc
-NSString* placementId = xxx; // 管理者より発行される
-CGRect frame = xxx;// 指定したい場所とサイズ
+NSString* placementId = xxx; // 管理員發行
+CGRect frame = xxx;// 想要指定的場所和尺寸
 DLBannerView* adView = [][DLBannerView alloc] initWithFrame:frame];
 adView.placementId = placementId;
 [parentView addSubview:adView];
 [adView show];
 ```
 
-### 6.2 インタースティシャル広告表示の実装
+### 6.2 插播廣告表示的安裝
 
-`placementId`には管理者より発行される`広告表示ID`を指定してください。
+請在`placementId`裡指定管理員發行的`広告表示ID`。
 
 ```objc
 // 表示
-NSString* placementId = xxx; // 管理者より発行される
+NSString* placementId = xxx; // 管理員發行
 [DLInterstitialViewController showInterstitial:placementId InController:currentViewCtrl];
 ```
 
-[広告配信機能の詳細](./doc/fox_trade/README.md)
+[廣告投放機能的詳細](./doc/fox_trade/README.md)
 
 <div id="integration_test"></div>
 ## 7. 進行疏通測試
