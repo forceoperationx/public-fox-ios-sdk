@@ -27,6 +27,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
   * [Opt-Out的安裝](./doc/optout/README.md)
   * [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
 * **[9. 最後請務必確認](#trouble_shooting)**
+
 ## F.O.X SDK是什麼
 
 在APP中導入F.O.X，可以實現如下功能
