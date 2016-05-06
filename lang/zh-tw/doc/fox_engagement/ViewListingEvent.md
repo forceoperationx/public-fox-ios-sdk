@@ -1,8 +1,8 @@
-#	View Listing（複数商品閲覧イベント）実装方法
+#	View Listing（多個商品閱覽事件）安裝方法
 
-　View Listing（検索結果・一覧画面）イベントが発生する箇所に、下記に従ってアクセス解析のイベント計測機能を実装ください。上位３つの商品が計測されます。
+　在View Listing（檢索結果・一覽畫面）事件發生的地點、請按照下面的例子來安裝流量分析的事件計測功能。先頭的3個商品被計測。
 
-### 実装例
+### 安裝實例
 
 ```objective-c
 [ForceAnalyticsManager sendEvent:@"_view_listing"
@@ -23,28 +23,27 @@
 ];
 ```
 
-### 引数詳細
+### 參數詳細
 
-| 引数 | 型 | 概要 |
+| 參數 | 型 | 概要 |
 |:----------|:-----------:|:------------|
-|eventName|NSString|"\_view\_listing"を指定してください。|
-|<span style="color:grey">action|<span style="color:grey">NSString|<span style="color:grey">使用しません。|
-|<span style="color:grey">label|<span style="color:grey">NSString|<span style="color:grey">使用しません。|
-|<span style="color:grey">value|<span style="color:grey">NSUInteger|<span style="color:grey">使用しません。|
-|eventInfo|NSDictionary|イベント情報詳細 (以下参照)|
+|eventName|NSString|請指定"\_view\_listing"|
+|<span style="color:grey">action|<span style="color:grey">NSString|<span style="color:grey">不使用。|
+|<span style="color:grey">label|<span style="color:grey">NSString|<span style="color:grey">不使用。|
+|<span style="color:grey">value|<span style="color:grey">NSUInteger|<span style="color:grey">不使用。|
+|eventInfo|NSDictionary|事件資訊詳細 (參考下面)|
 
-#### イベント情報詳細
+#### 事件資訊詳細
 
-| 引数 | 型 | 概要 |
+| 參數 | 型 | 概要 |
 |:----------|:-----------:|:------------|
-|eventInfo (product)|NSDictionary|Product をキーとして商品IDを配列で設定します。
-|&nbsp;&nbsp;eventInfo (product[].id)|NSDictionary|商品IDを設定します。<br>データフィードと同じ商品IDを使⽤してください。|
-|&nbsp;&nbsp;eventInfo (product[].category)|NSDictionary|商品カテゴリを設定します。<br>データフィードと同じ商品カテゴリを使用してください。<br>１商品に対して複数カテゴリある場合はカンマ「,」区切り、階層がある場合は「>」で分割します。<br>例）映画、ビデオ>DVD>スポーツ、レジャー<br>※ nilでも構いません。|
-|eventInfo (din/dout)|NSDictionary|⽇付の指定がある場合は⼊⼒してください。（任意）|
-|eventInfo (criteo_partner_id)|NSDictionary|Criteo アカウントID が同⼀アプリで異なる場合は⼊⼒(任意)|
-|eventInfo (fox_cvpoint)|NSDictionary|F.O.Xの成果地点IDを設定します。|
+|eventInfo (product)|NSDictionary|把Product作為KEY，用數組形式設定商品ID。|
+|&nbsp;&nbsp;eventInfo (product[].id)|NSDictionary|商品ID<br>請使用和數據字段相同的商品ID。|
+|&nbsp;&nbsp;eventInfo (product[].category)|NSDictionary|設定商品種別。<br>請使用和數據字段相同的商品種別。<br>如果一個商品有多個種別請用「,」區分、分層次請用「>」來分割。<br>例）電影，錄像>DVD>體育，休閑，可以設定成null。|
+|eventInfo (din/dout)|NSDictionary|如果希望指定日期請輸入（任意）|
+|eventInfo (criteo_partner_id)|NSDictionary|Criteo帳號ID在同一個APP裡不一樣的時候請設定。(任意)|
+|eventInfo (fox_cvpoint)|NSDictionary|設定F.O.X的成果地點ID。|
 
 ---
-[戻る](/lang/ja/doc/fox_engagement/README.md)
-
-[TOPへ](/lang/ja/README.md)
+[返回](/lang/zh-tw/doc/fox_engagement/README.md)<br>
+[TOP](/lang/zh-tw/README.md)
