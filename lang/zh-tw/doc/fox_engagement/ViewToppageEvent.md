@@ -1,7 +1,7 @@
-#	View Home(アプリトップ訪問イベント)実装方法
-　View Home（ホーム画面）イベントが発生する箇所に、下記に従ってアクセス解析のイベント計測機能を実装ください。
+#	View Home(APP TOP訪問事件)安裝方法
+　在View Home（HOME畫面）事件發生的地點、請按照下面的例子來安裝流量分析的事件計測功能。
 
-### 実装例
+### 安裝實例
 
 ```objective-c
 [ForceAnalyticsManager sendEvent:@"_view_toppage"
@@ -17,26 +17,25 @@
 ];
 ```
 
-### 引数詳細
+### 参数详细
 
-| 引数 | 型 | 概要 |
+| 參數 | 型 | 概要 |
 |:----------|:-----------:|:------------|
-|eventName|NSString|“\_view\_toppage”を指定してください。|
-|<span style="color:grey">action|<span style="color:grey">NSString|<span style="color:grey">使用しません。|
-|<span style="color:grey">label|<span style="color:grey">NSString|<span style="color:grey">使用しません。|
-|<span style="color:grey">value|<span style="color:grey">NSUInteger|<span style="color:grey">使用しません。|
-|eventInfo|NSDictionary|イベント情報詳細 (以下参照)|
+|eventName|NSString|請指定“\_view\_toppage”|
+|<span style="color:grey">action|<span style="color:grey">NSString|<span style="color:grey">不使用。|
+|<span style="color:grey">label|<span style="color:grey">NSString|<span style="color:grey">不使用。|
+|<span style="color:grey">value|<span style="color:grey">NSUInteger|<span style="color:grey">不使用。|
+|eventInfo|NSDictionary|事件資訊詳細 (參考下面)|
 
 
-#### イベント情報詳細
+#### 事件資訊詳細
 
-| 引数 | 型 | 概要 |
+| 參數 | 型 | 概要 |
 |:----------|:-----------:|:------------|
-|eventInfo (din/dout)|NSDictionary|日付の指定がある場合は入力（任意）|
-|eventInfo (criteo_partner_id)|NSDictionary|CriteoアカウントIDが同一アプリで異なる場合は入力(任意)|
-|eventInfo (fox_cvpoint)|NSDictionary|F.O.Xの成果地点IDを設定します。(任意)|
+|eventInfo (din/dout)|NSDictionary|如果希望指定日期請輸入（任意）|
+|eventInfo (criteo_partner_id)|NSDictionary|Criteo帳號ID在同一個APP裡不一樣的時候請設定。(任意)|
+|eventInfo (fox_cvpoint)|NSDictionary|設定F.O.X的成果地點ID。|
 
 ---
-[戻る](/lang/ja/doc/fox_engagement/README.md)
-
-[TOPへ](/lang/ja/README.md)
+[返回](/lang/zh-tw/doc/fox_engagement/README.md)<br>
+[TOP](/lang/zh-tw/README.md)
