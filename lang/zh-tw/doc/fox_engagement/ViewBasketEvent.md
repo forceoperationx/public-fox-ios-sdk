@@ -39,7 +39,7 @@
 
 | 參數 | 型 | 概要 |
 |:----------|:-----------:|:------------|
-|eventInfo (currency)|NSDictionary|貨幣<br>如果設定為Nil/Null、默認為“JPY”|
+|eventInfo (currency)|NSDictionary|貨幣<br>如果設定為Nil/Nil、默認為“JPY”|
 |eventInfo (fox_cvpoint)|NSDictionary|設定F.O.X的成果地點ID。|
 |eventInfo (product)|JSONArray|把Product作為KEY，用數組形式設定商品ID。|
 |&nbsp;&nbsp;eventInfo (product[].id)|NSDictionary|商品ID<br>請使用和數據字段相同的商品ID。|

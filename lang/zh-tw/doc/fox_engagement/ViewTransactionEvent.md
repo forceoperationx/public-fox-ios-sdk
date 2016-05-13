@@ -57,7 +57,7 @@
 |<span style="color:grey">itemName|<span style="color:grey">NSString|<span style="color:grey">不使用。|
 |price|double|指定商品總額。<br><span style="color:red">※請務必把price * quantity的結果作為商品總額來指定|
 |quantity|NSUInteger|請指定為1。|
-|currency|NSUInteger|指定貨幣代碼。<br>null的場合默認指定為"JPY"。|
+|currency|NSUInteger|指定貨幣代碼。<br>nil的場合默認指定為"JPY"。|
 |eventInfo|NSDictionary|事件資訊詳細 (參考下面)|
 
 #### 事件資訊詳細
@@ -83,7 +83,7 @@
 |&nbsp;&nbsp;datafeed (product[].id)|NSDictionary|能夠專門識別數據字段的商品的ID。|
 |&nbsp;&nbsp;datafeed (product[].action)|NSDictionary|輸入對數據字段的操作。<br>U:添加或編輯　D:刪除|
 |&nbsp;&nbsp;datafeed (product[].name)|NSDictionary|商品名。<br>下面的項目同樣，刪除時可以設定為nil。|
-|&nbsp;&nbsp;datafeed (product[].expire)|NSDictionary|商品的有效期限。<br>請按照「yyyy-MM-dd HH:mm:ss」或者「yyyy-MM-dd」的格式來輸入日期。可以為null。|
+|&nbsp;&nbsp;datafeed (product[].expire)|NSDictionary|商品的有效期限。<br>請按照「yyyy-MM-dd HH:mm:ss」或者「yyyy-MM-dd」的格式來輸入日期。可以為nil。|
 |&nbsp;&nbsp;datafeed (product[].effective)|NSDictionary|商品的公開日期和時間。<br>如果此項被設定，到公開日期和時間為止，商品不會被顯示出來。<br>請按照「yyyy-MM-dd HH:mm:ss」或「yyyy-MM-dd」的格式來輸入日期。可以為nil。|
 |&nbsp;&nbsp;datafeed (product[].img)|NSDictionary|商品的圖像URL。<br>可以為nil。|
 |&nbsp;&nbsp;datafeed (product[].category1)|NSDictionary|指定第一層次的種別。<br>可以為nil。|

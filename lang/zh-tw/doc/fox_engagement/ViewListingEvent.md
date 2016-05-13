@@ -39,7 +39,7 @@
 |:----------|:-----------:|:------------|
 |eventInfo (product)|NSDictionary|把Product作為KEY，用數組形式設定商品ID。|
 |&nbsp;&nbsp;eventInfo (product[].id)|NSDictionary|商品ID<br>請使用和數據字段相同的商品ID。|
-|&nbsp;&nbsp;eventInfo (product[].category)|NSDictionary|設定商品種別。<br>請使用和數據字段相同的商品種別。<br>如果一個商品有多個種別請用「,」區分、分層次請用「>」來分割。<br>例）電影，錄像>DVD>體育，休閑，可以設定成null。|
+|&nbsp;&nbsp;eventInfo (product[].category)|NSDictionary|設定商品種別。<br>請使用和數據字段相同的商品種別。<br>如果一個商品有多個種別請用「,」區分、分層次請用「>」來分割。<br>例）電影，錄像>DVD>體育，休閑，可以設定成nil。|
 |eventInfo (din/dout)|NSDictionary|如果希望指定日期請輸入（任意）|
 |eventInfo (criteo_partner_id)|NSDictionary|Criteo帳號ID在同一個APP裡不一樣的時候請設定。(任意)|
 |eventInfo (fox_cvpoint)|NSDictionary|設定F.O.X的成果地點ID。|
