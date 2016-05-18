@@ -39,7 +39,7 @@
 |:----------|:-----------:|:------------|
 |eventName|String|針對做計測的事件種別來設定指定的Event名稱。|
 |<span style="color:grey">action|<span style="color:grey">String|<span style="color:grey">不使用。|
-|<span style="color:grey">label	|<span style="color:grey">String|<span style="color:grey">不使用。||orderId|String|(任意)指定訂單號。||sku	|String|(任意)指定商品代號sku。||<span style="color:grey">itemName|<span style="color:grey">String|<span style="color:grey">不使用。||<span style="color:grey">value	|<span style="color:grey">int|<span style="color:grey">不使用。||price|double|	指定單價。||quantity|int|	指定數量。<br>按price * quantity來計算銷售額。||currency|String|指定貨幣代碼。null的場合默認指定為"JPY"。||eventInfo|JSONObject|按下面式樣的說明來指定Json。|
+|<span style="color:grey">label	|<span style="color:grey">String|<span style="color:grey">不使用。||orderId|String|(任意)指定訂單號。||sku	|String|(任意)指定商品代號sku。||<span style="color:grey">itemName|<span style="color:grey">String|<span style="color:grey">不使用。||<span style="color:grey">value	|<span style="color:grey">int|<span style="color:grey">不使用。||price|double|	指定商品單價。||quantity|int|	指定數量。<br>按price * quantity來計算銷售額。||currency|String|指定貨幣代碼。null的場合默認指定為"JPY"。||eventInfo|JSONObject|按下面式樣的說明來指定Json。|
 
 ### 1.2. eventInfo式樣
 在eventInfo裡，通過Json形式設定Action附帶的資訊这种方式，能夠進行動態廣告協作投放。Json式樣如下。
