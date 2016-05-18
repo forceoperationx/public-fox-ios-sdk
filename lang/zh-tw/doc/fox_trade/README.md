@@ -2,7 +2,6 @@
 
 ## 1. 必須類庫
 
-* libDahliaSdk.a
 * DLBannerView.h
 * DLInterstitialViewController.h
 * DLAdStateDelegate.h
