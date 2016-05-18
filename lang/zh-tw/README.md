@@ -4,6 +4,30 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 在這個文檔裡，詳細講解了基於智慧手機平台優化廣告效果的F.O.X SDK的導入步驟。
 
+## 目錄
+
+* **[1. 導入](#install_sdk)**
+	* [SDK下載](https://github.com/cyber-z/public-fox-ios-sdk/releases)
+  * [導入步驟的詳細](./doc/integration/README.md)
+* **[2. 設定](#setting_sdk)**
+  * [SDK設定的詳細](./doc/config_plist/README.md)
+* **[3. Install計測的安裝](#tracking_install)**
+	* [sendConversionWithStartPage:的詳細](./doc/send_conversion/README.md)
+* **[4. LTV計測的安裝](#tracking_ltv)**
+	* [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
+* **[5. 流量分析的安裝](#tracking_analytics)**
+  * [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
+  * [依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
+  * [關於Engagement廣告投放](./doc/fox_engagement/README.md)
+* **[6. 廣告投放機能](#fox_trade)**
+	* [廣告投放機能的詳細](./doc/fox_trade/README.md)
+* **[7. 進行疏通測試](#integration_test)**
+	* [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
+* **[8. 其他機能的安裝](#other_function)**
+  * [Opt-Out的安裝](./doc/optout/README.md)
+  * [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
+* **[9. 最後請務必確認](#trouble_shooting)**
+
 ## F.O.X SDK是什麼
 
 在APP中導入F.O.X，可以實現如下功能
@@ -20,6 +44,11 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
+* **廣告投放**
+
+能夠在APP內部表示互動推廣廣告。如果不需要顯示該廣告，可以省略本章節的安裝。
+
+<div id="install_sdk"></div>
 ## 1. 導入
 * **使用CocoaPods導入的場合**
 
@@ -34,7 +63,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 請從下面的頁面來下載最新的SDK。
 
-[SDK發布頁面](https://github.com/cyber-z/public_fox_ios_sdk/releases)
+[SDK下載](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
 請展開下載的SDK「FOX_iOS_SDK_<version>.zip」，把下面的文件複製到Xcode的任意一個地方，並導入到APP的項目裡。
 
@@ -52,6 +81,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 [導入步驟的詳細](./doc/integration/README.md)
 
+<div id="setting_sdk"></div>
 ## 2. 設定
 
 * **Framework設定**
@@ -113,6 +143,7 @@ NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到�
 #import "AnalyticsManager.h"
 ```
 
+<div id="tracking_install"></div>
 ## 3. Install計測的安裝
 
 安裝了初次啟動時的Install計測處理，就能夠測定廣告效果了。
@@ -171,6 +202,7 @@ Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，�
 [[AppAdForceManager sharedManager] cacheDefaultUserAgent];
 ```
 
+<div id="tracking_ltv"></div>
 ## 4. LTV計測的安裝
 
 通過在會員登錄，教程突破，消費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。如果不做LTV計測，可以省略本項目的安裝。
@@ -199,6 +231,7 @@ LTV_PARAM_CURRENCY的值，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_421
 
 [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
+<div id="tracking_analytics"></div>
 ## 5. 流量分析的安裝
 
 自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
@@ -234,11 +267,49 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 請一定在上面兩個地方實際安裝sendStartSession。
 
-[依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
-
 [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
-## 6. 進行疏通測試
+[依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
+
+[關於Engagement廣告投放](./doc/fox_engagement/README.md)
+
+<div id="fox_trade"></div>
+## 6. 廣告投放機能
+
+能夠在APP內部表示相互推廣獲得客源的廣告。
+如果不需要顯示該廣告，可以省略本章節的安裝。
+可以顯示的廣告種類有以下兩種。
+
+* 橫幅廣告（Banner Ad）
+* 插播廣告（Interstitial Ad）
+
+### 6.1 橫幅廣告表示的安裝
+
+請在`placementId`裡指定管理員發行的`広告表示ID`。
+
+```objc
+NSString* placementId = xxx; // 管理員發行
+CGRect frame = xxx;// 想要指定的場所和尺寸
+DLBannerView* adView = [][DLBannerView alloc] initWithFrame:frame];
+adView.placementId = placementId;
+[parentView addSubview:adView];
+[adView show];
+```
+
+### 6.2 插播廣告表示的安裝
+
+請在`placementId`裡指定管理員發行的`広告表示ID`。
+
+```objc
+// 表示
+NSString* placementId = xxx; // 管理員發行
+[DLInterstitialViewController showInterstitial:placementId InController:currentViewCtrl];
+```
+
+[廣告投放機能的詳細](./doc/fox_trade/README.md)
+
+<div id="integration_test"></div>
+## 7. 進行疏通測試
 
 在APP上架申請以前，在導入SDK的狀態請做充分的測試，以確保APP的動作沒有問題。
 
@@ -265,15 +336,17 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
-## 7. 其他機能的安裝
+<div id="other_function"></div>
+## 8. 其他機能的安裝
 
 * [Opt-Out的安裝](./doc/optout/README.md)
 
 * [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
 
-## FAQ（常見問題解答）
+<div id="trouble_shooting"></div>
+## 9. 最後請務必確認（到現在發生過的問題集）
 
-### F.O.X裡使用的BundleVersion是什麼？
+### 9.1. F.O.X裡使用的BundleVersion是什麼？
 
 在iOS裡BundleVersion具體是指下面兩個值。
 
@@ -282,10 +355,7 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 在F.O.X裡，使用上面的CFBundleShortVersionString值來做管理。
 
-
-## 8. 最後請務必確認（到現在發生過的問題集）
-
-### 8.1. 查看經由廣告進來的安裝數，期待的數字比報告裡的統計數字要低。
+### 9.2. 查看經由廣告進來的安裝數，期待的數字比報告裡的統計數字要低。
 
 Install計測的`sendConversionWithStartPage:`沒有被安裝到一啟動即執行的地點，在到達那個地點前脫離的用戶將不會被統計。
 
@@ -294,19 +364,19 @@ Install計測的`sendConversionWithStartPage:`沒有被安裝到一啟動即執�
 在沒有安裝`application:didFinishLaunchingWithOptions:`的狀態下投放安裝成果型廣告的時候，請一定事先通知廣告代理店或者媒體負責人。不能正常計測的狀態下投放安裝成果型廣告，可能被要求支付超過計測安裝數的廣告費用。
 
 
-### 8.2. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
+### 9.3. 未設定URL Scheme發布的APP引起無法從瀏覽器跳轉到APP
 
 為了進行Cookie計測，在啟動外部瀏覽器以後，要利用URL Scheme跳轉到APP來返回到原來的畫面。這時有必要設定獨自的URL Scheme，未設定URL Scheme發布的APP將無法正常跳轉。
 
-### 8.3. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
+### 9.4. URL Scheme裡包含了大寫字母，無法正常跳轉回APP
 
 由於環境的不同，可能無法判別URL Scheme裡的大小寫字母，進而引起不能正常跳轉。因此URL Scheme請全部使用小寫字母來設定。
 
-### 8.4. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
+### 9.5. 由於設定的URL Scheme與其他APP的相同，導致了從瀏覽器跳轉到了其他APP
 
 在iOS裡，如果設定同一個URL Scheme到多個APP，啟動哪個APP是不確定的。因此設定URL Scheme的時候，請使用唯一的有一定複雜度的字符串。
 
-### 8.5. 進行了在短時間獲得大量用戶的宣傳推廣但無法正常計測
+### 9.6. 進行了在短時間獲得大量用戶的宣傳推廣但無法正常計測
 
 在iOS裡，啟動APP時一旦主線程被阻擋超過一定時間，APP獎被強制關閉。啓動時的初期化處理請不要在主線程裡向服務器進行同期通信。像成果報酬型廣告這類的在短時間獲取大量用戶的方式，會產生向服務器的集中訪問，通信響應變得非常差，APP的啟動會花費更長時間，這種狀況下啟動APP會發生強制關閉而無法計測成果的問題。
 
