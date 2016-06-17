@@ -71,10 +71,13 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>功能名</th><th>必須</th><th>ファイル名</th></tr>
-<tr><td>類庫本身</td><td>必須</td><td>libAppAdForce.a</td></tr>
+<tr><td>類庫本身</td><td>必須</td><td>libFoxSdk.a</td></tr>
 <tr><td>Install計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>任意</td><td>Ltv.h</td></tr>
 <tr><td>訪問計測</td><td>任意</td><td>AnalyticsManager.h</td></tr>
+<tr><td>橫幅廣告展示</td><td>任意</td><td>DLBannerView.h</td></tr>
+<tr><td>插播廣告展示</td><td>任意</td><td>DLInterstitialViewController.h</td></tr>
+<tr><td>廣告展示事件處理</td><td>任意</td><td>DLAdStateDelegate.h</td></tr>
 </table>
 
 ![導入步驟](./doc/integration/img01.png)
@@ -95,6 +98,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required</td></tr>
 <tr><td>StoreKit.framework </td><td>Required</td></tr>
+<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
 > ※SafariServices.framework是在iOS 9以後添加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，設定成“Optional”進行weak link。

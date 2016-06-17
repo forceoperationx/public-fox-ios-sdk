@@ -73,10 +73,13 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>機能名</th><th>必須</th><th>ファイル名</th></tr>
-<tr><td>ライブラリ本体</td><td>必須</td><td>libAppAdForce.a</td></tr>
+<tr><td>ライブラリ本体</td><td>必須</td><td>libFoxSdk.a</td></tr>
 <tr><td>インストール計測</td><td>必須</td><td>AdManager.h</td></tr>
 <tr><td>LTV計測</td><td>オプション</td><td>Ltv.h</td></tr>
 <tr><td>アクセス計測</td><td>オプション</td><td>AnalyticsManager.h</td></tr>
+<tr><td>バナー広告配信</td><td>オプション</td><td>DLBannerView.h</td></tr>
+<tr><td>インタースティシャル広告配信</td><td>オプション</td><td>DLInterstitialViewController.h</td></tr>
+<tr><td>広告配信イベント処理</td><td>オプション</td><td>DLAdStateDelegate.h</td></tr>
 </table>
 
 ![インストール手順](./doc/integration/img01.png)
@@ -97,6 +100,7 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 <tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
+<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
 > ※AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
