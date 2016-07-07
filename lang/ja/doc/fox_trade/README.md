@@ -2,7 +2,6 @@
 
 ## 1. 必須ライブラリ
 
-* libDahliaSdk.a
 * DLBannerView.h
 * DLInterstitialViewController.h
 * DLAdStateDelegate.h
@@ -47,15 +46,12 @@
 |void|`+(void) showInterstitial:(NSString* _Nonnull) placementId InController:(UIViewController* _Nonnull) controller WithDelegate:(id<DLAdInterstitialStateDelegate> _Nullable) adDelegate`<br><br>`placementID` : 広告表示ID (管理者より発行されます)<br>`controller` : 親ViewController <br>`adDelegate` : 広告表示のイベントを取得するためのdelegate|インタースティシャル広告を表示するヘルパーメソッド。|
 
 ### DLAdOperation
-|プローパティー|タイプ|詳細|
-|---:|:---|:---|
-|placementId|NSString|広告表示ID(管理者より発行されます)|
 
 |返り値型|メソッド|詳細|
 |---:|:---|:---|
-|void|<br>`-(void) reqestAdInfo:(NSString* _Nonnull) placementId`<br>`　success:(_Nonnull onReceiveAdInfo) success`<br>`　failure:(_Nullable onFailure) failure`<br><br>`placementId` : 広告表示ID (管理者より発行されます)<br>`success` : 成功時のJsonをコールバック<br>`failure` :　失敗時のコールバック<br><br>|バナー広告を表示するための情報をJson形式で取得する|
+|void|<br>`-(void) requestAdInfo:(NSString* _Nonnull) placementId`<br>`　success:(_Nonnull FOXOnReceiveAdInfo) success`<br>`　failure:(_Nullable FOXOnRequestFailed) failure`<br><br>`placementId` : 広告表示ID (管理者より発行されます)<br>`success` : 成功時のJsonをコールバック<br>`failure` :　失敗時のコールバック<br><br>|バナー広告を表示するための情報をJson形式で取得する|
 |void|<br>`+(void) sendImp:(NSString* _Nonnull) placementId`<br>`　impStatus:(BOOL) impStatus`<br>`　sessionId:(NSString* _Nonnull) sessionId`<br><br>`placementId` : 広告表示ID (管理者より発行されます)<br>`impStatus` : 表示有無<br>`sessionId` : APIから取得したセッション情報<br><br>|広告情報が表示されたかを送る|
-|void|<br>`+(void) sendClick:(NSString* _Nonnull) placementId`<br>` sessionId:(NSString* _Nonnull) sessionI`<br><br>`placementId` : 広告表示ID (管理者より発行されます)<br>`sessionId` : APIから取得したセッション情報<br><br>|広告情報がクリックされた時に送る|
+|void|<br>`+(void) sendClick:(NSString* _Nonnull) placementId`<br>` sessionId:(NSString* _Nonnull) sessionId`<br><br>`placementId` : 広告表示ID (管理者より発行されます)<br>`sessionId` : APIから取得したセッション情報<br><br>|広告情報がクリックされた時に送る|
 
 
 ## 5. コードへの組み込み
@@ -134,33 +130,33 @@ NSString* placementId = xxx; // 管理者より発行される
 @property (nonatomic,strong) NSString* placementId; // 管理者より発行される
 @property (nonatomic,strong) NSString *sessionID;   // レスポンスJsonから取得
 
-    // APIから広告表示に必要なデータを取得する
-    DLAdOperation *adOperation = [DLAdOperation new];
-    [adOperation requestAdInfo:self.placementId
-                      success:^(NSDictionary * _Nonnull receiveObject) {
+// APIから広告表示に必要なデータを取得する
+DLAdOperation *adOperation = [DLAdOperation new];
+[adOperation requestAdInfo:self.placementId
+                    success:^(NSDictionary * _Nonnull receiveObject) {
 
-                          dispatch_async(dispatch_get_main_queue(), ^{
+                        dispatch_async(dispatch_get_main_queue(), ^{
 
-                              UIWebView *webView = [UIWebView new];
-                              webView.scalesPageToFit = YES;
-                              webView.delegate = self;
-                              CGRect viewframe = xxx;      // 指定したい場所とサイズ
-                              webView.frame = viewframe
-                              [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:receiveObject[@"curl"]]]];
-                              self.sessionID = receiveObject[@"session"];
-                              [self.view addSubview:webView];
+                            UIWebView *webView = [UIWebView new];
+                            webView.scalesPageToFit = YES;
+                            webView.delegate = self;
+                            CGRect viewframe = xxx;      // 指定したい場所とサイズ
+                            webView.frame = viewframe
+                            [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:receiveObject[@"curl"]]]];
+                            self.sessionID = receiveObject[@"session"];
+                            [self.view addSubview:webView];
 
-                              UIButton *button = [UIButton new];
-                              button.frame = webView.frame;
-                              [button addTarget:self
-                                         action:@selector(adClick:) forControlEvents:UIControlEventTouchUpInside];
-                              [self.view addSubview:button];
-                              [webView bringSubviewToFront:button];
-                          });
-                      }
-                      failure: ^{
-                          NSLog(@"failure");
-                      }];
+                            UIButton *button = [UIButton new];
+                            button.frame = webView.frame;
+                            [button addTarget:self
+                                        action:@selector(adClick:) forControlEvents:UIControlEventTouchUpInside];
+                            [self.view addSubview:button];
+                            [webView bringSubviewToFront:button];
+                        });
+                    }
+                    failure: ^{
+                        NSLog(@"failure");
+                    }];
 
 ```
 
