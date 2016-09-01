@@ -1,3 +1,7 @@
+[TOP](../../README.md)　>　最新バージョンへのアップデートについて
+
+---
+
 ## 最新バージョンへのアップデートについて
 
 以前のF.O.X SDKが導入されたアプリに最新のSDKを導入する際に必要な手順は以下の通りです。
@@ -50,11 +54,11 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 |サーバーURL指定|AppAdForce.plistの記載項目:<br/>`SERVER_URL`<br/>`ANALYTICS_SERVER_URL`|[foxConfig withFOXServerURL:@"xxxxx"];<br>[foxConfig withAnalyticsServerURL:@"yyyyy"];<br>[foxConfig activate];
 |DEBUGモード指定|[adManager setDebugMode:YES]|[foxConfig withDebugMode];<br>[foxConfig activate];
 |UIWebViewで計測指定|[ltv setLtvCookie]|[foxConfig withWebViewTrackingEnabled];<br>[foxConfig activate];
-|インストール計測|[adManager sendConversionWithStartpage:@"default"]|[FOXTrack onLaunch]|
-|リエンゲージメント計測|[adManager setUrlScheme:url]|[FOXTrack handleOpenURL:url]|
-|セッション計測|[ForceAnalyticsManager sendStartSession];|[FOXTrack startSession]|
-|イベント計測<br/>(課金)|[ltv addParameter:LTV_PARAM_PRICE :@"9.99"];<br/>[ltv addParameter:LTV_PARAM_CURRENCY :@"USD"]<br/>[ltv sendLtv:123]<br/> [AnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:nil price:9.99 quantity:1 currency:@"USD";|FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"purchase" andLtvId:123];<br/>event.price = 9.99;<br/>event.currency = @"USD";<br/>[FOXTrack sendEvent:event];|
-|イベント計測<br/>(チュートリアル完了)|[AnalyticsManager sendEvent:@"Tutorial" action:nil label:nil value:0]|[FOXTrack sendEvent:[[FOXEvent alloc] initWithEventName:@"Tutorial"]];|
+|インストール計測|[adManager sendConversionWithStartpage:@"default"]|[CYZFox trackInstall]|
+|リエンゲージメント計測|[adManager setUrlScheme:url]|[CYZFox handleOpenURL:url]|
+|セッション計測|[ForceAnalyticsManager sendtrackSession];|[CYZFox trackSession]|
+|イベント計測<br/>(課金)|[ltv addParameter:LTV_PARAM_PRICE :@"9.99"];<br/>[ltv addParameter:LTV_PARAM_CURRENCY :@"USD"]<br/>[ltv sendLtv:123]<br/> [AnalyticsManager trackEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:nil price:9.99 quantity:1 currency:@"USD";|FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"purchase" andLtvId:123];<br/>event.price = 9.99;<br/>event.currency = @"USD";<br/>[CYZFox trackEvent:event];|
+|イベント計測<br/>(チュートリアル完了)|[AnalyticsManager trackEvent:@"Tutorial" action:nil label:nil value:0]|[CYZFox trackEvent:[[FOXEvent alloc] initWithEventName:@"Tutorial"]];|
 
 
 

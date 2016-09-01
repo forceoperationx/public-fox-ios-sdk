@@ -45,27 +45,27 @@
 
 
 
-<div id="foxtrack"></div>
+<div id="CYZFox"></div>
 
-## 2 FOXTrack
+## 2 CYZFox
 
 #### Static Methods
 
-1. `+(void) onLaunch`
+1. `+(void) trackInstall`
 > インストール後の初回起動計測用メソッド。管理画面で設定した通りに動作する
 
-2. `+(void) onLaunchWithOption:(nonnull FOXTrackOption*) option`
+2. `+(void) trackInstallWithOption:(nonnull CYZFoxOption*) option`
 > インストール後の初回起動計測用メソッド。インストール後の初回起動計測用メソッド。FoxOptionに設定した計測オプションに従い動作する。
-> <br/>@param [`option`](#foxtrackoption) 計測に指定するオプション
+> <br/>@param [`option`](#CYZFoxoption) 計測に指定するオプション
 
 3. `+(void) handleOpenURL:(nonnull NSURL*) url`
 > Cookie計測とリエンゲージメント計測用URL schemeを受け取るメソッド
 > <br/>@param `url` 外部によりアプリを起動させるURL
 
-4. `+(void) startSession`
+4. `+(void) trackSession`
 > セッション計測を行う
 
-5. `+(void) sendEvent:(nonnull FOXEvent*) event`
+5. `+(void) trackEvent:(nonnull FOXEvent*) event`
 > イベント計測を行う
 > <br/>@param [`event`](#foxevent) イベント情報の詳細
 
@@ -84,9 +84,9 @@
 > <br/>@param `redirectURL` イベントタグを埋め込んだ外部のWebページのURL
 
 
-<div id="foxtrackoption"></div>
+<div id="CYZFoxoption"></div>
 
-## 3 FOXTrackOption
+## 3 CYZFoxOption
 
 #### Properties
 |Property|Type|Detail|

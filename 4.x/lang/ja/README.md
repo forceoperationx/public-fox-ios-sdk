@@ -117,7 +117,7 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手動による導入
 
-[https://github.com/cyber-z/public_fox_ios_sdk/releases](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`FOXSDK_iOS_static_<VERSION>.zip`をダウンロードして展開し、`FOXSDK.framework`ファイルをXcodeプロジェクトに組み込んでください。
+[リリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`FOXSDK_iOS_static_<VERSION>.zip`をダウンロードして展開し、`FOXSDK.framework`ファイルをXcodeプロジェクトに組み込んでください。
 
 > ※ 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
@@ -181,8 +181,14 @@ Cookieインストール計測とリエンゲージメント計測を行うた�
 
 APIを使用するため下記importを追加してください。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 #import <FOXSDK/FOXSDK.h>
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+import FOXSDK
 ```
 
 <div id="activate_config"></div>
@@ -191,6 +197,7 @@ APIを使用するため下記importを追加してください。
 
 F.O.X SDKのアクティベーションを行うため、[`FOXConfig`](./doc/sdk_api/README.md#foxconfig)クラスのコンフィギュレーション設定をdidFinishLaunchingWithOptionsメソッド内に実装します。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
@@ -198,6 +205,16 @@ F.O.X SDKのアクティベーションを行うため、[`FOXConfig`](./doc/sdk
 	// ...
 }
 ```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	// ...
+	FOXConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	// ...
+}
+```
+
 > ※ アクティベーションの実装は必ず全ての計測の前に行わなければなりません。
 
 
@@ -208,14 +225,15 @@ F.O.X SDKのアクティベーションを行うため、[`FOXConfig`](./doc/sdk
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
 F.O.X SDKではiOS9からリリースされた新しいWebView形式である `SFSafariViewController` を初回起動時に起動させ計測することで、バックグラウンド表示によるユーザービリティの低下を防止することが出来ます。
 
-以下の[`[FOXTrack onLaunch]`](./doc/sdk_api/README.md#foxtrack)メソッドをアプリケーションの起動時に`didFinishLaunchingWithOptions`メソッド内に実装します。
-また`SFSafariViewController`でのインストール計測を行った後に`SFSafariViewController`を閉じるため、`-(BOOL)application:openURL:sourceApplication:annotation:`メソッド内、`[FOXTrack handleOpenURL:url]`を実装を行ってください。
+以下の[`[CYZFox trackInstall]`](./doc/sdk_api/README.md#CYZFox)メソッドをアプリケーションの起動時に`didFinishLaunchingWithOptions`メソッド内に実装します。
+また`SFSafariViewController`でのインストール計測を行った後に`SFSafariViewController`を閉じるため、`-(BOOL)application:openURL:sourceApplication:annotation:`メソッド内、`[CYZFox handleOpenURL:url]`を実装を行ってください。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
 	[[FOXConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	[FOXTrack onLaunch];
+	[CYZFox trackInstall];
 	// ...
 	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
@@ -223,29 +241,56 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
 	// ...
-    [FOXTrack handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
+    [CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
 	// ...
     return YES;
 }
 ```
 
-> ※ ２回目以降、onLaunchメソッドが呼び出されても動作することはありません。
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	// ...
+	FOXConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	CYZFox.trackInstall()
+	// ...
+	return true
+}
 
-> ※ onLaunchメソッドにはオプションを指定することも可能です。詳細は[インストール計測の詳細](./doc/track_install/README.md)をご確認ください。
+func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        CYZFox.handleOpenURL(url)
+        return true
+}
+```
+
+> ※ ２回目以降、trackInstallメソッドが呼び出されても動作することはありません。
+
+> ※ trackInstallメソッドにはオプションを指定することも可能です。詳細は[インストール計測の詳細](./doc/track_install/README.md)をご確認ください。
 
  * **Fingerprinting計測時の注意事項**
 
  Fingerprinting計測はUIWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
  下記のように計測処理が完了した後にUIWebViewのUserAgentを独自の文字列にカスタマイズを行います。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
  ```objc
- FOXTrackOption* option = [FOXTrackOption new];
+ CYZFoxOption* option = [CYZFoxOption new];
  option.onTrackFinished = ^() {
      NSLog(@"callback after tracking finished");
      // set customize UserAgent
  };
- [FOXTrack onLaunchWithOption:option];
+ [CYZFox trackInstallWithOption:option];
  ```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+
+```Swift
+let option: CYZFoxOption = CYZFoxOption.init()
+option.onTrackFinished = {
+    print("callback after tracking finished")
+}
+CYZFox.trackInstallWithOption(option)
+```
 
 [インストール計測の詳細](./doc/track_install/README.md)
 
@@ -257,37 +302,59 @@ sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id
 
 ### 5.1 カスタマイズURL Schemeによる計測
 
-リエンゲージメント広告の計測（URLスキーム経由の起動を計測）するために、`UIApplicationDelegate`の`openURL`メソッドに`[FOXTrack handleOpenURL:url]`を実装します。
+リエンゲージメント広告の計測（URLスキーム経由の起動を計測）するために、`UIApplicationDelegate`の`openURL`メソッドに`[CYZFox handleOpenURL:url]`を実装します。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
 	// ...
-    [FOXTrack handleOpenURL:url];
+    [CYZFox handleOpenURL:url];
 	// ...
     return YES;
 }
 ```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+	// ...
+  CYZFox.handleOpenURL(url)
+	// ...
+  return true
+}
+```
+
 > ※ リエンゲージメント広告の計測を行うためにはInfo.plistに定義されているカスタムURLスキームが設定されていることが前提となります。
 
 <div id="tracking_reengagement_ulink"></div>
 
 ### 5.2 Universal Linkによる計測
 
-Universal Link対応の場合、`continueUserActivity`メソッドに [5.1](#tracking_reengagement_scheme) と同じ`[FOXTrack handleOpenURL:url]`を実装します。
+Universal Link対応の場合、`continueUserActivity`メソッドに [5.1](#tracking_reengagement_scheme) と同じ`[CYZFox handleOpenURL:url]`を実装します。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application continueUserActivity:(NSUserActivity *) userActivity
 restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
 	// ...
-    [FOXTrack handleOpenURL:userActivity.webpageURL];
+    [CYZFox handleOpenURL:userActivity.webpageURL];
 	// ...
     return YES;
 }
 ```
-> ※ カスタマイズURL SchemeとUniversal Link 両方対応の場合、両方の実装が必要です。
 
-[リエンゲージ計測を行う場合のテストの手順](./doc/reengagement_test/README.md)
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+  // ...
+  CYZFox.handleOpenURL(url)
+  // ...
+  return true
+}
+```
+
+> ※ カスタマイズURL SchemeとUniversal Link 両方対応の場合、両方の実装が必要です。
 
 <div id="tracking_event"></div>
 
@@ -301,8 +368,8 @@ restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
 
 ※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objective-c
-
 - (BOOL)application:(UIApplication *)application
    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
@@ -310,15 +377,31 @@ restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
         //バックグラウンド時の処理
     } else {
         //バックグラウンド時は起動計測が呼ばれないようにする
-        [FOXTrack startSession];
+        [CYZFox trackSession];
     }
 
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 
-    [FOXTrack startSession];
+    [CYZFox trackSession];
 
+}
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+		if application.applicationState == UIApplicationState.Background {
+				//バックグラウンド時の処理
+		} else {
+				//バックグラウンド時は起動計測が呼ばれないようにする
+				CYZFox.startSession()
+		}
+}
+
+func applicationDidEnterBackground(application: UIApplication) {	  
+		CYZFox.startSession()
 }
 ```
 
@@ -330,10 +413,18 @@ restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
 
 **[チュートリアルイベントの計測例]**
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"tuturial" andLtvId:0000];
+FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_tuturial_comp" andLtvId:0000];
 event.buid = @"User ID";
-[FOXTrack sendEvent:event];
+[CYZFox trackEvent:event];
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+let event:FOXEvent = FOXEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
+event.buid = "User ID"
+CYZFox.trackEvent(event)
 ```
 
 > イベント計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。[`FOXEvent`](./doc/sdk_api/README.md#foxevent)クラスのコンストラクタの引数にイベント名と発行されたIDを指定してください。
@@ -342,12 +433,22 @@ event.buid = @"User ID";
 
 課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"purchase"];
+FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_purchase"];
 event.price = 99;
 event.currency = @"JPY";
-event.sku = @"itemId"
-[FOXTrack sendEvent:event];
+event.sku = @"itemId";
+[CYZFox trackEvent:event];
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+let event:FOXEvent = FOXEvent.init(eventName:"_purchase")!
+event.price = 99
+event.currency = "JPY"
+event.sku = "itemId"
+CYZFox.trackEvent(event)
 ```
 
 currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
@@ -374,9 +475,9 @@ F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的�
 
 ### 9.2. 期待した広告経由のインストール数よりもレポートの数字が低い
 
-インストール計測の`onLaunch:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
+インストール計測の`trackInstall:`または`trackInstallWithOption:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
 
-`onLaunch:`は、特に理由がない限りは`application:didFinishLaunchingWithOptions:`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+`trackInstall:`および、`trackInstallWithOption:`は、特に理由がない限りは`application:didFinishLaunchingWithOptions:`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
 
 `application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
 
