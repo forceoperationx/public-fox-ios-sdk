@@ -192,13 +192,13 @@ import FOXSDK
 
 ### 3.2 コンフィギュレーション
 
-F.O.X SDKのアクティベーションを行うため、[`CYZConfig`](./doc/sdk_api/README.md#foxconfig)クラスのコンフィギュレーション設定をdidFinishLaunchingWithOptionsメソッド内に実装します。
+F.O.X SDKのアクティベーションを行うため、[`CYZFoxConfig`](./doc/sdk_api/README.md#foxconfig)クラスのコンフィギュレーション設定をdidFinishLaunchingWithOptionsメソッド内に実装します。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
-	[[CYZConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
 	// ...
 }
 ```
@@ -207,7 +207,7 @@ F.O.X SDKのアクティベーションを行うため、[`CYZConfig`](./doc/sdk
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	// ...
-	CYZConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	// ...
 }
 ```
@@ -229,7 +229,7 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
-	[[CYZConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
 	[CYZFox trackInstall];
 	// ...
 	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
@@ -248,7 +248,7 @@ sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	// ...
-	CYZConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	CYZFox.trackInstall()
 	// ...
 	return true
@@ -273,7 +273,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
  ```objc
- CYZTrackOption* option = [CYZTrackOption new];
+ CYZFoxTrackOption* option = [CYZFoxTrackOption new];
  option.onTrackFinished = ^() {
      NSLog(@"callback after tracking finished");
      // set customize UserAgent
@@ -284,7 +284,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
 ```Swift
-let option: CYZTrackOption = CYZTrackOption.init()
+let option: CYZFoxTrackOption = CYZFoxTrackOption.init()
 option.onTrackFinished = {
     print("callback after tracking finished")
     // set customize UserAgent
@@ -415,19 +415,19 @@ func applicationDidEnterBackground(application: UIApplication) {
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_tuturial_comp" andLtvId:0000];
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_tuturial_comp" andLtvId:0000];
 event.buid = @"User ID";
 [CYZFox trackEvent:event];
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:FOXEvent = FOXEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
 
-> イベント計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。[`FOXEvent`](./doc/sdk_api/README.md#foxevent)クラスのコンストラクタの引数にイベント名と発行されたIDを指定してください。
+> イベント計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。[`CYZFoxEvent`](./doc/sdk_api/README.md#foxevent)クラスのコンストラクタの引数にイベント名と発行されたIDを指定してください。
 
 **[課金イベントの計測例]**
 
@@ -435,7 +435,7 @@ CYZFox.trackEvent(event)
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_purchase"];
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_purchase"];
 event.price = 99;
 event.currency = @"JPY";
 event.sku = @"itemId";
@@ -444,7 +444,7 @@ event.sku = @"itemId";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:FOXEvent = FOXEvent.init(eventName:"_purchase")!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_purchase")!
 event.price = 99
 event.currency = "JPY"
 event.sku = "itemId"

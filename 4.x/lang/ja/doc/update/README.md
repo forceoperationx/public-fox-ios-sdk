@@ -50,15 +50,15 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 #### 2.2 計測の実装箇所
 |計測|4.0.0以前|4.0.0から|
 |---|---|---|
-|基本設定|AppAdForce.plistの記載項目:<br/>`APP_ID`<br/>`APP_SALT`<br/>`ANALYTICS_APP_KEY`|CYZConfig* foxConfig = [CYZConfig configWithAppId:4879<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salt:@"xxxxx" <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appKey:@"yyyyyy"];<br/>[foxConfig activate];|
+|基本設定|AppAdForce.plistの記載項目:<br/>`APP_ID`<br/>`APP_SALT`<br/>`ANALYTICS_APP_KEY`|CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:4879<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salt:@"xxxxx" <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appKey:@"yyyyyy"];<br/>[foxConfig activate];|
 |サーバーURL指定|AppAdForce.plistの記載項目:<br/>`SERVER_URL`<br/>`ANALYTICS_SERVER_URL`|[foxConfig withFOXServerURL:@"xxxxx"];<br>[foxConfig withAnalyticsServerURL:@"yyyyy"];<br>[foxConfig activate];
 |DEBUGモード指定|[adManager setDebugMode:YES]|[foxConfig withDebugMode];<br>[foxConfig activate];
 |UIWebViewで計測指定|[ltv setLtvCookie]|[foxConfig withWebViewTrackingEnabled];<br>[foxConfig activate];
 |インストール計測|[adManager sendConversionWithStartpage:@"default"]|[CYZFox trackInstall]|
 |リエンゲージメント計測|[adManager setUrlScheme:url]|[CYZFox handleOpenURL:url]|
 |セッション計測|[ForceAnalyticsManager sendtrackSession];|[CYZFox trackSession]|
-|イベント計測<br/>(課金)|[ltv addParameter:LTV_PARAM_PRICE :@"9.99"];<br/>[ltv addParameter:LTV_PARAM_CURRENCY :@"USD"]<br/>[ltv sendLtv:123]<br/> [AnalyticsManager trackEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:nil price:9.99 quantity:1 currency:@"USD";|FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"purchase" andLtvId:123];<br/>event.price = 9.99;<br/>event.currency = @"USD";<br/>[CYZFox trackEvent:event];|
-|イベント計測<br/>(チュートリアル完了)|[AnalyticsManager trackEvent:@"Tutorial" action:nil label:nil value:0]|[CYZFox trackEvent:[[FOXEvent alloc] initWithEventName:@"Tutorial"]];|
+|イベント計測<br/>(課金)|[ltv addParameter:LTV_PARAM_PRICE :@"9.99"];<br/>[ltv addParameter:LTV_PARAM_CURRENCY :@"USD"]<br/>[ltv sendLtv:123]<br/> [AnalyticsManager trackEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:nil price:9.99 quantity:1 currency:@"USD";|CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"purchase" andLtvId:123];<br/>event.price = 9.99;<br/>event.currency = @"USD";<br/>[CYZFox trackEvent:event];|
+|イベント計測<br/>(チュートリアル完了)|[AnalyticsManager trackEvent:@"Tutorial" action:nil label:nil value:0]|[CYZFox trackEvent:[[CYZFoxEvent alloc] initWithEventName:@"Tutorial"]];|
 
 
 

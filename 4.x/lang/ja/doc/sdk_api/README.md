@@ -2,7 +2,7 @@
 
 <div id="foxconfig"></div>
 
-## 1. CYZConfig
+## 1. CYZFoxConfig
 
 #### Properties
 |Property|Type|Detail|
@@ -28,7 +28,7 @@
 #### Static Methods
 1.
 ```objc
-+(nullable CYZConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
++(nullable CYZFoxConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
 ```
 > コンストラクタメソッド、必須Propertiesは初期化と同時にセットされます。
 > <br/>@param `appId` 管理画面で発行されたアプリID
@@ -46,9 +46,9 @@
 1. `+(void) trackInstall`
 > インストール後の初回起動計測用メソッド。管理画面で設定した通りに動作する
 
-2. `+(void) trackInstallWithOption:(nonnull CYZTrackOption*) option`
+2. `+(void) trackInstallWithOption:(nonnull CYZFoxTrackOption*) option`
 > インストール後の初回起動計測用メソッド。インストール後の初回起動計測用メソッド。FoxOptionに設定した計測オプションに従い動作する。
-> <br/>@param [`option`](#CYZTrackOption) 計測に指定するオプション
+> <br/>@param [`option`](#CYZFoxTrackOption) 計測に指定するオプション
 
 3. `+(void) handleOpenURL:(nonnull NSURL*) url`
 > Cookie計測とリエンゲージメント計測用URL schemeを受け取るメソッド
@@ -57,7 +57,7 @@
 4. `+(void) trackSession`
 > セッション計測を行う
 
-5. `+(void) trackEvent:(nonnull FOXEvent*) event`
+5. `+(void) trackEvent:(nonnull CYZFoxEvent*) event`
 > イベント計測を行う
 > <br/>@param [`event`](#foxevent) イベント情報の詳細
 
@@ -76,8 +76,8 @@
 > <br/>@param `redirectURL` イベントタグを埋め込んだ外部のWebページのURL
 
 
-<div id="CYZTrackOption"></div>
-## 3 CYZTrackOption
+<div id="CYZFoxTrackOption"></div>
+## 3 CYZFoxTrackOption
 
 #### Properties
 |Property|Type|Detail|
@@ -89,7 +89,7 @@
 
 <div id="foxevent"></div>
 
-## 4 FOXEvent
+## 4 CYZFoxEvent
 
 #### Properties
 |Property|Type|Detail|
@@ -125,7 +125,7 @@
 #### Static Methods
 1.
 ```objc
-+(nullable FOXEvent*) makePurchaseEventWithEventName:(nonnull NSString*) eventName
++(nullable CYZFoxEvent*) makePurchaseEventWithEventName:(nonnull NSString*) eventName
                                                ltvId:(NSUInteger) ltvId
                                                price:(double) price
                                             currency:(nullable NSString*) currency;

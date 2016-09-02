@@ -19,14 +19,14 @@
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_register_account" andLtvId:0000];
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_register_account" andLtvId:0000];
 event.buid = @"User ID";
 [CYZFox trackEvent:event];
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:FOXEvent = FOXEvent.init(eventName:"_register_account", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", andLtvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
@@ -35,14 +35,14 @@ CYZFox.trackEvent(event)
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_tuturial_comp" andLtvId:0000];
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_tuturial_comp" andLtvId:0000];
 event.buid = @"User ID";
 [CYZFox trackEvent:event];
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:FOXEvent = FOXEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
@@ -51,7 +51,7 @@ CYZFox.trackEvent(event)
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-FOXEvent* event = [[FOXEvent alloc] initWithEventName:@"_purchase" andLtvId:0000];
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_purchase" andLtvId:0000];
 event.buid = @"User ID";
 event.price = 99;
 event.currency = @"JPY";
@@ -62,7 +62,7 @@ event.quantity = 2;
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:FOXEvent = FOXEvent.init(eventName:"_purchase")!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_purchase")!
 event.price = 99
 event.currency = "JPY"
 event.sku = "itemId"
@@ -140,18 +140,18 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 
 ### 3.2 アプリ内WebViewでのイベント計測について
 
-ユーザーの遷移がWebView内で行われる場合には、初期化する際に`CYZConfig`の`enableWebViewTracking`を設定ことで計測することができます。
+ユーザーの遷移がWebView内で行われる場合には、初期化する際に`CYZFoxConfig`の`enableWebViewTracking`を設定ことで計測することができます。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-CYZConfig* foxConfig = [CYZConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"yyyyy"];
+CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"yyyyy"];
 [foxConfig enableWebViewTracking];
 [foxConfig activate];
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let foxConfig:CYZConfig = CYZConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")!
+let foxConfig:CYZFoxConfig = CYZFoxConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")!
 foxConfig.enableWebViewTracking()
 foxConfig.activate()
 ```
