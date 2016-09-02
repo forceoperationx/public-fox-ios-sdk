@@ -8,9 +8,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "FOXSDKExDy"
-  s.version          = "1.0.0"
-  s.summary          = "FOX iOS SDK extension for global use."
+  s.name             = "CYZFox"
+  s.version          = "4.0.0"
+  s.summary          = "FOX iOS SDK for global use."
   s.description      = <<-DESC
                        Pod integration for F.O.X SDK
                        DESC
@@ -20,16 +20,11 @@ Pod::Spec.new do |s|
     :text => "Copyright © CyberZ, inc. All Rights Reserved."
   }
   s.author           = "CyberZ inc."
-  s.source           = { :git => "https://github.com/cyber-z/fox-ios-sdk-extension.git", :tag => "#{s.version}" }
-  s.source_files     = "FOXExtension/**/*.{h,m}"
 
-  s.ios.deployment_target  = "8.0"
-  s.tvos.deployment_target = "9.0"
-  s.requires_arc           = true
+  s.platform     = :ios, "7.0"
+  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/CYZFox_iOS_static_#{s.version}.zip"}
+  s.vendored_frameworks = "CYZFox_iOS_static_#{s.version}/CYZFox.framework"
 
-  s.frameworks = "Foundation", "StoreKit"
-
-  s.ios.dependency "FOXSDKDy", "4.0.0"
-  s.tvos.dependency "FOXSDKTvDy", "4.0.0"
+  s.frameworks = "Foundation", "Security", "AdSupport", "SystemConfiguration"
 
 end
