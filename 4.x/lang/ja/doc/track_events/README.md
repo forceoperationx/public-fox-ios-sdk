@@ -99,7 +99,7 @@ NSDictionary* eventInfo = @{
                                                 @"expire" : @"2016-10-31",
                                                 @"effective" : @"2016-04-01",
                                                 @"img" : @"http://pngimg.com/upload/ice_cream_PNG5099.png",
-                                                @"category1" : @"fodd",
+                                                @"category1" : @"food",
                                                 @"price" : @(2750),
                                                 @"currency" : @"JPY"
                                                 }
@@ -108,11 +108,12 @@ NSDictionary* eventInfo = @{
                             };
 
 CYZEvent* event = [[CYZEvent alloc]initWithEventName:@"_purchase"];
-event.price = 1.2;
-event.currency = @"USD";
 event.buid = @"user_001";
+event.price = 2750;
+event.currency = @"JPY";
+event.quantity = 1;
 event.sku = @"ABC789";
-event.quantity = 2;
+event.orderId = "ABCDFE";
 event.eventInfo = eventInfo;
 [CYZFox trackEvent:event];
 ```
