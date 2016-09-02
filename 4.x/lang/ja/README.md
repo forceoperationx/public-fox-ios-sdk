@@ -67,7 +67,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
 # 下記を指定したいターゲットに追加してください
-pod "FOXSDK", "<VERSION>"
+pod "CYZFox", "<VERSION>"
 ```
 
 * **tvOS objective-cで開発する場合**
@@ -76,7 +76,7 @@ pod "FOXSDK", "<VERSION>"
 source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
 # 下記を指定したいターゲットに追加してください
-pod "FOXSDKTv", "<VERSION>"
+pod "CYZFoxTv", "<VERSION>"
 ```
 
 * **iOS Swiftでdynamic frameworkを利用する場合**
@@ -87,7 +87,7 @@ source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 # dynamic frameworkを有効に
 use_frameworks!
 
-pod "FOXSDKDy", "<VERSION>"
+pod "CYZFoxDy", "<VERSION>"
 ```
 
 * **tvOS Swiftでdynamic frameworkを利用する場合**
@@ -98,7 +98,7 @@ source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 # dynamic frameworkを有効に
 use_frameworks!
 
-pod "FOXSDKTvDy", "<VERSION>"
+pod "CYZFoxTvDy", "<VERSION>"
 ```
 > ※ `<VERSION>`は指定したいリリースバージョン、4.0.0以上です。
 
@@ -118,11 +118,11 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手動による導入
 
-[リリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`FOXSDK_iOS_static_<VERSION>.zip`をダウンロードして展開し、`FOXSDK.framework`ファイルをXcodeプロジェクトに組み込んでください。
+[リリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
 
 > ※ 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
-> ※ tvOSの場合`FOXSDK_tvOS_static_<VERSION>.zip`をダウンロードしてください。導入手順はiOSと同じです。
+> ※ tvOSの場合`CYZFox_tvOS_static_<VERSION>.zip`をダウンロードしてください。導入手順はiOSと同じです。
 
 
 <div id="setting_sdk"></div>
@@ -184,12 +184,12 @@ APIを使用するため下記importを追加してください。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-#import <FOXSDK/FOXSDK.h>
+#import <CYZFox/CYZFox.h>
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-import FOXSDK
+import CYZFox
 ```
 
 <div id="activate_config"></div>

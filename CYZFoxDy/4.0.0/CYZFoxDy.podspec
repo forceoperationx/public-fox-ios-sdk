@@ -8,9 +8,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "FOXSDKTv"
+  s.name             = "CYZFoxDy"
   s.version          = "4.0.0"
-  s.summary          = "FOX tvOS SDK for global use."
+  s.summary          = "FOX iOS SDK for global use."
   s.description      = <<-DESC
                        Pod integration for F.O.X SDK
                        DESC
@@ -21,9 +21,9 @@ Pod::Spec.new do |s|
   }
   s.author           = "CyberZ inc."
 
-  s.platform     = :tvos, "9.0"
-  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/FOXSDK_tvOS_static_#{s.version}.zip"}
-  s.vendored_frameworks = "FOXSDK_tvOS_static_#{s.version}/FOXSDK.framework"
+  s.platform     = :ios, "8.0"
+  s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/CYZFox_iOS_dynamic_#{s.version}.framework.zip"}
+  s.vendored_frameworks = "**/iOS/*.framework"
 
   s.frameworks = "Foundation", "Security", "AdSupport", "SystemConfiguration"
 

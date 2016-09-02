@@ -28,7 +28,7 @@ pod "foxSdk"
 ```
 以下のように変更します。
 ```ruby
-pod "FOXSDK"
+pod "CYZFox"
 ```
 
 #### Swiftの場合
@@ -44,7 +44,7 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 #### 2.1 import
 4.0.0からframework libraryのextensionを採用するので、過去のheaderごとのimportを下記のように変更する。
 ```objc
-#import <FOXSDK/FOXSDK.h>
+#import <CYZFox/CYZFox.h>
 #import <FOXExtension/FOXExtension.h> // 需要の場合だけ追加
 ```
 #### 2.2 計測の実装箇所
