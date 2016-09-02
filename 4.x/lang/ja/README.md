@@ -14,6 +14,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [2.1 Frameworkの設定](#setting_framework)
 	* [2.2 App Transport Securityの設定](#setting_ats)
 	* [2.2 URLスキームの設定](#setting_urlscheme)
+	* [SDK API](./doc/sdk_api/README.md)
 * **[3. F.O.X SDKのアクティベーション](#activate_sdk_into_app)**
 	* [3.1 Frameworkのインポート](#activate_import)
 	* [3.1 コンフィギュレーション](#activate_config)
@@ -32,6 +33,9 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 
 ## F.O.X SDKとは
+[![Platform](http://img.shields.io/badge/platform-iOS-blue.svg?style=flat)](http://www.apple.com/ios/)
+[![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)]()
+[![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)]()
 
 F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
 
