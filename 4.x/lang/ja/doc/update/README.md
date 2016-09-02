@@ -52,8 +52,8 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 |---|---|---|
 |基本設定|AppAdForce.plistの記載項目:<br/>`APP_ID`<br/>`APP_SALT`<br/>`ANALYTICS_APP_KEY`|CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:4879<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salt:@"xxxxx" <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appKey:@"yyyyyy"];<br/>[foxConfig activate];|
 |サーバーURL指定|AppAdForce.plistの記載項目:<br/>`SERVER_URL`<br/>`ANALYTICS_SERVER_URL`|[foxConfig withFOXServerURL:@"xxxxx"];<br>[foxConfig withAnalyticsServerURL:@"yyyyy"];<br>[foxConfig activate];
-|DEBUGモード指定|[adManager setDebugMode:YES]|[foxConfig withDebugMode];<br>[foxConfig activate];
-|UIWebViewで計測指定|[ltv setLtvCookie]|[foxConfig withWebViewTrackingEnabled];<br>[foxConfig activate];
+|DEBUGモード指定|[adManager setDebugMode:YES]|[foxConfig enableDebugMode];<br>[foxConfig activate];
+|UIWebViewで計測指定|[ltv setLtvCookie]|[foxConfig enableWebViewTracking];<br>[foxConfig activate];
 |インストール計測|[adManager sendConversionWithStartpage:@"default"]|[CYZFox trackInstall]|
 |リエンゲージメント計測|[adManager setUrlScheme:url]|[CYZFox handleOpenURL:url]|
 |セッション計測|[ForceAnalyticsManager sendtrackSession];|[CYZFox trackSession]|

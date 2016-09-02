@@ -26,6 +26,7 @@
 > 設定した情報をSDK内部で反映する。注意、最初の一回呼ばれる時にだけ設定値が保存される。
 
 #### Static Methods
+
 1.
 ```objc
 +(nullable CYZFoxConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
@@ -34,7 +35,6 @@
 > <br/>@param `appId` 管理画面で発行されたアプリID
 > <br/>@param `salt` 管理画面で発行されたアプリソルト
 > <br/>@param `appKey` 管理画面で発行されたアプリKEY
-
 
 
 <div id="CYZFox"></div>
