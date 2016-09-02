@@ -33,7 +33,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 
 ## F.O.X SDKとは
-[![Platform](http://img.shields.io/badge/platform-iOS-blue.svg?style=flat)](http://www.apple.com/ios/)
+[![Platform](http://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=flat)](http://www.apple.com/ios/)
 [![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)]()
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)]()
 
