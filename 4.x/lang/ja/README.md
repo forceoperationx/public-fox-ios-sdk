@@ -28,8 +28,6 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [イベント計測の詳細](./doc/track_events/README.md)
 * **[7. その他機能の実装](#other_function)**
 	* [オプトアウトの実装](./doc/optout/README.md)
-	* [デバッグログの出力実装](./doc/external_storage/README.md)
-	* [UIWebView内の計測の実装](./doc/auto_backup/README.md)
 * **[8. 最後に必ずご確認ください](#trouble_shooting)**
 
 
@@ -194,13 +192,13 @@ import FOXSDK
 
 ### 3.2 コンフィギュレーション
 
-F.O.X SDKのアクティベーションを行うため、[`FOXConfig`](./doc/sdk_api/README.md#foxconfig)クラスのコンフィギュレーション設定をdidFinishLaunchingWithOptionsメソッド内に実装します。
+F.O.X SDKのアクティベーションを行うため、[`CYZConfig`](./doc/sdk_api/README.md#foxconfig)クラスのコンフィギュレーション設定をdidFinishLaunchingWithOptionsメソッド内に実装します。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
-	[[FOXConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+	[[CYZConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
 	// ...
 }
 ```
@@ -209,7 +207,7 @@ F.O.X SDKのアクティベーションを行うため、[`FOXConfig`](./doc/sdk
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	// ...
-	FOXConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	CYZConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	// ...
 }
 ```
@@ -231,7 +229,7 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
-	[[FOXConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+	[[CYZConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
 	[CYZFox trackInstall];
 	// ...
 	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
@@ -250,7 +248,7 @@ sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	// ...
-	FOXConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	CYZConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	CYZFox.trackInstall()
 	// ...
 	return true
@@ -275,7 +273,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
  ```objc
- CYZFoxOption* option = [CYZFoxOption new];
+ CYZTrackOption* option = [CYZTrackOption new];
  option.onTrackFinished = ^() {
      NSLog(@"callback after tracking finished");
      // set customize UserAgent
@@ -286,7 +284,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
 ```Swift
-let option: CYZFoxOption = CYZFoxOption.init()
+let option: CYZTrackOption = CYZTrackOption.init()
 option.onTrackFinished = {
     print("callback after tracking finished")
     // set customize UserAgent

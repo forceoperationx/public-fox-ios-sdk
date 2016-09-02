@@ -2,7 +2,7 @@
 
 <div id="foxconfig"></div>
 
-## 1. FOXConfig
+## 1. CYZConfig
 
 #### Properties
 |Property|Type|Detail|
@@ -16,27 +16,19 @@
 |webViewTrackingEnabled|BOOL|UIWebViewで計測する機能有効の有無|
 
 #### Instance Methods
-1. `-(nonnull FOXConfig*) withFOXServerURL:(nonnull NSString*) url`
-> デバッグ用、またはHTTPS/HTTPを切り替える用のURLのセッター
-> <br/>@param `url` 切り替える用DeliverサーバーURL暗号化文字列
-
-2. `-(nonnull FOXConfig*) withAnalyticsServerURL:(nonnull NSString*) url`
-> デバッグ用、またはHTTPS/HTTPを切り替える用のURLのセッター
-> <br/>@param `url` 切り替える用アクセス解析サーバーURL暗号化文字列
-
-3. `-(nonnull FOXConfig*) withDebugMode`
+1. `-(void) enableDebugMode`
 > エラー時のメッセージやスタックトレースを表示させる
 
-4. `-(nonnull FOXConfig*) withWebViewTrackingEnabled`
+2. `-(void) enableWebViewTracking`
 > UIWebViewで計測する機能有効にする
 
-5. `-(void) activate`
+3. `-(void) activate`
 > 設定した情報をSDK内部で反映する。注意、最初の一回呼ばれる時にだけ設定値が保存される。
 
 #### Static Methods
 1.
 ```objc
-+(nullable FOXConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
++(nullable CYZConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
 ```
 > コンストラクタメソッド、必須Propertiesは初期化と同時にセットされます。
 > <br/>@param `appId` 管理画面で発行されたアプリID
@@ -54,9 +46,9 @@
 1. `+(void) trackInstall`
 > インストール後の初回起動計測用メソッド。管理画面で設定した通りに動作する
 
-2. `+(void) trackInstallWithOption:(nonnull CYZFoxOption*) option`
+2. `+(void) trackInstallWithOption:(nonnull CYZTrackOption*) option`
 > インストール後の初回起動計測用メソッド。インストール後の初回起動計測用メソッド。FoxOptionに設定した計測オプションに従い動作する。
-> <br/>@param [`option`](#CYZFoxoption) 計測に指定するオプション
+> <br/>@param [`option`](#CYZTrackOption) 計測に指定するオプション
 
 3. `+(void) handleOpenURL:(nonnull NSURL*) url`
 > Cookie計測とリエンゲージメント計測用URL schemeを受け取るメソッド
@@ -84,9 +76,8 @@
 > <br/>@param `redirectURL` イベントタグを埋め込んだ外部のWebページのURL
 
 
-<div id="CYZFoxoption"></div>
-
-## 3 CYZFoxOption
+<div id="CYZTrackOption"></div>
+## 3 CYZTrackOption
 
 #### Properties
 |Property|Type|Detail|

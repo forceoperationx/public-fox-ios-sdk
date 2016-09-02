@@ -10,7 +10,7 @@
 <div id="track_install_basic"></div>
 ## 1. インストール計測の実装
 
-`trackInstall`メソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザ或いは`SFSafariViewController`が起動されます。この際、遷移先を`CYZFoxOption`のインスタンスにURL文字列を指定することができます。
+`trackInstall`メソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザ或いは`SFSafariViewController`が起動されます。この際、遷移先を`CYZTrackOption`のインスタンスにURL文字列を指定することができます。
 
 プロジェクトのソースコードを編集し、アプリケーションの起動時に`didFinishLaunchingWithOptions`メソッド内、次の通り実装を行ってください。
 また`SFSafariViewController`でのインストール計測を行った後に`SFSafariViewController`を閉じるため、`-(BOOL)application:openURL:sourceApplication:annotation:`メソッド内、`[CYZFox handleOpenURL:url]`を実装を行ってください。
@@ -19,7 +19,7 @@
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// ...
-	[[FOXConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+	[[CYZConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
 	[CYZFox trackInstall];
 	// ...
 	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
@@ -37,7 +37,7 @@
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 	// ...
-	FOXConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+	CYZConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	CYZFox.trackInstall()
 	// ...
 }
@@ -58,13 +58,13 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 <div id="track_install_optional"></div>
 ## 2. インストール計測の実装(オプション指定)
 
-インストール計測が完了したことをコールバックで受け取りたい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZFoxOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
+インストール計測が完了したことをコールバックで受け取りたい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	// after activate
-	CYZFoxOption* option = [CYZFoxOption new];
+	CYZTrackOption* option = [CYZTrackOption new];
 	option.redirectURL = @"myapp://top";
 	option.buid = @"USER ID";
 	option.optout = YES;
@@ -81,7 +81,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-  let option: CYZFoxOption = CYZFoxOption.init()
+  let option: CYZTrackOption = CYZTrackOption.init()
   option.redirectURL = "myapp://top"
   option.buid = "USER ID"
   option.optout = true

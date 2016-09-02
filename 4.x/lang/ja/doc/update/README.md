@@ -50,7 +50,7 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 #### 2.2 計測の実装箇所
 |計測|4.0.0以前|4.0.0から|
 |---|---|---|
-|基本設定|AppAdForce.plistの記載項目:<br/>`APP_ID`<br/>`APP_SALT`<br/>`ANALYTICS_APP_KEY`|FOXConfig* foxConfig = [FOXConfig configWithAppId:4879<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salt:@"xxxxx" <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appKey:@"yyyyyy"];<br/>[foxConfig activate];|
+|基本設定|AppAdForce.plistの記載項目:<br/>`APP_ID`<br/>`APP_SALT`<br/>`ANALYTICS_APP_KEY`|CYZConfig* foxConfig = [CYZConfig configWithAppId:4879<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salt:@"xxxxx" <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appKey:@"yyyyyy"];<br/>[foxConfig activate];|
 |サーバーURL指定|AppAdForce.plistの記載項目:<br/>`SERVER_URL`<br/>`ANALYTICS_SERVER_URL`|[foxConfig withFOXServerURL:@"xxxxx"];<br>[foxConfig withAnalyticsServerURL:@"yyyyy"];<br>[foxConfig activate];
 |DEBUGモード指定|[adManager setDebugMode:YES]|[foxConfig withDebugMode];<br>[foxConfig activate];
 |UIWebViewで計測指定|[ltv setLtvCookie]|[foxConfig withWebViewTrackingEnabled];<br>[foxConfig activate];
