@@ -240,9 +240,9 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
 	// ...
-    [CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
+	[CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
 	// ...
-    return YES;
+	return YES;
 }
 ```
 
@@ -257,8 +257,10 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 
 func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        CYZFox.handleOpenURL(url)
-        return true
+	// ...
+	CYZFox.handleOpenURL(url)
+	// ...
+	return true
 }
 ```
 
@@ -287,6 +289,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 let option: CYZFoxOption = CYZFoxOption.init()
 option.onTrackFinished = {
     print("callback after tracking finished")
+    // set customize UserAgent
 }
 CYZFox.trackInstallWithOption(option)
 ```
