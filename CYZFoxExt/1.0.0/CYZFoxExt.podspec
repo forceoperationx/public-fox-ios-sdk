@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   }
   s.author           = "CyberZ inc."
   s.source           = { :git => "https://github.com/cyber-z/fox-ios-sdk-extension.git", :tag => "#{s.version}" }
-  s.source_files     = "FOXExtension/**/*.{h,m}"
+  s.source_files     = "CYZFoxExtension/**/*.{h,m}"
 
   s.ios.deployment_target  = "7.0"
   s.tvos.deployment_target = "9.0"
