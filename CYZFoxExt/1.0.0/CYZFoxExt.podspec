@@ -8,7 +8,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "CYZFoxEx"
+  s.name             = "CYZFoxExt"
   s.version          = "1.0.0"
   s.summary          = "FOX iOS SDK extension for global use."
   s.description      = <<-DESC
