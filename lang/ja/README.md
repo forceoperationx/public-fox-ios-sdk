@@ -33,8 +33,8 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 
 ## F.O.X SDKとは
-[![Platform](http://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=flat)](http://www.apple.com/ios/)
-[![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)]()
+[![Platform](https://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=flat)](http://www.apple.com/ios/)
+[![Language](https://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)]()
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)]()
 
 F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
@@ -150,7 +150,7 @@ SDKの動作に必要なXcodeの設定を行います。
 
 ### 2.2 App Transport Securityの設定
 
-iOS9より提供されたAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
+iOS9より提供されたNSAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
 
 キー | タイプ | 概要
 :---: | :---: | :---

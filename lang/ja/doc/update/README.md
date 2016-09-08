@@ -19,7 +19,7 @@
 * DLBannerView.h
 * DLInterstitialViewController.h
 
-「[1. インストール](../../README.md#install_sdk)」からドキュメントに従いもう一回導入手順を実施する。
+「[1. インストール](../../../README.md#install_sdk)」からドキュメントに従いもう一回導入手順を実施する。
 
 #### CocoaPodsの場合
 Podfileに以下の指定を
