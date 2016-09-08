@@ -114,7 +114,7 @@ ANALYTICS_APP_KEY | String | 請輸入Force Operation X管理員告知的值。<
 
 * **關於App Transport Security**
 
-由iOS9提供的AppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
+由iOS9提供的NSAppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
 
 Key | Type | 概要
 :---: | :---: | :---

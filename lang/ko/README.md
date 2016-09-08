@@ -98,7 +98,7 @@ ANALYTICS_APP_KEY | String | Force Operation 관리자가 연락합니다. 그 �
 
 * **App Transport Security에 대해서**
 
-iOS9 부터 제공된 AppTransportSecurity(이하, ATS)를 유효로 한 경우, Info.plist에 이하와 같이 설정 하여 F.O.X SDK와 통신하는 곳의 도메인을 ATS의 예외에
+iOS9 부터 제공된 NSAppTransportSecurity(이하, ATS)를 유효로 한 경우, Info.plist에 이하와 같이 설정 하여 F.O.X SDK와 통신하는 곳의 도메인을 ATS의 예외에
 추가하여 주십시오.
 
 키 | 타입 | 개요
