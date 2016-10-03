@@ -49,9 +49,12 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 Podfileファイルに下記の設定を追加してください。
 ```ruby
-foxVersion = "3.3.0"
+foxVersion = "3.3.0" // ※1
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
+
+> ※1 : `foxVersion`には[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)に存在している4.0.0未満のバージョンを指定してください。<br />上記はバージョン3.3.0をインストールする例となっています。
+
 <br />
 
 * **マニュアル導入する場合**
