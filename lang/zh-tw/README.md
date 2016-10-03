@@ -48,9 +48,12 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 請在Podfile文件裡添加下面的設定。
 ```ruby
-foxVersion = "master"
+foxVersion = "3.3.0" # ※1
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
+
+> ※1 : 請使用[SDK Release](https://github.com/cyber-z/public_fox_ios_sdk/releases)中4.0.0以下的版本號作為`foxVersion`的值。上面的例子中指定了版本為3.3.0。
+
 <br />
 
 * **手動導入的場合**
