@@ -49,7 +49,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 Podfileファイルに下記の設定を追加してください。
 ```ruby
-foxVersion = "3.3.0" // ※1
+foxVersion = "3.3.0" # ※1
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
 
