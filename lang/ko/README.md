@@ -26,11 +26,11 @@ F.O.X SDK를 앱에 설치함으로써 아래와 같은 기능을 제공합니�
 Podfile 파일에 다음의 설정을 추가합니다.
 
 ```ruby
-foxVersion = "3.3.0" # ※1
+foxVersion = "3.4.0" # ※1
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
 
-> ※1 : `foxVersion`에는 [SDK릴리스 페이지](https://github.com/cyber-z/public_fox_ios_sdk/releases)목록에서 4.0.0미만의 버전을 지정하여 주십시오.<br />상기는 버전 3.3.0를 인스톨하는 샘플입니다.
+> ※1 : `foxVersion`에는 [SDK릴리스 페이지](https://github.com/cyber-z/public_fox_ios_sdk/releases)목록에서 4.0.0미만의 버전을 지정하여 주십시오.<br />상기는 버전 3.4.0를 인스톨하는 샘플입니다.
 
 <br />
 
@@ -271,9 +271,6 @@ sendStartSession는 반드시 상기의 2개소에 구현해 주십시오.
 ## 7. 기타 기능의 구현
 
 * [OPT-OUT 구현](./doc/optout/README.md)
-
-* [관리 화면상에 등록한 번들 버전에 따른 처리의 배분 ](./doc/check_version/README.md)
-
 
 ## FAQ（자주하는 질문）
 
