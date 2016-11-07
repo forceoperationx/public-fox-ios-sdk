@@ -23,7 +23,6 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
 * **[7. その他機能の実装](#other_function)**
   * [オプトアウトの実装](./doc/optout/README.md)
-  * [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
 * **[8. 最後に必ずご確認ください](#trouble_shooting)**
 
 ## F.O.X SDKとは
@@ -49,11 +48,11 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 Podfileファイルに下記の設定を追加してください。
 ```ruby
-foxVersion = "3.3.0" # ※1
+foxVersion = "3.4.0" # ※1
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
 
-> ※1 : `foxVersion`には[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)に存在している4.0.0未満のバージョンを指定してください。<br />上記はバージョン3.3.0をインストールする例となっています。
+> ※1 : `foxVersion`には[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)に存在している4.0.0未満のバージョンを指定してください。<br />上記はバージョン3.4.0をインストールする例となっています。
 
 <br />
 
@@ -309,9 +308,6 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 ## 7. その他機能の実装
 
 * [オプトアウトの実装](./doc/optout/README.md)
-
-* [管理画面上に登録したバンドルバージョンに応じた処理の振り分け](./doc/check_version/README.md)
-
 
 <div id="trouble_shooting"></div>
 ## 8. 最後に必ずご確認ください（これまで発生したトラブル集）

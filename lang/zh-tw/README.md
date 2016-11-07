@@ -23,7 +23,6 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 	* [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 * **[7. 其他機能的安裝](#other_function)**
   * [Opt-Out的安裝](./doc/optout/README.md)
-  * [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
 * **[8. 最後請務必確認](#trouble_shooting)**
 
 ## F.O.X SDK是什麼
@@ -48,11 +47,11 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 請在Podfile文件裡添加下面的設定。
 ```ruby
-foxVersion = "3.3.0" # ※1
+foxVersion = "3.4.0" # ※1
 pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
 ```
 
-> ※1 : 請使用[SDK Release](https://github.com/cyber-z/public_fox_ios_sdk/releases)中4.0.0以下的版本號作為`foxVersion`的值。上面的例子中指定了版本為3.3.0。
+> ※1 : 請使用[SDK Release](https://github.com/cyber-z/public_fox_ios_sdk/releases)中4.0.0以下的版本號作為`foxVersion`的值。上面的例子中指定了版本為3.4.0。
 
 <br />
 
@@ -304,8 +303,6 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 ## 7. 其他機能的安裝
 
 * [Opt-Out的安裝](./doc/optout/README.md)
-
-* [登錄到管理畫面的BundleVersion相對應的不同處理](./doc/check_version/README.md)
 
 <div id="trouble_shooting"></div>
 ## 8. 最後請務必確認（到現在發生過的問題集）
