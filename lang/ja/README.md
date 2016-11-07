@@ -48,11 +48,15 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 Podfileファイルに下記の設定を追加してください。
 ```ruby
-foxVersion = "3.4.0" # ※1
-pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
-```
+# 下記の一行をPodfileの一番最初に追加してください
+source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-> ※1 : `foxVersion`には[SDKリリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)に存在している4.0.0未満のバージョンを指定してください。<br />上記はバージョン3.4.0をインストールする例となっています。
+# 下記を指定したいターゲットに追加してください
+pod "CYZFox", "<VERSION>"
+```
+> * `3.4.0` から[CocoaPods Private Pods](https://guides.cocoapods.org/making/private-cocoapods.html) で提供するため、\<VERSION\>は `3.4.0` 以上のバージョンを指定してください。
+> * `3.3.0` 以下の導入方法は[過去のリリースタグ履歴](https://github.com/cyber-z/public-fox-ios-sdk/releases)へ参考してください。
+> * `4.0.0` は下位互換性持たないため管理者に問い合わせしてから指定してください。
 
 <br />
 
@@ -89,21 +93,13 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>フレームワーク名</th><th>Status</th></tr>
-<tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
-<tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
-<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
-> ※AdSupport.frameworkはiOS 6以降で追加されたフレームワークのため、アプリケーションをiOS 5以前でも動作させる(iOS Deployment Targetを5.1以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
-
-> ※SafariServices.frameworkはiOS 9以降で追加されたフレームワークのため、アプリケーションをiOS 8以前でも動作させる(iOS Deployment Targetを8.4以下に設定する)場合にはweak linkを行うために”Optional”に設定してください。
-
 ![フレームワーク設定01](./doc/config_framework/img01.png)
-
-[フレームワーク設定の詳細](./doc/config_framework/README.md)
+![フレームワーク設定01](./doc/config_framework/img02.png)
 
 * **SDK設定**
 

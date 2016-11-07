@@ -26,11 +26,12 @@ F.O.X SDK를 앱에 설치함으로써 아래와 같은 기능을 제공합니�
 Podfile 파일에 다음의 설정을 추가합니다.
 
 ```ruby
-foxVersion = "3.4.0" # ※1
-pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
-```
+# put this line at the first of the Podfile
+source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-> ※1 : `foxVersion`에는 [SDK릴리스 페이지](https://github.com/cyber-z/public_fox_ios_sdk/releases)목록에서 4.0.0미만의 버전을 지정하여 주십시오.<br />상기는 버전 3.4.0를 인스톨하는 샘플입니다.
+# indicate FOX SDK version
+pod "CYZFox", "<VERSION>"
+```
 
 <br />
 
@@ -66,22 +67,13 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>프레임워크명</th><th>Status</th></tr>
-<tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
-<tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required </td></tr>
 <tr><td>StoreKit.framework </td><td>Required </td></tr>
 </table>
 
-> ※AdSupport.framework는 iOS 6 이후에 추가된 프레임워크이기 때문에, 앱을 iOS 5 이전의 버전에서도 동작
-하도록 하기 (iOS Deployment Target을 5.1 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
-
-> ※SafariServices.framework는 iOS 9 이후에 추가된 프레임워크이기 때문에, 앱을 iOS 8 이전의 버전에서도 동작
-하도록 하기 (iOS Deployment Target을 8.4 이하로 설정) 위해서는 weak link를 ”Optional”으로 설정해 주십시오.
-
 ![フレームワーク設定01](./doc/config_framework/img01.png)
-
-[프페임워크 설정 상세](./doc/config_framework/README.md)
+![フレームワーク設定01](./doc/config_framework/img02.png)
 
 * **SDK 설정**
 
