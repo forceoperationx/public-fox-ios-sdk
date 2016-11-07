@@ -47,11 +47,15 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 請在Podfile文件裡添加下面的設定。
 ```ruby
-foxVersion = "3.4.0" # ※1
-pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{foxVersion}/cocoapods/foxSdk.podspec"
-```
+# put this line at the first of the Podfile
+source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-> ※1 : 請使用[SDK Release](https://github.com/cyber-z/public_fox_ios_sdk/releases)中4.0.0以下的版本號作為`foxVersion`的值。上面的例子中指定了版本為3.4.0。
+# indicate FOX SDK version
+pod "CYZFox", "<VERSION>"
+```
+> * 從`3.4.0` 開始使用[CocoaPods Private Pods](https://guides.cocoapods.org/making/private-cocoapods.html) 的方式提供SDK，請指定\<VERSION\>為 `3.4.0` 以上的版本號。
+> * `3.3.0`以下的導入方法請參考[過去的歷史紀錄](https://github.com/cyber-z/public-fox-ios-sdk/releases)。
+> * `4.0.0`以上的版本因為不具備向下兼容特性，請向Force Operation X管理員確認後再決定。
 
 <br />
 
@@ -86,17 +90,13 @@ pod "foxSdk", :podspec => "https://github.com/cyber-z/public-fox-ios-sdk/raw/#{f
 
 <table>
 <tr><th>Framework名</th><th>Status</th></tr>
-<tr><td>SafariServices.framework</td><td>Optional</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
-<tr><td>iAd.framework </td><td>Required</td></tr>
 <tr><td>Security.framework </td><td>Required</td></tr>
 <tr><td>StoreKit.framework </td><td>Required</td></tr>
-<tr><td>SystemConfiguration.framework </td><td>Required </td></tr>
 </table>
 
-> ※SafariServices.framework是在iOS 9以後添加的Framework，所以如果要讓APP在iOS 8及以前版本也能正常動作(設定iOS Deployment Target到8.4或以下)，設定成“Optional”進行weak link。
-
-[Framework設定的詳細](./doc/config_framework/README.md)
+![フレームワーク設定01](./doc/config_framework/img01.png)
+![フレームワーク設定01](./doc/config_framework/img02.png)
 
 * **SDK設定**
 
