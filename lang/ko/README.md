@@ -32,6 +32,9 @@ source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 # indicate FOX SDK version
 pod "CYZFox", "<VERSION>"
 ```
+> * `3.4.0` 부터 [CocoaPods Private Pods](https://guides.cocoapods.org/making/private-cocoapods.html)로써 제공드리므로 <VERSION>은 `3.4.0` 이상의 버전을 지정하여 주십시오
+> * `3.3.0` 이하의 도입방법은 과거의 [릴리스 이력](https://github.com/cyber-z/public-fox-ios-sdk/releases)을 참고하여 주십시오
+> * `4.0.0` 은 하위 호환성이 없으므로 관리자에 문의하여 지정하여 주십시오
 
 <br />
 
