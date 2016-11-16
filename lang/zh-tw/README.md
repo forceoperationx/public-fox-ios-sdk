@@ -115,23 +115,6 @@ ANALYTICS_SERVER_URL | String | 請輸入Force Operation X管理員告知的值�
 
 ![plist設定](./doc/config_plist/img05.png)
 
-
-* **關於App Transport Security**
-
-Apple宣布從2016年底開始，ATS將成為必須設定，原則上App內的訊息全部都必須透過https傳輸。
-因此，請將設定文件裡SERVER_URL和ANALYTICS_SERVER_URL的值設置為https開頭的URL的加密值（使用從管理畫面下載下來的設定文件）。
-
-如果有特別原因需要繼續使用http通訊的話，在NSAppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
-
-Key | Type | 概要
-:---: | :---: | :---
-NSExceptionDomains|Dictionary|指定ATS例外的dictionary
-指定的域名字符串|Dictionary|請把下面兩個域名做成Key。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|請指定成YES，設置成ATS的例外。
-NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到子域名。
-
-![ATS設定](./doc/config_plist/img06.png)
-
 [SDK設定的詳細](./doc/config_plist/README.md)
 
 [AppAdForce.plist例子](./doc/config_plist/AppAdForce.plist)
