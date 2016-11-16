@@ -61,7 +61,7 @@ pod "CYZFox", "<VERSION>"
 
 * **手動導入的場合**
 
-請從下面的頁面來下載最新的SDK。
+請從下面的頁面來下載最新的安定版（Latest release）SDK。
 
 [SDK下載](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
@@ -100,7 +100,8 @@ pod "CYZFox", "<VERSION>"
 
 * **SDK設定**
 
-為使SDK起作用，需要添加必要的設定到plist裡。請在項目的任意地方建立「AppAdForce.plist」文件，並添加下面的Key和Value。
+為使SDK起作用，需要添加必要的設定到plist裡。請在FOX管理畫面裡（SDK導入→平台的選擇→SDK導入文檔→SDK導入步驟→設定文件的下載）下載該設定文件。
+或者手動在項目的任意地方建立「AppAdForce.plist」文件，並添加下面的Key和Value。
 
 Key | Type | Value
 :---: | :---: | :---
@@ -110,13 +111,17 @@ APP_SALT | String | 請輸入Force Operation X管理員告知的值。
 APP_OPTIONS | String | 空白。
 CONVERSION_MODE | String | 1
 ANALYTICS_APP_KEY | String | 請輸入Force Operation X管理員告知的值。<br />不利用流量分析則不需要設定。
+ANALYTICS_SERVER_URL | String | 請輸入Force Operation X管理員告知的值。<br />不利用流量分析則不需要設定。
 
 ![plist設定](./doc/config_plist/img05.png)
 
 
 * **關於App Transport Security**
 
-由iOS9提供的NSAppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
+Apple宣布從2016年底開始，ATS將成為必須設定，原則上App內的訊息全部都必須透過https傳輸。
+因此，請將設定文件裡SERVER_URL和ANALYTICS_SERVER_URL的值設置為https開頭的URL的加密值（使用從管理畫面下載下來的設定文件）。
+
+如果有特別原因需要繼續使用http通訊的話，在NSAppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
 
 Key | Type | 概要
 :---: | :---: | :---

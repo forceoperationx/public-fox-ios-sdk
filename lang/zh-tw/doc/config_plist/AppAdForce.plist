@@ -14,5 +14,7 @@
 	<string>1</string>
 	<key>ANALYTICS_APP_KEY</key>
 	<string>xxxxxx</string>
+	<key>ANALYTICS_SERVER_URL</key>
+	<string>xxxxxx</string>
 </dict>
 </plist>
