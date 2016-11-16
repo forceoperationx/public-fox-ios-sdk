@@ -286,7 +286,6 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 請告訴鄙司3，6，7，9的時間。在鄙司這邊會確認是否正常被計測。待確認沒有問題的時候，測試算正式完成。
 
-
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
 <div id="other_function"></div>
