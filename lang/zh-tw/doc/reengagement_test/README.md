@@ -7,7 +7,7 @@
 **測試步驟**
 
 1. 如果測試用的設備已安裝APP，請先卸載掉APP<br />
-1. 清除測試移动终端默认浏览器的Cookie，請按「設定」→「Safari」→「Cookie和數據消除」刪除Cookie<br />
+1. 清除測試移动终端默认浏览器Safari的Cookie，請按「設定」→「Safari」→「Cookie和數據消除」刪除Cookie<br />
 1. 複製鄙司發行的【安装用测试URL】，粘貼到默認瀏覽器（標準瀏覽器）的URL欄裡進行訪問。<br />
 ＊請在管理畫面（SDK導入→平台的選擇→SDK導入文檔→测试URL→安装用测试URL）裡取得【安装用测试URL】。<br />
 ＊請一定在OS設定的默認瀏覽器裡粘貼測試URL來發出請求。郵件APP或QR碼讀取APP等這些APP內部會用WebView發生的畫面跳轉是無法計測的。<br />
