@@ -61,7 +61,7 @@ pod "CYZFox", "<VERSION>"
 
 * **手動導入的場合**
 
-請從下面的頁面來下載最新的SDK。
+請從下面的頁面來下載最新的安定版（Latest release）SDK。
 
 [SDK下載](https://github.com/cyber-z/public_fox_ios_sdk/releases)
 
@@ -100,7 +100,8 @@ pod "CYZFox", "<VERSION>"
 
 * **SDK設定**
 
-為使SDK起作用，需要添加必要的設定到plist裡。請在項目的任意地方建立「AppAdForce.plist」文件，並添加下面的Key和Value。
+為使SDK起作用，需要添加必要的設定到plist裡。請在FOX管理畫面裡（SDK導入→平台的選擇→SDK導入文檔→SDK導入步驟→設定文件的下載）下載該設定文件。
+或者手動在項目的任意地方建立「AppAdForce.plist」文件，並添加下面的Key和Value。
 
 Key | Type | Value
 :---: | :---: | :---
@@ -110,22 +111,9 @@ APP_SALT | String | 請輸入Force Operation X管理員告知的值。
 APP_OPTIONS | String | 空白。
 CONVERSION_MODE | String | 1
 ANALYTICS_APP_KEY | String | 請輸入Force Operation X管理員告知的值。<br />不利用流量分析則不需要設定。
+ANALYTICS_SERVER_URL | String | 請輸入Force Operation X管理員告知的值。<br />不利用流量分析則不需要設定。
 
 ![plist設定](./doc/config_plist/img05.png)
-
-
-* **關於App Transport Security**
-
-由iOS9提供的NSAppTransportSecurity(下面稱做ATS)設定為有效的時候、請在Info.plist裡做如下設定，把F.O.X SDK使用的通信域名設置為ATS的例外。
-
-Key | Type | 概要
-:---: | :---: | :---
-NSExceptionDomains|Dictionary|指定ATS例外的dictionary
-指定的域名字符串|Dictionary|請把下面兩個域名做成Key。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|請指定成YES，設置成ATS的例外。
-NSIncludesSubdomains|Boolean|指定成YES ，把ATS的例外設定也適用到子域名。
-
-![ATS設定](./doc/config_plist/img06.png)
 
 [SDK設定的詳細](./doc/config_plist/README.md)
 
@@ -280,22 +268,23 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 **測試步驟**
 
-1. 如果測試用的設備已安裝APP，請先卸載掉APP
-1. 透過測試用設備的「設定」→「Safari」→「Cookie和數據消除」刪除Cookie
-1. 複製鄙司發行的測試用URL，粘貼到Safari的URL欄裡進行訪問<br />
-＊測試用的URL請務必在標準的Safari裡使用。由於Chrome這樣的第三方瀏覽器，郵件APP，QR碼讀取APP等這些APP內部會用WebView發生跳轉，因此無法進行計測。
+1. 如果測試用的設備已安裝APP，請先卸載掉APP<br />
+1. 清除測試移动终端默认浏览器Safari的Cookie請按「設定」→「Safari」→「Cookie和數據消除」刪除Cookie<br />
+1. 複製鄙司發行的【安装用测试URL】，粘貼到默認瀏覽器（標準瀏覽器）的URL欄裡進行訪問。<br />
+＊請在管理畫面（SDK導入→平台的選擇→SDK導入文檔→测试URL→安装用测试URL）裡取得【安装用测试URL】。<br />
+＊請一定在OS設定的默認瀏覽器裡粘貼測試URL來發出請求。郵件APP或QR碼讀取APP等這些APP內部會用WebView發生的畫面跳轉是無法計測的。<br />
 1. 畫面移轉到Market<br />
-＊使用測試URL，可能會因為沒有設定跳轉目的地而彈出錯誤對話框，這個不影響測試。
+＊使用測試URL，可能會因為沒有設定跳轉目的地（沒有在APP詳細裡設定「商城URL」）而彈出錯誤對話框，這個不影響測試。<br />
 1. 在測試終端上安裝測試APP<br />
-1. 啟動APP，瀏覽器啟動<br />
-＊若流覽器無法啟動，說明沒有正常設定。重新設定後，若仍無法發現問題，請與弊司聯繫。
-1. 把畫面移轉到LTV地點<br />
-＊如果登錄了LTV地點執行此步驟
+1. 啟動APP<br />
+＊如果沒有勾選cookie計測手法，瀏覽器將不會彈跳出來。<br />
+＊如果勾選了cookie計測手法，瀏覽器將自動打開，若流覽器無法啟動，說明沒有正常設定。請重新設定，若仍無法發現問題，請與弊司聯繫。<br />
+1. 把畫面移轉到LTV計測地點<br />
+＊如果登錄了LTV地點執行此步驟<br />
 1. 結束並從後台關閉APP<br />
 1. 再次啟動APP<br />
 
 請告訴鄙司3，6，7，9的時間。在鄙司這邊會確認是否正常被計測。待確認沒有問題的時候，測試算正式完成。
-
 
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
