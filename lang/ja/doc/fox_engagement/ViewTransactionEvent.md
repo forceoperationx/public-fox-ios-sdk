@@ -65,7 +65,7 @@ Track Transaction（商品購入）イベントが発生する箇所に、下記
 | 引数 | 型 | 概要 |
 |:----------|:-----------:|:------------|
 |eventInfo (fox_cvpoint)|NSDictionary|F.O.Xの成果地点IDを設定します。|
-|eventInfo (transaction.id)|NSDictionary|注文番号、問い合わせ番号などのトランザクションID|
+|eventInfo (transaction_id)|NSDictionary|注文番号、問い合わせ番号などのトランザクションID|
 |eventInfo (product)|JSONArray|Product をキーとして商品IDを配列で設定します。
 |&nbsp;&nbsp;eventInfo (product[].id)|NSDictionary|商品IDデータフィードと同じ商品IDを使用してください。|
 |&nbsp;&nbsp;eventInfo (product[].price)|NSDictionary|該当商品の価格を設定します。|

@@ -65,7 +65,7 @@
 | 參數 | 型 | 概要 |
 |:----------|:-----------:|:------------|
 |eventInfo (fox_cvpoint)|NSDictionary|設定F.O.X的成果地點ID。|
-|eventInfo (transaction.id)|NSDictionary|訂單號，諮詢號等處理事務ID|
+|eventInfo (transaction_id)|NSDictionary|訂單號，諮詢號等處理事務ID|
 |eventInfo (product)|JSONArray|把Product作為KEY，用數組形式設定商品ID。|
 |&nbsp;&nbsp;eventInfo (product[].id)|NSDictionary|商品ID<br>請使用和數據字段相同的商品ID。|
 |&nbsp;&nbsp;eventInfo (product[].price)|NSDictionary|設定該商品的價格。|
