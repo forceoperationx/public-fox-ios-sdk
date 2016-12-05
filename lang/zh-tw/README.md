@@ -139,7 +139,7 @@ ANALYTICS_SERVER_URL | String | 請輸入Force Operation X管理員告知的值�
 
 方法 | 安裝地點 | 概要
 :---: | :---: | :---
-setStartPageVisible|didFinishLaunchingWithOptions:|(可選) 請確保在sendConversionWithStartPage之前執行。只有當設定為`NO`時，SFSafariViewController會隱藏顯示。
+setStartPageVisible|didFinishLaunchingWithOptions:|(可選) 請確保在sendConversionWithStartPage之前執行。設定為`NO`時，SFSafariViewController将被隱藏而不再顯示。(默認為`YES`)
 sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初次啟動時的Install計測
 setUrlScheme:|openURL:|(必須) 初次啟動的Install計測控制以及URL Scheme的響應處理
 
