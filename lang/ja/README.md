@@ -154,6 +154,7 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である �
 
 メソッド | 実装箇所 | 概要
 :---: | :---: | :---
+setStartPageVisible|didFinishLaunchingWithOptions:|(任意) sendConversionWithStartPageの前に実装を行ってください。SFSafariViewControllerを非表示する場合、`NO` を設定します。(デフォルト:`YES`)
 sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初回起動時のインストール計測
 setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制御及び、URLスキーム経由の計測処理
 
