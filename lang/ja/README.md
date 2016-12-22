@@ -400,12 +400,12 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 				//バックグラウンド時の処理
 		} else {
 				//バックグラウンド時は起動計測が呼ばれないようにする
-				CYZFox.startSession()
+				CYZFox.trackSession()
 		}
 }
 
-func applicationDidEnterBackground(application: UIApplication) {	  
-		CYZFox.startSession()
+func applicationDidEnterBackground(application: UIApplication) {
+		CYZFox.trackSession()
 }
 ```
 
