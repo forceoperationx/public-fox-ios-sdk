@@ -37,6 +37,32 @@ sendConversionWithStartPage:の引数には、通常は上記の通り@"default"
 ```
 > `sendConversionWithStartPage:buid:`は起動直後の処理として実装される必要があるため、ログインIDなどのユーザーアクションが伴う値を引数として渡すことはできません。
 
+## インストール計測完了のコールバックを受け取る
+
+ 次の実装のように`setInstallTrackingCompletionHandler:`を用いることで、インストール計測完了のコールバックを受け取ることができます。
+
+```objc
+#import "AdManager.h"
+- (BOOL)application:(UIApplication *)application
+  didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    // 起動処理
+    // ...
+
+    [[AppAdForceManager sharedManager] setInstallTrackingCompletionHandler:^{
+        NSLog(@"onInstallTrackingCompletionHandler");
+    }];
+
+    [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[AppAdForceManager sharedManager]setUrlScheme:url];
+    return YES;
+}
+```
+
+ > ※ Cookie計測を行う場合はブラウザ起動後、アプリがフォアグラウンドに復帰した直後にhandler blockが呼び出されます。
 
 ## Fingerprint計測時の注意事項
 
