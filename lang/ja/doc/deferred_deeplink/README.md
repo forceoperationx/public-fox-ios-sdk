@@ -57,5 +57,32 @@
 }
 ```
 
+<div id="with_thirdparty"></div>
+### 他社ツールのディファードディープリンクを利用する
+
+#### Facebook SDKの場合
+
+以下の例では、F.O.X SDK のインストール計測完了のコールバック内で`FacebookSDK`のディファードディープリンク処理を記述しています。Cookie計測時のブラウザ立ち上げが完了した後にディファードディープリンクによる遷移が行われ、Cookie計測が正常に行われます。
+
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // ...
+    [[AppAdForceManager sharedManager] setInstallTrackingCompletionHandler:^{
+        // Facebook SDK でのディファードディープリンク処理を実行
+    }];
+
+    [[AppAdForceManager sharedManager] sendConversionWithStartPage:@"default"];
+    // ...
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    [[AppAdForceManager sharedManager]setUrlScheme:url];
+    return YES;
+}
+```
+
+> Facebook SDKの実装に関しては[公式ドキュメント](https://developers.facebook.com/docs/app-ads/deep-linking#deferred-deep-linking)を参照ください。
+
+
 ---
 [トップ](/lang/ja/README.md)
