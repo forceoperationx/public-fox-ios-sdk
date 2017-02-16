@@ -277,7 +277,7 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 1. 畫面移轉到Market<br />
 ＊使用測試URL，可能會因為沒有設定跳轉目的地（沒有在APP詳細裡設定「商城URL」）而彈出錯誤對話框，這個不影響測試。<br />
 1. 在測試終端上安裝測試APP<br />
-1. 啟動APP（根據F.O.X設定和不同測試終端啟動APP後的舉動會有所不同，請參考下面的說明）<br />
+1. 啟動APP（F.O.X設定和不同測試終端會影響APP啟動後的舉動，請參考下面的說明）<br />
 ＊如果沒有勾選cookie計測手法，Safari瀏覽器將不會彈跳出來。<br />
 ＊如果勾選了cookie計測手法，並且使用iOS9以下的測試終端，瀏覽器將自動彈跳出來<br />
 ＊如果勾選了cookie計測手法，並且使用iOS9及以上的測試終端，會啟動SFSafariViewController。但是如果設定了`setStartPageVisible:NO`的話，SFSafariViewController和Safari都不會啟動。<br />
