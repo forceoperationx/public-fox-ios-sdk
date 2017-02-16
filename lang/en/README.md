@@ -262,8 +262,11 @@ Communication of Installation measurement is performed only once after startup. 
 1. Click the test URL that issued from our company
 1. Redirected to the Market
 1. Install a test application to the testing terminal
-1. Activate the app, the browser will start-up
-If the browser does not start, that means setting has not been carried out correctly. Review the settings, and if you do not see any problem, please contact us.
+1. Activate the app
+Behavior at application startup depends on F.O.X setting and OS version of test terminal.<br />
+If cookie tracking is enabled, the Safari browser will be launched on terminals under iOS 9. For iOS 9 or later, SFSafariViewController is launched. However, if `setStartPageVisible: NO` is set, neither SFSafariViewController nor Safari will launch.<br />
+If cookie trackin is disabled, the browser will not launch.<br />
+If the above behavior does not occur, that means setting has not been carried out correctly. Review the settings, and if you do not see any problem, please contact us.
 1. Screen transition to LTV point
 1. Quit the app, also removed from the background
 1. Activate the app again
