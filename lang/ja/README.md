@@ -229,7 +229,8 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 
 \_currencyには[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
 
-[タグを利用したLTV計測について](./doc/ltv_browser/README.md)
+* [sendLtvConversionの詳細](./doc/send_ltv_conversion/README.md)
+* [タグを利用したLTV計測について](./doc/ltv_browser/README.md)
 
 <div id="tracking_analytics"></div>
 ## 5. アクセス解析の実装
