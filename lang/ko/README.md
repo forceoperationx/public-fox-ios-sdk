@@ -200,6 +200,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 \_currency에는[ISO 4217](https://ko.wikipedia.org/wiki/ISO_4217)에 정의된 통화 코드를 지정해 주십시오.
 
 [sendLtv의 상세](./doc/send_ltv_conversion/README.md)
+
 [태그를 이용한 LTV계측에 대하여](./doc/ltv_browser/README.md)
 
 ## 5. 액세스 해석의 구현
