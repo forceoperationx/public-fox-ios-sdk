@@ -68,7 +68,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 	option.redirectURL = @"myapp://top";
 	option.buid = @"USER ID";
 	option.optout = YES;
-	option.onTrackFinished = ^ {
+	option.trackingCompletionHandler = ^ {
 		NSLog(@"callback after tracking finished");
 	}
 	[CYZFox trackInstallWithOption:option];
@@ -85,7 +85,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
   option.redirectURL = "myapp://top"
   option.buid = "USER ID"
   option.optout = true
-  option.onTrackFinished = {
+  option.trackingCompletionHandler = {
     print("callback after tracking finished")
   }
   CYZFox.trackInstallWithOption(option)

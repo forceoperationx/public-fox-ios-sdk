@@ -20,6 +20,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [3.2 コンフィギュレーション](#activate_config)
 * **[4. インストール計測の実装](#tracking_install)**
 	* [インストール計測の詳細](./doc/track_install/README.md)
+	* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
 * **[5. リエンゲージメント計測の実装](#tracking_reengagement)**
 	* [5.1 カスタマイズURL Schemeによって計測](#tracking_reengagement_scheme)
 	* [5.2 Universal Linkによって計測](#tracking_reengagement_ulink)
@@ -273,30 +274,25 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
  * **Fingerprinting計測時の注意事項**
 
  Fingerprinting計測はUIWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
- 下記のように計測処理が完了した後にUIWebViewのUserAgentを独自の文字列にカスタマイズを行います。
+ 下記のようにUserAgentのカスタマイズ処理を行う前にFOXConfigの設定を有効にしてください。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
  ```objc
- CYZFoxTrackOption* option = [CYZFoxTrackOption new];
- option.onTrackFinished = ^() {
-     NSLog(@"callback after tracking finished");
-     // set customize UserAgent
- };
- [CYZFox trackInstallWithOption:option];
+CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:000 salt:@"xxxxx" appKey:@"xxxx"];
+[foxConfig enableCustomizedUserAgent];
+[foxConfig activate];
  ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
 ```Swift
-let option: CYZFoxTrackOption = CYZFoxTrackOption.init()
-option.onTrackFinished = {
-    print("callback after tracking finished")
-    // set customize UserAgent
-}
-CYZFox.trackInstallWithOption(option)
+let foxConfig = CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!
+foxConfig.enableCustomizedUserAgent()
+foxConfig.activate()
 ```
 
-[インストール計測の詳細](./doc/track_install/README.md)
+* [インストール計測の詳細](./doc/track_install/README.md)
+* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
 
 <div id="tracking_reengagement"></div>
 
@@ -317,15 +313,29 @@ sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id
 	// ...
     return YES;
 }
+
+-(BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    // ...
+    [CYZFox handleOpenURL:url];
+	// ...
+    return YES;
+}
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
 	// ...
-  CYZFox.handleOpenURL(url)
+    CYZFox.handleOpen(url)
 	// ...
-  return true
+    return true
+}
+
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+	// ...
+    CYZFox.handleOpen(url)
+	// ...
+    return true
 }
 ```
 
@@ -350,11 +360,13 @@ restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-  // ...
-  CYZFox.handleOpenURL(url)
-  // ...
-  return true
+ffunc application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+	// ...
+	if let url = userActivity.webpageURL {
+        CYZFox.handleOpen(url)
+    }
+	// ...
+    return true
 }
 ```
 
