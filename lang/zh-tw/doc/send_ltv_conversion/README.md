@@ -11,7 +11,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init]];
 [ltv sendLtv:{成果地點ID}];
 ```
 
-> **成果地點ID**(必需) : 請輸入Force Operation X管理員告知的值。
+> **成果地點ID**(必須) : 請輸入Force Operation X管理員告知的值。
 
 #### 指定廣告主終端ID(buid)
 
