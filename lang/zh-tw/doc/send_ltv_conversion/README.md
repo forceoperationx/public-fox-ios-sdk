@@ -22,7 +22,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init]];
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init]];
-[ltv sendLtv:{成果地点ID}:{広告主端末ID}];
+[ltv sendLtv:{成果地點ID}:{廣告主終端ID}];
 ```
 
 > **広告主端末ID**(任意) : 是指貴公司管理的唯一識別ID(USER ID等)。可以指定64文字以內的半角英文數字。
