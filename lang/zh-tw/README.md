@@ -14,6 +14,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 * **[3. Install計測的安裝](#tracking_install)**
 	* [sendConversionWithStartPage:的詳細](./doc/send_conversion/README.md)
 * **[4. LTV計測的安裝](#tracking_ltv)**
+	* [sendLtv的詳細](./doc/send_ltv_conversion/README.md)
 	* [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 * **[5. 流量分析的安裝](#tracking_analytics)**
   * [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
