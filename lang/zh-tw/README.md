@@ -14,10 +14,11 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 * **[3. Install計測的安裝](#tracking_install)**
 	* [sendConversionWithStartPage:的詳細](./doc/send_conversion/README.md)
 * **[4. LTV計測的安裝](#tracking_ltv)**
+	* [sendLtv的詳細](./doc/send_ltv_conversion/README.md)
 	* [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 * **[5. 流量分析的安裝](#tracking_analytics)**
   * [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
-  * [依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
+  * [依靠流量分析進行付費計測](./doc/analytics_purchase/README.md)
   * [關於Engagement廣告投放](./doc/fox_engagement/README.md)
 * **[6. 進行疏通測試](#integration_test)**
 	* [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
@@ -35,7 +36,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 
 * **LTV計測**
 
-按不同的廣告流入来計測Life Time Value。作為主要的成果地點，有會員登錄，教程突破，消费等。能夠按照不同廣告来監測登錄率，消費率和消費額等。
+按不同的廣告流入来計測Life Time Value。作為主要的成果地點，有會員登錄，教程突破，消费等。能夠按照不同廣告来監測登錄率，付費率和付費額等。
 
 * **流量分析**
 
@@ -191,18 +192,18 @@ Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，�
 <div id="tracking_ltv"></div>
 ## 4. LTV計測的安裝
 
-通過在會員登錄，教程突破，消費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。如果不做LTV計測，可以省略本項目的安裝。
+通過在會員登錄，教程突破，付費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。如果不做LTV計測，可以省略本項目的安裝。
 
 ```objective-c
 #import "Ltv.h"
 // ...
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
-[ltv sendLtv:{成果地点ID}];
+[ltv sendLtv:{成果地點ID}];
 ```
 
 為了進行LTV計測，必須指定識別各成果地點的成果地點ID。請指定到sendLtv的參數發行的ID。
 
-進行消費計測的時候，請仿照下面的例子在完成消費處理的地方指定消費額和貨幣代碼。
+進行付費計測的時候，請仿照下面的例子在完成付費處理的地方指定付費額和貨幣代碼。
 
 ```objective-c
 #import "Ltv.h"
@@ -210,10 +211,12 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv addParameter:LTV_PARAM_PRICE:@"9.99"];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"USD"];
-[ltv sendLtv:{成果地点ID}];
+[ltv sendLtv:{成果地點ID}];
 ```
 
 LTV_PARAM_CURRENCY的值，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
+
+[sendLtv的詳細](./doc/send_ltv_conversion/README.md)
 
 [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
@@ -255,7 +258,7 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
-[依靠流量分析進行消費計測](./doc/analytics_purchase/README.md)
+[依靠流量分析進行付費計測](./doc/analytics_purchase/README.md)
 
 [關於Engagement廣告投放](./doc/fox_engagement/README.md)
 
