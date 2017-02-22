@@ -217,6 +217,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 LTV_PARAM_CURRENCY的值，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
 [sendLtv的詳細](./doc/send_ltv_conversion/README.md)
+
 [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
 <div id="tracking_analytics"></div>
