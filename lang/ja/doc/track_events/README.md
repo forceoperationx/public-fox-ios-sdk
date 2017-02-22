@@ -26,7 +26,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", ltvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
@@ -42,7 +42,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```

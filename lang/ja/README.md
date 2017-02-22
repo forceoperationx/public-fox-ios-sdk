@@ -210,7 +210,7 @@ F.O.X SDKのアクティベーションを行うため、[`CYZFoxConfig`](./doc/
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 	// ...
 	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	// ...
@@ -251,7 +251,7 @@ sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 	// ...
 	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
 	CYZFox.trackInstall()
@@ -259,11 +259,16 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	return true
 }
 
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-	// ...
-	CYZFox.handleOpenURL(url)
-	// ...
-	return true
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    // ...
+    CYZFox.handleOpen(url)
+    // ...
+    return true
+}
+
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    CYZFox.handleOpen(url)
+    return true
 }
 ```
 
@@ -438,7 +443,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
