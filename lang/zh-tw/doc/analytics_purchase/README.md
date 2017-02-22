@@ -1,8 +1,8 @@
-## 依靠流量分析進行消費計測
+## 依靠流量分析進行付費計測
 
-利用流量分析機能，能夠計測不同廣告流入和自然流入的用戶消費狀況。如果希望在LTV計測地點也做消費計測，請在同一個地點安裝LTV和流量分析的各自的計測處理代碼。
+利用流量分析機能，能夠計測不同廣告流入和自然流入的用戶付費狀況。如果希望在LTV計測地點也做付費計測，請在同一個地點安裝LTV和流量分析的各自的計測處理代碼。
 
-為了依靠流量分析進行消費計測，請安裝下面的sendEvent方法。
+為了依靠流量分析進行付費計測，請安裝下面的sendEvent方法。
 
 ```objective-c
 + (void)sendEvent:(NSString*)eventName action:(NSString*)action label:(NSString*)label orderID:(NSString*)orderID sku:(NSString*)sku itemName:(NSString*)itemName price:(double)price quantity:(NSUInteger)quantity currency:(NSString*)currency;
@@ -24,18 +24,18 @@ sendEvent方法的參數說明如下。
 
 > currency請用[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)定義的貨幣代碼來指定。
 
-下面是一個按日幣300日圓消費的安裝實例。
+下面是一個按日幣300日圓付費的安裝實例。
 
 ```objective-c
 #import "Ltv.h"
 
-// LTV計測形式的消費計測
+// LTV計測形式的付費計測
 AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 [ltv addParameter:LTV_PARAM_PRICE:@"300"];
 [ltv addParameter:LTV_PARAM_CURRENCY:@"JPY"];
 [ltv sendLtv:成果地点ID];
 
-// 流量分析形式的消費計測
+// 流量分析形式的付費計測
 [ForceAnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:@"Item A" price:300 quantity:1 currency:@"JPY"];
 ```
 
