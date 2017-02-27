@@ -202,18 +202,18 @@ F.O.X SDKのアクティベーションを行うため、[`CYZFoxConfig`](./doc/
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// ...
-	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	// ...
+    // ...
+    [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+    // ...
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	// ...
-	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
-	// ...
+    // ...
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    // ...
 }
 ```
 
@@ -233,30 +233,30 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// ...
-	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	[CYZFox trackInstall];
-	// ...
-	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+    // ...
+    [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+    [CYZFox trackInstall];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
 
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
-	// ...
-	[CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
-	// ...
-	return YES;
+    // ...
+    [CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
+    // ...
+    return YES;
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	// ...
-	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
-	CYZFox.trackInstall()
-	// ...
-	return true
+    // ...
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    CYZFox.trackInstall()
+    // ...
+    return true
 }
 
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -313,16 +313,16 @@ foxConfig.activate()
 ```objc
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
-	// ...
+    // ...
     [CYZFox handleOpenURL:url];
-	// ...
+    // ...
     return YES;
 }
 
 -(BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     // ...
     [CYZFox handleOpenURL:url];
-	// ...
+    // ...
     return YES;
 }
 ```
@@ -330,16 +330,16 @@ sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-	// ...
+    // ...
     CYZFox.handleOpen(url)
-	// ...
+    // ...
     return true
 }
 
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-	// ...
+    // ...
     CYZFox.handleOpen(url)
-	// ...
+    // ...
     return true
 }
 ```
@@ -356,21 +356,21 @@ Universal Link対応の場合、`continueUserActivity`メソッドに [5.1](#tra
 ```objc
 -(BOOL) application:(UIApplication *) application continueUserActivity:(NSUserActivity *) userActivity
 restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
-	// ...
+    // ...
     [CYZFox handleOpenURL:userActivity.webpageURL];
-	// ...
+    // ...
     return YES;
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-ffunc application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-	// ...
-	if let url = userActivity.webpageURL {
+func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    // ...
+    if let url = userActivity.webpageURL {
         CYZFox.handleOpen(url)
     }
-	// ...
+    // ...
     return true
 }
 ```
@@ -391,8 +391,7 @@ ffunc application(_ application: UIApplication, continue userActivity: NSUserAct
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objective-c
-- (BOOL)application:(UIApplication *)application
-   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     If ([application applicationState] == UIApplicationStateBackground) {
         //バックグラウンド時の処理
@@ -401,28 +400,28 @@ ffunc application(_ application: UIApplication, continue userActivity: NSUserAct
         [CYZFox trackSession];
     }
 
+    // ...
+    return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-
     [CYZFox trackSession];
-
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		if application.applicationState == UIApplicationState.Background {
-				//バックグラウンド時の処理
-		} else {
-				//バックグラウンド時は起動計測が呼ばれないようにする
-				CYZFox.trackSession()
-		}
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
+    if application.applicationState == UIApplicationState.background {
+        //バックグラウンド時の処理
+    } else {
+        //バックグラウンド時は起動計測が呼ばれないようにする
+        CYZFox.trackSession()
+    }
 }
 
-func applicationDidEnterBackground(application: UIApplication) {
-		CYZFox.trackSession()
+func applicationDidEnterBackground(_ application: UIApplication) {
+    CYZFox.trackSession()
 }
 ```
 
