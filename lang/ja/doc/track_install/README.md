@@ -18,24 +18,24 @@
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// ...
-	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	[CYZFox trackInstall];
-	// ...
-	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+    // ...
+    [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+    [CYZFox trackInstall];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-	// ...
-	[CYZFox handleOpenURL:url];
-	// ...
-	return YES;
+    // ...
+    [CYZFox handleOpenURL:url];
+    // ...
+    return YES;
 }
 
 -(BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-	// ...
-	[CYZFox handleOpenURL:url];
-	// ...
+    // ...
+    [CYZFox handleOpenURL:url];
+    // ...
     return YES;
 }
 
@@ -44,10 +44,10 @@
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-	// ...
-	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
-	CYZFox.trackInstall()
-	// ...
+    // ...
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    CYZFox.trackInstall()
+    // ...
 }
 
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -79,31 +79,31 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// after activate
-	CYZFoxTrackOption* option = [CYZFoxTrackOption new];
-	option.redirectURL = @"myapp://top";
-	option.buid = @"USER ID";
-	option.optout = YES;
-	option.trackingCompletionHandler = ^ {
-		NSLog(@"callback after tracking finished");
-	}
-	[CYZFox trackInstallWithOption:option];
-	// ...
-	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+    // after activate
+    CYZFoxTrackOption* option = [CYZFoxTrackOption new];
+    option.redirectURL = @"myapp://top";
+    option.buid = @"USER ID";
+    option.optout = YES;
+    option.trackingCompletionHandler = ^ {
+        NSLog(@"callback after tracking finished");
+    }
+    [CYZFox trackInstallWithOption:option];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	let option: CYZFoxTrackOption = CYZFoxTrackOption()
-	option.redirectURL = "myapp://top"
-	option.buid = "USER ID"
-	option.optout = true
-	option.trackingCompletionHandler = {
-		print("callback after tracking finished")
-	}
-	CYZFox.trackInstallWithOption(option)
+    let option: CYZFoxTrackOption = CYZFoxTrackOption()
+    option.redirectURL = "myapp://top"
+    option.buid = "USER ID"
+    option.optout = true
+    option.trackingCompletionHandler = {
+        print("callback after tracking finished")
+    }
+    CYZFox.trackInstallWithOption(option)
 }
 ```
 
