@@ -14,6 +14,7 @@
 |analyticsServerURL|NSString|アクセス解析サーバーURL|
 |debugMode|BOOL|readonly, デバッグログの出力有無|
 |webViewTrackingEnabled|BOOL|UIWebViewで計測する機能有効の有無|
+|customizedUserAgentEnabled|BOOL|カスタマイズUserAgentのサポートの有無|
 
 #### Instance Methods
 1. `-(void) enableDebugMode`
@@ -24,6 +25,9 @@
 
 3. `-(void) activate`
 > 設定した情報をSDK内部で反映する。注意、最初の一回呼ばれる時にだけ設定値が保存される。
+
+４. `-(void) enableCustomizedUserAgent`
+> カスタマイズUserAgentのサポートを有効にする
 
 #### Static Methods
 
@@ -85,7 +89,10 @@
 |optout|BOOL|OptOut有無のセッター<br>※デフォルト : false|
 |redirectURL|NSString|ブラウザ起動後のリダイレクト先|
 |buid|NSString|Buidのセッター|
-|onTrackFinished|Block|初回起動計測が成功した際のコールバック。|
+|onTrackFinished|Block|非推薦、`trackingCompletionHandler`を使う。初回起動計測が終了した際のコールバック。|
+|trackingCompletionHandler|Block|初回起動計測が終了した際のコールバック。|
+|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。<br>_コールバックパラメーター_：<br>`deeplinkInfo` -- NSDictionary、JSONタイプのdeeplinkの情報|
+|durationSinceClick|NSTimeInterval|クリックからディファードディープリンクの有効期限。単位は秒|
 
 <div id="foxevent"></div>
 

@@ -20,6 +20,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [3.2 コンフィギュレーション](#activate_config)
 * **[4. インストール計測の実装](#tracking_install)**
 	* [インストール計測の詳細](./doc/track_install/README.md)
+	* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
 * **[5. リエンゲージメント計測の実装](#tracking_reengagement)**
 	* [5.1 カスタマイズURL Schemeによって計測](#tracking_reengagement_scheme)
 	* [5.2 Universal Linkによって計測](#tracking_reengagement_ulink)
@@ -201,18 +202,18 @@ F.O.X SDKのアクティベーションを行うため、[`CYZFoxConfig`](./doc/
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// ...
-	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	// ...
+    // ...
+    [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+    // ...
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	// ...
-	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
-	// ...
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // ...
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    // ...
 }
 ```
 
@@ -232,37 +233,42 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// ...
-	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	[CYZFox trackInstall];
-	// ...
-	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+    // ...
+    [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+    [CYZFox trackInstall];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
 
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
-	// ...
-	[CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
-	// ...
-	return YES;
+    // ...
+    [CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
+    // ...
+    return YES;
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	// ...
-	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
-	CYZFox.trackInstall()
-	// ...
-	return true
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // ...
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    CYZFox.trackInstall()
+    // ...
+    return true
 }
 
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-	// ...
-	CYZFox.handleOpenURL(url)
-	// ...
-	return true
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    // ...
+    CYZFox.handleOpen(url)
+    // ...
+    return true
+}
+
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    CYZFox.handleOpen(url)
+    return true
 }
 ```
 
@@ -273,30 +279,25 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
  * **Fingerprinting計測時の注意事項**
 
  Fingerprinting計測はUIWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
- 下記のように計測処理が完了した後にUIWebViewのUserAgentを独自の文字列にカスタマイズを行います。
+ 下記のようにUserAgentのカスタマイズ処理を行う前にFOXConfigの設定を有効にしてください。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
  ```objc
- CYZFoxTrackOption* option = [CYZFoxTrackOption new];
- option.onTrackFinished = ^() {
-     NSLog(@"callback after tracking finished");
-     // set customize UserAgent
- };
- [CYZFox trackInstallWithOption:option];
+CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:000 salt:@"xxxxx" appKey:@"xxxx"];
+[foxConfig enableCustomizedUserAgent];
+[foxConfig activate];
  ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
 ```Swift
-let option: CYZFoxTrackOption = CYZFoxTrackOption.init()
-option.onTrackFinished = {
-    print("callback after tracking finished")
-    // set customize UserAgent
-}
-CYZFox.trackInstallWithOption(option)
+let foxConfig = CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!
+foxConfig.enableCustomizedUserAgent()
+foxConfig.activate()
 ```
 
-[インストール計測の詳細](./doc/track_install/README.md)
+* [インストール計測の詳細](./doc/track_install/README.md)
+* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
 
 <div id="tracking_reengagement"></div>
 
@@ -312,20 +313,34 @@ CYZFox.trackInstallWithOption(option)
 ```objc
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
-	// ...
+    // ...
     [CYZFox handleOpenURL:url];
-	// ...
+    // ...
+    return YES;
+}
+
+-(BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    // ...
+    [CYZFox handleOpenURL:url];
+    // ...
     return YES;
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-	// ...
-  CYZFox.handleOpenURL(url)
-	// ...
-  return true
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    // ...
+    CYZFox.handleOpen(url)
+    // ...
+    return true
+}
+
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    // ...
+    CYZFox.handleOpen(url)
+    // ...
+    return true
 }
 ```
 
@@ -341,20 +356,22 @@ Universal Link対応の場合、`continueUserActivity`メソッドに [5.1](#tra
 ```objc
 -(BOOL) application:(UIApplication *) application continueUserActivity:(NSUserActivity *) userActivity
 restorationHandler:(void (^)(NSArray *restorableObjects)) restorationHandler {
-	// ...
+    // ...
     [CYZFox handleOpenURL:userActivity.webpageURL];
-	// ...
+    // ...
     return YES;
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-  // ...
-  CYZFox.handleOpenURL(url)
-  // ...
-  return true
+func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    // ...
+    if let url = userActivity.webpageURL {
+        CYZFox.handleOpen(url)
+    }
+    // ...
+    return true
 }
 ```
 
@@ -374,8 +391,7 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objective-c
-- (BOOL)application:(UIApplication *)application
-   didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     If ([application applicationState] == UIApplicationStateBackground) {
         //バックグラウンド時の処理
@@ -384,28 +400,28 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
         [CYZFox trackSession];
     }
 
+    // ...
+    return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-
     [CYZFox trackSession];
-
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		if application.applicationState == UIApplicationState.Background {
-				//バックグラウンド時の処理
-		} else {
-				//バックグラウンド時は起動計測が呼ばれないようにする
-				CYZFox.trackSession()
-		}
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
+    if application.applicationState == UIApplicationState.background {
+        //バックグラウンド時の処理
+    } else {
+        //バックグラウンド時は起動計測が呼ばれないようにする
+        CYZFox.trackSession()
+    }
 }
 
-func applicationDidEnterBackground(application: UIApplication) {
-		CYZFox.trackSession()
+func applicationDidEnterBackground(_ application: UIApplication) {
+    CYZFox.trackSession()
 }
 ```
 
@@ -426,7 +442,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", andLtvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```

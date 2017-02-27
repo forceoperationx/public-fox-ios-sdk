@@ -17,7 +17,7 @@ option.optout = YES;
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 // 初回起動のインストール計測
-let option: CYZFoxTrackOption = CYZFoxTrackOption.init()
+let option: CYZFoxTrackOption = CYZFoxTrackOption()
 option.optout = true
 CYZFox.trackInstallWithOption(option)
 ```

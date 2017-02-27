@@ -18,36 +18,52 @@
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// ...
-	[[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
-	[CYZFox trackInstall];
-	// ...
-	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+    // ...
+    [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
+    [CYZFox trackInstall];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-
-	[CYZFox handleOpenURL:url];
-
-	return YES;
+    // ...
+    [CYZFox handleOpenURL:url];
+    // ...
+    return YES;
 }
+
+-(BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    // ...
+    [CYZFox handleOpenURL:url];
+    // ...
+    return YES;
+}
+
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	// ...
-	CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
-	CYZFox.trackInstall()
-	// ...
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // ...
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    CYZFox.trackInstall()
+    // ...
 }
 
-func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-
-        CYZFox.handleOpenURL(url)
-
-        return true
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    // ...
+    CYZFox.handleOpen(url)
+    // ...
+    return true
 }
+
+func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    // ...
+    CYZFox.handleOpen(url)
+    // ...
+    return true
+}
+
 ```
 
 > ※ 引数を指定せず`trackInstall`メソッドを呼び出すと、F.O.X管理画面上での設定内容が優先されます。Cookie計測の際のリダイレクト先URLを指定する場合は、以降の説明をご確認ください。
@@ -63,36 +79,35 @@ func application(application: UIApplication, openURL url: NSURL, sourceApplicati
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 -(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
-	// after activate
-	CYZFoxTrackOption* option = [CYZFoxTrackOption new];
-	option.redirectURL = @"myapp://top";
-	option.buid = @"USER ID";
-	option.optout = YES;
-	option.onTrackFinished = ^ {
-		NSLog(@"callback after tracking finished");
-	}
-	[CYZFox trackInstallWithOption:option];
-	// ...
-	return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+    // after activate
+    CYZFoxTrackOption* option = [CYZFoxTrackOption new];
+    option.redirectURL = @"myapp://top";
+    option.buid = @"USER ID";
+    option.optout = YES;
+    option.trackingCompletionHandler = ^ {
+        NSLog(@"callback after tracking finished");
+    }
+    [CYZFox trackInstallWithOption:option];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
 }
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-  let option: CYZFoxTrackOption = CYZFoxTrackOption.init()
-  option.redirectURL = "myapp://top"
-  option.buid = "USER ID"
-  option.optout = true
-  option.onTrackFinished = {
-    print("callback after tracking finished")
-  }
-  CYZFox.trackInstallWithOption(option)
+    let option: CYZFoxTrackOption = CYZFoxTrackOption()
+    option.redirectURL = "myapp://top"
+    option.buid = "USER ID"
+    option.optout = true
+    option.trackingCompletionHandler = {
+        print("callback after tracking finished")
+    }
+    CYZFox.trackInstallWithOption(option)
 }
 ```
 
-> 上記のサンプルコードでは、リダイレクト先・BUID・オプトアウトの有無・計測完了のコールバックを受け取る処理の実装例となっています。<br>`onTrackFinished`をセットした上で計測処理が完了すると`Block`が呼ばれますので、インストール計測完了直後に実行したい処理はこちらに実装してください。
+> 上記のサンプルコードでは、リダイレクト先・BUID・オプトアウトの有無・計測完了のコールバックを受け取る処理の実装例となっています。<br>`trackingCompletionHandler`をセットした上で計測処理が完了すると`Block`が呼ばれますので、インストール計測完了直後に実行したい処理はこちらに実装してください。
 
 > オプトアウトを有効にした場合、その後そのユーザーを広告の配信対象から外すことが可能です。<br>
 尚、オプトアウトはユーザーに対しオプトアウトの意思表示を選択させるような機能をアプリ内で実装している場合に有効です。
