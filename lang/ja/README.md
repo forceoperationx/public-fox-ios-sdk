@@ -144,6 +144,7 @@ SDKの動作に必要なXcodeの設定を行います。
 <tr><td>Foundation.framework</td><td>Required</td></tr>
 <tr><td>Security.framework</td><td>Required</td></tr>
 <tr><td>SystemConfiguration.framework</td><td>Required</td></tr>
+<tr><td>WebKit.framework</td><td>Required</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
 </table>
 
