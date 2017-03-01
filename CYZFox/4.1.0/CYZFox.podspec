@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
   s.source           = {:http => "https://github.com/cyber-z/public-fox-ios-sdk/releases/download/#{s.version}/CYZFox_iOS_static_#{s.version}.zip"}
   s.vendored_frameworks = "CYZFox_iOS_static_#{s.version}/CYZFox.framework"
 
-  s.frameworks = "Foundation", "Security", "AdSupport", "SystemConfiguration"
+  s.frameworks = "Foundation", "Security", "AdSupport", "SystemConfiguration", "WebKit"
 
 end
