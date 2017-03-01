@@ -12,7 +12,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [1.3 手動による導入](#by_manual)
 * **[2. 設定](#setting_sdk)**
 	* [2.1 Frameworkの設定](#setting_framework)
-	* [2.2 App Transport Securityの設定](#setting_ats)
+	* [2.2 App Transport Securityについて](#setting_ats)
 	* [2.3 URLスキームの設定](#setting_urlscheme)
 	* [SDK API](./doc/sdk_api/README.md)
 * **[3. F.O.X SDKのアクティベーション](#activate_sdk_into_app)**
@@ -22,8 +22,8 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [インストール計測の詳細](./doc/track_install/README.md)
 	* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
 * **[5. リエンゲージメント計測の実装](#tracking_reengagement)**
-	* [5.1 カスタマイズURL Schemeによって計測](#tracking_reengagement_scheme)
-	* [5.2 Universal Linkによって計測](#tracking_reengagement_ulink)
+	* [5.1 カスタマイズURL Schemeによる計測](#tracking_reengagement_scheme)
+	* [5.2 Universal Linkによる計測](#tracking_reengagement_ulink)
 * **[6. アプリ内イベントの計測](#tracking_event)**
 	* [6.1 セッション（起動イベント）の計測](#tracking_session)
 	* [6.2 その他のアプリ内イベントの計測](#tracking_other_event)
@@ -149,18 +149,9 @@ SDKの動作に必要なXcodeの設定を行います。
 
 <div id="setting_ats"></div>
 
-### 2.2 App Transport Securityの設定
+### 2.2 App Transport Securityについて
 
-iOS9より提供されたNSAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
-
-キー | タイプ | 概要
-:---: | :---: | :---
-NSExceptionDomains|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|YES を指定してくださいATSの例外とします。
-NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
-
-![ATS設定](./img_setting_ats.png)
+F.O.X SDK ver4.0.0からは計測における全ての通信をHTTPSを利用して行うため、追加で対応を行う必要はありません。
 
 <div id="setting_urlscheme"></div>
 
