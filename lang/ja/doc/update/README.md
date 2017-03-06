@@ -19,7 +19,7 @@
 * DLBannerView.h
 * DLInterstitialViewController.h
 
-「[1. インストール](../../../README.md#install_sdk)」からドキュメントに従いもう一回導入手順を実施する。
+「[1. インストール](../../README.md#install_sdk)」からドキュメントに従いもう一回導入手順を実施する。
 
 #### CocoaPodsの場合
 Podfileに以下の指定を
@@ -56,9 +56,9 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 |UIWebViewで計測指定|[ltv setLtvCookie]|[foxConfig enableWebViewTracking];<br>[foxConfig activate];
 |インストール計測|[adManager sendConversionWithStartpage:@"default"]|[CYZFox trackInstall]|
 |リエンゲージメント計測|[adManager setUrlScheme:url]|[CYZFox handleOpenURL:url]|
-|セッション計測|[ForceAnalyticsManager sendtrackSession];|[CYZFox trackSession]|
-|イベント計測<br/>(課金)|[ltv addParameter:LTV_PARAM_PRICE :@"9.99"];<br/>[ltv addParameter:LTV_PARAM_CURRENCY :@"USD"]<br/>[ltv sendLtv:123]<br/> [AnalyticsManager trackEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:nil price:9.99 quantity:1 currency:@"USD";|CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"purchase" andLtvId:123];<br/>event.price = 9.99;<br/>event.currency = @"USD";<br/>[CYZFox trackEvent:event];|
-|イベント計測<br/>(チュートリアル完了)|[AnalyticsManager trackEvent:@"Tutorial" action:nil label:nil value:0]|[CYZFox trackEvent:[[CYZFoxEvent alloc] initWithEventName:@"Tutorial"]];|
+|セッション計測|[ForceAnalyticsManager sendStartSession];|[CYZFox trackSession]|
+|イベント計測<br/>(課金)|[ltv addParameter:LTV_PARAM_PRICE :@"9.99"];<br/>[ltv addParameter:LTV_PARAM_CURRENCY :@"USD"]<br/>[ltv sendLtv:123]<br/> [AnalyticsManager sendEvent:@"purchase" action:nil label:nil orderID:nil sku:nil itemName:nil price:9.99 quantity:1 currency:@"USD";|CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"purchase" andLtvId:123];<br/>event.price = 9.99;<br/>event.currency = @"USD";<br/>[CYZFox trackEvent:event];|
+|イベント計測<br/>(チュートリアル完了)|[AnalyticsManager sendEvent:@"Tutorial" action:nil label:nil value:0]|[CYZFox trackEvent:[[CYZFoxEvent alloc] initWithEventName:@"Tutorial"]];|
 
 
 
