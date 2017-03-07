@@ -2,20 +2,20 @@
 
 ---
 
-# イベント計測の詳細
+# 事件计测详细
 
 
-以下、各種イベントを実装する際の詳細を説明します。<br>
-エンゲージメント計測やダイナミック配信連携を行う際に必要となる実装も含まれます。本実装を行うことで、媒体を横断したイベント計測連携が可能となります。
+以下为执行各类事件时的详细说明。<br>
+包含一般广告计测及动态投放时所需的执行任务。实现执行任务后可以进行跨媒体事件监测。
 
-* **[1. アプリ内の各種イベント実装例](#each_event_sample)**
-* **[2. 旧バージョンでの実装の置き換え(エンゲージメント計測)](#continuity)**
-* **[3. タグを利用したイベント計測について](#track_by_tag)**
+* **[1. APP内各类事件的执行案例](#each_event_sample)**
+* **[2. 替换旧版执行任务（一般广告计测）](#continuity)**
+* **[3. 使用tag进行事件计测](#track_by_tag)**
 
 <div id="each_event_sample"></div>
-## 1. アプリ内の各種イベント実装例
+## 1. APP内各类事件的执行案例
 
-#### 1.1 会員登録イベント計測 実装例
+#### 1.1 计测会员注册事件 执行案例
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -31,7 +31,7 @@ event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
 
-#### 1.2 チュートリアル完了イベント計測 実装例
+#### 1.2 计测新手引导完成事件 执行案例
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -47,7 +47,7 @@ event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
 
-#### 1.3 課金イベント計測 実装例
+#### 1.3 计测付费事件 执行案例
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -70,12 +70,12 @@ CYZFox.trackEvent(event)
 ```
 
 <div id="continuity"></div>
-## 2. 旧バージョンでの実装の置き換え(エンゲージメント計測)
+## 2. 替换旧版执行任务（一般广告计测）
 
-これまでのF.O.X iOS SDK 3.0.0以下で行っていた実装方法を継続することも可能となっています。<br>
-下記は課金イベントのエンゲージメント計測の実装例です。
+可沿用F.O.X Android SDK 3.0.0之前版本的执行方式。<br>
+以下为付费活跃度监测的执行案例。
 
-**実装例**
+**执行案例**
 
 ```objc
 NSDictionary* eventInfo = @{
@@ -119,14 +119,14 @@ event.eventInfo = eventInfo;
 ```
 
 <div id="track_by_tag"></div>
-## 3. タグを利用したイベント計測について
+## 3. 使用tag进行事件计测
 
-会員登録や商品購入等がWebページで行われる場合に、imgタグを利用してイベント計測を利用することができます。<br>
-F.O.Xのイベント計測は、外部ブラウザ、アプリ内WebViewの両方に対応しています。外部ブラウザの場合には[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)メソッド、アプリ内WebViewの場合には[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)メソッドを利用することで、F.O.Xがイベント計測に必要な情報をブラウザのCookieに記録します。
+在页面上发生会员注册及商品购买等行为时，可以使用img tag来进行事件计测。<br>
+F.O.X的事件计测适用于外部浏览器和APP内页面。外部浏览器使用[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)方法、APP内页面使用[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)方法，F.O.X会在页面Cookie中记录事件计测所需的信息。
 
-### 3.1 外部ブラウザによるイベント計測
+### 3.1 外部浏览器中的事件计测
 
-アプリケーションから外部ブラウザを起動し、外部ブラウザで表示したWebページでタグ計測を行う場合は、`trackEventByBrowser`メソッドを利用して外部ブラウザを起動してください。引数には、外部ブラウザで表示するURLを文字列で指定します。
+从APP跳转至外部浏览器，利用跳转的网页进行tag计测时，请使用`trackEventByBrowser`方法来启动外部浏览器，并在引数中用字符串设置要跳转的URL。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -138,9 +138,9 @@ F.O.Xのイベント計測は、外部ブラウザ、アプリ内WebViewの両�
 CYZFox.trackEventByBrowser("http://www.host.com")
 ```
 
-### 3.2 アプリ内WebViewでのイベント計測について
+### 3.2 APP内页面中的事件计测
 
-ユーザーの遷移がWebView内で行われる場合には、初期化する際に`CYZFoxConfig`の`enableWebViewTracking`を設定ことで計測することができます。
+在页面内进行用户跳转的情况时，初始化时通过设置`CYZFoxConfig`的`enableWebViewTracking`可以实现计测。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -157,4 +157,4 @@ foxConfig.activate()
 ```
 
 ---
-[トップ](../../README.md)
+[Top](../../README.md)

@@ -7,27 +7,27 @@
 #### Properties
 |Property|Type|Detail|
 |:---|:---|:---|
-|appId|NSString|readonly, 管理画面で発行されたアプリID|
-|salt|NSString|readonly, 管理画面で発行されたソルト|
-|appKey|NSString|readonly, 管理画面で発行されたアプリKEY|
-|foxServerURL|NSString|DeliverサーバーURL|
-|analyticsServerURL|NSString|アクセス解析サーバーURL|
-|debugMode|BOOL|readonly, デバッグログの出力有無|
-|webViewTrackingEnabled|BOOL|UIWebViewで計測する機能有効の有無|
-|customizedUserAgentEnabled|BOOL|カスタマイズUserAgentのサポートの有無|
+|appId|NSString|readonly, 管理界面中生成的APP ID|
+|salt|NSString|readonly, 管理界面中生成的slat|
+|appKey|NSString|readonly, 管理界面中生成的APP KEY|
+|foxServerURL|NSString|Deliver服务器URL|
+|analyticsServerURL|NSString|访问解析服务器URL|
+|debugMode|BOOL|readonly, 是否生成调试日志|
+|webViewTrackingEnabled|BOOL|UIWebView中计测功能是否有效|
+|customizedUserAgentEnabled|BOOL|定制化UserAgent的支持是否有效|
 
 #### Instance Methods
 1. `-(void) enableDebugMode`
-> エラー時のメッセージやスタックトレースを表示させる
+> 利用Logcat输出发生错误时的消息和堆栈轨迹（Stack Trace）
 
 2. `-(void) enableWebViewTracking`
-> UIWebViewで計測する機能有効にする
+> UIWebView中计测功能设为有效
 
 3. `-(void) activate`
-> 設定した情報をSDK内部で反映する。注意、最初の一回呼ばれる時にだけ設定値が保存される。
+> 设置的信息会在SDK内部反映。注意，只保存第一次呼出时的设置值。
 
 ４. `-(void) enableCustomizedUserAgent`
-> カスタマイズUserAgentのサポートを有効にする
+> 定制化UserAgent的支持是否有效
 
 #### Static Methods
 
@@ -35,10 +35,10 @@
 ```objc
 +(nullable CYZFoxConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
 ```
-> コンストラクタメソッド、必須Propertiesは初期化と同時にセットされます。
-> <br/>@param `appId` 管理画面で発行されたアプリID
-> <br/>@param `salt` 管理画面で発行されたアプリソルト
-> <br/>@param `appKey` 管理画面で発行されたアプリKEY
+> 构造函数方法，所需Properties会在初始化时设置。
+> <br/>@param `appId` 管理界面中生成的APP ID
+> <br/>@param `salt` 管理界面中生成的salt
+> <br/>@param `appKey` 管理界面中生成的APP KEY
 
 
 <div id="CYZFox"></div>
@@ -48,36 +48,36 @@
 #### Static Methods
 
 1. `+(void) trackInstall`
-> インストール後の初回起動計測用メソッド。管理画面で設定した通りに動作する
+> 计测安装后首次启动的method方法。根据管理界面中的设置进行操作。
 
 2. `+(void) trackInstallWithOption:(nonnull CYZFoxTrackOption*) option`
-> インストール後の初回起動計測用メソッド。インストール後の初回起動計測用メソッド。FoxOptionに設定した計測オプションに従い動作する。
-> <br/>@param [`option`](#CYZFoxTrackOption) 計測に指定するオプション
+> 计测安装后首次启动的method方法。根据FoxOption中设置的计测选项进行操作。
+> <br/>@param [`option`](#CYZFoxTrackOption) 计测指定选项
 
 3. `+(void) handleOpenURL:(nonnull NSURL*) url`
-> Cookie計測とリエンゲージメント計測用URL schemeを受け取るメソッド
-> <br/>@param `url` 外部によりアプリを起動させるURL
+> 收取Cookie计测和流失唤回广告计测用的URL scheme的方法
+> <br/>@param `url` 从外部启动APP的URL
 
 4. `+(void) trackSession`
-> セッション計測を行う
+> 进行session计测
 
 5. `+(void) trackEvent:(nonnull CYZFoxEvent*) event`
-> イベント計測を行う
-> <br/>@param [`event`](#foxevent) イベント情報の詳細
+> 进行事件计测
+> <br/>@param [`event`](#foxevent) 事件信息详情
 
 6. `+(nullable NSDictionary*) getUserInfo`
-> 全てのイベントに共有される計測する際のユーザー情報・属性等を取得する
+> 获取计测所有事件时的用户信息和属性
 
 7. `+(void) setUserInfo:(nonnull NSDictionary*) userInfo`
-> 全てのイベントに共有される計測する際のユーザー情報・属性等を設定する
-> <br/>@param `userInfo` JSON形式の設定する情報・属性
+> 设置计测所有事件时的用户信息和属性
+> <br/>@param `userInfo` 以JSON形式设置信息和属性
 
 8. `+(BOOL) isConversionCompleted`
-> インストール計測が完成しているかをbooleanで返す
+> 安装计测完成后用boolean返回结果
 
 9. `+(void) trackEventByBrowser:(nonnull NSString*) redirectURL`
-> イベントタグを設置した外部のWebページのイベント計測
-> <br/>@param `redirectURL` イベントタグを埋め込んだ外部のWebページのURL
+> 对设置事件tagタグ的外部网页进行事件计测
+> <br/>@param `redirectURL` 埋入事件tag的外部网页URL
 
 
 <div id="CYZFoxTrackOption"></div>
@@ -86,13 +86,13 @@
 #### Properties
 |Property|Type|Detail|
 |:---|:---|:---|
-|optout|BOOL|OptOut有無のセッター<br>※デフォルト : false|
-|redirectURL|NSString|ブラウザ起動後のリダイレクト先|
-|buid|NSString|Buidのセッター|
-|onTrackFinished|Block|非推薦、`trackingCompletionHandler`を使う。初回起動計測が終了した際のコールバック。|
-|trackingCompletionHandler|Block|初回起動計測が終了した際のコールバック。|
-|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。<br>_コールバックパラメーター_：<br>`deeplinkInfo` -- NSDictionary、JSONタイプのdeeplinkの情報|
-|durationSinceClick|NSTimeInterval|クリックからディファードディープリンクの有効期限。単位は秒|
+|optout|BOOL|OptOut是否输出setter<br>※默认 : false|
+|redirectURL|NSString|浏览器启动后的自动跳转页面|
+|buid|NSString|Buid的setter|
+|onTrackFinished|Block|首次启动计测成功时的callback|
+|trackingCompletionHandler|Block|初次启动计测完成时的Callback方法。|
+|deferredDeeplinkHandler|Block|取得Deferred Deeplink时候的Callback方法。<br>_Callback参数_：<br>`deeplinkInfo` -- NSDictionary、JSON类型deeplink的信息|
+|durationSinceClick|NSTimeInterval|从点击到Deferred deeplink的有效期限。以秒为单位|
 
 <div id="foxevent"></div>
 
@@ -101,31 +101,31 @@
 #### Properties
 |Property|Type|Detail|
 |:---|:---|:---|
-|ltvId|NSUInteger|管理画面で発行されたLTV ID|
+|ltvId|NSUInteger|管理界面中生成的LTV ID|
 |buid|NSString|client user ID|
-|extraInfo|NSDictionary|任意のKey-Value情報|
-|eventName|NSString|イベント名|
-|value|NSUInteger|イベントと関係する値|
-|orderId|NSString|購入イベントのorder ID|
-|sku|NSString|アイテムのSKU|
-|itemName|NSString|アイテム名|
-|price|NSString|アイテムの**単価**|
-|quantity|NSString|アイテムの数|
-|currency|NSString|単価の通貨|
-|eventInfo|NSDictionary|カスタマイズJSON形式の情報|
+|extraInfo|NSDictionary|任意Key-Value信息|
+|eventName|NSString|事件名|
+|value|NSUInteger|事件相关值|
+|orderId|NSString|购买事件的order ID|
+|sku|NSString|道具 SKU|
+|itemName|NSString|道具名|
+|price|NSString|道具**单价**|
+|quantity|NSString|道具数量|
+|currency|NSString|单价货币|
+|eventInfo|NSDictionary|自定义JSON形式信息|
 
 #### Instance Methods
 1. `-(nullable instancetype) initWithEventName:(nonnull NSString*) eventName`
-> 初期化メソッド、イベント名を指定する。
-> <br/>@param `eventName` イベント名
+> 指定初始化方法、事件名。
+> <br/>@param `eventName` 事件名
 
 2. `-(nullable instancetype) initWithEventName:(nonnull NSString*) eventName andLtvId:(NSUInteger) ltvId`
-> 初期化メソッド、イベント名とLTV IDを指定する。
-> <br/>@param `eventName` イベント名
-> <br/>@param `ltvId` 管理画面で発行されたLTV ID
+> 指定初始化方法、事件名和LTV ID。
+> <br/>@param `eventName` 事件名
+> <br/>@param `ltvId` 管理界面中发行的LTV ID
 
 3. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
-> 任意のKey-Value情報を追加する
+> 添加任意Key-Value信息
 > <br/>@param `value` Value
 > <br/>@param `key` Key
 
@@ -137,11 +137,11 @@
                                                price:(double) price
                                             currency:(nullable NSString*) currency;
 ```
-> 購入イベントを作成するヘルパーメソッド
-> <br/>@param `eventName` イベント名
-> <br/>@param `ltvId` 管理画面で発行されたLTV ID
-> <br/>@param `price` 単価
-> <br/>@param `currency` 単価の通貨
+> 购买事件作成的帮助方法
+> <br/>@param `eventName` 事件名
+> <br/>@param `ltvId` 管理画面中发行的LTV ID
+> <br/>@param `price` 单价
+> <br/>@param `currency` 单价货币
 
 
 ---
