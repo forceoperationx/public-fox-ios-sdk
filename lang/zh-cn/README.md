@@ -1,145 +1,145 @@
-# Force Operation Xとは
+# 什么是Force Operation X
 
-Force Operation X (以下F.O.X)は、スマートフォンにおける広告効果最適化のためのトータルソリューションプラットフォームです。アプリケーションのダウンロード、ウェブ上でのユーザーアクションの計測はもちろん、スマートフォンユーザーの行動特性に基づいた独自の効果計測基準の元、企業のプロモーションにおける費用対効果を最大化することができます。
+Force Operation X（以下简称F.O.X）是一款用于优化智能手机广告效果的整体解决方案平台。不光是App的下载和网页用户行为的计测，基于智能用户行为特征的独特计测基准，能够实现企业推广的性价比最大化。
 
-本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
+本文件是为实现智能手机app中广告效果最大化的安装F.O.X SDK安装说明书。
 
-## 目次
+## 目录
 
-* **[1. インストール](#install_sdk)**
-	* [1.1 CocoaPodsによる導入](#by_cocoapods)
-	* [1.2 Carthageによる導入](#by_carthage)
-	* [1.3 手動による導入](#by_manual)
-* **[2. 設定](#setting_sdk)**
-	* [2.1 Frameworkの設定](#setting_framework)
-	* [2.2 App Transport Securityについて](#setting_ats)
-	* [2.3 URLスキームの設定](#setting_urlscheme)
+* **[1. 安装](#install_sdk)**
+	* [1.1 使用CocoaPods导入](#by_cocoapods)
+	* [1.2 使用Carthage导入](#by_carthage)
+	* [1.3 手动导入](#by_manual)
+* **[2. 设置](#setting_sdk)**
+	* [2.1 Framework设置](#setting_framework)
+	* [2.2 App Transport Security设置](#setting_ats)
+	* [2.3 URL scheme设置](#setting_urlscheme)
 	* [SDK API](./doc/sdk_api/README.md)
-* **[3. F.O.X SDKのアクティベーション](#activate_sdk_into_app)**
-	* [3.1 Frameworkのインポート](#activate_import)
-	* [3.2 コンフィギュレーション](#activate_config)
-* **[4. インストール計測の実装](#tracking_install)**
-	* [インストール計測の詳細](./doc/track_install/README.md)
-	* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
-* **[5. リエンゲージメント計測の実装](#tracking_reengagement)**
-	* [5.1 カスタマイズURL Schemeによる計測](#tracking_reengagement_scheme)
-	* [5.2 Universal Linkによる計測](#tracking_reengagement_ulink)
-* **[6. アプリ内イベントの計測](#tracking_event)**
-	* [6.1 セッション（起動イベント）の計測](#tracking_session)
-	* [6.2 その他のアプリ内イベントの計測](#tracking_other_event)
-	* [イベント計測の詳細](./doc/track_events/README.md)
-* **[7. その他機能の実装](#other_function)**
-	* [オプトアウトの実装](./doc/optout/README.md)
-* **[8. 最後に必ずご確認ください](#trouble_shooting)**
+* **[3. 激活F.O.X SDK](#activate_sdk_into_app)**
+	* [3.1 Framework输入](#activate_import)
+	* [3.2 configuration](#activate_config)
+* **[4. 执行安装计测](#tracking_install)**
+	* [安装计测详情](./doc/track_install/README.md)
+	* [Deferred Deeplink的安装](./doc/deferred_deeplink/README.md)
+* **[5. 执行流失唤回广告计测](#tracking_reengagement)**
+	* [5.1 使用自定义URL Scheme计测](#tracking_reengagement_scheme)
+	* [5.2 使用Universal Link计测](#tracking_reengagement_ulink)
+* **[6. APP内事件计测](#tracking_event)**
+	* [6.1 session（启动事件）计测](#tracking_session)
+	* [6.2 其他APP内事件计测](#tracking_other_event)
+	* [事件计测详情](./doc/track_events/README.md)
+* **[7. 执行其他功能](#other_function)**
+	* [执行optout](./doc/optout/README.md)
+* **[8. 最后的注意事项](#trouble_shooting)**
 
 
-## F.O.X SDKとは
+## 什么是F.O.X SDK
 [![Platform](https://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=flat)](http://www.apple.com/ios/)
 [![Language](https://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)]()
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)]()
 
-F.O.X SDKをアプリケーションに導入することで、以下の機能を実現します。
+将F.O.X SDK导入app之后，能够实现以下功能。
 
-* **インストール計測**
+* **Install计测**
 
-広告流入別にインストール数を計測することができます。
+能够计测不同广告带来的安装数。
 
-* **LTV計測**
+* **LTV计测**
 
-流入元広告別にLife Time Valueを計測します。主な成果地点としては、会員登録、チュートリアル突破、課金などがあります。各広告別に登録率、課金率や課金額などを計測することができます。
+可以计测不同广告来源的Life Time Value。主要的成果地点为会员注册、新手引导完成、付费等。能够分别监测各广告的登录率、付费率以及付费金额。
 
-* **アクセス解析**
+* **流量分析**
 
-自然流入と広告流入のインストール比較。アプリケーションの起動数やユニークユーザー数(DAU/MAU)。継続率等を計測することができます。
+比较自然流量和广告流量带来的安装。能够计测App的启动次数和unique用户数(DAU/MAU)、留存率等。
 
 
 <div id="install_sdk"></div>
 
-## 1. インストール
+## 1. 安装
 
 <div id="by_cocoapods"></div>
 
-### 1.1 CocoaPodsによる導入
+### 1.1 使用CocoaPods导入
 
-下記のようにPodfileファイルを更新してください。
-* **iOS objective-cで開発する場合**
+请按下列方法更新Podfile文件。
+* **使用iOS objective-c开发的场合**
 ```ruby
-# 下記の一行をPodfileの一番最初に追加してください
+# 请将下列内容添加在Podfile的最前端
 source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-# 下記を指定したいターゲットに追加してください
+# 请将下列内容添加在指定目标中
 pod "CYZFox", "<VERSION>"
 ```
 
-* **tvOS objective-cで開発する場合**
+* **使用tvOS objective-c开发的场合**
 ```ruby
-# 下記の一行をPodfileの一番最初に追加してください
+# 请将下列内容添加在Podfile的最前端
 source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-# 下記を指定したいターゲットに追加してください
+# 请将下列内容添加在指定目标中
 pod "CYZFoxTv", "<VERSION>"
 ```
 
-* **iOS Swiftでdynamic frameworkを利用する場合**
+* **iOS Swift中使用dynamic framework的场合**
 ```ruby
-# 下記の一行をPodfileの一番最初に追加してください
+# 请将下列内容添加在Podfile的最前端
 source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-# dynamic frameworkを有効に
+# 使dynamic framework有效
 use_frameworks!
 
 pod "CYZFoxDy", "<VERSION>"
 ```
 
-* **tvOS Swiftでdynamic frameworkを利用する場合**
+* **tvOS Swift中使用dynamic framework的场合**
 ```ruby
-# 下記の一行をPodfileの一番最初に追加してください
+# 请将下列内容添加在Podfile的最前端
 source "https://github.com/cyber-z/public-fox-ios-sdk.git"
 
-# dynamic frameworkを有効に
+# 使dynamic framework有效
 use_frameworks!
 
 pod "CYZFoxTvDy", "<VERSION>"
 ```
-> ※ `<VERSION>`は指定したいリリースバージョン、4.0.0以上です。
+> ※ `<VERSION>`为想要指定的4.0.0以上发行版本。
 
 <div id="by_carthage"></div>
 
-### 1.2 Carthageによる導入
+### 1.2 使用Carthage导入
 
-Cartfileファイルに下記の設定を追加してください。
+Cartfile文件中添加以下内容。
 ```
 github "cyber-z/public-fox-ios-sdk" == <VERSION>
 ```
-> ※ `<VERSION>`は指定したい4.0.0以上のリリースバージョンです。
+> ※ `<VERSION>`为想要指定的4.0.0以上发行版本。
 
 > ※ Carthageの場合Target VersionはiOS 8.0以上に指定する必要となります。
 
 <div id="by_manual"></div>
 
-### 1.3 手動による導入
+### 1.3 手动导入
 
-[リリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
+[发行页面](https://github.com/cyber-z/public_fox_ios_sdk/releases)中下载并解压`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
 
-> ※ 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
+> ※ 如果APP中已经安装了SDK，请参考[新版本的更新说明](./doc/update/README.md)。
 
-> ※ tvOSの場合`CYZFox_tvOS_static_<VERSION>.zip`をダウンロードしてください。導入手順はiOSと同じです。
+> ※ tvOS的场合请下载`CYZFox_tvOS_static_<VERSION>.zip`。导入步骤与iOS相同。
 
 
 <div id="setting_sdk"></div>
 
-## 2. 設定
+## 2. 设置
 
-SDKの動作に必要なXcodeの設定を行います。
+进行SDK操作所需的Xcode设置。
 
 <div id="setting_framework"></div>
 
-### 2.1 Frameworkの設定
+### 2.1 Framework设置
 
-次のフレームワークをプロジェクトにリンクしてください。
+请将以下架构连接到项目中。
 
 <table>
-<tr><th>フレームワーク名</th><th>Status</th></tr>
+<tr><th>架构名</th><th>Status</th></tr>
 <tr><td>UIKit.framework</td><td>Required</td></tr>
 <tr><td>Foundation.framework</td><td>Required</td></tr>
 <tr><td>Security.framework</td><td>Required</td></tr>
@@ -150,30 +150,30 @@ SDKの動作に必要なXcodeの設定を行います。
 
 <div id="setting_ats"></div>
 
-### 2.2 App Transport Securityについて
+### 2.2 App Transport Security设置
 
-F.O.X SDK ver4.0.0からは計測における全ての通信をHTTPSを利用して行うため、追加で対応を行う必要はありません。
+从F.O.X SDK ver4.0.0开始，监测底层使用的全部通信都基于HTTPS协议，不需要做额外的对应。
 
 <div id="setting_urlscheme"></div>
 
-### 2.3 URLスキームの設定
+### 2.3 URL scheme设置
 
-Cookieインストール計測とリエンゲージメント計測を行うため、カスタマイズURL schemeの設定を必ず追加してください。
+为进行Cookie安装计测和流失唤回广告计测，请务必添加自定义URL scheme设置。
 
-> ※ 環境によっては、URLスキームの大文字小文字が判別されないことにより正常に URLスキームの遷移が行えない場合があります。URLスキームは全て小文字の英数字を用いて設定を行ってください。
+> ※ 根据运行环境，可能会有URL SCHEME的大小写文字不能识别而导致无法迁移的情况。请将URL SCHEME全部设置为小写英数字。
 
-> ※ 他アプリと衝突しないためリバースドメイン(例 _`jp.co.company.product`_ )の使用がおすすめです。
+> ※ 为了防止与其他APP冲突，建议使用反向域名(例 _`jp.co.company.product`_ )。
 
 
 <div id="activate_sdk_into_app"></div>
 
-## 3. F.O.X SDKのアクティベーション
+## 3. 激活F.O.X SDK
 
 <div id="activate_import"></div>
 
-### 3.1 Frameworkのインポート
+### 3.1 Framework输入
 
-APIを使用するため下記importを追加してください。
+为使用API，请添加下列import。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -187,9 +187,9 @@ import CYZFox
 
 <div id="activate_config"></div>
 
-### 3.2 コンフィギュレーション
+### 3.2 configuration
 
-F.O.X SDKのアクティベーションを行うため、[`CYZFoxConfig`](./doc/sdk_api/README.md#foxconfig)クラスのコンフィギュレーション設定をdidFinishLaunchingWithOptionsメソッド内に実装します。
+为激活F.O.X SDK，请在didFinishLaunchingWithOptions方法内执行[`CYZFoxConfig`](./doc/sdk_api/README.md#foxconfig)类的configuration设置。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -209,18 +209,18 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-> ※ アクティベーションの実装は必ず全ての計測の前に行わなければなりません。
+> ※ 激活执行必须在所有计测开始前进行。
 
 
 <div id="tracking_install"></div>
 
-## 4. インストール計測の実装
+## 4. 执行安装计测
 
-初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
-F.O.X SDKではiOS9からリリースされた新しいWebView形式である `SFSafariViewController` を初回起動時に起動させ計測することで、バックグラウンド表示によるユーザービリティの低下を防止することが出来ます。
+进行首次启动的安装计测，可以计测广告效果。
+F.O.X SDK在首次启动时，使用从iOS9版本开始发行的新WebView形式 `SFSafariViewController` 进行计测，可以防止background显示时可用性低下问题。
 
-以下の[`[CYZFox trackInstall]`](./doc/sdk_api/README.md#CYZFox)メソッドをアプリケーションの起動時に`didFinishLaunchingWithOptions`メソッド内に実装します。
-また`SFSafariViewController`でのインストール計測を行った後に`SFSafariViewController`を閉じるため、`-(BOOL)application:openURL:sourceApplication:annotation:`メソッド内、`[CYZFox handleOpenURL:url]`を実装を行ってください。
+下列[`[CYZFox trackInstall]`](./doc/sdk_api/README.md#CYZFox)方法在APP启动时，在`didFinishLaunchingWithOptions`方法中执行。
+使用`SFSafariViewController`进行安装计测后，为关闭`SFSafariViewController`，请在`-(BOOL)application:openURL:sourceApplication:annotation:`方法内、执行`[CYZFox handleOpenURL:url]`。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -229,13 +229,13 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である `S
     [[CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"xxxx"] activate];
     [CYZFox trackInstall];
     // ...
-    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+	return YES; // openURL:为呼出方法，请务必返回YES
 }
 
 -(BOOL) application:(UIApplication *) application openURL:(nonnull NSURL *) url
 sourceApplication:(nullable NSString *) sourceApplication annotation:(nonnull id) annotation {
     // ...
-    [CYZFox handleOpenURL:url]; // Cookie計測或はリエンゲージメント計測を利用する場合
+    [CYZFox handleOpenURL:url]; // 使用Cookie计测或流失唤回广告计测的场合
     // ...
     return YES;
 }
@@ -264,14 +264,14 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 }
 ```
 
-> ※ ２回目以降、trackInstallメソッドが呼び出されても動作することはありません。
+> ※ 第２次以后，即使呼出trackInstall方法也没有任何操作。
 
-> ※ trackInstallメソッドにはオプションを指定することも可能です。詳細は[インストール計測の詳細](./doc/track_install/README.md)をご確認ください。
+> ※ trackInstall方法中可以指定选项。详情请参考[安装计测详情](./doc/track_install/README.md)。
 
- * **Fingerprinting計測時の注意事項**
+ * **Fingerprinting计测时的注意事项**
 
- Fingerprinting計測はUIWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
- 下記のようにUserAgentのカスタマイズ処理を行う前にFOXConfigの設定を有効にしてください。
+ Fingerprinting计测使用UIWebView，如果使用UserAgent独特的自定义方法可能会导致无法正常计测。
+ 按下列内容，在计测处理完成后对UIWebView的UserAgent独特的字符串进行自定义设置。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
  ```objc
@@ -288,18 +288,18 @@ foxConfig.enableCustomizedUserAgent()
 foxConfig.activate()
 ```
 
-* [インストール計測の詳細](./doc/track_install/README.md)
-* [ディファードディープリンクの実装](./doc/deferred_deeplink/README.md)
+* [Install计测详情](./doc/track_install/README.md)
+* [Deferred Deeplink的安装](./doc/deferred_deeplink/README.md)
 
 <div id="tracking_reengagement"></div>
 
-## 5. リエンゲージメント計測の実装
+## 5. 执行流失唤回广告计测
 
 <div id="tracking_reengagement_scheme"></div>
 
-### 5.1 カスタマイズURL Schemeによる計測
+### 5.1 依靠定制化URL Scheme进行计测
 
-リエンゲージメント広告の計測（URLスキーム経由の起動を計測）するために、`UIApplicationDelegate`の`openURL`メソッドに`[CYZFox handleOpenURL:url]`を実装します。
+为进行流失唤回广告广告的计测（计测经由URL SCHEME的启动行为），需在`UIApplicationDelegate`的`openURL`方法中执行`[CYZFox handleOpenURL:url]`。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -336,13 +336,13 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 }
 ```
 
-> ※ リエンゲージメント広告の計測を行うためにはInfo.plistに定義されているカスタムURLスキームが設定されていることが前提となります。
+> ※ 进行流失唤回广告计测时，必须以定义为Info.plist的自定义URL scheme已经设置完毕为前提。
 
 <div id="tracking_reengagement_ulink"></div>
 
-### 5.2 Universal Linkによる計測
+### 5.2 使用Universal Link计测
 
-Universal Link対応の場合、`continueUserActivity`メソッドに [5.1](#tracking_reengagement_scheme) と同じ`[CYZFox handleOpenURL:url]`を実装します。
+适用Universal Link的场合、`continueUserActivity`方法中 [5.1](#tracking_reengagement_scheme) 同样执行`[CYZFox handleOpenURL:url]`。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -367,28 +367,28 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 }
 ```
 
-> ※ カスタマイズURL SchemeとUniversal Link 両方対応の場合、両方の実装が必要です。
+> ※ 自定义URL Scheme和Universal Link都适用的场合，必须执行双方。
 
 <div id="tracking_event"></div>
 
-## 6. アプリ内イベントの計測
+## 6. APP内事件计测
 
 <div id="tracking_session"></div>
 
-### 6.1 セッション（起動イベント）の計測
+### 6.1 session（启动事件）计测
 
-アプリケーションの起動、及びバックグラウンドからの復帰を計測するために、application:didFinishLaunchingWithOptions:およびapplicationWillEnterForegroundにコードを追加します。
+计测APP启动以及后台恢复时，需在代码中添加application:didFinishLaunchingWithOptions:およびapplicationWillEnterForeground。
 
-※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
+※使用后台获取的场合，后台启动时OS呼出application:didFinishLaunchingWithOptions:。为使后台不呼出启动计测F.O.X方法，请在applicationState中进行状态判定。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     If ([application applicationState] == UIApplicationStateBackground) {
-        //バックグラウンド時の処理
+        //APP在后台运行时的处理
     } else {
-        //バックグラウンド時は起動計測が呼ばれないようにする
+        //APP在后台运行时不调用启动计测处理
         [CYZFox trackSession];
     }
 
@@ -405,9 +405,9 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 ```Swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
     if application.applicationState == UIApplicationState.background {
-        //バックグラウンド時の処理
+        //APP在后台运行时的处理
     } else {
-        //バックグラウンド時は起動計測が呼ばれないようにする
+        //APP在后台运行时不调用启动计测处理
         CYZFox.trackSession()
     }
 }
@@ -419,11 +419,11 @@ func applicationDidEnterBackground(_ application: UIApplication) {
 
 <div id="tracking_other_event"></div>
 
-### 6.2 その他のアプリ内イベントの計測
+### 6.2 其他APP内事件计测
 
-会員登録、チュートリアル突破、課金など任意の成果地点にイベント計測を実装することで、流入元広告のLTVを測定することができます。<br>イベント計測が不要の場合には、本項目の実装を省略できます。
+通过在会员注册、新手引导突破、付费等任意成果地点中执行事件计测，可以测定广告来源LTV。<br>如不需要事件计测时，可以忽略本项。
 
-**[チュートリアルイベントの計測例]**
+**[新手引导事件的计测案例]**
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -439,11 +439,11 @@ event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
 
-> イベント計測を行うためには、各成果地点を識別する`成果地点ID`を指定する必要があります。[`CYZFoxEvent`](./doc/sdk_api/README.md#foxevent)クラスのコンストラクタの引数にイベント名と発行されたIDを指定してください。
+> 进行event计测时，需指定识别成果地点的成果地点ID。[`CYZFoxEvent`](./doc/sdk_api/README.md#foxevent)类的构造函数的引数中请指定事件名和生成的ID。
 
-**[課金イベントの計測例]**
+**[付费事件的计测案例]**
 
-課金計測を行う場合には、課金が完了した箇所で以下のように課金額と通貨コードを指定してください。
+进行付费计测时，请在付费完成的位置指定付费金额和货币代码。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -463,58 +463,58 @@ event.sku = "itemId"
 CYZFox.trackEvent(event)
 ```
 
-currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定義された通貨コードを指定してください。
+currency请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)认证的货币代码。
 
-[イベント計測の詳細](./doc/track_events/README.md)
+[事件计测详情](./doc/track_events/README.md)
 
 <div id="other_function"></div>
 
-## 7. その他機能の実装
+## 7. 执行其他功能
 
-* [オプトアウトの実装](./doc/optout/README.md)
+* [执行optout](./doc/optout/README.md)
 
 <div id="trouble_shooting"></div>
-## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
+## 8. 最后的注意事项（常见问题集）
 
-### 8.1. F.O.Xで利用するバンドルバージョンとは？
+### 8.1. F.O.X中使用的bundle版本是什么？
 
-iOSでは、バンドルバージョンと呼ばれるものには具体的に以下の二つがあります。
+iOS中，bundle版本具体为以下两种。
 
 * CFBundleVersion
 * CFBundleShortVersionString
 
-F.O.Xでは、上記のうちCFBundleShortVersionStringの値を管理の目的で利用します。
+F.O.X中，上述中CFBundleShortVersionString的值作为管理目的而使用。
 
-### 8.2. 期待した広告経由のインストール数よりもレポートの数字が低い
+### 8.2. 期待的广告安装数比报告数据低
 
-インストール計測の`trackInstall:`または`trackInstallWithOption:`が起動直後ではない箇所に実装されている場合に、その地点に到達する前に離脱したユーザーは計測漏れが発生します。
+安装计测的`trackInstall:`及`trackInstallWithOption:`若不在启动后马上执行，会遗漏地点达成前流失的用户。
 
-`trackInstall:`および、`trackInstallWithOption:`は、特に理由がない限りは`application:didFinishLaunchingWithOptions:`内に実装してください。それ以外の箇所に実装された場合にはインストール数が正確に計測できない場合があります。
+`trackInstall:`和`trackInstallWithOption:`在没有特殊情况时，请在`application:didFinishLaunchingWithOptions:`内执行。在其他位置执行可能会导致安装数无法正确计测。
 
-`application:didFinishLaunchingWithOptions:`に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
+`application:didFinishLaunchingWithOptions:`中未执行的状态投放成果型广告时，请务必告知广告代理点或媒体公司担当者。无法进行正确计测的状态投放成果型广告时，可能会导致需要支付超出实际安装数的广告费用。
 
-### 8.3. URLスキームの設定がされずリリースされたためブラウザからアプリに遷移ができない
+### 8.3. 未设置URL SCHEME 进行发布时无法从浏览器跳转至app
 
-Cookie計測を行うために外部ブラウザを起動した後に、元の画面に戻すためにはURLスキームを利用してアプリケーションに遷移させる必要があります。この際、独自のURLスキームが設定されている必要があり、URLスキームを設定せずにリリースした場合にはこのような遷移を行うことができなくなります。
+进行Cookie计测启动浏览器时，必须使用URL scheme迁移到Application原画面。此时需要设置URL scheme，未设置scheme就发布的情况会导致无法正常迁移。
 
-### 8.4. URLスキームに大文字が含まれ、正常にアプリに遷移されない
+### 8.4. URL SCHEME中含有大写字母时，无法正常迁移app。
 
-環境によって、URLスキームの大文字小文字が判別されないことにより正常にURLスキームの遷移が行えない場合があります。URLスキームは全て小文字で設定を行ってください。
+根据运行环境，会出现因为URL SCHEME 的大小写字母不能判定而导致URL SCHEME 无法正常迁移的情况。请将URL SCHEME 全部设置为小写字母。
 
-### 8.5. URLスキームの設定が他社製アプリと同一でブラウザからそちらのアプリが起動してしまう
+### 8.5. URL scheme设置与其他公司APP相同时，浏览器跳转了其他APP
 
-iOSにおいて、複数のアプリに同一のURLスキームが設定されていた場合に、どのアプリが起動するかは不定です。確実に特定のアプリを起動することができなくなるため、URLスキームは他社製アプリとはユニークになるようある程度の複雑性のあるものを設定してください。
+iOS中，多个APP设置为同一个URL scheme时，会随机启动APP。由于可能导致无法启动指定的APP，请将URL scheme区别与其他APP。
 
-### 8.6. 短時間で大量のユーザー獲得を行うプロモーションを実施したら正常に計測がされなかった
+### 8.6. 进行短时间内获取大量用户的推广是取法正确计测
 
-iOSには、アプリ起動時に一定時間以上メインスレッドがブロックされるとアプリケーションを強制終了する仕様があります。起動時の初期化処理など、メインスレッド上でサーバーへの同期通信を行わないようにご注意ください。リワード広告などの大量のユーザーを短時間で獲得した結果、サーバーへのアクセスが集中し、通信のレスポンスが非常に悪くなることでアプリケーションの起動に時間がかかり、起動時に強制終了され正常に広告成果が計測できなくなった事例がございます。
+iOS中，APP启动时超过一定时间主线程block时，会强制关闭APP。请注意不要让启动时的初始化处理在主线程上与服务器同时进行通讯。激励广告等短时间内获得大量用户会因为服务器访问集中，通讯回复较差而导致APP启动时间延长或强制关闭等情况，从而导致无法正确计测广告结果。
 
-以下の手順で、こうした状況をテストすることができますので、以下の設定でアプリケーションが正常に起動するかをご確認ください。
+按照以下步骤可以进行以上情况的测试，请进行以下设置，确认APP是否正常启动。
 
-`iOS「設定」→「デベロッパー」→「NETWORK LINK CONDITIONER」`
+`iOS「设置」→「开发者」→「NETWORK LINK CONDITIONER」`
 
-* 「Enable」をオン
-* 「Very Bad Network」をチェック
+* 「Enable」为on
+* 检查「Very Bad Network」
 
 ---
-[メインメニュー](/README.md)
+[Main Menu](/README.md)
