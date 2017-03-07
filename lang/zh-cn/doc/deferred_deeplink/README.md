@@ -1,38 +1,36 @@
-[TOP](../../README.md)　>　ディファードディープリンクの実装
+[TOP](../../README.md)　>　Deferred Deeplink的执行
 
 ---
 
-# ディファードディープリンクの実装
+# Deferred Deeplink的执行
 
-ディファードディープリンクを実装することで、広告をクリックした際に紐付いているディープリンクにリダイレクトし
-アプリ内の対象のページに遷移することが可能となります。また、アプリが未インストールの場合でも、インストール後に
-広告のリダイレクト先となるディープリンクに遷移させることが可能となります。
+通过安装Deferred Deeplink处理，可以在点击广告时跳转到绑定的Deferred Deeplink，以此来跳转到APP内的目标页面。此外，即使APP没有安装，也可以使用Deeplink让用户在经过广告安装进入APP后跳转到指定的页面。
 
-> サポートバージョン : 4.1.0以上
+> 支持版本: 4.1.0及以上
 
-以下、ディファードディープリンクの実装に必要なクラス及び、メソッド情報のみを説明しています。
+下面针对Defferred Deeplink的代码安装所需的类和方法进行说明。
 
 ## FoxTrackOption
 
 #### Properties
 |Property|Type|Detail|
 |:---|:---|:---|
-|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。|
-|durationSinceClick|NSTimeInterval|ディファードディープリンクをサーバに問い合わせる際に、対象となるラストクリックの対象期間(秒)（どれだけ遡るかを秒数で指定）。設定しない時、デフォルト24時間となります。|
+|deferredDeeplinkHandler|Block|取得Defferred Deeplink时调用的Callback方法。|
+|durationSinceClick|NSTimeInterval|使用Defferred Deeplink访问服务器的时候，作为对象的Last Click的期间(秒)（按秒数来指定追溯到多久以前）。不设定的话，默认为24小时。|
 
-* `deferredDeeplinkHandler`の詳細
+* `deferredDeeplinkHandler`的详细
 
 `void (^deferredDeeplinkHandler)(NSDictionary* _Nullable deeplinkInfo)`
 
-`deeplinkInfo` : NSDictionary、JSONタイプのdeeplinkの情報。ディファードディープリンクが存在しない場合や、端末が通信に失敗する場合にはnullを返します。
+`deeplinkInfo` : NSDictionary、JSON类型的deeplink信息。Defferred Deeplink不存在或者终端通信失败的时候，返回NULL。
 
-* `deeplinkInfo`の詳細 :
+* `deeplinkInfo`的详细 :
 
   |Key|Type|Detail|
   |:---|:---|:---|
-  |deeplink|String|取得したディープリンクの文字列|
+  |deeplink|String|取得的Deeplink字符串|
 
-## 実装例
+## 代码安装范例
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -63,4 +61,4 @@ CYZFox.trackInstall(with: foxTrackOption)
 ```
 
 ---
-[トップ](../../README.md)
+[Top](../../README.md)
