@@ -119,7 +119,7 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手动导入
 
-[发行页面](https://github.com/cyber-z/public_fox_ios_sdk/releases)中下载并解压`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
+请在[发行页面](https://github.com/cyber-z/public_fox_ios_sdk/releases)中下载并解压最新安定版（Latest release）的`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
 
 > ※ 如果APP中已经安装了SDK，请参考[新版本的更新说明](./doc/update/README.md)。
 
