@@ -18,7 +18,7 @@
 
 #### Instance Methods
 1. `-(void) enableDebugMode`
-> 利用Logcat输出发生错误时的消息和堆栈轨迹（Stack Trace）
+> 利用Logcat输出发生错误时的消息和堆栈跟踪（Stack Trace）
 
 2. `-(void) enableWebViewTracking`
 > UIWebView中计测功能设为有效
@@ -35,7 +35,7 @@
 ```objc
 +(nullable CYZFoxConfig*) configWithAppId:(NSUInteger) appId salt:(nonnull NSString*) salt appKey:(nonnull NSString*) appKey;
 ```
-> 构造函数方法，所需Properties会在初始化时设置。
+> 构造函数方法，所需属性会在初始化时被设置。
 > <br/>@param `appId` 管理界面中生成的APP ID
 > <br/>@param `salt` 管理界面中生成的salt
 > <br/>@param `appKey` 管理界面中生成的APP KEY
@@ -48,7 +48,7 @@
 #### Static Methods
 
 1. `+(void) trackInstall`
-> 计测安装后首次启动的method方法。根据管理界面中的设置进行操作。
+> 计测安装后首次启动的方法。根据管理界面中的设置进行操作。
 
 2. `+(void) trackInstallWithOption:(nonnull CYZFoxTrackOption*) option`
 > 计测安装后首次启动的method方法。根据FoxOption中设置的计测选项进行操作。
@@ -73,11 +73,11 @@
 > <br/>@param `userInfo` 以JSON形式设置信息和属性
 
 8. `+(BOOL) isConversionCompleted`
-> 安装计测完成后用boolean返回结果
+> Install计测完成后用boolean返回结果
 
 9. `+(void) trackEventByBrowser:(nonnull NSString*) redirectURL`
-> 对设置事件tagタグ的外部网页进行事件计测
-> <br/>@param `redirectURL` 埋入事件tag的外部网页URL
+> 对设置事件标签的外部网页进行事件计测
+> <br/>@param `redirectURL` 埋入事件标签的外部网页URL
 
 
 <div id="CYZFoxTrackOption"></div>
@@ -89,7 +89,7 @@
 |optout|BOOL|OptOut是否输出setter<br>※默认 : false|
 |redirectURL|NSString|浏览器启动后的自动跳转页面|
 |buid|NSString|Buid的setter|
-|onTrackFinished|Block|首次启动计测成功时的callback|
+|onTrackFinished|Block|不推荐，首次启动计测成功时的callback|
 |trackingCompletionHandler|Block|初次启动计测完成时的Callback方法。|
 |deferredDeeplinkHandler|Block|取得Deferred Deeplink时候的Callback方法。<br>_Callback参数_：<br>`deeplinkInfo` -- NSDictionary、JSON类型deeplink的信息|
 |durationSinceClick|NSTimeInterval|从点击到Deferred deeplink的有效期限。以秒为单位|
@@ -122,7 +122,7 @@
 2. `-(nullable instancetype) initWithEventName:(nonnull NSString*) eventName andLtvId:(NSUInteger) ltvId`
 > 指定初始化方法、事件名和LTV ID。
 > <br/>@param `eventName` 事件名
-> <br/>@param `ltvId` 管理界面中发行的LTV ID
+> <br/>@param `ltvId` 管理画面中发行的LTV ID
 
 3. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
 > 添加任意Key-Value信息
@@ -137,7 +137,7 @@
                                                price:(double) price
                                             currency:(nullable NSString*) currency;
 ```
-> 购买事件作成的帮助方法
+> 生成购买事件的helper方法
 > <br/>@param `eventName` 事件名
 > <br/>@param `ltvId` 管理画面中发行的LTV ID
 > <br/>@param `price` 单价

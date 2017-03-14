@@ -1,4 +1,4 @@
-[TOP](../../README.md)　>　イベント計測の詳細
+[TOP](../../README.md)　>　事件计测的详细
 
 ---
 
@@ -10,7 +10,7 @@
 
 * **[1. APP内各类事件的执行案例](#each_event_sample)**
 * **[2. 替换旧版执行任务（一般广告计测）](#continuity)**
-* **[3. 使用tag进行事件计测](#track_by_tag)**
+* **[3. 使用标签(tag)进行事件计测](#track_by_tag)**
 
 <div id="each_event_sample"></div>
 ## 1. APP内各类事件的执行案例
@@ -73,7 +73,7 @@ CYZFox.trackEvent(event)
 ## 2. 替换旧版执行任务（一般广告计测）
 
 可沿用F.O.X Android SDK 3.0.0之前版本的执行方式。<br>
-以下为付费活跃度监测的执行案例。
+以下为计测付费事件的执行案例。
 
 **执行案例**
 
@@ -119,14 +119,14 @@ event.eventInfo = eventInfo;
 ```
 
 <div id="track_by_tag"></div>
-## 3. 使用tag进行事件计测
+## 3. 使用标签（tag）进行事件计测
 
 在页面上发生会员注册及商品购买等行为时，可以使用img tag来进行事件计测。<br>
 F.O.X的事件计测适用于外部浏览器和APP内页面。外部浏览器使用[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)方法、APP内页面使用[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)方法，F.O.X会在页面Cookie中记录事件计测所需的信息。
 
 ### 3.1 外部浏览器中的事件计测
 
-从APP跳转至外部浏览器，利用跳转的网页进行tag计测时，请使用`trackEventByBrowser`方法来启动外部浏览器，并在引数中用字符串设置要跳转的URL。
+从APP跳转至外部浏览器，利用跳转的网页进行tag计测时，请使用`trackEventByBrowser`方法来启动外部浏览器，并在参数中用字符串设置要跳转的URL。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -138,9 +138,9 @@ F.O.X的事件计测适用于外部浏览器和APP内页面。外部浏览器使
 CYZFox.trackEventByBrowser("http://www.host.com")
 ```
 
-### 3.2 APP内页面中的事件计测
+### 3.2 APP内WebView中的事件计测
 
-在页面内进行用户跳转的情况时，初始化时通过设置`CYZFoxConfig`的`enableWebViewTracking`可以实现计测。
+用户跳转发生在WebView内的时候，初始化时通过设置`CYZFoxConfig`的`enableWebViewTracking`可以实现计测。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
