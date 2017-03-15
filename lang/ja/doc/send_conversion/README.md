@@ -62,6 +62,7 @@ sendConversionWithStartPage:の引数には、通常は上記の通り@"default"
 }
 ```
 
+ > ※ handler blockがmainスレッドで実行されます。
  > ※ Cookie計測を行う場合はブラウザ起動後、アプリがフォアグラウンドに復帰した直後にhandler blockが呼び出されます。
 
 ## Fingerprint計測時の注意事項
