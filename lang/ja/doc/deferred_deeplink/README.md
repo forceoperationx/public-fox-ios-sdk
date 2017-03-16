@@ -10,7 +10,7 @@
 |メソッド名|説明|
 |:---|:---|
 |setDefaultDeferredDeeplinkHandler|ラストクリックの有効期間が1日、ディープリンクを受け取った際にディープリンク先に自動遷移します。|
-|setDeferredDeeplinkValidDuration:(NSTimeInterval)durationSinceClick<br/>andHandler:^(NSString url)handler|`durationSinceClick` : ラストクリックの有効期間を秒数で指定します。<br/>`handler` : DeeplinkをNSStringとして処理するコールバックに渡します。Deferred Deeplinkを取得に失敗する時urlはnil或は空文字です。handlerはバックグラウンドスレッドに実行されます。|
+|setDeferredDeeplinkValidDuration:(NSTimeInterval)durationSinceClick<br/>andHandler:^(NSString url)handler|`durationSinceClick` : ラストクリックの有効期間を秒数で指定します。<br/>`handler` : DeeplinkをNSStringとして処理するコールバックに渡します。Deferred Deeplinkを取得に失敗した場合、urlにはnilあるいは空文字が入ります。handlerはバックグラウンドスレッドに実行されます。|
 
 ### 実装例
 **1. デフォルト処理**
