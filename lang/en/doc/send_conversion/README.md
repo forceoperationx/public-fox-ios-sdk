@@ -60,6 +60,7 @@ By using `setInstallTrackingCompletionHandler:` like the following implementatio
 }
 ```
 
+> handler block will be executed on the main thread.
 > In the case of cookie measurement, the browser is started and measurement is performed. After the measurement is completed, handler block is called immediately after the application returns to the foreground.
 
 ## Note to Fingerprinting measurement
