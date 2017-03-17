@@ -17,7 +17,7 @@
 #### Properties
 |Property|Type|Detail|
 |:---|:---|:---|
-|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。コールバックはバックグラウンドスレッドに実行されます。|
+|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。コールバックはバックグラウンドスレッドで実行されます。|
 |durationSinceClick|NSTimeInterval|ディファードディープリンクをサーバに問い合わせる際に、対象となるラストクリックの対象期間(秒)（どれだけ遡るかを秒数で指定）。設定しない時、デフォルト24時間となります。|
 
 * `deferredDeeplinkHandler`の詳細
