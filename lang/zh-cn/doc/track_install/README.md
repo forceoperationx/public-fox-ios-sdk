@@ -107,7 +107,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-> 上述示例代码为，redirect位置・BUID・有无optout・计测完成的callback受理的执行案例。<br>`trackingCompletionHandler`设置后完成计测时会呼出`Block`，请在Install计测完成后在此执行操作。
+> 上述示例代码为，redirect位置・BUID・有无optout・计测完成的callback受理的执行案例。<br>`trackingCompletionHandler`设置后完成计测时会呼出`Block`，请在Install计测完成后在此执行操作。`Block`的处理将会在主线程中被执行。
 
 > optout为有效时，可以将用户从广告投放对象中移除。<br>
 另外，optout仅在APP中编码安装了类似用户可选optout功能的情况下有效。

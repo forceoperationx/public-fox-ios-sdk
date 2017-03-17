@@ -17,7 +17,7 @@
 #### Properties
 |Property|Type|Detail|
 |:---|:---|:---|
-|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。|
+|deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。コールバックはバックグラウンドスレッドに実行されます。|
 |durationSinceClick|NSTimeInterval|ディファードディープリンクをサーバに問い合わせる際に、対象となるラストクリックの対象期間(秒)（どれだけ遡るかを秒数で指定）。設定しない時、デフォルト24時間となります。|
 
 * `deferredDeeplinkHandler`の詳細
@@ -61,6 +61,41 @@ foxTrackOption.deferredDeeplinkHandler = { deeplinkInfo in
 }
 CYZFox.trackInstall(with: foxTrackOption)
 ```
+
+<div id="with_thirdparty"></div>
+### 他社ツールのディファードディープリンクを利用する
+
+#### Facebook SDKの場合
+
+以下の例では、F.O.X SDK のインストール計測完了のコールバック内で`FacebookSDK`のディファードディープリンク処理を記述しています。Cookie計測時のブラウザ立ち上げが完了した後にディファードディープリンクによる遷移が行われ、Cookie計測が正常に行われます。
+
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
+```objc
+-(BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
+    // after activate
+    CYZFoxTrackOption* option = [CYZFoxTrackOption new];
+    option.trackingCompletionHandler = ^ {
+        // Facebook SDK でのディファードディープリンク処理を実行
+    }
+    [CYZFox trackInstallWithOption:option];
+    // ...
+    return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
+}
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    let option: CYZFoxTrackOption = CYZFoxTrackOption()
+    option.trackingCompletionHandler = {
+        // Facebook SDK でのディファードディープリンク処理を実行
+    }
+    CYZFox.trackInstallWithOption(option)
+    return true; // openURL:メソッドをコールさせるため必ずYESを返してください
+}
+```
+
+> Facebook SDKの実装に関しては[公式ドキュメント](https://developers.facebook.com/docs/app-ads/deep-linking#deferred-deep-linking)を参照ください。
 
 ---
 [トップ](../../README.md)
