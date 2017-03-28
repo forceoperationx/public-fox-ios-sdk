@@ -63,6 +63,7 @@ CYZFox.trackInstall(with: foxTrackOption)
 ```
 
 <div id="with_thirdparty"></div>
+
 ### 他社ツールのディファードディープリンクを利用する
 
 #### Facebook SDKの場合
