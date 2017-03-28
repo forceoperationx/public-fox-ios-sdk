@@ -474,6 +474,7 @@ currency请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)认证的货�
 * [执行optout](./doc/optout/README.md)
 
 <div id="trouble_shooting"></div>
+
 ## 8. 最后的注意事项（常见问题集）
 
 ### 8.1. F.O.X中使用的bundle版本是什么？
