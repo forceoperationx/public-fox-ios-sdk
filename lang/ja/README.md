@@ -474,6 +474,7 @@ currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定�
 * [オプトアウトの実装](./doc/optout/README.md)
 
 <div id="trouble_shooting"></div>
+
 ## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
 
 ### 8.1. F.O.Xで利用するバンドルバージョンとは？
