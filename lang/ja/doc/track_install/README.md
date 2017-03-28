@@ -8,6 +8,7 @@
 * [2. インストール計測の実装(オプション指定)](#track_install_optional)
 
 <div id="track_install_basic"></div>
+
 ## 1. インストール計測の実装
 
 `trackInstall`メソッドを利用することで、インストール計測を行うことができます。Cookie計測を利用する場合には、外部ブラウザ或いは`SFSafariViewController`が起動されます。この際、遷移先を`CYZFoxTrackOption`のインスタンスにURL文字列を指定することができます。
@@ -72,6 +73,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 アプリケーションの起動時に呼び出される`didFinishLaunchingWithOptions`メソッド内に実装していない状態でインストール成果型の広告を実施する際には、必ず広告代理店もしくは媒体社の担当にその旨を伝えてください。正確に計測が行えない状態でインストール成果型の広告を実施された際には、計測されたインストール数以上の広告費の支払いを求められる恐れがあります。
 
 <div id="track_install_optional"></div>
+
 ## 2. インストール計測の実装(オプション指定)
 
 インストール計測が完了したことをコールバックで受け取りたい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
