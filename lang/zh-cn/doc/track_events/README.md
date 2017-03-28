@@ -13,6 +13,7 @@
 * **[3. 使用标签(tag)进行事件计测](#track_by_tag)**
 
 <div id="each_event_sample"></div>
+
 ## 1. APP内各类事件的执行案例
 
 #### 1.1 计测会员注册事件 执行案例
@@ -70,6 +71,7 @@ CYZFox.trackEvent(event)
 ```
 
 <div id="continuity"></div>
+
 ## 2. 替换旧版执行任务（一般广告计测）
 
 可沿用F.O.X Android SDK 3.0.0之前版本的执行方式。<br>
@@ -119,6 +121,7 @@ event.eventInfo = eventInfo;
 ```
 
 <div id="track_by_tag"></div>
+
 ## 3. 使用标签（tag）进行事件计测
 
 在页面上发生会员注册及商品购买等行为时，可以使用img tag来进行事件计测。<br>
