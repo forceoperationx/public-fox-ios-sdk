@@ -13,6 +13,7 @@
 * **[3. タグを利用したイベント計測について](#track_by_tag)**
 
 <div id="each_event_sample"></div>
+
 ## 1. アプリ内の各種イベント実装例
 
 #### 1.1 会員登録イベント計測 実装例
@@ -70,6 +71,7 @@ CYZFox.trackEvent(event)
 ```
 
 <div id="continuity"></div>
+
 ## 2. 旧バージョンでの実装の置き換え(エンゲージメント計測)
 
 これまでのF.O.X iOS SDK 3.0.0以下で行っていた実装方法を継続することも可能となっています。<br>
@@ -119,6 +121,7 @@ event.eventInfo = eventInfo;
 ```
 
 <div id="track_by_tag"></div>
+
 ## 3. タグを利用したイベント計測について
 
 会員登録や商品購入等がWebページで行われる場合に、imgタグを利用してイベント計測を利用することができます。<br>
