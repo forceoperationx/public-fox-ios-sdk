@@ -44,6 +44,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 
 
 <div id="install_sdk"></div>
+
 ## 1. インストール
 * **CocoaPodsによって導入する場合**
 
@@ -86,6 +87,7 @@ pod "CYZFox", "<VERSION>"
 [インストール手順の詳細](./doc/integration/README.md)
 
 <div id="setting_sdk"></div>
+
 ## 2. 設定
 
 * **フレームワーク設定**
@@ -120,16 +122,8 @@ ANALYTICS_APP_KEY | String | Force Operation X管理者より連絡しますの�
 
 * **App Transport Securityについて**
 
-iOS9より提供されたNSAppTransportSecurity(以下、ATS)を有効にしている場合、Info.plistに以下の設定を行いF.O.X SDKが行う通信先のドメインをATSの例外としてください。
-
-キー | タイプ | 概要
-:---: | :---: | :---
-NSExceptionDomains|Dictionary|ATSの例外を指定するディクショナリー
-指定ドメイン文字列|Dictionary|以下２つのドメインをキーで作成してください。<br>・app-adforce.jp<br>・forceoperationx.com
-NSExceptionAllowsInsecureHTTPLoads|Boolean|YES を指定してくださいATSの例外とします。
-NSIncludesSubdomains|Boolean|YES を指定しATSの例外設定をサブドメインにも適用させます。
-
-![ATS設定](./doc/config_plist/img06.png)
+F.O.Xが提供する全てのサーバーはHTTPS通信に対応しています。
+2016年11月以前からF.O.Xを導入している場合はHTTPSでの通信を行うための設定が入っていない可能性がありますので、管理画面からAppAdForce.plistをダウンロードして導入してください。
 
 [SDK設定の詳細](./doc/config_plist/README.md)
 
@@ -145,6 +139,7 @@ Swiftで開発する場合、下記の記述をBridging Headerファイルに追
 ```
 
 <div id="tracking_install"></div>
+
 ## 3. インストール計測の実装
 
 初回起動のインストール計測を実装することで、広告の効果測定を行うことができます。
@@ -203,6 +198,7 @@ WebViewのUserAgentを独自の文字列にカスタマイズを行う前に次�
 ```
 
 <div id="tracking_ltv"></div>
+
 ## 4. LTV計測の実装
 
 会員登録、チュートリアル突破、課金など任意の成果地点にLTV計測を実装することで、流入元広告のLTVを測定することができます。LTV計測が不要の場合には、本項目の実装を省略できます。
@@ -233,6 +229,7 @@ AppAdForceLtv *ltv = [[[AppAdForceLtv alloc] init] autorelease];
 * [タグを利用したLTV計測について](./doc/ltv_browser/README.md)
 
 <div id="tracking_analytics"></div>
+
 ## 5. アクセス解析の実装
 
 自然流入と広告流入のインストール数比較、アプリケーションの起動数やユニークユーザー数(DAU/MAU)、継続率等を計測することができます。アクセス解析が不要の場合には、本項目の実装を省略できます。
@@ -273,6 +270,7 @@ sendStartSessionは必ず上記二カ所に実装を行ってください。
 
 
 <div id="integration_test"></div>
+
 ## 6. 疎通テストの実施
 
 マーケットへの申請までに、SDKを導入した状態で十分にテストを行い、アプリケーションの動作に問題がないことを確認してください。
@@ -306,11 +304,13 @@ Cookie計測を実施していない場合は、ブラウザは起動しませ�
 [リエンゲージメント計測を行う場合のテスト手順](./doc/reengagement_test/README.md)
 
 <div id="other_function"></div>
+
 ## 7. その他機能の実装
 
 * [オプトアウトの実装](./doc/optout/README.md)
 
 <div id="trouble_shooting"></div>
+
 ## 8. 最後に必ずご確認ください（これまで発生したトラブル集）
 
 ### 8.1. F.O.Xで利用するバンドルバージョンとは？
