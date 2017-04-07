@@ -41,6 +41,7 @@ It measures Life Time Value for each advertisements of influx sources. Primary c
 It measure comparison of Installation number of organic and non-organic, the number of the of activating application and unique users (DAU / MAU), user retention and so on.
 
 <div id="install_sdk"></div>
+
 ## 1. Install SDK
 * **Integrate F.O.X SDK by using CocoaPods**
 
@@ -81,6 +82,7 @@ The description of each file is as follows.
 [Install procedure](./doc/integration/README.md)
 
 <div id="setting_sdk"></div>
+
 ## 2. Settings
 
 * **Framework configuration**
@@ -126,6 +128,7 @@ If you develop with Swift, add the following description to the Bridging Header 
 ```
 
 <div id="tracking_install"></div>
+
 ## 3. Implement install tracking
 
 By implementing install tracking , it is able to start the effectiveness measurements of advertisement.
@@ -181,6 +184,7 @@ Be sure to implement the following method before customizing WebView's UserAgent
 ```
 
 <div id="tracking_ltv"></div>
+
 ## 4. Implement LTV tracking
 
 By implementing LTV measurements at arbitrary conversion points such as membership registration, completion of tutorial, billing and etc, It measures Life Time Value for each advertisements of influx sources. In the case that LTV measurement is not necessary, it is able to omit this implementation.
@@ -210,6 +214,7 @@ Please specify the currency code defined in [ISO 4217](http://ja.wikipedia.org/w
 [LTV tracking by using tag](./doc/ltv_browser/README.md)
 
 <div id="tracking_analytics"></div>
+
 ## 5. Implement access analytics
 
 You can measure comparison of Installation number of naturally flow and advertising flows, the number of the of activating application and unique users (DAU / MAU), the ongoing rate and so on. When the access analysis is not required, you can omit the implementation of this item.
@@ -249,6 +254,7 @@ Be sure to implement `sendStartSession` in the above two places.
 
 
 <div id="integration_test"></div>
+
 ## 6. Integration test
 
 Until the application to market, test enough in a state where the the SDK has been introduced, and make sure that there is no problem in the operation of the application.
@@ -280,11 +286,13 @@ Please tell the time of 3,6,7,9 to us. We will see if measurement has been succe
 [Integration test for measurement reengagement](./doc/reengagement_test/README.md)
 
 <div id="other_function"></div>
+
 ## 7. Implementation of other function
 
 * [Implement opt out](./doc/optout/README.md)
 
 <div id="trouble_shooting"></div>
+
 ## 8. Trouble shooting
 
 ### 8.1. What is "Bundle Version" used in F.O.X.

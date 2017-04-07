@@ -43,6 +43,7 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 自然流入和廣告流入的APP安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。
 
 <div id="install_sdk"></div>
+
 ## 1. 導入
 * **使用CocoaPods導入的場合**
 
@@ -83,6 +84,7 @@ pod "CYZFox", "<VERSION>"
 [導入步驟的詳細](./doc/integration/README.md)
 
 <div id="setting_sdk"></div>
+
 ## 2. 設定
 
 * **Framework設定**
@@ -130,6 +132,7 @@ ANALYTICS_SERVER_URL | String | 請輸入Force Operation X管理員告知的值�
 ```
 
 <div id="tracking_install"></div>
+
 ## 3. Install計測的安裝
 
 安裝了初次啟動時的Install計測處理，就能夠測定廣告效果了。
@@ -190,6 +193,7 @@ Fingerprint計測使用WebView，使用獨自的定制化UserAgent的時候，�
 ```
 
 <div id="tracking_ltv"></div>
+
 ## 4. LTV計測的安裝
 
 通過在會員登錄，教程突破，付費等任意的成果地點安裝LTV計測，能夠測定不同廣告流入的LTV。如果不做LTV計測，可以省略本項目的安裝。
@@ -221,6 +225,7 @@ LTV_PARAM_CURRENCY的值，請按[ISO 4217](http://ja.wikipedia.org/wiki/ISO_421
 [有關利用Tag的LTV計測](./doc/ltv_browser/README.md)
 
 <div id="tracking_analytics"></div>
+
 ## 5. 流量分析的安裝
 
 自然流入和廣告流入的安裝數比較。能夠計測APP的啟動數，唯一用戶數(DAU/MAU)，持續率等。如果不做流量分析，可以省略本項目的安裝。
@@ -264,6 +269,7 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 
 
 <div id="integration_test"></div>
+
 ## 6. 進行疏通測試
 
 在APP上架申請以前，在導入SDK的狀態請做充分的測試，以確保APP的動作沒有問題。
@@ -295,11 +301,13 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 
 <div id="other_function"></div>
+
 ## 7. 其他機能的安裝
 
 * [Opt-Out的安裝](./doc/optout/README.md)
 
 <div id="trouble_shooting"></div>
+
 ## 8. 最後請務必確認（到現在發生過的問題集）
 
 ### 8.1. F.O.X裡使用的BundleVersion是什麼？
