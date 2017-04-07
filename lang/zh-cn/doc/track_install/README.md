@@ -8,6 +8,7 @@
 * [2. 执行Install计测(指定Option参数)](#track_install_optional)
 
 <div id="track_install_basic"></div>
+
 ## 1. 执行Install计测
 
 使用`trackInstall`方法可以进行Install计测。使用Cookie计测的情况时会启用外部浏览器或`SFSafariViewController`。外部浏览器的迁移网页可以通过在`CYZFoxTrackOption`的实例中指定URL字符串来实现。
@@ -72,6 +73,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 > ※ 没有特别的理由，请在APP启动时调用的didFinishLaunchingWithOptions方法内编码安装trackInstall方法。在其他地方安装的话有可能无法正确监测统计Install数量。APP启动时调用`didFinishLaunchingWithOptions`方法中未编码安装的状态下投放安装成果转化型广告时，必须向广告代理店或媒体公司负责人进行说明。未正确进行计测就开始投放安装成果转化型广告，可能会产生超过计测安装数的广告费用。
 
 <div id="track_install_optional"></div>
+
 ## 2. 执行Install计测(option参数)
 
 如果想要用callback来获取Install计测完成的信息、或是跳转到特定URL、或是用APP动态生成URL时，请使用以下[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)类。<br>
