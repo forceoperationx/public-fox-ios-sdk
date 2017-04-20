@@ -386,7 +386,7 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    If ([application applicationState] == UIApplicationStateBackground) {
+    if ([application applicationState] == UIApplicationStateBackground) {
         //バックグラウンド時の処理
     } else {
         //バックグラウンド時は起動計測が呼ばれないようにする
@@ -428,14 +428,14 @@ func applicationDidEnterBackground(_ application: UIApplication) {
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_tuturial_comp" andLtvId:0000];
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_tutorial_comp" andLtvId:0000];
 event.buid = @"User ID";
 [CYZFox trackEvent:event];
 ```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tutorial_comp", ltvId:0000)!
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
