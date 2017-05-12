@@ -17,6 +17,7 @@
 |customizedUserAgentEnabled|BOOL|カスタマイズUserAgentのサポートの有無|
 
 #### Instance Methods
+
 1. `-(void) enableDebugMode`
 > エラー時のメッセージやスタックトレースを表示させる
 
@@ -28,6 +29,7 @@
 
 ４. `-(void) enableCustomizedUserAgent`
 > カスタマイズUserAgentのサポートを有効にする
+
 
 #### Static Methods
 
@@ -78,6 +80,14 @@
 9. `+(void) trackEventByBrowser:(nonnull NSString*) redirectURL`
 > イベントタグを設置した外部のWebページのイベント計測
 > <br/>@param `redirectURL` イベントタグを埋め込んだ外部のWebページのURL
+
+10. `+(void) handleOpenURL:(nonnull NSURL*) url buid:(nullable NSString*) buid`
+> Cookie計測とリエンゲージメント計測用URL schemeを受け取るメソッド
+> <br/>@param `url` 外部によりアプリを起動させるURL
+> <br/>@param `buid` 広告主端末ID(ユーザーIDなど)
+
+11. `+(nullable NSString*) getXuniqId`
+> FOX unique idを取得する
 
 
 <div id="CYZFoxTrackOption"></div>
