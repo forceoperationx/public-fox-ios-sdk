@@ -4,8 +4,6 @@
 <dict>
 	<key>APP_ID</key>
 	<string>xxxxxx</string>
-	<key>SERVER_URL</key>
-	<string>xxxxxx</string>
 	<key>APP_SALT</key>
 	<string>xxxxxx</string>
 	<key>APP_OPTIONS</key>

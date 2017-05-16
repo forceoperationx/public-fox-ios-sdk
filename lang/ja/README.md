@@ -112,7 +112,6 @@ SDKの動作に必要な設定をplistに追加します。「AppAdForce.plist�
 Key | Type | Value
 :---: | :---: | :---
 APP_ID | String | Force Operation X管理者より連絡しますので、その値を入力してください。
-SERVER_URL | String | Force Operation X管理者より連絡しますので、その値を入力してください。
 APP_SALT | String | Force Operation X管理者より連絡しますので、その値を入力してください。
 APP_OPTIONS | String | 何も入力せず、空文字の状態にしてください。
 CONVERSION_MODE | String | 1
@@ -154,6 +153,7 @@ F.O.X SDKではiOS9からリリースされた新しいWebView形式である �
 setStartPageVisible|didFinishLaunchingWithOptions:|(任意) sendConversionWithStartPageの前に実装を行ってください。SFSafariViewControllerを非表示する場合、`NO` を設定します。(デフォルト:`YES`)
 sendConversionWithStartPage:|didFinishLaunchingWithOptions:|(必須) 初回起動時のインストール計測
 setUrlScheme:|openURL:|(必須) 初回起動時のインストール計測の制御及び、URLスキーム経由の計測処理
+setBuid:|openURL:|(任意)URLスキーム経由の計測処理する際に、広告主端末ID`buid`を設定する
 
 プロジェクトのソースコードを編集し、Application Delegateの`application:didFinishLaunchingWithOptions:`に次の通り実装を行ってください。
 
