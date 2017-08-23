@@ -271,7 +271,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
  * **Fingerprinting計測時の注意事項**
 
- Fingerprinting計測はUIWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
+ Fingerprinting計測はUIWebView/WKWebViewを使用しており、UserAgentを独自のカスタマイズを行っている場合正常に計測することが出来なくなります。
  下記のようにUserAgentのカスタマイズ処理を行う前にFOXConfigの設定を有効にしてください。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
