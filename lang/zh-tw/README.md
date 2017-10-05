@@ -19,7 +19,6 @@ Force Operation X (下面簡稱F.O.X)是基於智慧手機的，用來最大改�
 * **[5. 流量分析的安裝](#tracking_analytics)**
   * [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
   * [依靠流量分析進行付費計測](./doc/analytics_purchase/README.md)
-  * [關於Engagement廣告投放](./doc/fox_engagement/README.md)
 * **[6. 進行疏通測試](#integration_test)**
 	* [Reengagement計測時的疏通測試](./doc/reengagement_test/README.md)
 * **[7. 其他機能的安裝](#other_function)**
@@ -264,8 +263,6 @@ application:didFinishLaunchingWithOptions:方法，為確保不執行啟動計�
 [依靠流量分析進行Event計測](./doc/analytics_event/README.md)
 
 [依靠流量分析進行付費計測](./doc/analytics_purchase/README.md)
-
-[關於Engagement廣告投放](./doc/fox_engagement/README.md)
 
 
 <div id="integration_test"></div>
