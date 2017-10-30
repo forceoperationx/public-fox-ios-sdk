@@ -101,11 +101,12 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     let option: CYZFoxTrackOption = CYZFoxTrackOption()
     option.redirectURL = "myapp://top"
     option.buid = "USER ID"
-    option.optout = true
+    option.isOptout = true
     option.trackingCompletionHandler = {
         print("callback after tracking finished")
     }
-    CYZFox.trackInstallWithOption(option)
+    CYZFox.trackInstall(with: option)
+
 }
 ```
 

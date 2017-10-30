@@ -17,6 +17,7 @@
 |customizedUserAgentEnabled|BOOL|定制化UserAgent的支持是否有效|
 
 #### Instance Methods
+
 1. `-(void) enableDebugMode`
 > 利用Logcat输出发生错误时的消息和堆栈跟踪（Stack Trace）
 
@@ -79,6 +80,13 @@
 > 对设置事件标签的外部网页进行事件计测
 > <br/>@param `redirectURL` 埋入事件标签的外部网页URL
 
+10. `+(void) handleOpenURL:(nonnull NSURL*) url buid:(nullable NSString*) buid`
+> 获取Cookie计测和流失唤回计测使用的URL scheme的方法
+> <br/>@param `url` 从外部启动APP的URL
+> <br/>@param `buid` 广告主终端ID(User ID等)
+
+11. `+(nullable NSString*) getXuniqId`
+> 取得FOX unique id
 
 <div id="CYZFoxTrackOption"></div>
 

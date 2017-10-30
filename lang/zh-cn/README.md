@@ -31,6 +31,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 * **[7. 执行其他功能](#other_function)**
 	* [执行optout](./doc/optout/README.md)
 * **[8. 最后的注意事项](#trouble_shooting)**
+	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
 
 
 ## 什么是F.O.X SDK
@@ -270,7 +271,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
  * **Fingerprinting计测时的注意事项**
 
- Fingerprinting计测使用UIWebView，如果使用UserAgent独特的自定义方法可能会导致无法正常计测。
+ Fingerprinting计测使用UIWebView/WKWebView，如果使用UserAgent独特的自定义方法可能会导致无法正常计测。
  按下列内容，在进行UserAgent自定义处理前做好FOXConfig的配置。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
@@ -475,47 +476,8 @@ currency请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)认证的货�
 
 <div id="trouble_shooting"></div>
 
-## 8. 最后的注意事项（常见问题集）
-
-### 8.1. F.O.X中使用的bundle版本是什么？
-
-iOS中，bundle版本具体为以下两种。
-
-* CFBundleVersion
-* CFBundleShortVersionString
-
-F.O.X中，上述中CFBundleShortVersionString的值作为管理目的而使用。
-
-### 8.2. 期待的广告安装数比报表数据低
-
-安装计测的`trackInstall:`及`trackInstallWithOption:`若不在启动后马上执行，在到达地点前离开的用户会被遗漏计测。
-
-`trackInstall:`和`trackInstallWithOption:`在没有特殊情况时，请在`application:didFinishLaunchingWithOptions:`内执行。在其他位置执行可能会导致安装数无法正确计测。
-
-在`application:didFinishLaunchingWithOptions:`中未安装代码的状态投放成果型广告时，请务必告知广告代理店或媒体公司负责人。无法进行正确计测的状态投放成果型广告时，可能会导致需要支付超出实际安装数的广告费用。
-
-### 8.3. 未设置URL SCHEME的APP上线发布后无法从浏览器跳转至APP
-
-进行Cookie计测时启动浏览器以后，必须使用URL scheme跳转回到APP画面。此时需要设置URL scheme，未设置scheme就上线发布时会导致无法正常迁移。
-
-### 8.4. URL SCHEME中含有大写字母时，无法正常迁移app。
-
-根据运行环境，会出现因为URL SCHEME 的大小写字母不能判定而导致URL SCHEME 无法正常迁移的情况。请将URL SCHEME 全部设置为小写英文或数字或小数点。
-
-### 8.5. URL scheme设置与其他公司APP相同时，浏览器跳转了其他APP
-
-iOS中，多个APP设置为同一个URL scheme时，会随机启动APP。由于可能导致无法启动指定的APP，请将URL scheme区别与其他APP来设定。
-
-### 8.6. 进行短时间内获取大量用户的推广无法正确计测
-
-iOS中，APP启动时超过一定时间主线程被阻止运行时，会强制关闭APP。请注意不要让启动时的初始化处理在主线程上与服务器同时进行通讯。短时间内获得大量用户的激励广告等会因为集中访问服务器，通讯回复较差而导致APP启动时间延长或强制关闭等情况，从而导致无法正确计测广告结果。
-
-按照以下步骤可以进行以上情况的测试，请进行以下设置，确认APP是否正常启动。
-
-`iOS「设置」→「开发者」→「NETWORK LINK CONDITIONER」`
-
-* 「Enable」设置为on
-* 勾选「Very Bad Network」
+## 8. 最后请务必确认（常见问题集）
+* [FAQ・注意事项](./doc/trouble_shooting/README.md)
 
 ---
 [Main Menu](/README.md)
