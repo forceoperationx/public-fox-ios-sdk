@@ -116,3 +116,6 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 另外，optout仅在APP中编码安装了类似用户可选optout功能的情况下有效。
 
 > F.O.X SDK的API说明请从[这里](../sdk_api/README.md)确认。
+
+---
+[Top](../../README.md)

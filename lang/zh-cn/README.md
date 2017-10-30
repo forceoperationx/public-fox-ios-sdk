@@ -19,7 +19,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 	* [3.1 Framework类库的导入](#activate_import)
 	* [3.2 Configuration](#activate_config)
 * **[4. 执行Install计测](#tracking_install)**
-	* [Install计测的详情](./doc/track_install/README.md)
+	* [Install计测的详细](./doc/track_install/README.md)
 	* [Deferred Deeplink的安装](./doc/deferred_deeplink/README.md)
 * **[5. 执行流失唤回广告计测](#tracking_reengagement)**
 	* [5.1 使用自定义URL Scheme计测](#tracking_reengagement_scheme)
