@@ -413,7 +413,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     }
 }
 
-func applicationDidEnterBackground(_ application: UIApplication) {
+func applicationWillEnterForeground(_ application: UIApplication) {
     CYZFox.trackSession()
 }
 ```
