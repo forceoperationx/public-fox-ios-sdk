@@ -387,10 +387,10 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-		// ...
-		//インストール計測
-		[CYZFox trackInstall];
-		// ...
+	// ...
+	//インストール計測
+	[CYZFox trackInstall];
+	// ...
 
     if ([application applicationState] == UIApplicationStateBackground) {
         //バックグラウンド時の処理
@@ -410,11 +410,10 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
-		// ...
-		// インストール計測
-		CYZFox.trackInstall()
-		// ...
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{// ...
+	// インストール計測
+	CYZFox.trackInstall()
+	// ...
 
     if application.applicationState == UIApplicationState.background {
         //バックグラウンド時の処理
