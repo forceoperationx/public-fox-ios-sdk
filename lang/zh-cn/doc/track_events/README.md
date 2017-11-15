@@ -27,7 +27,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", ltvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", ltvId:0000)
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
@@ -43,7 +43,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
@@ -63,7 +63,7 @@ event.quantity = 2;
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_purchase")!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_purchase")
 event.price = 99
 event.currency = "JPY"
 event.sku = "itemId"
@@ -154,7 +154,7 @@ CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKe
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let foxConfig:CYZFoxConfig = CYZFoxConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")!
+let foxConfig:CYZFoxConfig = CYZFoxConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")
 foxConfig.enableWebViewTracking()
 foxConfig.activate()
 ```

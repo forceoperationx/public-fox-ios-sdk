@@ -283,7 +283,7 @@ CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:000 salt:@"xxxxx" appKey
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
 ```Swift
-let foxConfig = CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!
+let foxConfig = CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")
 foxConfig.enableCustomizedUserAgent()
 foxConfig.activate()
 ```
@@ -434,7 +434,7 @@ event.buid = @"User ID";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_tuturial_comp", ltvId:0000)
 event.buid = "User ID"
 CYZFox.trackEvent(event)
 ```
@@ -456,7 +456,7 @@ event.sku = @"itemId";
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_purchase")!
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_purchase")
 event.price = 99
 event.currency = "JPY"
 event.sku = "itemId"
