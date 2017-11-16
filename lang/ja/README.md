@@ -380,11 +380,17 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 
 アプリケーションの起動、及びバックグラウンドからの復帰を計測するために、application:didFinishLaunchingWithOptions:およびapplicationWillEnterForegroundにコードを追加します。
 
+※セッション（起動イベント）の計測がコールされるタイミングは、[インストール計測](#tracking_install)の後になるように実装してください。
+
 ※バックグラウンドフェッチを利用している場合、バックグラウンド起動時にOS側がapplication:didFinishLaunchingWithOptions:をコールしています。バックグラウンド時は起動計測F.O.Xメソッドが呼ばれないようにapplicationStateにて状態判定をおこなってください。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// ...
+	//インストール計測
+	[CYZFox trackInstall];
+	// ...
 
     if ([application applicationState] == UIApplicationStateBackground) {
         //バックグラウンド時の処理
@@ -404,7 +410,11 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{// ...
+	// インストール計測
+	CYZFox.trackInstall()
+	// ...
+
     if application.applicationState == UIApplicationState.background {
         //バックグラウンド時の処理
     } else {
@@ -423,6 +433,8 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 ### 6.2 その他のアプリ内イベントの計測
 
 会員登録、チュートリアル突破、課金など任意の成果地点にイベント計測を実装することで、流入元広告のLTVを測定することができます。<br>イベント計測が不要の場合には、本項目の実装を省略できます。
+
+※アプリ内イベントの計測がコールされるタイミングは、[インストール計測](#tracking_install)、[セッション（起動イベント）の計測](#tracking_session)の後になるように実装してください。
 
 **[チュートリアルイベントの計測例]**
 
