@@ -6,8 +6,7 @@
 
 ### 支持对象的iOS版本是多少？
 
-使用Objective-C开发的话为iOS 7及以上。
-使用Swift开发的话为iOS 8及以上。
+iOS 8及以上。
 
 ### F.O.X中使用的BundleVersion是什么？
 
