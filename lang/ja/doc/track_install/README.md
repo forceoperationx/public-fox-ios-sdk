@@ -46,7 +46,7 @@
 ```Swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // ...
-    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx")!.activate()
+    CYZFoxConfig.init(appId:0000,salt:"xxxxx",appKey:"xxxxx").activate()
     CYZFox.trackInstall()
     // ...
 }
