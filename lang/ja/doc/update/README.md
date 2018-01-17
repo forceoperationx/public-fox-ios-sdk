@@ -45,7 +45,7 @@ Bridging headerファイルに記載したFOX SDKと関連あるheaderのimport�
 4.0.0からframework libraryのextensionを採用するので、過去のheaderごとのimportを下記のように変更する。
 ```objc
 #import <CYZFox/CYZFox.h>
-#import <FOXExtension/FOXExtension.h> // 需要の場合だけ追加
+#import <FOXExtension/FOXExtension.h> // 必要な場合だけ追加
 ```
 #### 2.2 計測の実装箇所
 |計測|4.0.0以前|4.0.0から|
