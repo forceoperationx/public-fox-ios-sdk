@@ -211,6 +211,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 > ※ アクティベーションの実装は必ず全ての計測の前に行わなければなりません。
+> ※ appId、salt、appKeyの値については、アプリ登録後、F.O.X管理画面のアプリ一覧>該当アプリ右上の設定ボタン>SDK導入をご確認ください。
 
 
 <div id="tracking_install"></div>
