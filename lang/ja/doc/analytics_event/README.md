@@ -17,7 +17,7 @@ sendEventメソッドのパラメータの仕様は下記の通りです。
 |label|NSString*|255|イベントに属するラベル名を設定します。ラベル名は⾃自由に設定可能です。nilでも構いません。|
 |value|NSUInteger|255|イベント回数を指定します。1でも構いません。|
 
-
+> ※ 管理画面ではeventNameをキーに集計を行います。actionやlabelなどをキーにした集計を行っておりません。計測したいイベント毎にeventNameがユニークになるように設定してください。
 
 ```objective-c
 #import "AnalyticsManager.h"
