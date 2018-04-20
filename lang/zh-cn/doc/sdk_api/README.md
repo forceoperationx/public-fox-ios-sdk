@@ -15,6 +15,7 @@
 |debugMode|BOOL|readonly, 是否生成调试日志|
 |webViewTrackingEnabled|BOOL|UIWebView中计测功能是否有效|
 |customizedUserAgentEnabled|BOOL|定制化UserAgent的支持是否有效|
+|offlineMode|BOOL|是否开启线下模式, 设定之后无法更改|
 
 #### Instance Methods
 

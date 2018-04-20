@@ -15,6 +15,7 @@
 |debugMode|BOOL|readonly, デバッグログの出力有無|
 |webViewTrackingEnabled|BOOL|UIWebViewで計測する機能有効の有無|
 |customizedUserAgentEnabled|BOOL|カスタマイズUserAgentのサポートの有無|
+|offlineMode|BOOL|SDKの送信停止モードの有無、設定後変更が出来ません。|
 
 #### Instance Methods
 

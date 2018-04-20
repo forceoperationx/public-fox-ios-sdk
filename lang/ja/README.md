@@ -116,13 +116,19 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 > ※ Carthageの場合Target VersionはiOS 8.0以上に指定する必要となります。
 
+* __4.4.0へマイグレーションの場合__
+
+  4.3.0までは三つのdynamic framework(`CYZFox`, `CYZAdCommon`, `CYZAdUtil`)が導入されるが、
+  4.4.0から`CYZFox.framework`一つとなりました。
+  従って`CYZAdCommon`と`CYZAdUtil`のファイルと設定を手動で削除する作業が必要となります。
+
 <div id="by_manual"></div>
 
 ### 1.3 手動による導入
 
 [リリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
 
-> ※ 既にアプリケーションにSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
+> ※ 既にアプリケーションに3系のSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
 > ※ tvOSの場合`CYZFox_tvOS_static_<VERSION>.zip`をダウンロードしてください。導入手順はiOSと同じです。
 
@@ -147,6 +153,7 @@ SDKの動作に必要なXcodeの設定を行います。
 <tr><td>SystemConfiguration.framework</td><td>Required</td></tr>
 <tr><td>WebKit.framework</td><td>Required</td></tr>
 <tr><td>AdSupport.framework</td><td>Optional</td></tr>
+<tr><td>CoreTelephony.framework</td><td>Optional</td></tr>
 </table>
 
 <div id="setting_ats"></div>
@@ -214,6 +221,32 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 > ※ appId、salt、appKeyの値については、アプリ登録後、F.O.X管理画面のアプリ一覧>該当アプリ右上の設定ボタン>SDK導入をご確認ください。
 
+
+### 3.3 オフラインモード
+F.O.X SDKの計測機能を停止しトラッキングを無効化する設定です。
+オフラインモードを有効にする場合は、`CYZFoxConfig.offlineMode`を`YES`を、無効にする場合は`NO`を設定してください（未設定の場合、オフラインモードは無効のままです）。<br/>
+
+- ユーザ許諾などをもとにオフラインモードの有効無効を設定したい場合、`CYZFoxConfig.activate`の処理はユーザ許諾後に実行してください。
+- `CYZFoxConfig.activate`はアプリ起動時に常に呼出必要となります。
+- オフラインモードを設定した場合、アプリをアンイストールするまで設定は反映されます。
+
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
+```objc
+CYZFoxConfig* config = [CYZFoxConfig configWithAppId:0000 salt:@"xxxx" appKey:@"xxxx"];
+if (!hasUserPermission) {
+    config.offlineMode = YES;
+}
+[config activate];
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+let config = CYZFoxConfig.init(appId: 0000, salt: "xxxx", appKey: "xxxx")
+if !hasUserPermission {
+	config.isOfflineMode = true
+}
+config.activate()
+```
 
 <div id="tracking_install"></div>
 
