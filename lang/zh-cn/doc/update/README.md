@@ -51,7 +51,7 @@ Bridging header文件中与FOX SDK相关header的import全部删除。
 |计测|4.0.0以前的版本|4.0.0以后的版本|
 |---|---|---|
 |基础设置|AppAdForce.plist记载项:<br/>`APP_ID`<br/>`APP_SALT`<br/>`ANALYTICS_APP_KEY`|CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:4879<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;salt:@"xxxxx" <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appKey:@"yyyyyy"];<br/>[foxConfig activate];|
-|服务器URL指定|AppAdForce.plist记载项:<br/>`SERVER_URL`<br/>`ANALYTICS_SERVER_URL`|[foxConfig withFOXServerURL:@"xxxxx"];<br>[foxConfig withAnalyticsServerURL:@"yyyyy"];<br>[foxConfig activate];
+|服务器URL指定|AppAdForce.plist记载项:<br/>`SERVER_URL`<br/>`ANALYTICS_SERVER_URL`|不需要设置|
 |DEBUG模式指定|[adManager setDebugMode:YES]|[foxConfig enableDebugMode];<br>[foxConfig activate];
 |使用UIWebView指定计测|[ltv setLtvCookie]|[foxConfig enableWebViewTracking];<br>[foxConfig activate];
 |Install计测|[adManager sendConversionWithStartpage:@"default"]|[CYZFox trackInstall]|
