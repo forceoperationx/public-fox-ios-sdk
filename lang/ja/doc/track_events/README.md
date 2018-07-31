@@ -143,7 +143,7 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 
 ### 3.2 アプリ内WebViewでのイベント計測について
 
-ユーザーの遷移がWebView内で行われる場合には、初期化する際に`CYZFoxConfig`の`enableWebViewTracking`を設定ことで計測することができます。
+WebView内でのユーザアクションを計測する場合は、`CYZFoxConfig`の`enableWebViewTracking`を設定してください
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
