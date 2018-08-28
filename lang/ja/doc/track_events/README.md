@@ -125,7 +125,7 @@ event.eventInfo = eventInfo;
 ## 3. タグを利用したイベント計測について
 
 会員登録や商品購入等がWebページで行われる場合に、imgタグやネイティブのメソッドを呼び出すことでイベント計測を利用することができます。<br>
-F.O.Xのイベント計測は、外部ブラウザ、アプリ内WebViewの両方に対応しています。外部ブラウザの場合には[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)メソッド、アプリ内WebViewの場合にはWKWebViewからネイティブのメソッドを実行する、または[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)メソッドをでF.O.Xがイベント計測に必要な情報をブラウザのCookieに記録します。
+F.O.Xのイベント計測は、外部ブラウザ、アプリ内WebViewの両方に対応しています。外部ブラウザの場合には[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)メソッド、アプリ内WebViewの場合にはWKWebViewからネイティブのメソッドを実行する、または[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)メソッドをF.O.Xがイベント計測に必要な情報をブラウザのCookieに記録します。
 
 ### 3.1 外部ブラウザによるイベント計測
 
@@ -154,7 +154,7 @@ https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
-ネイティブのサンプルコード
+ネイティブ側のサンプルコード
 ```Swift
 class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
     var webView: WKWebView!
@@ -164,20 +164,19 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
 
         let cfg:WKWebViewConfiguration = WKWebViewConfiguration()
         let userController:WKUserContentController = WKUserContentController()
-		// sendFoxEventというハンドラ名を設定
-		userController.add(self, name:"sendFoxEvent")
+        userController.add(self, name:"sendFoxEvent") // sendFoxEventというハンドラ名を設定
         cfg.userContentController = userController
 
         webView = WKWebView(frame:self.view.bounds, configuration: cfg)
         self.view = self.webView!
 
-		// webviewでWebページをロード
+        // webviewでWebページをロード
         let url = URL(string:"https://hoge")
         let req = NSURLRequest(url:url!)
         webView.load(req as URLRequest)
     }
 
-	// WebViewから呼びだされるメソッド
+    // WebViewから呼びだされるメソッド
     func userContentController(_ userContentController:WKUserContentController, didReceive message: WKScriptMessage) {
         if(message.name == "sendFoxEvent") {
             // bodyからJSでセットした値を取得（今回のサンプルコードでは"webview_event"がセットされている）
@@ -201,7 +200,7 @@ JavaScript側のサンプルコード
 </head>
 <body>
   <script type="text/javascript">
-	<!-- Nativeにイベントを投げる -->  
+    <!-- Nativeにイベントを投げる -->  
     webkit.messageHandlers.sendFoxEvent.postMessage("webview_event");
   </script>
 </body>
