@@ -151,6 +151,7 @@ WKWebViewが提供する機構を使い、JavaScript経由でネイティブAPI�
 https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 
 
+ネイティブ側のサンプルコード
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
 @interface ViewController () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
@@ -197,7 +198,6 @@ https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
-ネイティブ側のサンプルコード
 ```Swift
 class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
     var webView: WKWebView!
