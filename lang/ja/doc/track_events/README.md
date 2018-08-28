@@ -151,6 +151,49 @@ WKWebViewが提供する機構を使い、JavaScript経由でネイティブAPI�
 https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 
 
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
+```objc
+@interface ViewController () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    WKWebViewConfiguration *cfg = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+    [userContentController addScriptMessageHandler:self name:@"sendFoxEvent"]; // sendFoxEventというハンドラ名を設定
+    cfg.userContentController = userContentController;
+
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) configuration:cfg];
+    _webView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    _webView.UIDelegate = self;
+    _webView.navigationDelegate = self;
+    [self.view addSubview:_webView];
+
+    NSURL *url = [NSURL URLWithString:@"https://hoge"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:req];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSLog(@"%d", 1000);
+
+    id contentBody = message.body;
+    NSString *name = message.name;
+
+    if ([contentBody isKindOfClass:[NSString class]]) {
+        if ([name compare:@"sendFoxEvent"] == NSOrderedSame) {
+            // bodyからJSでセットした値を取得（今回のサンプルコードでは"webview_event"がセットされている）
+            // F.O.XのtrackEventに値をセットして実行する
+            CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:contentBody ltvId:0000];
+            [CYZFox trackEvent:event];
+        }
+    }
+}
+```
 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 
