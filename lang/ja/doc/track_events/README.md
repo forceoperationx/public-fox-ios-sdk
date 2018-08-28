@@ -155,7 +155,7 @@ https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
-@interface ViewController () <UIWebViewDelegate, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
+@interface ViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
 @end
 
 @implementation ViewController
