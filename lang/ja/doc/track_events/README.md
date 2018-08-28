@@ -181,8 +181,6 @@ https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSLog(@"%d", 1000);
-
     id contentBody = message.body;
     NSString *name = message.name;
 
