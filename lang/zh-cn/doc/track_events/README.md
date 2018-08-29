@@ -228,7 +228,7 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
 }
 ```
 
-JavaScript的的范例源代码
+JavaScript的范例源代码
 ```Html
 <!DOCTYPE html>
 <html>
