@@ -124,8 +124,8 @@ event.eventInfo = eventInfo;
 
 ## 3. 使用标签（tag）进行事件计测
 
-在页面上发生会员注册及商品购买等行为时，可以使用img tag来进行事件计测。<br>
-F.O.X的事件计测适用于外部浏览器和APP内页面。外部浏览器使用[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)方法、APP内页面使用[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)方法，F.O.X会在页面Cookie中记录事件计测所需的信息。
+在页面上发生会员注册及商品购买等行为时，可以使用img tag或是原生方法来进行事件计测。<br>
+F.O.X的事件计测适用于外部浏览器和APP内页面。外部浏览器使用[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)方法、APP内页面请从WKWebView执行原生方法，或是使用[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)方法，F.O.X会在页面Cookie中记录事件计测所需的信息。
 
 ### 3.1 外部浏览器中的事件计测
 
@@ -142,8 +142,116 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 ```
 
 ### 3.2 APP内WebView中的事件计测
+### 3.2.1 从WebView中执行原生（Native）API（推荐）
 
-用户跳转发生在WebView内的时候，初始化时通过设置`CYZFoxConfig`的`enableWebViewTracking`可以实现计测。
+使用WKWebView提供的结构，经由JavaScript执行原生API。
+
+参考URL:
+https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
+
+原生的范例源代码
+
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
+```objc
+@interface ViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    WKWebViewConfiguration *cfg = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+    [userContentController addScriptMessageHandler:self name:@"sendFoxEvent"];
+    cfg.userContentController = userContentController;
+
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) configuration:cfg];
+    _webView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    _webView.UIDelegate = self;
+    _webView.navigationDelegate = self;
+    [self.view addSubview:_webView];
+
+    NSURL *url = [NSURL URLWithString:@"https://hoge"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:req];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+  NSString *command = message.body[@"command"];
+  NSString *event_name = message.body[@"event_name"];
+  int ltvid = [message.body[@"ltvid"] intValue];
+
+  if ([command compare:@"foxEvent"] == NSOrderedSame) {
+      CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:event_name ltvId:ltvid];
+      [CYZFox trackEvent:event];
+  }
+}
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+
+```Swift
+class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
+    var webView: WKWebView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let cfg:WKWebViewConfiguration = WKWebViewConfiguration()
+        let userController:WKUserContentController = WKUserContentController()
+        userController.add(self, name:"sendFoxEvent")
+        cfg.userContentController = userController
+
+        webView = WKWebView(frame:self.view.bounds, configuration: cfg)
+        self.view = self.webView!
+
+        let url = URL(string:"https://hoge")
+        let req = NSURLRequest(url:url!)
+        webView.load(req as URLRequest)
+    }
+
+    func userContentController(_ userContentController:WKUserContentController, didReceive message: WKScriptMessage) {
+      guard let body = message.body as? [String: Any] else { return }
+      guard let command = body["command"] as? String else { return }
+      guard let event_name = body["event_name"] as? String else { return }
+      guard let ltvid = body["ltvid"] as? Int else { return }
+
+      if command == "foxEvent" {
+          if let ltvId = body["ltvid"] as? UInt {
+              let event:CYZFoxEvent = CYZFoxEvent.init(eventName:event_name,ltvId:ltvId)
+              CYZFox.trackEvent(event)
+          }
+      }
+    }
+}
+```
+
+JavaScript的的范例源代码
+```Html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+  <script type="text/javascript">
+  var message = {
+    command: 'foxEvent',
+    event_name: 'webview_event',
+    ltvid: 0000
+  };
+  webkit.messageHandlers.sendFoxEvent.postMessage(message);
+  </script>
+</body>
+</html>
+```
+
+### 3.2.2 同步Cookie执行（不推荐）
+计测UIWebView内的用户行动时，请设定`CYZFoxConfig`的`enableWebViewTracking`。
+从iOS 12开始，UIWebView将会Deprecated，今后较为推荐3.2.1的安装方法。
+
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
