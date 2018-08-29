@@ -124,8 +124,8 @@ event.eventInfo = eventInfo;
 
 ## 3. タグを利用したイベント計測について
 
-会員登録や商品購入等がWebページで行われる場合に、imgタグを利用してイベント計測を利用することができます。<br>
-F.O.Xのイベント計測は、外部ブラウザ、アプリ内WebViewの両方に対応しています。外部ブラウザの場合には[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)メソッド、アプリ内WebViewの場合には[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)メソッドを利用することで、F.O.Xがイベント計測に必要な情報をブラウザのCookieに記録します。
+会員登録や商品購入等がWebページで行われる場合に、imgタグやネイティブのメソッドを呼び出すことでイベント計測を利用することができます。<br>
+F.O.Xのイベント計測は、外部ブラウザ、アプリ内WebViewの両方に対応しています。外部ブラウザの場合には[` trackEventByBrowser`](../sdk_api/README.md#foxtrack)メソッド、アプリ内WebViewの場合にはWKWebViewからネイティブのメソッドを実行する、または[` enableWebViewTracking`](../sdk_api/README.md#foxconfig)メソッドをF.O.Xがイベント計測に必要な情報をブラウザのCookieに記録します。
 
 ### 3.1 外部ブラウザによるイベント計測
 
@@ -143,7 +143,120 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 
 ### 3.2 アプリ内WebViewでのイベント計測について
 
-WebView内でのユーザアクションを計測する場合は、`CYZFoxConfig`の`enableWebViewTracking`を設定してください
+### 3.2.1 WebViewからNativeのAPIを実行する（推奨）
+
+WKWebViewが提供する機構を使い、JavaScript経由でネイティブAPIを実行します。
+
+参考URL:
+https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
+
+
+ネイティブ側のサンプルコード
+
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
+```objc
+@interface ViewController () <WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler>
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    WKWebViewConfiguration *cfg = [[WKWebViewConfiguration alloc] init];
+    WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+    [userContentController addScriptMessageHandler:self name:@"sendFoxEvent"]; // sendFoxEventというハンドラ名を設定
+    cfg.userContentController = userContentController;
+
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) configuration:cfg];
+    _webView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    _webView.UIDelegate = self;
+    _webView.navigationDelegate = self;
+    [self.view addSubview:_webView];
+
+    NSURL *url = [NSURL URLWithString:@"https://hoge"];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:req];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+  NSString *command = message.body[@"command"];
+  NSString *event_name = message.body[@"event_name"];
+  int ltvid = [message.body[@"ltvid"] intValue];
+
+  if ([command compare:@"foxEvent"] == NSOrderedSame) {
+      CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:event_name ltvId:ltvid];
+      [CYZFox trackEvent:event];
+  }
+}
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+
+```Swift
+class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
+    var webView: WKWebView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let cfg:WKWebViewConfiguration = WKWebViewConfiguration()
+        let userController:WKUserContentController = WKUserContentController()
+        userController.add(self, name:"sendFoxEvent") // sendFoxEventというハンドラ名を設定
+        cfg.userContentController = userController
+
+        webView = WKWebView(frame:self.view.bounds, configuration: cfg)
+        self.view = self.webView!
+
+        let url = URL(string:"https://hoge")
+        let req = NSURLRequest(url:url!)
+        webView.load(req as URLRequest)
+    }
+
+    // WebViewから呼びだされるメソッド
+    func userContentController(_ userContentController:WKUserContentController, didReceive message: WKScriptMessage) {
+      guard let body = message.body as? [String: Any] else { return }
+      guard let command = body["command"] as? String else { return }
+      guard let event_name = body["event_name"] as? String else { return }
+      guard let ltvid = body["ltvid"] as? Int else { return }
+
+      if command == "foxEvent" {
+          if let ltvId = body["ltvid"] as? UInt {
+              let event:CYZFoxEvent = CYZFoxEvent.init(eventName:event_name,ltvId:ltvId)
+              CYZFox.trackEvent(event)
+          }
+      }
+    }
+}
+```
+
+
+JavaScript側のサンプルコード
+```Html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+  <script type="text/javascript">
+  var message = {
+    command: 'foxEvent',
+    event_name: 'webview_event',
+    ltvid: 0000
+  };
+  webkit.messageHandlers.sendFoxEvent.postMessage(message);
+  </script>
+</body>
+</html>
+```
+
+
+### 3.2.2 Cookieを同期して実行する（非推奨）
+
+UIWebView内でのユーザアクションを計測する場合は、`CYZFoxConfig`の`enableWebViewTracking`を設定してください。
+iOS 12よりUIWebViewはDeprecatedとなったため、今後は3.2.1の実装方法を推奨します。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
