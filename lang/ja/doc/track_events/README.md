@@ -222,8 +222,10 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
       guard let ltvid = body["ltvid"] as? Int else { return }
 
       if command == "foxEvent" {
-          let event:CYZFoxEvent = CYZFoxEvent.init(eventName:event_name,ltvId:UInt(ltvid))
-          CYZFox.trackEvent(event)
+          if let ltvId = body["ltvid"] as? UInt {
+              let event:CYZFoxEvent = CYZFoxEvent.init(eventName:event_name,ltvId:ltvId)
+              CYZFox.trackEvent(event)
+          }
       }
     }
 }
