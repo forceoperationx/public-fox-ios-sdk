@@ -181,17 +181,14 @@ https://developer.apple.com/documentation/webkit/wkscriptmessagehandler
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    id contentBody = message.body;
-    NSString *name = message.name;
+  NSString *command = message.body[@"command"];
+  NSString *event_name = message.body[@"event_name"];
+  int ltvid = [message.body[@"ltvid"] intValue];
 
-    if ([contentBody isKindOfClass:[NSString class]]) {
-        if ([name compare:@"sendFoxEvent"] == NSOrderedSame) {
-            // bodyからJSでセットした値を取得（今回のサンプルコードでは"webview_event"がセットされている）
-            // F.O.XのtrackEventに値をセットして実行する
-            CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:contentBody ltvId:0000];
-            [CYZFox trackEvent:event];
-        }
-    }
+  if ([command compare:@"foxEvent"] == NSOrderedSame) {
+      CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:event_name ltvId:ltvid];
+      [CYZFox trackEvent:event];
+  }
 }
 ```
 
@@ -212,7 +209,6 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
         webView = WKWebView(frame:self.view.bounds, configuration: cfg)
         self.view = self.webView!
 
-        // webviewでWebページをロード
         let url = URL(string:"https://hoge")
         let req = NSURLRequest(url:url!)
         webView.load(req as URLRequest)
@@ -220,15 +216,16 @@ class ViewController: UIViewController, WKScriptMessageHandler, WKUIDelegate {
 
     // WebViewから呼びだされるメソッド
     func userContentController(_ userContentController:WKUserContentController, didReceive message: WKScriptMessage) {
-        if(message.name == "sendFoxEvent") {
-            // bodyからJSでセットした値を取得（今回のサンプルコードでは"webview_event"がセットされている）
-            guard let contentBody = message.body as? String else { return }
-            // F.O.XのtrackEventに値をセットして実行する
-            let event:CYZFoxEvent = CYZFoxEvent.init(eventName:contentBody,ltvId:0000)
-            CYZFox.trackEvent(event)
-        }
-    }
+      guard let body = message.body as? [String: Any] else { return }
+      guard let command = body["command"] as? String else { return }
+      guard let event_name = body["event_name"] as? String else { return }
+      guard let ltvid = body["ltvid"] as? Int else { return }
 
+      if command == "foxEvent" {
+          let event:CYZFoxEvent = CYZFoxEvent.init(eventName:event_name,ltvId:UInt(ltvid))
+          CYZFox.trackEvent(event)
+      }
+    }
 }
 ```
 
@@ -242,8 +239,12 @@ JavaScript側のサンプルコード
 </head>
 <body>
   <script type="text/javascript">
-    <!-- Nativeにイベントを投げる -->  
-    webkit.messageHandlers.sendFoxEvent.postMessage("webview_event");
+  var message = {
+    command: 'foxEvent',
+    event_name: 'webview_event',
+    ltvid: 0000
+  };
+  webkit.messageHandlers.sendFoxEvent.postMessage(message);
   </script>
 </body>
 </html>
