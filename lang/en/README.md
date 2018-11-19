@@ -1,6 +1,6 @@
 # About Force Operation X
 
-Force Operation X (Hereinafter referred to as F.O.X) is a total solution platform which measures and optimizes ad effectiveness on smartphone applications. Primary features such as user install tracking, LTV measurement, and CV measurement, will maximize the price-performance ratio of your app's advertising.
+Force Operation X (hereinafter referred to as F.O.X) is a total solution platform which measures and optimizes ad effectiveness on smartphone applications. Primary features such as user install tracking, LTV measurement, and CV measurement, will maximize the price-performance ratio of your app's advertising.
 <br>
 This document is a manual for integrating the F.O.X SDK, a tool which maximizes the ad effectiveness for smartphone applications.
 <br>
