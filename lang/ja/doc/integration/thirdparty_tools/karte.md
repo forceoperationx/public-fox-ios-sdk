@@ -10,7 +10,7 @@ KARTE SDKで設定されたVisitorIDを、F.O.Xの通信に含めることで、
 
 ## インストールイベントの実装例
 
-KARTE SDKで設定されたVisitorIDを[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用してF.O.Xへ通知します。
+KARTE SDKで設定されたVisitorIDを[CYZFoxTrackOption](../../sdk_api/README.md#CYZFoxoption)クラスを使用してF.O.Xへ通知します。
 [インストール計測の実装(オプション指定)](../../track_install/README.md#track_install_optional)も併せてご確認ください。
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
