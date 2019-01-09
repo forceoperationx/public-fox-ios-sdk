@@ -30,6 +30,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [イベント計測の詳細](./doc/track_events/README.md)
 * **[7. その他機能の実装](#other_function)**
 	* [オプトアウトの実装](./doc/optout/README.md)
+  * [サードパーティーツールとの連携](./doc/integration/thirdparty_tools/README.md)
 * **[8. 最後に必ずご確認ください](#trouble_shooting)**
 	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
 
@@ -520,6 +521,8 @@ currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定�
 ## 7. その他機能の実装
 
 * [オプトアウトの実装](./doc/optout/README.md)
+
+* [サードパーティーツールとの連携](./doc/integration/thirdparty_tools/README.md)
 
 <div id="trouble_shooting"></div>
 
