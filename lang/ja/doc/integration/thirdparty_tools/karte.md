@@ -5,7 +5,7 @@
 # KARTEとの連携
 
 [KARTE](https://karte.io/)と連携し、F.O.Xで計測した情報を送る際の実装方法を説明します。
-管理画面の設定は[ヘルプページ](https://support.forceoperationx.com/hc/ja/articles/360000014841)をご確認ください。
+管理画面の設定は[ヘルプページ](https://support.forceoperationx.com/hc/ja/articles/360000206121)をご確認ください。
 KARTE SDKで設定されたVisitorIDを、F.O.Xの通信に含めることで、KARTEとの連携を行います。
 
 ## インストールイベントの実装例
@@ -60,4 +60,4 @@ event.buid = visitorId;
 
 * KARTE SDKの導入が必要になります。
 * KARTEの実装方法につきましてはKARTEへお問い合わせください。
-* F.O.X管理画面で設定が必要です。[ヘルプページ](https://support.forceoperationx.com/hc/ja/articles/360000014841)もあわせてご確認ください。
+* F.O.X管理画面で設定が必要です。[ヘルプページ](https://support.forceoperationx.com/hc/ja/articles/360000206121)もあわせてご確認ください。
