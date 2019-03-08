@@ -70,6 +70,26 @@ event.sku = "itemId"
 CYZFox.trackEvent(event)
 ```
 
+#### 1.4 カスタムパラメータ利用のイベント計測 実装例
+
+![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
+```objc
+CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_register_account" andLtvId:0000];
+event.buid = @"User ID";
+[event addExtraValue:@"female" forKey:@"gender"];
+[CYZFox trackEvent:event];
+```
+
+![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
+```Swift
+let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", ltvId:0000)
+event.buid = "User ID"
+event.addExtraValue("female", forKey:"gender")
+CYZFox.trackEvent(event)
+```
+> `addExtraValue:forKey`APIを利用する時に、F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../keep_parameters/README.md)でご確認ください。  
+**※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**
+
 <div id="continuity"></div>
 
 ## 2. 旧バージョンでの実装の置き換え(エンゲージメント計測)
