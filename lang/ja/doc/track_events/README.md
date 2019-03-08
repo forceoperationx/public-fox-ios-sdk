@@ -70,26 +70,6 @@ event.sku = "itemId"
 CYZFox.trackEvent(event)
 ```
 
-#### 1.4 カスタムパラメータ利用のイベント計測 実装例
-
-![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
-```objc
-CYZFoxEvent* event = [[CYZFoxEvent alloc] initWithEventName:@"_register_account" andLtvId:0000];
-event.buid = @"User ID";
-[event addExtraValue:@"female" forKey:@"gender"];
-[CYZFox trackEvent:event];
-```
-
-![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
-```Swift
-let event:CYZFoxEvent = CYZFoxEvent.init(eventName:"_register_account", ltvId:0000)
-event.buid = "User ID"
-event.addExtraValue("female", forKey:"gender")
-CYZFox.trackEvent(event)
-```
-> `addExtraValue:forKey`APIを利用する時に、F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../keep_parameters/README.md)でご確認ください。  
-**※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**
-
 <div id="continuity"></div>
 
 ## 2. 旧バージョンでの実装の置き換え(エンゲージメント計測)
@@ -163,7 +143,7 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 
 ### 3.2 アプリ内WebViewでのイベント計測について
 
-### 3.2.1 WebViewからNativeのAPIを実行する（推奨）
+#### WebViewからNativeのAPIを実行する
 
 WKWebViewが提供する機構を使い、JavaScript経由でネイティブAPIを実行します。
 
@@ -270,26 +250,6 @@ JavaScript側のサンプルコード
   </script>
 </body>
 </html>
-```
-
-
-### 3.2.2 Cookieを同期して実行する（非推奨）
-
-UIWebView内でのユーザアクションを計測する場合は、`CYZFoxConfig`の`enableWebViewTracking`を設定してください。
-iOS 12よりUIWebViewはDeprecatedとなったため、今後は3.2.1の実装方法を推奨します。
-
-![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
-```objc
-CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"yyyyy"];
-[foxConfig enableWebViewTracking];
-[foxConfig activate];
-```
-
-![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
-```Swift
-let foxConfig:CYZFoxConfig = CYZFoxConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")
-foxConfig.enableWebViewTracking()
-foxConfig.activate()
 ```
 
 ---
