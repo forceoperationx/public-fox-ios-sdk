@@ -76,7 +76,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
 ## 2. インストール計測の実装(オプション指定)
 
-インストール計測が完了したことをコールバックで受け取りたい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
+インストール計測が完了したことをコールバックで受け取りたい場合、インストール計測にカスタムパラメータを追加したい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -89,6 +89,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
     option.trackingCompletionHandler = ^ {
         NSLog(@"callback after tracking finished");
     }
+    [option addExtraValue:@"value_adobe_id" forKey:@"adobe_id"];
     [CYZFox trackInstallWithOption:option];
     // ...
     return YES; // openURL:メソッドをコールさせるため必ずYESを返してください
@@ -98,6 +99,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    // after active
     let option: CYZFoxTrackOption = CYZFoxTrackOption()
     option.redirectURL = "myapp://top"
     option.buid = "USER ID"
@@ -105,11 +107,17 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
     option.trackingCompletionHandler = {
         print("callback after tracking finished")
     }
+    option.addExtraValue("value_adobe_id", forKey: "adobe_id")
     CYZFox.trackInstall(with: option)
+    // ...
+    return true
 }
 ```
 
 > 上記のサンプルコードでは、リダイレクト先・BUID・オプトアウトの有無・計測完了のコールバックを受け取る処理の実装例となっています。<br>`trackingCompletionHandler`をセットした上で計測処理が完了すると`Block`が呼ばれますので、インストール計測完了直後に実行したい処理はこちらに実装してください。`Block`がmainスレッドで実行されます。
+
+> `addExtraValue:forKey`APIを利用する時に、F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../keep_parameters/README.md)でご確認ください。  
+**※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**
 
 > オプトアウトを有効にした場合、その後そのユーザーを広告の配信対象から外すことが可能です。<br>
 尚、オプトアウトはユーザーに対しオプトアウトの意思表示を選択させるような機能をアプリ内で実装している場合に有効です。

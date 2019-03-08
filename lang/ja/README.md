@@ -110,6 +110,15 @@ pod "CYZFoxTvDy", "<VERSION>"
 ### 1.2 Carthageによる導入
 
 Cartfileファイルに下記の設定を追加してください。
+
+* **4.5.0以上の場合**
+```
+binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+```
+> ※ `<VERSION>`は指定したい4.5.0以上のリリースバージョンです。
+
+* **4.0.0~4.4.0の場合**  
+※ `bootstrap`、`update`コマンド使う時、`--no-use-binaries`パラメータ利用不可
 ```
 github "cyber-z/public-fox-ios-sdk" == <VERSION>
 ```
