@@ -116,7 +116,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 
 > インストール計測にカスタムパラメータを追加する場合は`addExtraValue:forKey`か`addExtraInfo:`APIを使ってください。  
 **※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**  
-**※ (注意)F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../keep_parameters/README.md)でご確認ください。**
+**※ (注意)F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../reserved_parameters/README.md)でご確認ください。**
 
 > オプトアウトを有効にした場合、その後そのユーザーを広告の配信対象から外すことが可能です。<br>
 尚、オプトアウトはユーザーに対しオプトアウトの意思表示を選択させるような機能をアプリ内で実装している場合に有効です。
