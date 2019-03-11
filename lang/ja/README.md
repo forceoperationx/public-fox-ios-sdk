@@ -33,7 +33,6 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 * **[8. 最後に必ずご確認ください](#trouble_shooting)**
 	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
 * **[SDK API](./doc/sdk_api/README.md)**
-* **[F.O.Xパラメータ予約語一覧](./doc/reserved_parameters/README.md)**
 
 
 ## F.O.X SDKとは
