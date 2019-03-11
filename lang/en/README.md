@@ -19,7 +19,6 @@ Read this in another language: [日本語](https://github.com/cyber-z/public-fox
 	* [2.1 Framework Settings](#setting_framework)
 	* [2.2 About App Transport Security](#setting_ats)
 	* [2.3 URL Scheme Settings](#setting_urlscheme)
-	* [SDK API](./doc/sdk_api/README.md)
 * **[3. F.O.X SDK Activation](#activate_sdk_into_app)**
 	* [3.1 Framework Imports](#activate_import)
 	* [3.2 Configuration](#activate_config)
@@ -37,6 +36,7 @@ Read this in another language: [日本語](https://github.com/cyber-z/public-fox
 	* [Enabling opt-out feature](./doc/optout/README.md)
 * **[8. Frequent Troubleshooting Issues](#trouble_shooting)**
 	* [FAQ・Notes](./doc/trouble_shooting/README.md)
+* **[SDK API](./doc/sdk_api/README.md)**
 
 
 ## About F.O.X SDK
@@ -117,6 +117,14 @@ pod "CYZFoxTvDy", "<VERSION>"
 ### 1.2 Setup with Carthage
 
 Add the following settings to your `Cartfile` file.
+
+* **4.5.0~**
+```
+binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+```
+> ※ `<VERSION>` is whatever release version you wish to specify (above 4.5.0)
+* **4.0.0~4.4.0**  
+※ do NOT use `--no-use-binaries` when excuting `bootstrap` or `update`
 ```
 github "cyber-z/public-fox-ios-sdk" == <VERSION>
 ```

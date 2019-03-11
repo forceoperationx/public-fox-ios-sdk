@@ -75,7 +75,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
 ## 2. Implementing Install Tracking with Options
 
-If you want to receive callbacks for install completions, redirect to arbitrary URLs, or dynamically generate URLs in your app, use the following [`CYZFoxTrackOption`](../sdk_api/README.md#CYZFoxoption) class.
+If you want to receive callbacks for install completions, add custom parameters to install tracking, redirect to arbitrary URLs, or dynamically generate URLs in your app, use the following [`CYZFoxTrackOption`](../sdk_api/README.md#CYZFoxoption) class.
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -97,6 +97,7 @@ If you want to receive callbacks for install completions, redirect to arbitrary 
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    // after activate
     let option: CYZFoxTrackOption = CYZFoxTrackOption()
     option.redirectURL = "myapp://top"
     option.buid = "USER ID"
@@ -105,6 +106,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
         print("callback after tracking finished")
     }
     CYZFox.trackInstall(with: option)
+    // ...
+    return true
 }
 ```
 
