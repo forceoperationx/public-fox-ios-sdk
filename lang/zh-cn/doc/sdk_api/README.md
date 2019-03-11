@@ -103,6 +103,21 @@
 |trackingCompletionHandler|Block|初次启动计测完成时的Callback方法。|
 |deferredDeeplinkHandler|Block|取得Deferred Deeplink时候的Callback方法。<br>_Callback参数_：<br>`deeplinkInfo` -- NSDictionary、JSON类型deeplink的信息|
 |durationSinceClick|NSTimeInterval|从点击到Deferred deeplink的有效期限。以秒为单位|
+|extraInfo|NSDictionary|自定义键值信息|
+
+#### Instance Methods
+
+1. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
+> 添加自定义键值对
+> <br/>@param `value` Value
+> <br/>@param `key` Key  
+**※ (建议)请尽可能避免使用下划线`_`作为键前缀**  
+**※ (注意)自定义键不应与F.O.X保留字重复，F.O.X保留字可参考[此处](../reserved_parameters/README.md)**
+2. `-(void) addExtraInfo:(nonnull NSDictionary*) parameters`
+> 添加字典类型的键值对
+> <br/>@param `parameters` 键值对字典  
+**※ (建议)请尽可能避免使用下划线`_`作为键前缀**  
+**※ (注意)自定义键不应与F.O.X保留字重复，F.O.X保留字可参考[此处](../reserved_parameters/README.md)**
 
 <div id="foxevent"></div>
 
@@ -122,7 +137,7 @@
 |price|NSString|道具**单价**|
 |quantity|NSString|道具数量|
 |currency|NSString|单价货币|
-|eventInfo|NSDictionary|自定义JSON形式信息|
+|eventInfo|NSDictionary|自定义键值信息|
 
 #### Instance Methods
 1. `-(nullable instancetype) initWithEventName:(nonnull NSString*) eventName`
@@ -137,7 +152,9 @@
 3. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
 > 添加任意Key-Value信息
 > <br/>@param `value` Value
-> <br/>@param `key` Key
+> <br/>@param `key` Key  
+**※ (建议)请尽可能避免使用下划线`_`作为键前缀**  
+**※ (注意)自定义键不应与F.O.X保留字重复，F.O.X保留字可参考[此处](../reserved_parameters/README.md)**
 
 #### Static Methods
 1.
