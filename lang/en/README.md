@@ -36,7 +36,7 @@ Read this in another language: [日本語](https://github.com/cyber-z/public-fox
 	* [Enabling opt-out feature](./doc/optout/README.md)
 * **[8. Frequent Troubleshooting Issues](#trouble_shooting)**
 	* [FAQ・Notes](./doc/trouble_shooting/README.md)
-* **[SDK API](./doc/sdk_api/README.md)**
+* **[9. SDK API](#sdk_api)**
 
 
 ## About F.O.X SDK
@@ -543,6 +543,12 @@ Please specify the currency code as defined in [ISO 4217](https://en.wikipedia.o
 ## 8. Frequent Troubleshooting Issues
 
 * [FAQ・Notes](./doc/trouble_shooting/README.md)
+
+<div id="sdk_api"></div>
+
+## 9. SDK API
+
+* [SDK API](./doc/sdk_api/README.md)
 
 ---
 [Main menu](/README.md)

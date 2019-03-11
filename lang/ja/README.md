@@ -32,7 +32,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
   * [サードパーティーツールとの連携](./doc/integration/thirdparty_tools/README.md)
 * **[8. 最後に必ずご確認ください](#trouble_shooting)**
 	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
-* **[SDK API](./doc/sdk_api/README.md)**
+* **[9. SDK API](#sdk_api)**
 
 
 ## F.O.X SDKとは
@@ -537,7 +537,13 @@ currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定�
 
 ## 8. 最後に必ずご確認ください
 
-* [FAQ・注意事項](./doc/trouble_shooting/README.md)
+* [FAQ・注意事項](./doc/trouble_shooting/README.md)  
+
+<div id="sdk_api"></div>
+
+## 9. SDK API
+
+* [SDK API](./doc/sdk_api/README.md)
 
 ---
 [メインメニュー](/README.md)

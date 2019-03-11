@@ -31,7 +31,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 	* [执行optout](./doc/optout/README.md)
 * **[8. 最后的注意事项](#trouble_shooting)**
 	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
-* **[SDK API](./doc/sdk_api/README.md)**
+* **[9. SDK API](#sdk_api)**
 
 
 ## 什么是F.O.X SDK
@@ -516,6 +516,12 @@ currency请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)认证的货�
 
 ## 8. 最后请务必确认（常见问题集）
 * [FAQ・注意事项](./doc/trouble_shooting/README.md)
+
+<div id="sdk_api"></div>
+
+## 9. SDK API
+
+* [SDK API](./doc/sdk_api/README.md)
 
 ---
 [Main Menu](/README.md)
