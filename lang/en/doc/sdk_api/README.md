@@ -28,7 +28,7 @@
 3. `-(void) activate`
 > specified information is reflected within the SDK. Warning: Settings are only saved the first time this is called.
 
-４. `-(void) enableCustomizedUserAgent`
+4. `-(void) enableCustomizedUserAgent`
 > enables the use of a custom UserAgent
 
 #### Static Methods
@@ -104,6 +104,22 @@
 |trackingCompletionHandler|Block|First time install tracking completion callback.|
 |deferredDeeplinkHandler|Block|Callback for when a deferred deeplink is obtained.<br>_Callback Parameters_：<br>`deeplinkInfo` -- NSDictionary、JSON type deeplink information|
 |durationSinceClick|NSTimeInterval| Validity period between click and deferred deeplink. (measured in seconds)|
+|extraInfo|NSDictionary|custom parameters set in install tracking|
+
+#### Instance Methods
+
+1. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
+> Add a custom Key-Value parameter to install tracking.  
+> <br/>@param `value` Value
+> <br/>@param `key` Key  
+**(Preferred) Do not use `_` prefix in parameters' name.**  
+**(Warning) A parameter duplicated with F.O.X parameter will not be sent. All F.O.X parameters are listed [here](../reserved_parameters/README.md)**
+
+2. `-(void) addExtraInfo:(nonnull NSDictionary*) parameters`
+> Add multiple Key-Value parameters to install tracking.
+> <br/>@param `parameters` Key-Value info dictionary  
+**(Preferred) Do not use `_` prefix in parameters' name.**  
+**(Warning) A parameter duplicated with F.O.X parameter will not be sent. All F.O.X parameters are listed [here](../reserved_parameters/README.md)**
 
 <div id="foxevent"></div>
 
@@ -138,7 +154,9 @@
 3. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
 > Add arbitrary Key-Value data
 > <br/>@param `value` Value
-> <br/>@param `key` Key
+> <br/>@param `key` Key  
+**(Preferred) Do not use `_` prefix in parameters' name.**  
+**(Warning) A parameter duplicated with F.O.X parameter will not be sent. All F.O.X parameters are listed [here](../reserved_parameters/README.md)**
 
 #### Static Methods
 1.

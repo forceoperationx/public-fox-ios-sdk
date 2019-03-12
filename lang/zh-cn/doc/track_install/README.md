@@ -76,7 +76,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
 ## 2. 执行Install计测(option参数)
 
-如果想要用callback来获取Install计测完成的信息、或是跳转到特定URL、或是用APP动态生成URL时，请使用以下[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)类。<br>
+如果想要用callback来获取Install计测完成的信息、添加自定义键值信息、或是跳转到特定URL、或是用APP动态生成URL时，请使用以下[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)类。<br>
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -98,6 +98,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    // after active
     let option: CYZFoxTrackOption = CYZFoxTrackOption()
     option.redirectURL = "myapp://top"
     option.buid = "USER ID"
@@ -106,7 +107,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
         print("callback after tracking finished")
     }
     CYZFox.trackInstall(with: option)
-
+    // ...
+    return true
 }
 ```
 

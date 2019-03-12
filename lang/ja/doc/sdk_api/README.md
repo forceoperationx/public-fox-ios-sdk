@@ -28,7 +28,7 @@
 3. `-(void) activate`
 > 設定した情報をSDK内部で反映する。注意、最初の一回呼ばれる時にだけ設定値が保存される。
 
-４. `-(void) enableCustomizedUserAgent`
+4. `-(void) enableCustomizedUserAgent`
 > カスタマイズUserAgentのサポートを有効にする
 
 
@@ -105,6 +105,23 @@
 |trackingCompletionHandler|Block|初回起動計測が終了した際のコールバック。|
 |deferredDeeplinkHandler|Block|ディファードディープリンクを取得した際のコールバック。<br>_コールバックパラメーター_：<br>`deeplinkInfo` -- NSDictionary、JSONタイプのdeeplinkの情報|
 |durationSinceClick|NSTimeInterval|クリックからディファードディープリンクの有効期限。単位は秒|
+|extraInfo|NSDictionary|インストール計測に追加したカスタムパラメータ|
+
+#### Instance Methods
+
+1. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
+> インストール計測にカスタムのKey-Value情報を追加する
+> <br/>@param `value` Value
+> <br/>@param `key` Key  
+**※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**  
+**※ (注意)F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../reserved_parameters/README.md)でご確認ください。**
+
+2. `-(void) addExtraInfo:(nonnull NSDictionary*) parameters`
+> インストール計測にカスタムのKey-Value情報の辞書型を追加する
+> <br/>@param `parameters` Key-Value情報の辞書型  
+**※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**  
+**※ (注意)F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../reserved_parameters/README.md)でご確認ください。**
+
 
 <div id="foxevent"></div>
 
@@ -139,7 +156,9 @@
 3. `-(void) addExtraValue:(nonnull NSString*) value forKey:(nonnull NSString*) key`
 > 任意のKey-Value情報を追加する
 > <br/>@param `value` Value
-> <br/>@param `key` Key
+> <br/>@param `key` Key  
+**※ (推奨)カスタムパラメータ名の先頭にアンダーバー`_`を付けないでください。**  
+**※ (注意)F.O.Xの予約語を重複しないようにパラメータ名を設定してください。F.O.Xのパラメータ予約語を[こちら](../reserved_parameters/README.md)でご確認ください。**
 
 #### Static Methods
 1.

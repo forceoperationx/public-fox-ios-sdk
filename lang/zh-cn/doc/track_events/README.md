@@ -142,7 +142,7 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 ```
 
 ### 3.2 APP内WebView中的事件计测
-### 3.2.1 从WebView中执行原生（Native）API（推荐）
+#### 从WebView中执行原生（Native）API（推荐）
 
 使用WKWebView提供的结构，经由JavaScript执行原生API。
 
@@ -246,25 +246,6 @@ JavaScript的范例源代码
   </script>
 </body>
 </html>
-```
-
-### 3.2.2 同步Cookie执行（不推荐）
-计测UIWebView内的用户行动时，请设定`CYZFoxConfig`的`enableWebViewTracking`。
-从iOS 12开始，UIWebView将会Deprecated，今后较为推荐3.2.1的安装方法。
-
-
-![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
-```objc
-CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"yyyyy"];
-[foxConfig enableWebViewTracking];
-[foxConfig activate];
-```
-
-![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
-```Swift
-let foxConfig:CYZFoxConfig = CYZFoxConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")
-foxConfig.enableWebViewTracking()
-foxConfig.activate()
 ```
 
 ---

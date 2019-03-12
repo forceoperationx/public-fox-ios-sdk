@@ -14,7 +14,6 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 	* [2.1 Framework设置](#setting_framework)
 	* [2.2 关于App Transport Security](#setting_ats)
 	* [2.3 URL scheme设置](#setting_urlscheme)
-	* [SDK API](./doc/sdk_api/README.md)
 * **[3. 激活F.O.X SDK](#activate_sdk_into_app)**
 	* [3.1 Framework类库的导入](#activate_import)
 	* [3.2 Configuration](#activate_config)
@@ -32,6 +31,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 	* [执行optout](./doc/optout/README.md)
 * **[8. 最后的注意事项](#trouble_shooting)**
 	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
+* **[9. SDK API](#sdk_api)**
 
 
 ## 什么是F.O.X SDK
@@ -109,10 +109,18 @@ pod "CYZFoxTvDy", "<VERSION>"
 ### 1.2 使用Carthage导入
 
 Cartfile文件中添加以下内容。
+* **4.5.0及以上版本**
+```
+binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+```
+> ※ `<VERSION>`为4.5.0及以上版本的版本号。  
+
+* **4.0.0~4.4.0版本**
 ```
 github "cyber-z/public-fox-ios-sdk" == <VERSION>
 ```
-> ※ `<VERSION>`为想要指定的4.0.0以上发行版本。
+> ※ `<VERSION>`为想要指定的4.0.0以上发行版本。  
+※ 在`bootstrap`，`update`时，请勿使用`--no-use-binaries`参数
 
 > ※ Carthageの場合Target VersionはiOS 8.0以上に指定する必要となります。
 
@@ -508,6 +516,12 @@ currency请指定[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)认证的货�
 
 ## 8. 最后请务必确认（常见问题集）
 * [FAQ・注意事项](./doc/trouble_shooting/README.md)
+
+<div id="sdk_api"></div>
+
+## 9. SDK API
+
+* [SDK API](./doc/sdk_api/README.md)
 
 ---
 [Main Menu](/README.md)

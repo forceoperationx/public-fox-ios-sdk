@@ -14,7 +14,6 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 	* [2.1 Frameworkの設定](#setting_framework)
 	* [2.2 App Transport Securityについて](#setting_ats)
 	* [2.3 URLスキームの設定](#setting_urlscheme)
-	* [SDK API](./doc/sdk_api/README.md)
 * **[3. F.O.X SDKのアクティベーション](#activate_sdk_into_app)**
 	* [3.1 Frameworkのインポート](#activate_import)
 	* [3.2 コンフィギュレーション](#activate_config)
@@ -33,6 +32,7 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
   * [サードパーティーツールとの連携](./doc/integration/thirdparty_tools/README.md)
 * **[8. 最後に必ずご確認ください](#trouble_shooting)**
 	* [FAQ・注意事項](./doc/trouble_shooting/README.md)
+* **[9. SDK API](#sdk_api)**
 
 
 ## F.O.X SDKとは
@@ -110,6 +110,15 @@ pod "CYZFoxTvDy", "<VERSION>"
 ### 1.2 Carthageによる導入
 
 Cartfileファイルに下記の設定を追加してください。
+
+* **4.5.0以上の場合**
+```
+binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+```
+> ※ `<VERSION>`は指定したい4.5.0以上のリリースバージョンです。
+
+* **4.0.0~4.4.0の場合**  
+※ `bootstrap`、`update`コマンド使う時、`--no-use-binaries`パラメータ利用不可
 ```
 github "cyber-z/public-fox-ios-sdk" == <VERSION>
 ```
@@ -528,7 +537,13 @@ currencyの指定には[ISO 4217](http://ja.wikipedia.org/wiki/ISO_4217)で定�
 
 ## 8. 最後に必ずご確認ください
 
-* [FAQ・注意事項](./doc/trouble_shooting/README.md)
+* [FAQ・注意事項](./doc/trouble_shooting/README.md)  
+
+<div id="sdk_api"></div>
+
+## 9. SDK API
+
+* [SDK API](./doc/sdk_api/README.md)
 
 ---
 [メインメニュー](/README.md)

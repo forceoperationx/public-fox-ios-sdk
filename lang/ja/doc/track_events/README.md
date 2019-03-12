@@ -143,7 +143,7 @@ CYZFox.trackEventByBrowser("http://www.host.com")
 
 ### 3.2 アプリ内WebViewでのイベント計測について
 
-### 3.2.1 WebViewからNativeのAPIを実行する（推奨）
+#### WebViewからNativeのAPIを実行する
 
 WKWebViewが提供する機構を使い、JavaScript経由でネイティブAPIを実行します。
 
@@ -250,26 +250,6 @@ JavaScript側のサンプルコード
   </script>
 </body>
 </html>
-```
-
-
-### 3.2.2 Cookieを同期して実行する（非推奨）
-
-UIWebView内でのユーザアクションを計測する場合は、`CYZFoxConfig`の`enableWebViewTracking`を設定してください。
-iOS 12よりUIWebViewはDeprecatedとなったため、今後は3.2.1の実装方法を推奨します。
-
-![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
-```objc
-CYZFoxConfig* foxConfig = [CYZFoxConfig configWithAppId:0000 salt:@"xxxxx" appKey:@"yyyyy"];
-[foxConfig enableWebViewTracking];
-[foxConfig activate];
-```
-
-![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
-```Swift
-let foxConfig:CYZFoxConfig = CYZFoxConfig.init(appId:0000, salt:"xxxxx", appKey:"yyyyy")
-foxConfig.enableWebViewTracking()
-foxConfig.activate()
 ```
 
 ---

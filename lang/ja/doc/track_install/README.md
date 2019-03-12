@@ -76,7 +76,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
 ## 2. インストール計測の実装(オプション指定)
 
-インストール計測が完了したことをコールバックで受け取りたい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
+インストール計測が完了したことをコールバックで受け取りたい場合、インストール計測にカスタムパラメータを追加したい場合、特定のURLヘ遷移させる場合や、アプリケーションで動的にURLを生成したい場合には、以下の[CYZFoxTrackOption](../sdk_api/README.md#CYZFoxoption)クラスを使用します。<br>
 
 ![Language](http://img.shields.io/badge/language-Objective–C-blue.svg?style=flat)
 ```objc
@@ -98,6 +98,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ![Language](https://img.shields.io/badge/language-Swift-orange.svg?style=flat)
 ```Swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    // after active
     let option: CYZFoxTrackOption = CYZFoxTrackOption()
     option.redirectURL = "myapp://top"
     option.buid = "USER ID"
@@ -106,6 +107,8 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
         print("callback after tracking finished")
     }
     CYZFox.trackInstall(with: option)
+    // ...
+    return true
 }
 ```
 
