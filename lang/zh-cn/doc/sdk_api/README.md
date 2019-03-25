@@ -89,6 +89,9 @@
 11. `+(nullable NSString*) getXuniqId`
 > 取得FOX unique id
 
+12. `+(nullable NSString*) getInstallId`
+> 取得FOX install id
+
 <div id="CYZFoxTrackOption"></div>
 
 ## 3 CYZFoxTrackOption
