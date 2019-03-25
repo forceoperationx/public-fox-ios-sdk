@@ -90,6 +90,9 @@
 11. `+(nullable NSString*) getXuniqId`
 > FOX unique idを取得する
 
+12. `+(nullable NSString*) getInstallId`
+> FOX install idを取得する
+
 
 <div id="CYZFoxTrackOption"></div>
 

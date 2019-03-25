@@ -87,7 +87,10 @@
 > <br/>@param `buid` advertiser device ID (e.g. userID)
 
 11. `+(nullable NSString*) getXuniqId`
-> gets a FOX unique id
+> get FOX unique id
+
+12. `+(nullable NSString*) getInstallId`
+> get FOX install id
 
 
 <div id="CYZFoxTrackOption"></div>
