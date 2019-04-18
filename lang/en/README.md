@@ -484,7 +484,6 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 ### 6.2 Session measurement
 
 By measuring app events such as member registrations, tutorial completions, In-App Purchases and other such conversion points, you can track the LTV of individual advertisements. <br>
-When event tracking is not required, you can omit the implementation of this item.
 
 ※ Make sure any event tracking code gets called after [Install Tracking](#tracking_install) and [Session-start Measurement](#tracking_session)
 

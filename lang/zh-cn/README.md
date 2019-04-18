@@ -460,7 +460,7 @@ func applicationWillEnterForeground(_ application: UIApplication) {
 
 ### 6.2 其他APP内事件计测
 
-通过在会员注册、新手引导突破、付费等任意成果地点中执行事件计测，可以测定广告来源LTV。<br>如不需要事件计测时，可以忽略本项。
+通过在会员注册、新手引导突破、付费等任意成果地点中执行事件计测，可以测定广告来源LTV。<br>
 
 **[新手引导事件的计测案例]**
 
