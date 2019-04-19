@@ -66,7 +66,7 @@ Force Operation X (下面简称F.O.X)是一款基于智能手机的，用来最�
 * **使用iOS objective-c开发的场合**
 ```ruby
 # 请将下列内容添加在Podfile的最前端
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # 请将下列内容添加在指定目标中
 pod "CYZFox", "<VERSION>"
@@ -75,7 +75,7 @@ pod "CYZFox", "<VERSION>"
 * **使用tvOS objective-c开发的场合**
 ```ruby
 # 请将下列内容添加在Podfile的最前端
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # 请将下列内容添加在指定目标中
 pod "CYZFoxTv", "<VERSION>"
@@ -84,7 +84,7 @@ pod "CYZFoxTv", "<VERSION>"
 * **iOS Swift中使用dynamic framework的场合**
 ```ruby
 # 请将下列内容添加在Podfile的最前端
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # 使dynamic framework有效
 use_frameworks!
@@ -95,7 +95,7 @@ pod "CYZFoxDy", "<VERSION>"
 * **tvOS Swift中使用dynamic framework的场合**
 ```ruby
 # 请将下列内容添加在Podfile的最前端
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # 使dynamic framework有效
 use_frameworks!
@@ -111,13 +111,13 @@ pod "CYZFoxTvDy", "<VERSION>"
 Cartfile文件中添加以下内容。
 * **4.5.0及以上版本**
 ```
-binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
 ```
 > ※ `<VERSION>`为4.5.0及以上版本的版本号。  
 
 * **4.0.0~4.4.0版本**
 ```
-github "cyber-z/public-fox-ios-sdk" == <VERSION>
+github "forceoperationx/public-fox-ios-sdk" == <VERSION>
 ```
 > ※ `<VERSION>`为想要指定的4.0.0以上发行版本。  
 ※ 在`bootstrap`，`update`时，请勿使用`--no-use-binaries`参数
@@ -132,7 +132,7 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手动导入
 
-请在[发布页面](https://github.com/cyber-z/public_fox_ios_sdk/releases)中下载并解压最新安定版（Latest release）的`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
+请在[发布页面](https://github.com/forceoperationx/public_fox_ios_sdk/releases)中下载并解压最新安定版（Latest release）的`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
 
 > ※ 如果APP中已经安装了3系列SDK，请参考[更新到最新版本](./doc/update/README.md)。
 

@@ -67,7 +67,7 @@ F.O.X SDKをアプリケーションに導入することで、以下の機能�
 * **iOS objective-cで開発する場合**
 ```ruby
 # 下記の一行をPodfileの一番最初に追加してください
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # 下記を指定したいターゲットに追加してください
 pod "CYZFox", "<VERSION>"
@@ -76,7 +76,7 @@ pod "CYZFox", "<VERSION>"
 * **tvOS objective-cで開発する場合**
 ```ruby
 # 下記の一行をPodfileの一番最初に追加してください
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # 下記を指定したいターゲットに追加してください
 pod "CYZFoxTv", "<VERSION>"
@@ -85,7 +85,7 @@ pod "CYZFoxTv", "<VERSION>"
 * **iOS Swiftでdynamic frameworkを利用する場合**
 ```ruby
 # 下記の一行をPodfileの一番最初に追加してください
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # dynamic frameworkを有効に
 use_frameworks!
@@ -96,7 +96,7 @@ pod "CYZFoxDy", "<VERSION>"
 * **tvOS Swiftでdynamic frameworkを利用する場合**
 ```ruby
 # 下記の一行をPodfileの一番最初に追加してください
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # dynamic frameworkを有効に
 use_frameworks!
@@ -113,14 +113,14 @@ Cartfileファイルに下記の設定を追加してください。
 
 * **4.5.0以上の場合**
 ```
-binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
 ```
 > ※ `<VERSION>`は指定したい4.5.0以上のリリースバージョンです。
 
 * **4.0.0~4.4.0の場合**  
 ※ `bootstrap`、`update`コマンド使う時、`--no-use-binaries`パラメータ利用不可
 ```
-github "cyber-z/public-fox-ios-sdk" == <VERSION>
+github "forceoperationx/public-fox-ios-sdk" == <VERSION>
 ```
 > ※ `<VERSION>`は指定したい4.0.0以上のリリースバージョンです。
 
@@ -136,7 +136,7 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手動による導入
 
-[リリースページ](https://github.com/cyber-z/public_fox_ios_sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
+[リリースページ](https://github.com/forceoperationx/public_fox_ios_sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
 
 > ※ 既にアプリケーションに3系のSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
