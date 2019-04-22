@@ -6,7 +6,7 @@ This document is a manual for integrating the F.O.X SDK, a tool which maximizes 
 <br>
 Find out more about F.O.X at [cyber-z.co.jp](https://cyber-z.co.jp/en/fox).
 
-Read this in another language: [日本語](https://github.com/cyber-z/public-fox-ios-sdk/blob/4.x-master/lang/ja/README.md),[中文](https://github.com/cyber-z/public-fox-ios-sdk/blob/4.x-master/lang/zh-cn/README.md).
+Read this in another language: [日本語](https://github.com/forceoperationx/public-fox-ios-sdk/blob/4.x-master/lang/ja/README.md),[中文](https://github.com/forceoperationx/public-fox-ios-sdk/blob/4.x-master/lang/zh-cn/README.md).
 
 
 ## Table of Contents
@@ -71,7 +71,7 @@ Edit your Podfile as displayed below.
 
 ```ruby
 # Add this to the very beginning of your Podfile
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # Add this to any targets you wish to specify
 pod "CYZFox", "<VERSION>"
@@ -81,7 +81,7 @@ pod "CYZFox", "<VERSION>"
 
 ```ruby
 # Add this to the very beginning of your Podfile
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # Add this to any targets you wish to specify
 pod "CYZFoxTv", "<VERSION>"
@@ -91,7 +91,7 @@ pod "CYZFoxTv", "<VERSION>"
 
 ```ruby
 # Add this to the very beginning of your Podfile
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # enable dynamic frameworks
 use_frameworks!
@@ -103,7 +103,7 @@ pod "CYZFoxDy", "<VERSION>"
 
 ```ruby
 # Add this to the very beginning of your Podfile
-source "https://github.com/cyber-z/public-fox-ios-sdk.git"
+source "https://github.com/forceoperationx/public-fox-ios-sdk.git"
 
 # enable dynamic frameworks
 use_frameworks!
@@ -120,13 +120,13 @@ Add the following settings to your `Cartfile` file.
 
 * **4.5.0~**
 ```
-binary "https://raw.githubusercontent.com/cyber-z/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
 ```
 > ※ `<VERSION>` is whatever release version you wish to specify (above 4.5.0)
 * **4.0.0~4.4.0**  
 ※ do NOT use `--no-use-binaries` when excuting `bootstrap` or `update`
 ```
-github "cyber-z/public-fox-ios-sdk" == <VERSION>
+github "forceoperationx/public-fox-ios-sdk" == <VERSION>
 ```
 > ※ `<VERSION>` is whatever release version you wish to specify (above 4.0.0)
 
@@ -140,7 +140,7 @@ github "cyber-z/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 Manual Setup
 
-Download the `CYZFox_iOS_static_<VERSION>.zip` file from our [release page](https://github.com/cyber-z/public_fox_ios_sdk/releases) and build it into your Xcode project.
+Download the `CYZFox_iOS_static_<VERSION>.zip` file from our [release page](https://github.com/forceoperationx/public_fox_ios_sdk/releases) and build it into your Xcode project.
 
 > ※ If you are already implementing version 3.X of our SDK, see ["Updating to the latest version"](./doc/update/README.md)
 
