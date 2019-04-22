@@ -136,7 +136,7 @@ github "forceoperationx/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手動による導入
 
-[リリースページ](https://github.com/forceoperationx/public_fox_ios_sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
+[リリースページ](https://github.com/forceoperationx/public-fox-ios-sdk/releases)から`CYZFox_iOS_static_<VERSION>.zip`をダウンロードして展開し、`CYZFox.framework`ファイルをXcodeプロジェクトに組み込んでください。
 
 > ※ 既にアプリケーションに3系のSDKが導入されている場合には、[最新バージョンへのアップデートについて](./doc/update/README.md)をご参照ください。
 
