@@ -140,7 +140,7 @@ github "forceoperationx/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 Manual Setup
 
-Download the `CYZFox_iOS_static_<VERSION>.zip` file from our [release page](https://github.com/forceoperationx/public_fox_ios_sdk/releases) and build it into your Xcode project.
+Download the `CYZFox_iOS_static_<VERSION>.zip` file from our [release page](https://github.com/forceoperationx/public-fox-ios-sdk/releases) and build it into your Xcode project.
 
 > ※ If you are already implementing version 3.X of our SDK, see ["Updating to the latest version"](./doc/update/README.md)
 
