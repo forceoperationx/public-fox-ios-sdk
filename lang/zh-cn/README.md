@@ -132,7 +132,7 @@ github "forceoperationx/public-fox-ios-sdk" == <VERSION>
 
 ### 1.3 手动导入
 
-请在[发布页面](https://github.com/forceoperationx/public_fox_ios_sdk/releases)中下载并解压最新安定版（Latest release）的`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
+请在[发布页面](https://github.com/forceoperationx/public-fox-ios-sdk/releases)中下载并解压最新安定版（Latest release）的`CYZFox_iOS_static_<VERSION>.zip`，将`CYZFox.framework`文件安装到Xcode项目中。
 
 > ※ 如果APP中已经安装了3系列SDK，请参考[更新到最新版本](./doc/update/README.md)。
 
