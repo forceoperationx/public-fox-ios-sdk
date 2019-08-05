@@ -119,9 +119,15 @@ pod "CYZFoxTvDy", "<VERSION>"
 Add the following settings to your `Cartfile` file.
 
 * **4.5.0~**
-```
-binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
-```
+  * using dynamic framework
+    ```
+    binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFoxDy/CYZFox.json" == <VERSION>
+    ```
+  * using static framework
+    ```
+    binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+    ```
+    
 > ※ `<VERSION>` is whatever release version you wish to specify (above 4.5.0)
 * **4.0.0~4.4.0**  
 ※ do NOT use `--no-use-binaries` when excuting `bootstrap` or `update`

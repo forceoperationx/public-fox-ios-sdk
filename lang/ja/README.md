@@ -111,10 +111,18 @@ pod "CYZFoxTvDy", "<VERSION>"
 
 Cartfileファイルに下記の設定を追加してください。
 
-* **4.5.0以上の場合**
-```
-binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
-```
+* **4.5.0以上の場合**  
+  * dynamic frameworkを利用する場合
+  
+    ```
+    binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFoxDy/CYZFox.json" == <VERSION>
+    ```
+    
+  * static frameworkを利用する場合
+    ```
+    binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+    ```
+    
 > ※ `<VERSION>`は指定したい4.5.0以上のリリースバージョンです。
 
 * **4.0.0~4.4.0の場合**  
