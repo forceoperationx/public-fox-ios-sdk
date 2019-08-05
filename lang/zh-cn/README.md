@@ -110,9 +110,14 @@ pod "CYZFoxTvDy", "<VERSION>"
 
 Cartfile文件中添加以下内容。
 * **4.5.0及以上版本**
-```
-binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
-```
+  * 使用dynamic framework
+    ```
+    binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFoxDy/CYZFox.json" == <VERSION>
+    ```
+  * 使用static framework
+    ```
+    binary "https://raw.githubusercontent.com/forceoperationx/public-fox-ios-sdk/master/CYZFox/CYZFox.json" == <VERSION>
+    ```
 > ※ `<VERSION>`为4.5.0及以上版本的版本号。  
 
 * **4.0.0~4.4.0版本**
