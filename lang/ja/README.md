@@ -4,6 +4,8 @@ Force Operation X (以下F.O.X)は、スマートフォンにおける広告効�
 
 本ドキュメントでは、スマートフォンアプリケーションにおける広告効果最大化のためのF.O.X SDK導入手順について説明します。
 
+<span style="color: red; ">**アプリからF.O.X SDKを削除する手順につきましては[こちら](./doc/remove/README.md)をご覧ください**</span>
+
 ## 目次
 
 * **[1. インストール](#install_sdk)**
